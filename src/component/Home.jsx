@@ -28,11 +28,13 @@ const Home = () => {
       <div className="content-overlay">
         <div className="row align-items-center justify-content-center">
           {/* Center Section - Text */}
-          <div className="col-lg-12 text-center title px-5">
-            <h1 className="display-3 fw-bold">
-              CODEX <span className="highlight">PROJECT</span>
-            </h1>
-            <h2 className="text-animate">FINAL YEAR PROJECTS</h2>
+          <div className="col-12 text-center hero-content">
+            <div className="title-wrapper">
+              <h1 className="main-title">
+                CODEX <span className="highlight">PROJECT</span>
+              </h1>
+              <h2 className="subtitle">FINAL YEAR PROJECTS</h2>
+            </div>
           </div>
         </div>
       </div>
