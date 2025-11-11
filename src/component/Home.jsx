@@ -1,64 +1,38 @@
+// Home.js
 import React from "react";
+import GridScan from "./GridScan";
 import "./Home.css";
-import githubImg from "../assets/image/github.png";
-import linkedinImg from "../assets/image/linkedin.png";
-import kaviImg from "../assets/image/kavi-img.png";
 
 const Home = () => {
   return (
     <div className="home-container container-fluid">
-      <div className="row align-items-center">
-        {/* Left Section - Text & Buttons */}
-        <div className="col-lg-6 text-center text-lg-start px-5">
-          <h1 className="display-3 fw-bold">
-            Hello, I'm <span className="highlight">Kaviyarasu</span>
-          </h1>
-          <h2 className="text-animate">I am Full Stack Developer</h2>
-          <p className="intro-text">
-            I specialize in building robust, scalable, and user-friendly web
-            applications. Let's collaborate and create something amazing!
-          </p>
-
-          {/* Call-to-Action Buttons */}
-          <div className="mt-4">
-            <button className="btn btn-primary me-3 px-4 py-2 shadow">
-              Download CV
-            </button>
-            <button className="btn btn-outline-success px-4 py-2 shadow">
-              Contact Me
-            </button>
-          </div>
-
-          {/* Social Media Buttons */}
-          <div className="mt-4">
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn social-btn github me-2"
-            >
-              <img src={githubImg} alt="GitHub" />
-            </a>
-
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn social-btn linkedin"
-            >
-              <img src={linkedinImg} alt="LinkedIn" />
-            </a>
-          </div>
-        </div>
-
-
-        <div className="col-lg-6 text-center mt-4 mt-lg-0">
-          <div className="profile-wrapper">
-            <img
-              src={kaviImg}
-              alt="Kaviyarasu"
-              className="profile-img"
-            />
+      {/* GridScan Background Animation */}
+      <div className="gridscan-background">
+        <GridScan
+          sensitivity={0.55}
+          lineThickness={1}
+          linesColor="#392e4e"
+          gridScale={0.1}
+          scanColor="#FF9FFC"
+          scanOpacity={0.4}
+          noiseIntensity={0.01}
+          scanGlow={0.5}
+          scanSoftness={2}
+          scanPhaseTaper={0.9}
+          scanDuration={2.0}
+          scanDelay={2.0}
+        />
+      </div>
+      
+      {/* Content */}
+      <div className="content-overlay">
+        <div className="row align-items-center justify-content-center">
+          {/* Center Section - Text */}
+          <div className="col-lg-12 text-center title px-5">
+            <h1 className="display-3 fw-bold">
+              CODEX <span className="highlight">PROJECT</span>
+            </h1>
+            <h2 className="text-animate">FINAL YEAR PROJECTS</h2>
           </div>
         </div>
       </div>
