@@ -10,12 +10,7 @@ const Home = () => {
     }
   };
 
-  const scrollToAbout = () => {
-    const aboutSection = document.getElementById('about');
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+ 
 
   const features = [
     { icon: "🚀", title: "Innovative Projects", description: "Cutting-edge technology solutions" },
