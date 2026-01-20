@@ -11,7 +11,7 @@ const Home = () => {
 
     // Meta Description
     const descriptionContent =
-      "CODEX PROJECT is the best final year project center in Coimbatore providing real-time software, embedded and IoT projects with internship and full viva support.";
+      "CODEX PROJECT is a leading final year project center in Coimbatore offering real-time software, embedded and IoT projects with internship and full viva support.";
 
     let metaDescription = document.querySelector(
       "meta[name='description']"
@@ -25,6 +25,13 @@ const Home = () => {
       metaDescription.content = descriptionContent;
       document.head.appendChild(metaDescription);
     }
+
+    // Meta Keywords (supporting)
+    const metaKeywords = document.createElement("meta");
+    metaKeywords.name = "keywords";
+    metaKeywords.content =
+      "final year project center in coimbatore, final year projects in coimbatore, cse final year project center in coimbatore, engineering project centre in coimbatore, software project training in coimbatore, embedded system projects coimbatore, iot final year projects coimbatore, react js final year projects coimbatore, node js final year projects coimbatore, internship with final year project in coimbatore, final year project center near me";
+    document.head.appendChild(metaKeywords);
   }, []);
   /* ================= SEO END ================= */
 
@@ -86,21 +93,21 @@ const Home = () => {
               <div className="title-wrapper">
                 <div className="badge">🚀 Real-Time Projects</div>
 
-                {/* H1 – MAIN SEO HEADING */}
+                {/* H1 */}
                 <h1 className="main-title">
                   CODEX <span className="highlight">PROJECT</span>
                 </h1>
 
-                {/* H2 – LOCATION KEYWORD */}
+                {/* H2 */}
                 <h2 className="subtitle">
                   Final Year Project Center in Coimbatore
                 </h2>
 
                 <p className="hero-description">
-                  CODEX PROJECT provides real-time final year software,
-                  embedded and IoT projects in Coimbatore. We help
-                  engineering students build industry-ready projects with
-                  complete documentation, internship and viva support.
+                  CODEX PROJECT is a professional final year project
+                  center in Coimbatore providing real-time software,
+                  embedded and IoT projects with internship, complete
+                  documentation and full viva support.
                 </p>
               </div>
             </div>
@@ -117,7 +124,7 @@ const Home = () => {
                 Why Choose CODEX PROJECT?
               </h2>
               <p className="section-subtitle">
-                Trusted final year project guidance centre in Coimbatore
+                Trusted engineering project centre in Coimbatore
               </p>
             </div>
           </div>
@@ -170,7 +177,7 @@ const Home = () => {
                   <h3>Software Projects</h3>
                   <p>
                     Web, mobile and desktop final year software
-                    projects using modern technologies.
+                    projects using React, Node.js, Python and Java.
                   </p>
                 </div>
               </div>
@@ -182,13 +189,40 @@ const Home = () => {
                   <div className="domain-icon">🔌</div>
                   <h3>Embedded & IoT Projects</h3>
                   <p>
-                    Embedded systems, IoT automation and
+                    Embedded system projects, IoT automation and
                     hardware-based final year projects.
                   </p>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* SEO KEYWORD CONTENT BLOCK */}
+      <section className="seo-content">
+        <div className="container">
+          <h2>Final Year Project Center in Coimbatore</h2>
+
+          <p>
+            CODEX PROJECT is one of the best final year project centers
+            in Coimbatore offering real-time software final year projects,
+            embedded system projects and IoT final year projects for
+            engineering students.
+          </p>
+
+          <p>
+            We provide CSE final year projects in Coimbatore, software
+            project training, React JS final year projects, Node JS final
+            year projects and internship with final year project programs.
+          </p>
+
+          <p>
+            Students searching for a reliable engineering project centre
+            in Coimbatore or a final year project center near me can
+            confidently choose CODEX PROJECT for professional guidance
+            and industry-ready solutions.
+          </p>
         </div>
       </section>
 
