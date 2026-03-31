@@ -91,7 +91,7 @@ const Navbar = () => {
                 to="/contact"
                 onClick={closeNavbar}
               >
-                Contact
+                Contacts
               </Link>
             </li>
 
