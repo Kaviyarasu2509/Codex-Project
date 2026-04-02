@@ -32,7 +32,9 @@ const Navbar = () => {
           <div className="top-info">
             <a href="tel:6369569637">📞 6369569637</a>
             <a href="tel:9566515433">📞 9566515433</a>
-            <a href="#">📍 Coimbatore</a>
+            <a href="https://maps.google.com/?q=Coimbatore" target="_blank" rel="noreferrer">
+  📍 Coimbatore
+</a>
           </div>
         </div>
       </div>
