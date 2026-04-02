@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -7,99 +8,155 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
-  // Handle scroll effect for navbar background
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 50;
-      setScrolled(isScrolled);
+      setScrolled(window.scrollY > 50);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const toggleNavbar = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const closeNavbar = () => {
-    setIsOpen(false);
-  };
-
   return (
-    <nav className={`navbar navbar-expand-lg navbar-dark fixed-top ${scrolled ? 'scrolled' : ''}`}>
-      <div className="container-fluid">
-        {/* Brand Name */}
-        <Link className="navbar-brand" to="/" onClick={closeNavbar}>
-          <h2>CODEX</h2>
-        </Link>
-
-        {/* Toggler for Mobile */}
-        <button
-          className={`navbar-toggler ${isOpen ? "" : "collapsed"}`}
-          type="button"
-          onClick={toggleNavbar}
-          aria-controls="navbarNav"
-          aria-expanded={isOpen}
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-
-        {/* Navbar Links */}
-        <div className={`collapse navbar-collapse ${isOpen ? "show" : ""}`} id="navbarNav">
-          <ul className="navbar-nav ms-auto">
-            <li className="nav-item">
-              <Link
-                className={`nav-link ${location.pathname === "/" ? "active" : ""}`}
-                to="/"
-                onClick={closeNavbar}
-              >
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className={`nav-link ${location.pathname === "/about" ? "active" : ""}`}
-                to="/about"
-                onClick={closeNavbar}
-              >
-                About
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className={`nav-link ${location.pathname === "/projects" ? "active" : ""}`}
-                to="/projects"
-                onClick={closeNavbar}
-              >
-                Projects
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className={`nav-link ${location.pathname === "/career" ? "active" : ""}`}
-                to="/career"
-                onClick={closeNavbar}
-              >
-                Career
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className={`nav-link ${location.pathname === "/contact" ? "active" : ""}`}
-                to="/contact"
-                onClick={closeNavbar}
-              >
-                Contacts
-              </Link>
-            </li>
-
+    <>
+      {/* TOP BAR */}
+      <div className="top-bar">
+        <div className="container-fluid d-flex justify-content-between align-items-center">
+          <div className="logo">
+            <Link to="/">
             
-          </ul>
+              <h2>CODEX PROJECT</h2>
+            </Link>
+          </div>
+
+          <div className="top-info">
+            <a href="tel:6369569637">📞 6369569637</a>
+            <a href="tel:9566515433">📞 9566515433</a>
+            <a href="#">📍 Coimbatore</a>
+          </div>
         </div>
       </div>
-    </nav>
+
+      {/* NAVBAR */}
+      <nav className={`navbar navbar-expand-lg main-navbar ${scrolled ? "scrolled" : ""}`}>
+        <div className="container-fluid">
+
+          {/* Mobile Toggle */}
+          <button
+            className="navbar-toggler"
+            type="button"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+
+          <div className={`collapse navbar-collapse ${isOpen ? "show" : ""}`}>
+
+            <ul className="navbar-nav">
+
+              {/* HOME */}
+              <li className="nav-item">
+                <Link
+                  to="/"
+                  className={`nav-link ${location.pathname === "/" ? "active" : ""}`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  Home
+                </Link>
+              </li>
+
+              {/* ABOUT */}
+              <li className="nav-item">
+                <Link
+                  to="/about"
+                  className={`nav-link ${location.pathname === "/about" ? "active" : ""}`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  About
+                </Link>
+              </li>
+
+              {/* 🔥 SERVICES DROPDOWN */}
+              <li className="nav-item dropdown">
+                <span className="nav-link dropdown-toggle">
+                  Services
+                </span>
+
+                <ul className="dropdown-menu">
+
+                  <li>
+                    <Link to="/mechanical-projects" className="dropdown-item" onClick={() => setIsOpen(false)}>
+                      Mechanical Projects
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link to="/iot-projects" className="dropdown-item" onClick={() => setIsOpen(false)}>
+                      IoT Projects
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link to="/embedded-projects" className="dropdown-item" onClick={() => setIsOpen(false)}>
+                      Embedded Projects
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link to="/software-projects" className="dropdown-item" onClick={() => setIsOpen(false)}>
+                      Software Projects
+                    </Link>
+                  </li>
+
+                </ul>
+              </li>
+
+              {/* PROJECTS */}
+              <li className="nav-item">
+                <Link
+                  to="/projects"
+                  className={`nav-link ${location.pathname === "/projects" ? "active" : ""}`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  Projects
+                </Link>
+              </li>
+
+              {/* CONTACT */}
+              <li className="nav-item">
+                <Link
+                  to="/contact"
+                  className={`nav-link ${location.pathname === "/contact" ? "active" : ""}`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  Contact
+                </Link>
+              </li>
+
+              {/* CONTACT */}
+              <li className="nav-item">
+                <Link
+                  to="/blog"
+                  className={`nav-link ${location.pathname === "/blog" ? "active" : ""}`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  Blog
+                </Link>
+              </li>
+
+            </ul>
+
+            {/* BUTTON */}
+            <div className="ms-auto">
+              <Link to="/contact" className="enquiry-btn">
+                Enquiry
+              </Link>
+            </div>
+
+          </div>
+        </div>
+      </nav>
+    </>
   );
 };
 

@@ -1,241 +1,129 @@
-/* Navbar Custom Styles - Transparent Design */
-.navbar {
-  background: rgba(10, 10, 10, 0.1);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  padding: 1rem 0;
-  height: 80px;
-  z-index: 1030;
+/* 🔹 TOP BAR */
+.top-bar {
+  background: #1E3A8A;
+  color: white;
+  padding: 8px 20px;
+  font-size: 14px;
+  z-index: 90000;
 }
 
-.navbar.scrolled {
-  background: rgba(10, 10, 10, 0.95);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-  border-bottom: 1px solid rgba(255, 159, 252, 0.2);
+.logo-img {
+  height: 45px;
+  transition: 0.3s;
 }
 
-/* Brand Name */
-.navbar-brand h2 {
-  font-weight: 800;
-  font-size: 2rem;
-  margin-left: 50px;
-  background: linear-gradient(135deg, #ffffff 0%, #FF9FFC 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: 0.05em;
-  transition: all 0.3s ease;
-}
-
-.navbar-brand:hover h2 {
-  background: linear-gradient(135deg, #FF9FFC 0%, #667eea 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Navbar Toggler */
-.navbar-toggler {
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.1);
-  padding: 0.5rem 0.75rem;
-  transition: all 0.3s ease;
-}
-
-.navbar-toggler:focus {
-  box-shadow: 0 0 0 2px rgba(255, 159, 252, 0.3);
-}
-
-.navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-}
-
-/* Navbar Links */
-.navbar-nav .nav-item {
-  margin: 0 0.5rem;
-  position: relative;
-}
-
-.navbar-nav .nav-link {
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.9) !important;
-  padding: 0.75rem 1.25rem !important;
-  border-radius: 25px;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.navbar-nav .nav-link::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #FF9FFC, #667eea);
-  transition: all 0.3s ease;
-  transform: translateX(-50%);
-}
-
-.navbar-nav .nav-link:hover {
-  color: #ffffff !important;
-  background: rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
-}
-
-.navbar-nav .nav-link:hover::before {
-  width: 80%;
-}
-
-/* Active Link Styling */
-.navbar-nav .nav-link.active {
-  color: #ffffff !important;
-  background: linear-gradient(135deg, rgba(255, 159, 252, 0.2), rgba(102, 126, 234, 0.2));
-  border: 1px solid rgba(255, 159, 252, 0.3);
-  box-shadow: 0 4px 15px rgba(255, 159, 252, 0.2);
-}
-
-.navbar-nav .nav-link.active::before {
-  width: 80%;
-  background: linear-gradient(90deg, #FF9FFC, #667eea);
-}
-
-/* Hire Me Button */
-.hire-btn {
-  font-weight: 600;
-  border-radius: 25px;
-  padding: 0.75rem 2rem;
-  background: linear-gradient(135deg, #FF9FFC 0%, #667eea 100%);
-  border: none;
-  color: #000 !important;
+.top-info a {
+  color: white;
+  margin-left: 15px;
   text-decoration: none;
+}
+
+.top-info a:hover {
+  text-decoration: underline;
+}
+
+/* 🔹 NAVBAR */
+.main-navbar {
+  background: white;
+  padding: 10px 20px;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(255, 159, 252, 0.3);
-  margin-left: 0.5rem;
+  border-bottom: 1px solid #E5E7EB;
 }
 
-.hire-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(255, 159, 252, 0.4);
-  background: linear-gradient(135deg, #667eea 0%, #FF9FFC 100%);
-  color: #000 !important;
+/* 🔥 Scroll Effect */
+.main-navbar.scrolled {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 8px 20px;
 }
 
-/* Mobile Responsive Styles */
-@media (max-width: 992px) {
-  .navbar {
-    padding: 0.75rem 0;
-    height: 70px;
-  }
+.main-navbar.scrolled .logo-img {
+  height: 38px;
+}
 
-  .navbar-collapse {
-    background: rgba(10, 10, 10, 0.98);
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
-    border-radius: 15px;
-    padding: 1.5rem;
-    margin-top: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-  }
+/* 🔹 NAV LINKS */
+.nav-link {
+  color: #1F2937 !important;
+  font-weight: 500;
+  margin-right: 15px;
+  position: relative;
+  transition: 0.3s;
+}
 
-  .navbar-nav .nav-item {
-    margin: 0.25rem 0;
-  }
+/* 🔥 Hover Animation */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background: #1E3A8A;
+  transition: 0.3s;
+}
 
-  .navbar-nav .nav-link {
-    padding: 1rem 1.5rem !important;
-    text-align: center;
-    border-radius: 12px;
-    margin: 0.25rem 0;
-  }
+.nav-link:hover::after {
+  width: 100%;
+}
 
-  .navbar-nav .nav-link::before {
+/* 🔥 Active Link */
+.nav-link.active {
+  color: #1E3A8A !important;
+  font-weight: 600;
+}
+
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* 🔥 Enquiry Button */
+.enquiry-btn {
+  background: linear-gradient(90deg, #1E3A8A, #3B82F6);
+  color: white;
+  padding: 8px 18px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.enquiry-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Dropdown */
+.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0;
+}
+
+.dropdown-menu {
+  background: #111;
+  border: none;
+}
+
+.dropdown-item {
+  color: #fff;
+  padding: 10px 15px;
+}
+
+.dropdown-item:hover {
+  background: #392e4e;
+  color: #fff;
+}
+
+/* 🔹 Mobile */
+@media (max-width: 991px) {
+  .top-info {
     display: none;
   }
 
-  .navbar-nav .nav-link:hover {
-    transform: translateX(5px);
+  .navbar-nav {
+    margin-top: 10px;
   }
 
-  .hire-btn {
-    width: 100%;
-    margin: 1rem 0 0 0;
+  .enquiry-btn {
+    display: block;
+    margin-top: 10px;
     text-align: center;
   }
-
-  .navbar-brand h2 {
-    font-size: 1.75rem;
-  }
-}
-
-/* Small Mobile Devices */
-@media (max-width: 576px) {
-  .navbar {
-    padding: 0.5rem 0;
-    height: 65px;
-  }
-
-  .navbar-brand h2 {
-    font-size: 1.5rem;
-    margin-left: 20px;
-  }
-
-  .navbar-collapse {
-    margin-top: 0.5rem;
-    padding: 1rem;
-  }
-
-  .navbar-nav .nav-link {
-    padding: 0.875rem 1.25rem !important;
-    font-size: 1rem;
-  }
-}
-
-/* Extra Small Devices */
-@media (max-width: 375px) {
-  .navbar-brand h2 {
-    font-size: 1.3rem;
-  }
-
-  .navbar-nav .nav-link {
-    font-size: 0.95rem;
-    padding: 0.75rem 1rem !important;
-  }
-}
-
-/* Smooth transitions for all interactive elements */
-.navbar-nav .nav-link,
-.hire-btn,
-.navbar-toggler {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Focus states for accessibility */
-.navbar-nav .nav-link:focus,
-.hire-btn:focus {
-  outline: 2px solid rgba(255, 159, 252, 0.5);
-  outline-offset: 2px;
-}
-
-/* Loading animation for navbar */
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.navbar {
-  animation: fadeInDown 0.6s ease-out;
 }
