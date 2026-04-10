@@ -1,523 +1,551 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Contact.css";
 
+// ─── JSON-LD Structured Data ──────────────────────────────────────────────────
+const contactSchema = {
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "EducationalOrganization"],
+  "name": "CODEX PROJECT – Final Year Project Center",
+  "url": "https://www.codexproject.in",
+  "email": "codexproject2026@gmail.com",
+  "telephone": "+918525999002",
+  "description":
+    "Best final year project center in Coimbatore offering IEEE 2024-25 projects, internship training, and placement support. Contact us for Software, AI, IoT, Embedded, and Mechanical projects.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "2nd Floor, Balaji Complex, 288, 2nd Street, Opp. Anbu Mess, Cross Cut Road",
+    "addressLocality": "Gandhipuram, Coimbatore",
+    "addressRegion": "Tamil Nadu",
+    "postalCode": "641012",
+    "addressCountry": "IN",
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 11.0187267, "longitude": 76.9686347 },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "09:00", "closes": "20:00" }
+  ],
+  "contactPoint": [
+    { "@type": "ContactPoint", "telephone": "+918525999002", "contactType": "customer service", "areaServed": "IN", "availableLanguage": ["English", "Tamil"], "description": "General Enquiry" },
+    { "@type": "ContactPoint", "telephone": "+918525999022", "contactType": "technical support", "areaServed": "IN", "availableLanguage": ["English", "Tamil"], "description": "Software & AI Projects" },
+    { "@type": "ContactPoint", "telephone": "+918525999032", "contactType": "technical support", "areaServed": "IN", "availableLanguage": ["English", "Tamil"], "description": "Embedded & IoT Projects" },
+  ],
+  "sameAs": ["https://wa.me/918525999002"],
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "200" },
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "How to contact CODEX PROJECT Coimbatore?", "acceptedAnswer": { "@type": "Answer", "text": "Call or WhatsApp: 8525999002 (General), 8525999022 (Software & AI), 8525999032 (Embedded & IoT). Email: codexproject2026@gmail.com. Visit: 2nd Floor, Balaji Complex, Gandhipuram, Coimbatore – 641012." } },
+    { "@type": "Question", "name": "Do you offer free consultation for final year projects?", "acceptedAnswer": { "@type": "Answer", "text": "Yes! CODEX PROJECT offers free 30-minute project consultations. Call 8525999002 or WhatsApp us to schedule a free consultation at our Gandhipuram, Coimbatore center." } },
+    { "@type": "Question", "name": "What are the working hours of CODEX PROJECT Coimbatore?", "acceptedAnswer": { "@type": "Answer", "text": "CODEX PROJECT is open Monday to Saturday, 9:00 AM to 8:00 PM at 2nd Floor, Balaji Complex, Gandhipuram, Coimbatore – 641012." } },
+    { "@type": "Question", "name": "Which number to call for Software and AI projects in Coimbatore?", "acceptedAnswer": { "@type": "Answer", "text": "For Software, Python, AI, and Machine Learning project enquiries at CODEX PROJECT Coimbatore, call or WhatsApp: 8525999022." } },
+  ],
+};
+
+// ─── Data ─────────────────────────────────────────────────────────────────────
+const contactMethods = [
+  {
+    icon: "📞",
+    title: "General Enquiry",
+    subtitle: "All project enquiries",
+    number: "85259 99002",
+    raw: "+918525999002",
+    call: "tel:+918525999002",
+    whatsapp: "https://wa.me/918525999002",
+    color: "#1565C0",
+    bg: "#EBF3FF",
+    seo: "Call CODEX PROJECT Coimbatore",
+  },
+  {
+    icon: "💻",
+    title: "Software & AI Projects",
+    subtitle: "Python, ML, MERN, Java, Flutter",
+    number: "85259 99022",
+    raw: "+918525999022",
+    call: "tel:+918525999022",
+    whatsapp: "https://wa.me/918525999022",
+    color: "#6A1B9A",
+    bg: "#F3E5F5",
+    seo: "Software AI Projects Coimbatore",
+  },
+  {
+    icon: "🔌",
+    title: "Embedded & IoT Projects",
+    subtitle: "Arduino, Raspberry Pi, ARM, FPGA",
+    number: "85259 99032",
+    raw: "+918525999032",
+    call: "tel:+918525999032",
+    whatsapp: "https://wa.me/918525999032",
+    color: "#00695C",
+    bg: "#E0F2F1",
+    seo: "Embedded IoT Projects Coimbatore",
+  },
+  {
+    icon: "📧",
+    title: "Email Us",
+    subtitle: "For detailed project queries",
+    number: "codexproject2026@gmail.com",
+    raw: "codexproject2026@gmail.com",
+    call: "mailto:codexproject2026@gmail.com",
+    whatsapp: null,
+    color: "#E65100",
+    bg: "#FFF3E0",
+    seo: "Email CODEX PROJECT",
+  },
+];
+
+const inquiryTypes = [
+  { value: "software", label: "Software / AI Project", icon: "💻" },
+  { value: "iot", label: "IoT / Embedded Project", icon: "🔌" },
+  { value: "mechanical", label: "Mechanical Project", icon: "⚙️" },
+  { value: "internship", label: "Internship Training", icon: "🎓" },
+  { value: "general", label: "General Enquiry", icon: "💬" },
+];
+
+const faqs = [
+  { q: "How to contact CODEX PROJECT Coimbatore?", a: "Call or WhatsApp 8525999002 for general enquiry, 8525999022 for Software/AI projects, 8525999032 for Embedded/IoT. Email: codexproject2026@gmail.com. Visit us at 2nd Floor, Balaji Complex, Gandhipuram, Coimbatore – 641012." },
+  { q: "Do you offer free project consultation?", a: "Yes! CODEX PROJECT offers free project consultation sessions. Call 8525999002 or WhatsApp to schedule — no charges for initial discussion at our Gandhipuram center." },
+  { q: "What are CODEX PROJECT working hours?", a: "We are open Monday to Saturday, 9:00 AM – 8:00 PM. Visit us at 2nd Floor, Balaji Complex, Cross Cut Road, Gandhipuram, Coimbatore – 641012." },
+  { q: "Which number for Software and AI projects?", a: "For Python, AI, Machine Learning, MERN Stack, Java, Flutter project enquiries — call or WhatsApp: 8525999022." },
+  { q: "Which number for Embedded and IoT projects?", a: "For Arduino, Raspberry Pi, ARM, NodeMCU, FPGA embedded/IoT project enquiries — call or WhatsApp: 8525999032." },
+];
+
+// ─── Component ────────────────────────────────────────────────────────────────
 const Contact = () => {
   const sectionRefs = useRef([]);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-    inquiryType: "general"
-  });
+  const [formData, setFormData] = useState({ name: "", phone: "", email: "", college: "", inquiryType: "software", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [openFaq, setOpenFaq] = useState(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('in-view');
-          }
-        });
-      },
+      (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("in-view"); }),
       { threshold: 0.1 }
     );
-
-    sectionRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
-
+    sectionRefs.current.forEach((ref) => { if (ref) observer.observe(ref); });
     return () => observer.disconnect();
   }, []);
 
   const addToRefs = (el) => {
-    if (el && !sectionRefs.current.includes(el)) {
-      sectionRefs.current.push(el);
-    }
+    if (el && !sectionRefs.current.includes(el)) sectionRefs.current.push(el);
   };
 
-  const handleInputChange = (e) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
+    await new Promise((r) => setTimeout(r, 1800));
     setIsSubmitting(false);
     setIsSubmitted(true);
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-      inquiryType: "general"
-    });
-    
-    // Reset success message after 5 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-    }, 5000);
+    setFormData({ name: "", phone: "", email: "", college: "", inquiryType: "software", message: "" });
+    setTimeout(() => setIsSubmitted(false), 6000);
   };
-
-  const contactMethods = [
-    {
-      icon: "📧",
-      title: "Email Us",
-      description: "Send us an email anytime",
-      details: "contact@codexproject.in",
-      link: "www.codexproject.in",
-      color: "#667eea"
-    },
-    {
-      icon: "📞",
-      title: "Call Us",
-      description: "Mon - Fri, 9am - 6pm",
-      details: "+1 (555) 123-CODE",
-      link: "tel:+15551234563",
-      color: "#764ba2"
-    },
-    {
-      icon: "💬",
-      title: "WhatsApp",
-      description: "Quick chat support",
-      details: "+1 (555) 123-CODE",
-      link: "https://wa.me/15551234563",
-      color: "#43e97b"
-    },
-    {
-      icon: "📍",
-      title: "Visit Us",
-      description: "Come say hello",
-      details: "123 Tech Park, Innovation City",
-      link: "https://maps.google.com",
-      color: "#f093fb"
-    }
-  ];
-
-  const inquiryTypes = [
-    { value: "general", label: "General Inquiry", icon: "💬" },
-    { value: "project", label: "Project Discussion", icon: "🚀" },
-    { value: "career", label: "Career Opportunity", icon: "👥" },
-    { value: "partnership", label: "Partnership", icon: "🤝" },
-    { value: "support", label: "Technical Support", icon: "🔧" }
-  ];
-
-  const faqs = [
-    {
-      question: "How long does it take to get a response?",
-      answer: "We typically respond within 24 hours during business days."
-    },
-    {
-      question: "Do you offer free project consultations?",
-      answer: "Yes! We offer free 30-minute consultations to discuss your project requirements."
-    },
-    {
-      question: "What technologies do you work with?",
-      answer: "We work with a wide range of technologies including React, Node.js, Python, IoT, Embedded Systems, and more."
-    },
-    {
-      question: "Can you work with international clients?",
-      answer: "Absolutely! We work with clients from all around the world and can accommodate different time zones."
-    }
-  ];
-
-  const teamContacts = [
-    {
-      name: "Alex Chen",
-      role: "Project Manager",
-      department: "Software Projects",
-      email: "alex@codexproject.com",
-      avatar: "👨‍💼",
-      color: "#667eea"
-    },
-    {
-      name: "Sarah Johnson",
-      role: "Technical Lead",
-      department: "Embedded Systems",
-      email: "sarah@codexproject.com",
-      avatar: "👩‍🔧",
-      color: "#764ba2"
-    },
-    {
-      name: "Mike Rodriguez",
-      role: "Business Development",
-      department: "Partnerships",
-      email: "mike@codexproject.com",
-      avatar: "👨‍💼",
-      color: "#f093fb"
-    }
-  ];
 
   return (
     <div className="contact-container">
-      {/* Hero Section */}
-      <section className="contact-hero" ref={addToRefs}>
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-lg-10 text-center">
-              <div className="hero-content">
-                <h1 className="contact-title">
-                  Get In <span className="highlight">Touch</span>
-                </h1>
-                <p className="contact-subtitle">
-                  Let's Discuss Your Next Project or Collaboration
-                </p>
-                <p className="contact-description">
-                  Ready to bring your ideas to life? We're here to help you turn your vision into reality. 
-                  Whether you're a student with a final year project or a business with innovative ideas, 
-                  let's start the conversation.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        {/* Animated Background */}
-        <div className="hero-background">
-          <div className="floating-shapes">
-            <div className="shape shape-1"></div>
-            <div className="shape shape-2"></div>
-            <div className="shape shape-3"></div>
-          </div>
-          <div className="hero-particles">
-            {[...Array(15)].map((_, i) => (
-              <div 
-                key={i} 
-                className="particle"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  animationDelay: `${Math.random() * 4}s`,
-                  animationDuration: `${3 + Math.random() * 3}s`
-                }}
-              ></div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
-      {/* Contact Methods */}
-      <section className="contact-methods-section" ref={addToRefs}>
+      {/* ══ HERO ══════════════════════════════════════════════════════════════ */}
+      <section className="contact-hero" ref={addToRefs} aria-labelledby="contact-h1">
+        <div className="ch-bg">
+          <div className="ch-grid"></div>
+          <div className="ch-glow ch-glow-1"></div>
+          <div className="ch-glow ch-glow-2"></div>
+        </div>
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-lg-10 text-center">
-              <h2 className="section-title">Multiple Ways to Connect</h2>
-              <p className="section-subtitle">
-                Choose your preferred method to get in touch with us
+            <div className="col-lg-9 text-center">
+              <span className="ch-eyebrow">Contact Us</span>
+              <h1 id="contact-h1" className="contact-title">
+                Get In Touch With<br />
+                <span className="ch-accent">CODEX PROJECT</span>
+              </h1>
+              <p className="contact-subtitle">
+                Best Final Year Project Center in Coimbatore – Free Consultation Available
+              </p>
+              <p className="contact-description">
+                Looking for the <strong>best final year project center in Coimbatore</strong>?
+                Contact <strong>CODEX PROJECT</strong> at Gandhipuram for IEEE 2024-25 projects,
+                internship training, and placement support. Call, WhatsApp, or visit us —
+                free consultation for all engineering students.
+              </p>
+
+              {/* Quick contact chips */}
+              <div className="ch-quick-chips">
+                <a href="tel:+918525999002" className="ch-chip ch-chip-blue" aria-label="Call CODEX PROJECT">
+                  📞 Call: 85259 99002
+                </a>
+                <a href="https://wa.me/918525999002" target="_blank" rel="noopener noreferrer" className="ch-chip ch-chip-green" aria-label="WhatsApp CODEX PROJECT">
+                  💬 WhatsApp Us
+                </a>
+                <a href="mailto:codexproject2026@gmail.com" className="ch-chip ch-chip-orange" aria-label="Email CODEX PROJECT">
+                  📧 Email Us
+                </a>
+              </div>
+
+              <p className="ch-address">
+                📍 2nd Floor, Balaji Complex, 288, 2nd Street, Opp. Anbu Mess,
+                Cross Cut Road, Gandhipuram, Coimbatore – 641012
               </p>
             </div>
           </div>
-          <div className="row">
-            {contactMethods.map((method, index) => (
-              <div key={index} className="col-lg-3 col-md-6 mb-4">
-                <div 
-                  className="contact-method-card"
-                  style={{ animationDelay: `${index * 0.1}s` }}
+        </div>
+      </section>
+
+      {/* ══ CONTACT METHODS ═══════════════════════════════════════════════════ */}
+      <section className="contact-methods-section" ref={addToRefs} aria-labelledby="methods-h2">
+        <div className="container">
+          <div className="text-center mb-5">
+            <span className="section-eyebrow">Contact Numbers</span>
+            <h2 id="methods-h2" className="section-title">
+              Dedicated Lines for Every Domain – CODEX PROJECT Coimbatore
+            </h2>
+            <p className="section-subtitle">
+              Separate contact numbers for Software/AI and Embedded/IoT projects —
+              get expert guidance instantly
+            </p>
+          </div>
+
+          <div className="row g-4">
+            {contactMethods.map((m, i) => (
+              <div key={i} className="col-lg-3 col-md-6">
+                <article
+                  className="cmethod-card"
+                  style={{ "--accent": m.color, "--bg": m.bg, animationDelay: `${i * 0.1}s` }}
+                  itemScope itemType="https://schema.org/ContactPoint"
+                  aria-label={m.seo}
                 >
-                  <div 
-                    className="method-icon"
-                    style={{ backgroundColor: method.color }}
-                  >
-                    {method.icon}
+                  <div className="cmethod-icon-wrap">
+                    <span className="cmethod-icon">{m.icon}</span>
                   </div>
-                  <h3 className="method-title">{method.title}</h3>
-                  <p className="method-description">{method.description}</p>
-                  <p className="method-details">{method.details}</p>
-                  <a href={method.link} className="method-link">
-                    Contact via {method.title}
-                    <span className="link-arrow">→</span>
-                  </a>
-                  <div 
-                    className="method-glow"
-                    style={{ backgroundColor: method.color }}
-                  ></div>
-                </div>
+                  <h3 className="cmethod-title" itemProp="contactType">{m.title}</h3>
+                  <p className="cmethod-sub">{m.subtitle}</p>
+                  <p className="cmethod-number" itemProp="telephone">{m.number}</p>
+
+                  <div className="cmethod-actions">
+                    <a
+                      href={m.call}
+                      className="cmethod-btn cmethod-btn-primary"
+                      aria-label={`${m.title} – ${m.number}`}
+                    >
+                      {m.icon === "📧" ? "Send Email" : "📞 Call Now"}
+                    </a>
+                    {m.whatsapp && (
+                      <a
+                        href={m.whatsapp}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="cmethod-btn cmethod-btn-wa"
+                        aria-label={`WhatsApp ${m.title}`}
+                      >
+                        💬 WhatsApp
+                      </a>
+                    )}
+                  </div>
+                  <div className="cmethod-glow"></div>
+                </article>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact Form Section */}
-      <section className="contact-form-section" ref={addToRefs}>
+      {/* ══ FORM + INFO ═══════════════════════════════════════════════════════ */}
+      <section className="cform-section" ref={addToRefs} aria-labelledby="form-h2">
         <div className="container">
-          <div className="row">
-            <div className="col-lg-8 mx-auto">
-              <div className="form-container">
-                <div className="form-header">
-                  <h2 className="form-title">Send Us a Message</h2>
-                  <p className="form-subtitle">
-                    Fill out the form below and we'll get back to you as soon as possible
+          <div className="row g-5 align-items-start">
+
+            {/* Left — Info */}
+            <div className="col-lg-5">
+              <div className="cinfo-block">
+                <span className="section-eyebrow">Office Info</span>
+                <h2 id="form-h2" className="section-title-left">
+                  Visit CODEX PROJECT –<br />Gandhipuram, Coimbatore
+                </h2>
+
+                <div className="cinfo-list">
+                  <div className="cinfo-item">
+                    <span className="cinfo-icon">📍</span>
+                    <div>
+                      <strong>Address</strong>
+                      <p>2nd Floor, Balaji Complex, 288, 2nd Street,<br />Opp. Anbu Mess, Cross Cut Road,<br />Gandhipuram, Coimbatore – 641012</p>
+                    </div>
+                  </div>
+                  <div className="cinfo-item">
+                    <span className="cinfo-icon">📞</span>
+                    <div>
+                      <strong>General Enquiry</strong>
+                      <p><a href="tel:+918525999002">85259 99002</a></p>
+                    </div>
+                  </div>
+                  <div className="cinfo-item">
+                    <span className="cinfo-icon">💻</span>
+                    <div>
+                      <strong>Software &amp; AI Projects</strong>
+                      <p><a href="tel:+918525999022">85259 99022</a></p>
+                    </div>
+                  </div>
+                  <div className="cinfo-item">
+                    <span className="cinfo-icon">🔌</span>
+                    <div>
+                      <strong>Embedded &amp; IoT Projects</strong>
+                      <p><a href="tel:+918525999032">85259 99032</a></p>
+                    </div>
+                  </div>
+                  <div className="cinfo-item">
+                    <span className="cinfo-icon">📧</span>
+                    <div>
+                      <strong>Email</strong>
+                      <p><a href="mailto:codexproject2026@gmail.com">codexproject2026@gmail.com</a></p>
+                    </div>
+                  </div>
+                  <div className="cinfo-item">
+                    <span className="cinfo-icon">🌐</span>
+                    <div>
+                      <strong>Website</strong>
+                      <p><a href="https://www.codexproject.in" target="_blank" rel="noopener noreferrer">www.codexproject.in</a></p>
+                    </div>
+                  </div>
+                  <div className="cinfo-item">
+                    <span className="cinfo-icon">🕘</span>
+                    <div>
+                      <strong>Working Hours</strong>
+                      <p>Monday – Saturday: 9:00 AM – 8:00 PM</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* WhatsApp CTA */}
+                <a
+                  href="https://wa.me/918525999002"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cinfo-wa-btn"
+                  aria-label="WhatsApp CODEX PROJECT Coimbatore"
+                >
+                  <span>💬</span>
+                  Chat on WhatsApp – 85259 99002
+                </a>
+              </div>
+            </div>
+
+            {/* Right — Form */}
+            <div className="col-lg-7">
+              <div className="cform-card">
+                <div className="cform-header">
+                  <h3 className="cform-title">Send Your Project Enquiry</h3>
+                  <p className="cform-sub">
+                    Fill the form — our team will call you within 2 hours (Mon–Sat)
                   </p>
                 </div>
 
                 {isSubmitted ? (
-                  <div className="success-message">
-                    <div className="success-icon">🎉</div>
-                    <h3>Message Sent Successfully!</h3>
-                    <p>Thank you for reaching out. We'll get back to you within 24 hours.</p>
-                    <button 
-                      onClick={() => setIsSubmitted(false)}
-                      className="btn btn-outline"
-                    >
-                      Send Another Message
+                  <div className="cform-success">
+                    <div className="csuccess-icon">✅</div>
+                    <h4>Enquiry Sent Successfully!</h4>
+                    <p>Our team will call you within 2 hours. For urgent queries, call <strong>85259 99002</strong>.</p>
+                    <button onClick={() => setIsSubmitted(false)} className="cform-reset-btn">
+                      Send Another Enquiry
                     </button>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="contact-form">
-                    <div className="form-row">
-                      <div className="form-group">
-                        <label htmlFor="name" className="form-label">
-                          Full Name *
-                        </label>
-                        <input
-                          type="text"
-                          id="name"
-                          name="name"
-                          value={formData.name}
-                          onChange={handleInputChange}
-                          required
-                          className="form-input"
-                          placeholder="Enter your full name"
-                        />
+                  <form onSubmit={handleSubmit} className="cform" aria-label="CODEX PROJECT contact form">
+                    <div className="cform-row">
+                      <div className="cform-group">
+                        <label htmlFor="name">Full Name *</label>
+                        <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required placeholder="Your full name" />
                       </div>
-                      <div className="form-group">
-                        <label htmlFor="email" className="form-label">
-                          Email Address *
-                        </label>
-                        <input
-                          type="email"
-                          id="email"
-                          name="email"
-                          value={formData.email}
-                          onChange={handleInputChange}
-                          required
-                          className="form-input"
-                          placeholder="Enter your email address"
-                        />
+                      <div className="cform-group">
+                        <label htmlFor="phone">Mobile Number *</label>
+                        <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} required placeholder="Your WhatsApp number" />
                       </div>
                     </div>
 
-                    <div className="form-group">
-                      <label htmlFor="inquiryType" className="form-label">
-                        Inquiry Type *
-                      </label>
-                      <div className="inquiry-types">
-                        {inquiryTypes.map((type) => (
-                          <label key={type.value} className="inquiry-option">
-                            <input
-                              type="radio"
-                              name="inquiryType"
-                              value={type.value}
-                              checked={formData.inquiryType === type.value}
-                              onChange={handleInputChange}
-                              className="inquiry-radio"
-                            />
-                            <span className="inquiry-content">
-                              <span className="inquiry-icon">{type.icon}</span>
-                              <span className="inquiry-label">{type.label}</span>
-                            </span>
+                    <div className="cform-row">
+                      <div className="cform-group">
+                        <label htmlFor="email">Email Address</label>
+                        <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} placeholder="Your email (optional)" />
+                      </div>
+                      <div className="cform-group">
+                        <label htmlFor="college">College Name</label>
+                        <input type="text" id="college" name="college" value={formData.college} onChange={handleChange} placeholder="Your college name" />
+                      </div>
+                    </div>
+
+                    <div className="cform-group cform-group-full">
+                      <label>Project Domain *</label>
+                      <div className="cinquiry-grid">
+                        {inquiryTypes.map((t) => (
+                          <label key={t.value} className={`cinquiry-opt ${formData.inquiryType === t.value ? "cinquiry-active" : ""}`}>
+                            <input type="radio" name="inquiryType" value={t.value} checked={formData.inquiryType === t.value} onChange={handleChange} />
+                            <span>{t.icon} {t.label}</span>
                           </label>
                         ))}
                       </div>
                     </div>
 
-                    <div className="form-group">
-                      <label htmlFor="subject" className="form-label">
-                        Subject *
-                      </label>
-                      <input
-                        type="text"
-                        id="subject"
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleInputChange}
-                        required
-                        className="form-input"
-                        placeholder="Brief description of your inquiry"
-                      />
+                    <div className="cform-group cform-group-full">
+                      <label htmlFor="message">Project Idea / Message</label>
+                      <textarea id="message" name="message" value={formData.message} onChange={handleChange} rows="4" placeholder="Describe your project idea or ask any question..."></textarea>
                     </div>
 
-                    <div className="form-group">
-                      <label htmlFor="message" className="form-label">
-                        Message *
-                      </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        value={formData.message}
-                        onChange={handleInputChange}
-                        required
-                        className="form-textarea"
-                        placeholder="Tell us about your project or inquiry..."
-                        rows="6"
-                      ></textarea>
-                    </div>
-
-                    <button 
-                      type="submit" 
-                      className={`submit-btn ${isSubmitting ? 'submitting' : ''}`}
-                      disabled={isSubmitting}
-                    >
+                    <button type="submit" className={`cform-submit ${isSubmitting ? "cform-submitting" : ""}`} disabled={isSubmitting}>
                       {isSubmitting ? (
-                        <>
-                          <div className="spinner"></div>
-                          Sending Message...
-                        </>
+                        <><span className="cform-spinner"></span> Sending Enquiry...</>
                       ) : (
-                        <>
-                          <span className="btn-icon">🚀</span>
-                          Send Message
-                        </>
+                        <> 🚀 Send Enquiry – Get Free Consultation</>
                       )}
                     </button>
+
+                    <p className="cform-note">
+                      Or call us directly: <a href="tel:+918525999002"><strong>85259 99002</strong></a> (General) &nbsp;·&nbsp;
+                      <a href="tel:+918525999022"><strong>85259 99022</strong></a> (Software/AI) &nbsp;·&nbsp;
+                      <a href="tel:+918525999032"><strong>85259 99032</strong></a> (Embedded/IoT)
+                    </p>
                   </form>
                 )}
               </div>
             </div>
+
           </div>
         </div>
       </section>
 
-      {/* Team Contacts */}
-      <section className="team-contacts-section" ref={addToRefs}>
+      {/* ══ GOOGLE MAP ════════════════════════════════════════════════════════ */}
+      <section className="cmap-section" ref={addToRefs} aria-labelledby="map-h2">
         <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-lg-10 text-center">
-              <h2 className="section-title">Direct Team Contacts</h2>
-              <p className="section-subtitle">
-                Reach out directly to our team members for specific inquiries
-              </p>
-            </div>
+          <div className="text-center mb-4">
+            <span className="section-eyebrow">Find Us</span>
+            <h2 id="map-h2" className="section-title">
+              CODEX PROJECT Location – Gandhipuram, Coimbatore
+            </h2>
+            <p className="section-subtitle">
+              📍 2nd Floor, Balaji Complex, 288, 2nd Street, Opp. Anbu Mess,
+              Cross Cut Road, Gandhipuram, Coimbatore – 641012
+            </p>
           </div>
-          <div className="row justify-content-center">
-            {teamContacts.map((member, index) => (
-              <div key={index} className="col-lg-4 col-md-6 mb-4">
-                <div 
-                  className="team-contact-card"
-                  style={{ animationDelay: `${index * 0.15}s` }}
-                >
-                  <div 
-                    className="member-avatar"
-                    style={{ backgroundColor: member.color }}
-                  >
-                    {member.avatar}
-                  </div>
-                  <div className="member-info">
-                    <h3 className="member-name">{member.name}</h3>
-                    <p className="member-role">{member.role}</p>
-                    <p className="member-department">{member.department}</p>
-                  </div>
-                  <div className="contact-actions">
-                    <a href={`mailto:${member.email}`} className="contact-btn">
-                      <span className="btn-icon">📧</span>
-                      Email {member.name.split(' ')[0]}
-                    </a>
-                  </div>
-                  <div 
-                    className="member-glow"
-                    style={{ backgroundColor: member.color }}
-                  ></div>
-                </div>
-              </div>
-            ))}
+
+          <div className="cmap-wrap">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.2650880412302!2d76.9686347!3d11.018726700000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa6d56e5e67bd6d39%3A0xa04afb183b4afa48!2sCODEX%20PROJECT%20%E2%80%93%20Final%20Year%20Project%20Center!5e0!3m2!1sen!2sin!4v1775786518347!5m2!1sen!2sin"
+              width="100%"
+              height="420"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="CODEX PROJECT Final Year Project Center – 2nd Floor Balaji Complex Gandhipuram Coimbatore"
+              aria-label="Google Maps showing CODEX PROJECT location in Gandhipuram Coimbatore"
+            />
+          </div>
+
+          {/* Directions links */}
+          <div className="cmap-actions">
+            <a href="https://maps.app.goo.gl/edkzjFnQUKcKDnzP6" target="_blank" rel="noopener noreferrer" className="cmap-btn" aria-label="Get directions to CODEX PROJECT Coimbatore">
+              📍 Get Directions on Google Maps
+            </a>
+            <a href="https://wa.me/918525999002?text=Hi%2C%20I%20need%20directions%20to%20your%20office" target="_blank" rel="noopener noreferrer" className="cmap-btn cmap-btn-wa" aria-label="WhatsApp for directions">
+              💬 WhatsApp for Directions
+            </a>
           </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="faq-section" ref={addToRefs}>
+      {/* ══ FAQ ═══════════════════════════════════════════════════════════════ */}
+      <section className="cfaq-section" ref={addToRefs} aria-labelledby="cfaq-h2">
         <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-lg-8 text-center">
-              <h2 className="section-title">Frequently Asked Questions</h2>
-              <p className="section-subtitle">
-                Quick answers to common questions
-              </p>
-            </div>
+          <div className="text-center mb-5">
+            <span className="section-eyebrow">FAQ</span>
+            <h2 id="cfaq-h2" className="section-title">
+              Frequently Asked Questions – Contact &amp; Enquiry
+            </h2>
           </div>
           <div className="row justify-content-center">
             <div className="col-lg-8">
-              <div className="faq-list">
-                {faqs.map((faq, index) => (
-                  <div 
-                    key={index} 
-                    className="faq-item"
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    <div className="faq-question">
-                      <span className="question-icon">❓</span>
-                      <h4>{faq.question}</h4>
-                    </div>
-                    <div className="faq-answer">
-                      <p>{faq.answer}</p>
-                    </div>
+              {faqs.map((f, i) => (
+                <div key={i} className={`cfaq-item ${openFaq === i ? "cfaq-open" : ""}`} onClick={() => setOpenFaq(openFaq === i ? null : i)}>
+                  <div className="cfaq-q">
+                    <h3 className="cfaq-question">{f.q}</h3>
+                    <span className="cfaq-toggle">{openFaq === i ? "−" : "+"}</span>
                   </div>
-                ))}
-              </div>
+                  <div className="cfaq-a"><p>{f.a}</p></div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="contact-cta" ref={addToRefs}>
+      {/* ══ SEO CONTENT BLOCK ═════════════════════════════════════════════════ */}
+      <section className="cseo-block" aria-labelledby="cseo-h2">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-lg-9">
+              <h2 id="cseo-h2" className="cseo-title">
+                Contact CODEX PROJECT – Best Final Year Project Center in Coimbatore
+              </h2>
+              <p>
+                Looking to <strong>contact the best final year project center in Coimbatore</strong>?
+                Reach <strong>CODEX PROJECT</strong> at <strong>2nd Floor, Balaji Complex,
+                Gandhipuram, Coimbatore</strong> via call, WhatsApp, or email. We offer
+                free project consultation for all engineering students across Coimbatore —
+                including those from Peelamedu, Saravanampatti, RS Puram, Singanallur,
+                and Ukkadam.
+              </p>
+              <p>
+                For <strong>Software, Python, AI, Machine Learning, MERN Stack, Java, and
+                Flutter project enquiries</strong>, call <strong>85259 99022</strong>. For{" "}
+                <strong>Embedded Systems, Arduino, Raspberry Pi, NodeMCU, and IoT project
+                enquiries</strong>, call <strong>85259 99032</strong>. For all other general
+                enquiries and <strong>Mechanical project</strong> queries, call{" "}
+                <strong>85259 99002</strong> or email{" "}
+                <strong>codexproject2026@gmail.com</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══ CTA ═══════════════════════════════════════════════════════════════ */}
+      <section className="contact-cta" ref={addToRefs} aria-labelledby="ccta-h2">
+        <div className="ccta-bg"></div>
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-lg-8 text-center">
-              <div className="cta-content">
-                <h2 className="cta-title">Ready to Start Your Project?</h2>
-                <p className="cta-description">
-                  Don't wait any longer. Get in touch with us today and let's discuss how we can help 
-                  bring your ideas to life with cutting-edge technology and expert guidance.
-                </p>
-                <div className="cta-buttons">
-                  <button 
-                    onClick={() => document.querySelector('.contact-form-section').scrollIntoView({ behavior: 'smooth' })}
-                    className="btn btn-primary"
-                  >
-                    Start a Project
-                  </button>
-                  <a href="mailto:contact@codexproject.com" className="btn btn-outline">
-                    Quick Email
-                  </a>
-                </div>
+              <h2 id="ccta-h2" className="cta-title">
+                Ready to Start Your Final Year Project?
+              </h2>
+              <p className="cta-description">
+                Call or WhatsApp <strong>CODEX PROJECT</strong> now — free consultation
+                available for all engineering students in Coimbatore. IEEE 2024-25 projects,
+                internship certificate, documentation &amp; viva support.
+              </p>
+              <p className="ccta-address">
+                📍 2nd Floor, Balaji Complex, Gandhipuram, Coimbatore – 641012
+              </p>
+              <div className="cta-buttons">
+                <a href="tel:+918525999002" className="cta-btn cta-btn-primary" aria-label="Call CODEX PROJECT now">
+                  📞 Call Now: 85259 99002
+                </a>
+                <a href="https://wa.me/918525999002" target="_blank" rel="noopener noreferrer" className="cta-btn cta-btn-wa" aria-label="WhatsApp CODEX PROJECT">
+                  💬 WhatsApp Us
+                </a>
+                <a href="https://g.page/r/CUj6SjsY-0qgEAE/review" target="_blank" rel="noopener noreferrer" className="cta-btn cta-btn-outline" aria-label="Review on Google">
+                  ⭐ Review on Google
+                </a>
               </div>
             </div>
           </div>
         </div>
-        
-        {/* Background Animation */}
-        <div className="cta-particles">
-          {[...Array(12)].map((_, i) => (
-            <div 
-              key={i} 
-              className="particle"
-              style={{
-                left: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 2}s`,
-                animationDuration: `${3 + Math.random() * 2}s`
-              }}
-            ></div>
-          ))}
-        </div>
       </section>
 
-      {/* Background Elements */}
-      <div className="background-elements">
-        <div className="bg-circle circle-1"></div>
-        <div className="bg-circle circle-2"></div>
-        <div className="bg-circle circle-3"></div>
-      </div>
     </div>
   );
 };
