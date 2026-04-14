@@ -33,7 +33,7 @@
   line-height: 1.6;
 }
 
-.cp-container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+.cp-container { max-width: 1300px; margin: 0 auto; padding: 0 24px; }
 .cp-sr-only   { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
 
 /* ── Scroll Reveal ───────────────────────────────────────────── */

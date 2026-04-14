@@ -2,217 +2,336 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
-  const servicesRef = useRef(null);
+const serviceLinks = [
+  { to: "/software-projects",   icon: "fa-code",          label: "Software & AI Projects",  sub: "Python, MERN, Java, Flutter" },
+  { to: "/iot-projects",        icon: "fa-microchip",     label: "IoT Projects",             sub: "Arduino, NodeMCU, ESP32" },
+  { to: "/embedded-projects",   icon: "fa-diagram-project", label: "Embedded Projects",        sub: "8051, ARM, PIC, FPGA" },
+  { to: "/mechanical-projects", icon: "fa-gears",         label: "Mechanical Projects",      sub: "CAD, Fabrication, Robotics" },
+];
 
+const navLinks = [
+  { to: "/",        icon: "fa-house",          label: "Home" },
+  { to: "/about",   icon: "fa-building",       label: "About" },
+  { to: "/projects",icon: "fa-folder-open",    label: "Projects" },
+  { to: "/blog",    icon: "fa-newspaper",      label: "Blog" },
+  { to: "/contact", icon: "fa-phone",          label: "Contact" },
+];
+
+const Navbar = () => {
+  const location = useLocation();
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [serviceOpen, setServiceOpen] = useState(false);
+  const [mobileServiceOpen, setMobileServiceOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const dropRef = useRef(null);
+
+  const isActive = (path) => location.pathname === path;
+  const isServiceActive = serviceLinks.some((s) => location.pathname === s.to);
+
+  // Scroll effect
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Close dropdown on outside click
   useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (servicesRef.current && !servicesRef.current.contains(e.target)) {
-        setServicesOpen(false);
+    const handler = (e) => {
+      if (dropRef.current && !dropRef.current.contains(e.target)) {
+        setServiceOpen(false);
       }
     };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
   }, []);
 
+  // Close mobile menu on route change
   useEffect(() => {
-    setIsOpen(false);
-    setServicesOpen(false);
+    setMobileOpen(false);
+    setMobileServiceOpen(false);
+    setServiceOpen(false);
   }, [location]);
 
   return (
     <>
-      {/* TOP BAR */}
-      <div className="top-bar">
-        <div className="top-bar-inner">
-          <Link to="/" className="logo-link">
-            <div className="logo-icon">CX</div>
-            <span className="logo-text">CODEX <span>PROJECT</span></span>
-          </Link>
+      {/* ══ STICKY WRAPPER — topbar + nav stick together as one unit ══ */}
+      <div className="nb-header-wrap">
 
-          <div className="top-info">
-            <a href="tel:1234567890" className="top-link">
-              <span className="top-link-icon">
-                <PhoneIcon />
-              </span>
-              1234567890
+        {/* ══ TOP BAR ══════════════════════════════════════════════ */}
+        <div className="nb-topbar">
+          <div className="nb-topbar-inner">
+            <div className="nb-topbar-brand">
+              <i className="fa-solid fa-code-branch"></i>
+              CODEX PROJECT
+            </div>
+            <div className="nb-topbar-right">
+              <a href="tel:+918525999002" className="nb-topbar-item" aria-label="Call 85259 99002">
+                <i className="fa-solid fa-phone-volume"></i>
+                <span>85259 99002</span>
+              </a>
+              <span className="nb-topbar-div"></span>
+              <a href="tel:+918525999022" className="nb-topbar-item" aria-label="Software AI projects 85259 99022">
+                 <i className="fa-solid fa-phone-volume"></i>
+                <span>85259 99022</span>
+              </a>
+              <span className="nb-topbar-div nb-hide-sm"></span>
+              <a
+                href="https://maps.app.goo.gl/edkzjFnQUKcKDnzP6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nb-topbar-item nb-hide-sm"
+                aria-label="CODEX PROJECT location Gandhipuram Coimbatore"
+              >
+                <i className="fa-solid fa-location-dot"></i>
+                <span>Gandhipuram, Coimbatore</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* ══ MAIN NAVBAR ══════════════════════════════════════════ */}
+        <nav
+          className={`nb-nav ${scrolled ? "nb-nav-scrolled" : ""}`}
+          role="navigation"
+          aria-label="Main navigation"
+        >
+          <div className="nb-nav-inner">
+
+            {/* ── Logo ── */}
+            <Link to="/" className="nb-logo" aria-label="CODEX PROJECT Home">
+              <div className="nb-logo-icon">
+                <i className="fa-solid fa-code"></i>
+              </div>
+              <div className="nb-logo-text">
+                <span className="nb-logo-name">CODEX</span>
+                <span className="nb-logo-sub">PROJECT</span>
+              </div>
+            </Link>
+
+            {/* ── Desktop Nav ── */}
+            <ul className="nb-links">
+
+              {navLinks.slice(0, 2).map((lk) => (
+                <li key={lk.to}>
+                  <Link
+                    to={lk.to}
+                    className={`nb-link ${isActive(lk.to) ? "nb-link-active" : ""}`}
+                    aria-current={isActive(lk.to) ? "page" : undefined}
+                  >
+                    <i className={`fa-solid ${lk.icon} nb-link-icon`}></i>
+                    {lk.label}
+                    {isActive(lk.to) && <span className="nb-link-bar"></span>}
+                  </Link>
+                </li>
+              ))}
+
+              {/* ── Services Dropdown ── */}
+              <li className="nb-dropdown-wrap" ref={dropRef}>
+                <button
+                  className={`nb-link nb-link-btn ${isServiceActive ? "nb-link-active" : ""} ${serviceOpen ? "nb-link-open" : ""}`}
+                  onClick={() => setServiceOpen(!serviceOpen)}
+                  aria-haspopup="true"
+                  aria-expanded={serviceOpen}
+                >
+                  <i className="fa-solid fa-layer-group nb-link-icon"></i>
+                  Services
+                  <i className={`fa-solid fa-chevron-down nb-chevron ${serviceOpen ? "nb-chevron-open" : ""}`}></i>
+                  {isServiceActive && <span className="nb-link-bar"></span>}
+                </button>
+
+                {/* Dropdown panel */}
+                <div className={`nb-dropdown ${serviceOpen ? "nb-dropdown-open" : ""}`} role="menu">
+                  <div className="nb-dropdown-header">
+                    <i className="fa-solid fa-shapes"></i>
+                    Our Project Domains
+                  </div>
+                  <div className="nb-dropdown-grid">
+                    {serviceLinks.map((s) => (
+                      <Link
+                        key={s.to}
+                        to={s.to}
+                        className={`nb-dropdown-item ${location.pathname === s.to ? "nb-dropdown-active" : ""}`}
+                        role="menuitem"
+                        aria-label={s.label}
+                      >
+                        <div className="nb-di-icon">
+                          <i className={`fa-solid ${s.icon}`}></i>
+                        </div>
+                        <div className="nb-di-text">
+                          <span className="nb-di-label">{s.label}</span>
+                          <span className="nb-di-sub">{s.sub}</span>
+                        </div>
+                        {location.pathname === s.to && (
+                          <i className="fa-solid fa-check nb-di-check"></i>
+                        )}
+                      </Link>
+                    ))}
+                  </div>
+                  <div className="nb-dropdown-footer">
+                    <Link to="/projects" className="nb-df-link">
+                      <i className="fa-solid fa-grid-2"></i>
+                      View All Project Ideas
+                      <i className="fa-solid fa-arrow-right"></i>
+                    </Link>
+                  </div>
+                </div>
+              </li>
+
+              {navLinks.slice(2).map((lk) => (
+                <li key={lk.to}>
+                  <Link
+                    to={lk.to}
+                    className={`nb-link ${isActive(lk.to) ? "nb-link-active" : ""}`}
+                    aria-current={isActive(lk.to) ? "page" : undefined}
+                  >
+                    <i className={`fa-solid ${lk.icon} nb-link-icon`}></i>
+                    {lk.label}
+                    {isActive(lk.to) && <span className="nb-link-bar"></span>}
+                  </Link>
+                </li>
+              ))}
+
+            </ul>
+
+            {/* ── CTA + Hamburger ── */}
+            <div className="nb-right">
+              <Link to="/contact" className="nb-cta" aria-label="New project enquiry">
+                <i className="fa-solid fa-paper-plane"></i>
+                <span>New Enquiry</span>
+              </Link>
+              <button
+                className={`nb-hamburger ${mobileOpen ? "nb-ham-open" : ""}`}
+                onClick={() => setMobileOpen(!mobileOpen)}
+                aria-label={mobileOpen ? "Close menu" : "Open menu"}
+                aria-expanded={mobileOpen}
+              >
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+            </div>
+
+          </div>
+        </nav>
+
+      </div>{/* ── end .nb-header-wrap ── */}
+
+      {/* ══ MOBILE MENU ══════════════════════════════════════════ */}
+      <div
+        className={`nb-mobile ${mobileOpen ? "nb-mobile-open" : ""}`}
+        role="dialog"
+        aria-label="Mobile navigation"
+      >
+        <div className="nb-mobile-inner">
+
+          {/* Mobile header */}
+          <div className="nb-mobile-head">
+            <div className="nb-mobile-brand">
+              <i className="fa-solid fa-code"></i> CODEX PROJECT
+            </div>
+            <button className="nb-mobile-close" onClick={() => setMobileOpen(false)} aria-label="Close menu">
+              <i className="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+          {/* Contact strip */}
+          <div className="nb-mobile-contact">
+            <a href="tel:+918525999002" className="nb-mc-item">
+              <i className="fa-solid fa-phone"></i> 85259 99002
             </a>
-            <div className="top-divider" />
-            <a href="tel:9966332255" className="top-link">
-              <span className="top-link-icon">
-                <PhoneIcon />
-              </span>
-              9966332255
-            </a>
-            <div className="top-divider" />
-            <a
-              href="https://maps.app.goo.gl/RjGH3zyfHGYyzCrWA"
-              target="_blank"
-              rel="noreferrer"
-              className="top-link"
-            >
-              <span className="top-link-icon">
-                <PinIcon />
-              </span>
-              Coimbatore
+            <a href="tel:+918525999022" className="nb-mc-item">
+              <i className="fa-solid fa-laptop-code"></i> 85259 99022
             </a>
           </div>
+
+          {/* Nav links */}
+          <ul className="nb-mobile-links">
+            {navLinks.slice(0, 2).map((lk) => (
+              <li key={lk.to}>
+                <Link
+                  to={lk.to}
+                  className={`nb-ml-item ${isActive(lk.to) ? "nb-ml-active" : ""}`}
+                >
+                  <i className={`fa-solid ${lk.icon}`}></i>
+                  {lk.label}
+                  {isActive(lk.to) && <i className="fa-solid fa-circle-dot nb-ml-dot"></i>}
+                </Link>
+              </li>
+            ))}
+
+            {/* Mobile services */}
+            <li>
+              <button
+                className={`nb-ml-item nb-ml-btn ${isServiceActive ? "nb-ml-active" : ""}`}
+                onClick={() => setMobileServiceOpen(!mobileServiceOpen)}
+                aria-expanded={mobileServiceOpen}
+              >
+                <i className="fa-solid fa-layer-group"></i>
+                Services
+                <i className={`fa-solid fa-chevron-down nb-ml-chev ${mobileServiceOpen ? "nb-ml-chev-open" : ""}`}></i>
+              </button>
+              <ul className={`nb-ml-sub ${mobileServiceOpen ? "nb-ml-sub-open" : ""}`}>
+                {serviceLinks.map((s) => (
+                  <li key={s.to}>
+                    <Link
+                      to={s.to}
+                      className={`nb-ml-sub-item ${location.pathname === s.to ? "nb-ml-sub-active" : ""}`}
+                    >
+                      <i className={`fa-solid ${s.icon}`}></i>
+                      {s.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </li>
+
+            {navLinks.slice(2).map((lk) => (
+              <li key={lk.to}>
+                <Link
+                  to={lk.to}
+                  className={`nb-ml-item ${isActive(lk.to) ? "nb-ml-active" : ""}`}
+                >
+                  <i className={`fa-solid ${lk.icon}`}></i>
+                  {lk.label}
+                  {isActive(lk.to) && <i className="fa-solid fa-circle-dot nb-ml-dot"></i>}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* Mobile CTA */}
+          <div className="nb-mobile-cta">
+            <Link to="/contact" className="nb-mobile-cta-btn" onClick={() => setMobileOpen(false)}>
+              <i className="fa-solid fa-paper-plane"></i>
+              New Project Enquiry
+            </Link>
+            <a
+              href="https://wa.me/918525999002"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="nb-mobile-wa-btn"
+            >
+              <i className="fa-brands fa-whatsapp"></i>
+              WhatsApp Us
+            </a>
+          </div>
+
+          {/* Footer info */}
+          <div className="nb-mobile-footer">
+            <i className="fa-solid fa-location-dot"></i>
+            Balaji Complex, Gandhipuram, Coimbatore – 641012
+          </div>
+
         </div>
       </div>
 
-      {/* MAIN NAV */}
-      <nav className={`main-navbar ${scrolled ? "scrolled" : ""}`}>
-        <div className="nav-inner">
-          <ul className={`nav-links ${isOpen ? "open" : ""}`}>
-            <li>
-              <Link
-                to="/"
-                className={`nav-link ${location.pathname === "/" ? "active" : ""}`}
-              >
-                Home
-              </Link>
-            </li>
-
-            <li>
-              <Link
-                to="/about"
-                className={`nav-link ${location.pathname === "/about" ? "active" : ""}`}
-              >
-                About
-              </Link>
-            </li>
-
-            {/* SERVICES DROPDOWN */}
-            <li ref={servicesRef} className={`has-dropdown ${servicesOpen ? "open" : ""}`}>
-              <button
-                className={`nav-link dropdown-toggle ${
-                  ["/mechanical-projects", "/iot-projects", "/embedded-projects", "/software-projects"].includes(location.pathname)
-                    ? "active"
-                    : ""
-                }`}
-                onClick={() => setServicesOpen(!servicesOpen)}
-              >
-                Services
-                <CaretIcon />
-              </button>
-
-              <div className="dropdown-panel">
-                <Link to="/mechanical-projects" className="dropdown-item">
-                  <span className="dd-icon">⚙️</span>
-                  <span className="dd-label">
-                    Mechanical Projects
-                    <span>CAD, fabrication &amp; more</span>
-                  </span>
-                </Link>
-                <Link to="/iot-projects" className="dropdown-item">
-                  <span className="dd-icon">📡</span>
-                  <span className="dd-label">
-                    IoT Projects
-                    <span>Smart devices &amp; sensors</span>
-                  </span>
-                </Link>
-                <Link to="/embedded-projects" className="dropdown-item">
-                  <span className="dd-icon">🔌</span>
-                  <span className="dd-label">
-                    Embedded Projects
-                    <span>Microcontrollers &amp; firmware</span>
-                  </span>
-                </Link>
-                <Link to="/software-projects" className="dropdown-item">
-                  <span className="dd-icon">💻</span>
-                  <span className="dd-label">
-                    Software Projects
-                    <span>Web, app &amp; backend</span>
-                  </span>
-                </Link>
-              </div>
-            </li>
-
-            <li>
-              <Link
-                to="/projects"
-                className={`nav-link ${location.pathname === "/projects" ? "active" : ""}`}
-              >
-                Projects
-              </Link>
-            </li>
-
-            <li>
-              <Link
-                to="/blog"
-                className={`nav-link ${location.pathname === "/blog" ? "active" : ""}`}
-              >
-                Blog
-              </Link>
-            </li>
-
-            <li>
-              <Link
-                to="/contact"
-                className={`nav-link ${location.pathname === "/contact" ? "active" : ""}`}
-              >
-                Contact
-              </Link>
-            </li>
-          </ul>
-
-          <div className={`nav-actions ${isOpen ? "open" : ""}`}>
-            <div className="nav-v-divider" />
-            <Link to="/contact" className="btn-enquiry">
-              <span className="btn-dot" />
-              Enquiry
-            </Link>
-          </div>
-
-          <button
-            className={`nav-toggler ${isOpen ? "open" : ""}`}
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
-          >
-            <span />
-            <span />
-            <span />
-          </button>
-        </div>
-      </nav>
+      {/* Overlay */}
+      {mobileOpen && (
+        <div className="nb-overlay" onClick={() => setMobileOpen(false)} aria-hidden="true" />
+      )}
     </>
   );
 };
-
-const PhoneIcon = () => (
-  <svg width="9" height="9" viewBox="0 0 16 16" fill="none">
-    <path
-      d="M3 1h3l1.5 4L6 6.5C7 8.5 9.5 11 11.5 12l1.5-1.5 4 1.5V15a2 2 0 01-2 2C5.7 17-1 10.3-1 3a2 2 0 012-2z"
-      stroke="#38BDF8"
-      strokeWidth="1.5"
-    />
-  </svg>
-);
-
-const PinIcon = () => (
-  <svg width="9" height="9" viewBox="0 0 24 24" fill="none">
-    <path
-      d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5S13.4 11.5 12 11.5z"
-      stroke="#38BDF8"
-      strokeWidth="1.5"
-    />
-  </svg>
-);
-
-const CaretIcon = () => (
-  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="caret-icon">
-    <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-  </svg>
-);
 
 export default Navbar;

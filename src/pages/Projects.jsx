@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import "./Projects.css";
 
 // ─── JSON-LD Structured Data ──────────────────────────────────────────────────
 const projectsPageSchema = {
@@ -232,292 +233,325 @@ const stats = [
 
 // ─── Component ─────────────────────────────────────────────────────────────────
 const Projects = () => {
+  const revealRefs = useRef([]);
+
+  useEffect(() => {
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("pj-visible"); }),
+      { threshold: 0.07 }
+    );
+    revealRefs.current.forEach((el) => { if (el) io.observe(el); });
+    return () => io.disconnect();
+  }, []);
+
+  const addRef = (el) => { if (el && !revealRefs.current.includes(el)) revealRefs.current.push(el); };
+
   return (
-    <div>
+    <div className="pj-page">
       {/* ── JSON-LD ── */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(projectsPageSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
-      <div className="container py-5">
+      {/* ══ HERO ══════════════════════════════════════════════ */}
+      <section className="pj-hero">
+        <div className="pj-hero-bg">
+          <div className="pj-hero-grid"></div>
+          <div className="pj-glow pj-glow1"></div>
+          <div className="pj-glow pj-glow2"></div>
+        </div>
 
-        {/* ══ BREADCRUMB ══ */}
-        <nav aria-label="breadcrumb" className="mb-3">
-          <ol className="breadcrumb" itemScope itemType="https://schema.org/BreadcrumbList">
-            <li className="breadcrumb-item" itemScope itemType="https://schema.org/ListItem">
-              <a href="/" itemProp="item"><span itemProp="name">Home</span></a>
-              <meta itemProp="position" content="1" />
-            </li>
-            <li className="breadcrumb-item active" aria-current="page" itemScope itemType="https://schema.org/ListItem">
-              <span itemProp="name">Final Year Project Ideas Coimbatore</span>
-              <meta itemProp="position" content="2" />
-            </li>
-          </ol>
-        </nav>
+        <div className="pj-container">
+          {/* Breadcrumb */}
+          <nav aria-label="breadcrumb" className="pj-breadcrumb" itemScope itemType="https://schema.org/BreadcrumbList">
+            <ol>
+              <li itemScope itemType="https://schema.org/ListItem">
+                <a href="/" itemProp="item"><span itemProp="name">Home</span></a>
+                <meta itemProp="position" content="1" />
+              </li>
+              <span className="pj-bc-sep">›</span>
+              <li itemScope itemType="https://schema.org/ListItem" aria-current="page">
+                <span itemProp="name">Final Year Project Ideas Coimbatore</span>
+                <meta itemProp="position" content="2" />
+              </li>
+            </ol>
+          </nav>
 
-        {/* ══ H1 ══ */}
-        <h1 className="text-center mb-3">
-          Best Final Year Project Ideas in Coimbatore 2024-25 – CODEX PROJECT
-        </h1>
-        <p className="text-center lead mb-2">
-          IEEE 2024-25 project ideas for Mechanical, IoT, Embedded, Software, AI &amp; Mobile App domains
-        </p>
-        <p className="text-center mb-2">
-          <strong>CODEX PROJECT</strong> provides the <strong>best final year project ideas
-          in Coimbatore</strong> for all engineering branches — <strong>BE, ME, ECE, EEE, CSE,
-          IT, MCA, BSc, and Diploma</strong> students. We offer IEEE 2024-25 certified projects
-          in <strong>Mechanical Engineering, IoT, Embedded Systems, AI &amp; Machine Learning,
-          Web Development</strong>, and <strong>Mobile App Development</strong> — with real-time
-          implementation, complete documentation, and affordable pricing in Coimbatore.
-        </p>
-        <p className="text-center text-muted small mb-3">
-          📍 2nd Floor, Balaji Complex, 288, 2nd Street, Opp. Anbu Mess, Cross Cut Road,
-          Gandhipuram, Coimbatore – 641012
-        </p>
+          {/* H1 */}
+          <h1 className="pj-hero-h1">
+            Best Final Year Project Ideas in Coimbatore 2024-25 –{" "}
+            <span className="pj-accent">CODEX PROJECT</span>
+          </h1>
 
-        {/* ══ STATS ══ */}
-        <div className="row g-3 mb-5">
-          {stats.map((s, i) => (
-            <div key={i} className="col-6 col-md-3 text-center">
-              <div className="p-3 bg-light rounded shadow-sm">
-                <h2 className="fw-bold mb-0" style={{ color: "#1565c0" }}>{s.number}</h2>
-                <p className="text-muted small mb-0">{s.label}</p>
+          <p className="pj-hero-sub">
+            IEEE 2024-25 project ideas for Mechanical, IoT, Embedded, Software, AI &amp; Mobile App domains
+          </p>
+
+          <p className="pj-hero-desc">
+            <strong>CODEX PROJECT</strong> provides the <strong>best final year project ideas
+            in Coimbatore</strong> for all engineering branches — <strong>BE, ME, ECE, EEE, CSE,
+            IT, MCA, BSc, and Diploma</strong> students. We offer IEEE 2024-25 certified projects
+            in <strong>Mechanical Engineering, IoT, Embedded Systems, AI &amp; Machine Learning,
+            Web Development</strong>, and <strong>Mobile App Development</strong> — with real-time
+            implementation, complete documentation, and affordable pricing in Coimbatore.
+          </p>
+
+          <p className="pj-hero-addr">
+            📍 2nd Floor, Balaji Complex, 288, 2nd Street, Opp. Anbu Mess, Cross Cut Road,
+            Gandhipuram, Coimbatore – 641012
+          </p>
+
+          {/* Quick jump */}
+          <div className="pj-jump-links">
+            {domains.map((d) => (
+              <a
+                key={d.id}
+                href={`#${d.id}`}
+                className="pj-jump-btn"
+                style={{ "--jc": d.accentColor }}
+                aria-label={`Jump to ${d.seoTitle}`}
+              >
+                {d.icon} {d.title.replace(" Final Year Project Ideas", "").replace(" & AI", "")}
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══ STATS ══════════════════════════════════════════════ */}
+      <section className="pj-stats-bar pj-reveal" ref={addRef}>
+        <div className="pj-container">
+          <div className="pj-stats-grid">
+            {stats.map((s, i) => (
+              <div key={i} className="pj-stat-card" style={{ "--sd": `${i * 0.1}s` }}>
+                <span className="pj-stat-icon">{s.icon}</span>
+                <strong className="pj-stat-num">{s.number}</strong>
+                <span className="pj-stat-label">{s.label}</span>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
+      </section>
 
-        {/* ══ QUICK JUMP LINKS ══ */}
-        <div className="d-flex flex-wrap gap-2 justify-content-center mb-5">
-          {domains.map((d) => (
-            <a
-              key={d.id}
-              href={`#${d.id}`}
-              className="btn btn-sm"
-              style={{ background: d.accentColor, color: "white", borderRadius: "20px" }}
-              aria-label={`Jump to ${d.seoTitle}`}
-            >
-              {d.icon} {d.title.replace(" Final Year Project Ideas", "").replace(" & AI", "")}
-            </a>
-          ))}
-        </div>
-
-        {/* ══ DOMAIN SECTIONS ══ */}
+      {/* ══ DOMAIN SECTIONS ════════════════════════════════════ */}
+      <div className="pj-container pj-domains-wrap">
         {domains.map((domain, di) => (
           <section
             key={di}
             id={domain.id}
+            ref={addRef}
             aria-labelledby={`${domain.id}-heading`}
-            className="mb-5 p-4 rounded"
-            style={{ background: domain.color, border: `2px solid ${domain.accentColor}20` }}
+            className="pj-domain-section pj-reveal"
+            style={{ "--da": domain.accentColor, "--db": domain.color, "--dd": `${di * 0.05}s` }}
           >
-            {/* Domain Header */}
-            <div className="d-flex align-items-center gap-3 mb-2">
-              <span className="fs-1" aria-hidden="true">{domain.icon}</span>
-              <div>
+            {/* Domain header */}
+            <div className="pj-domain-header">
+              <div className="pj-domain-icon-wrap">
+                <span className="pj-domain-icon" aria-hidden="true">{domain.icon}</span>
+              </div>
+              <div className="pj-domain-head-text">
                 <h2
                   id={`${domain.id}-heading`}
-                  className="mb-0 fw-bold"
-                  style={{ color: domain.accentColor }}
+                  className="pj-domain-title"
                 >
                   {domain.title} – CODEX PROJECT Coimbatore
                 </h2>
-                <p className="text-muted small mb-0">{domain.subtitle}</p>
+                <p className="pj-domain-subtitle">{domain.subtitle}</p>
               </div>
+              <div className="pj-domain-badge">IEEE 2024-25</div>
             </div>
 
-            <p className="text-muted small mb-3">
+            <p className="pj-domain-note">
               <strong>IEEE 2024-25</strong> certified projects with real-time implementation,
               complete documentation, and viva support — affordable pricing at Gandhipuram, Coimbatore.
             </p>
 
             {/* Project Grid */}
-            <div className="row g-2 mb-3">
+            <div className="pj-projects-grid">
               {domain.projects.map((p, pi) => (
-                <div key={pi} className="col-sm-6 col-lg-4">
-                  <div
-                    className="d-flex align-items-center gap-2 p-2 bg-white rounded border"
-                    itemScope itemType="https://schema.org/CreativeWork"
-                  >
-                    <span style={{ color: domain.accentColor, fontSize: "1rem" }}>✔</span>
-                    <div>
-                      <p className="mb-0 small fw-semibold" itemProp="name">{p.name}</p>
-                      <span
-                        className="badge"
-                        style={{ background: domain.accentColor, fontSize: "0.65rem" }}
-                        itemProp="genre"
-                      >
-                        {p.tag}
-                      </span>
-                    </div>
+                <div
+                  key={pi}
+                  className="pj-project-item"
+                  itemScope itemType="https://schema.org/CreativeWork"
+                >
+                  <span className="pj-check" aria-hidden="true">✔</span>
+                  <div className="pj-project-info">
+                    <p className="pj-project-name" itemProp="name">{p.name}</p>
+                    <span className="pj-project-tag" itemProp="genre">{p.tag}</span>
                   </div>
                 </div>
               ))}
             </div>
 
             {/* Domain CTA */}
-            <div className="d-flex align-items-center gap-3 flex-wrap">
+            <div className="pj-domain-footer">
               <a
                 href={domain.link}
-                className="btn btn-sm fw-semibold"
-                style={{ background: domain.accentColor, color: "white" }}
+                className="pj-domain-btn"
                 aria-label={`View all ${domain.seoTitle}`}
               >
                 View All {domain.title.replace(" Final Year Project Ideas", "")} Projects →
               </a>
-              <span className="text-muted small">
+              <span className="pj-domain-more">
                 + Many more {domain.seoTitle.split(" ")[0]} project ideas available — contact us!
               </span>
             </div>
           </section>
         ))}
+      </div>
 
-        {/* ══ FAQ ══ */}
-        <section aria-labelledby="faq-heading" className="mb-5">
-          <h2 id="faq-heading" className="text-center mb-4">
+      {/* ══ FAQ ════════════════════════════════════════════════ */}
+      <section className="pj-faq pj-reveal" ref={addRef} aria-labelledby="faq-heading">
+        <div className="pj-container">
+          <h2 id="faq-heading" className="pj-section-title pj-center">
             Frequently Asked Questions – Final Year Projects Coimbatore
           </h2>
-          {faqSchema.mainEntity.map((item, i) => (
-            <div key={i} className="mb-3 p-3 bg-light rounded">
-              <h3 className="h6 fw-bold mb-1">{item.name}</h3>
-              <p className="text-muted mb-0 small">{item.acceptedAnswer.text}</p>
-            </div>
-          ))}
-        </section>
+          <div className="pj-faq-list">
+            {faqSchema.mainEntity.map((item, i) => (
+              <div key={i} className="pj-faq-item" style={{ "--fd": `${i * 0.08}s` }}>
+                <h3 className="pj-faq-q">{item.name}</h3>
+                <p className="pj-faq-a">{item.acceptedAnswer.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-        {/* ══ SEO CONTENT BLOCK ══ */}
-        <section aria-labelledby="seo-content-heading" className="mb-5 p-4 border rounded">
-          <h2 id="seo-content-heading" className="h5 fw-bold mb-3">
-            Final Year Project Ideas in Coimbatore – Complete Guide 2024-25
-          </h2>
-          <p className="text-muted small">
-            Searching for the <strong>best final year project ideas in Coimbatore</strong>?
-            CODEX PROJECT, located at <strong>2nd Floor, Balaji Complex, Gandhipuram,
-            Coimbatore</strong>, is the most trusted final year project center providing
-            IEEE 2024-25 project ideas across all engineering domains. Whether you need{" "}
-            <strong>mechanical fabrication project ideas</strong>,{" "}
-            <strong>IoT project ideas with Arduino and NodeMCU</strong>,{" "}
-            <strong>embedded system project ideas using 8051 and ARM</strong>, or{" "}
-            <strong>AI and machine learning project ideas using Python and TensorFlow</strong> —
-            we have the right project for every student in Coimbatore.
-          </p>
-          <p className="text-muted small">
-            Our project ideas are carefully selected from the latest <strong>IEEE 2024-25
-            base papers</strong> and aligned with current industry trends. Every project comes
-            with real-time working implementation, complete IEEE format project report, PPT,
-            circuit/system diagram, source code, and dedicated <strong>viva preparation
-            support</strong>. We serve students from <strong>BE ECE, EEE, EIE, CSE, IT,
-            Mechanical, Automobile, MCA, BSc CS, BCA</strong>, and <strong>Diploma</strong>{" "}
-            branches from all engineering colleges across Coimbatore.
-          </p>
-          <p className="text-muted small mb-0">
-            Visit us at <strong>Balaji Complex, Cross Cut Road, Gandhipuram, Coimbatore</strong>{" "}
-            for a free consultation. Our experts will help you choose the <strong>best final year
-            project idea</strong> based on your branch, college requirements, and budget. CODEX
-            PROJECT is the <strong>most affordable and trusted final year project center in
-            Coimbatore</strong> with 500+ projects delivered and 4.9★ Google rating.
-          </p>
-        </section>
+      {/* ══ SEO CONTENT BLOCK ══════════════════════════════════ */}
+      <section className="pj-seo-block pj-reveal" ref={addRef} aria-labelledby="seo-content-heading">
+        <div className="pj-container">
+          <div className="pj-seo-inner">
+            <h2 id="seo-content-heading" className="pj-seo-title">
+              Final Year Project Ideas in Coimbatore – Complete Guide 2024-25
+            </h2>
+            <p>
+              Searching for the <strong>best final year project ideas in Coimbatore</strong>?
+              CODEX PROJECT, located at <strong>2nd Floor, Balaji Complex, Gandhipuram,
+              Coimbatore</strong>, is the most trusted final year project center providing
+              IEEE 2024-25 project ideas across all engineering domains. Whether you need{" "}
+              <strong>mechanical fabrication project ideas</strong>,{" "}
+              <strong>IoT project ideas with Arduino and NodeMCU</strong>,{" "}
+              <strong>embedded system project ideas using 8051 and ARM</strong>, or{" "}
+              <strong>AI and machine learning project ideas using Python and TensorFlow</strong> —
+              we have the right project for every student in Coimbatore.
+            </p>
+            <p>
+              Our project ideas are carefully selected from the latest <strong>IEEE 2024-25
+              base papers</strong> and aligned with current industry trends. Every project comes
+              with real-time working implementation, complete IEEE format project report, PPT,
+              circuit/system diagram, source code, and dedicated <strong>viva preparation
+              support</strong>. We serve students from <strong>BE ECE, EEE, EIE, CSE, IT,
+              Mechanical, Automobile, MCA, BSc CS, BCA</strong>, and <strong>Diploma</strong>{" "}
+              branches from all engineering colleges across Coimbatore.
+            </p>
+            <p className="pj-seo-last">
+              Visit us at <strong>Balaji Complex, Cross Cut Road, Gandhipuram, Coimbatore</strong>{" "}
+              for a free consultation. Our experts will help you choose the <strong>best final year
+              project idea</strong> based on your branch, college requirements, and budget. CODEX
+              PROJECT is the <strong>most affordable and trusted final year project center in
+              Coimbatore</strong> with 500+ projects delivered and 4.9★ Google rating.
+            </p>
+          </div>
+        </div>
+      </section>
 
-        {/* ══ KEYWORD TAG CLOUD ══ */}
-        <section aria-label="Related final year project searches" className="mb-5">
-          <h2 className="h6 fw-bold text-center mb-3 text-muted">
-            Popular Project Searches – Coimbatore
-          </h2>
-          <div className="d-flex flex-wrap gap-2 justify-content-center">
+      {/* ══ KEYWORD TAG CLOUD ══════════════════════════════════ */}
+      <section className="pj-keywords pj-reveal" ref={addRef} aria-label="Related final year project searches">
+        <div className="pj-container">
+          <h2 className="pj-kw-label">Popular Project Searches – Coimbatore</h2>
+          <div className="pj-kw-grid">
             {[
-              "Final Year Projects Coimbatore 2024-25",
-              "IEEE Projects Coimbatore",
-              "Mechanical Projects Coimbatore",
-              "IoT Projects Coimbatore",
-              "Embedded Projects Coimbatore",
-              "AI Projects Coimbatore",
-              "Machine Learning Projects Coimbatore",
-              "Python Projects Coimbatore",
-              "MERN Stack Projects Coimbatore",
-              "Java Projects Coimbatore",
-              "Flutter Projects Coimbatore",
-              "Android Projects Coimbatore",
-              "Deep Learning Projects Coimbatore",
-              "CSE Projects Coimbatore",
-              "ECE Projects Coimbatore",
-              "EEE Projects Coimbatore",
-              "MCA Projects Coimbatore",
-              "BE ME Diploma Projects Coimbatore",
-              "Project Ideas Gandhipuram",
-              "Affordable Projects Coimbatore",
-            ].map((tag) => (
+              ["Final Year Projects Coimbatore 2024-25", "/projects"],
+              ["IEEE Projects Coimbatore", "/projects"],
+              ["Mechanical Projects Coimbatore", "/services/mechanical-projects"],
+              ["IoT Projects Coimbatore", "/services/iot-projects"],
+              ["Embedded Projects Coimbatore", "/services/embedded-projects"],
+              ["AI Projects Coimbatore", "/services/software-projects"],
+              ["Machine Learning Projects Coimbatore", "/services/software-projects"],
+              ["Python Projects Coimbatore", "/services/software-projects"],
+              ["MERN Stack Projects Coimbatore", "/services/software-projects"],
+              ["Java Projects Coimbatore", "/services/software-projects"],
+              ["Flutter Projects Coimbatore", "/services/software-projects"],
+              ["Android Projects Coimbatore", "/services/software-projects"],
+              ["Deep Learning Projects Coimbatore", "/services/software-projects"],
+              ["CSE Projects Coimbatore", "/services/software-projects"],
+              ["ECE Projects Coimbatore", "/services/iot-projects"],
+              ["EEE Projects Coimbatore", "/services/embedded-projects"],
+              ["MCA Projects Coimbatore", "/services/software-projects"],
+              ["BE ME Diploma Projects Coimbatore", "/projects"],
+              ["Project Ideas Gandhipuram", "/contact"],
+              ["Affordable Projects Coimbatore", "/contact"],
+            ].map(([tag, href]) => (
               <a
                 key={tag}
-                href={`/projects/${tag.toLowerCase().replace(/ /g, "-")}`}
-                className="badge px-3 py-2 text-decoration-none"
-                style={{ background: "#37474f", color: "white", fontSize: "0.75rem" }}
+                href={href}
+                className="pj-kw-tag"
                 aria-label={tag}
               >
                 {tag}
               </a>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* ══ LOCATION ══ */}
-        <section aria-labelledby="location-heading" className="mb-5">
-          <h2 id="location-heading" className="text-center mb-3">
+      {/* ══ LOCATION ════════════════════════════════════════════ */}
+      <section className="pj-location pj-reveal" ref={addRef} aria-labelledby="location-heading">
+        <div className="pj-container">
+          <h2 id="location-heading" className="pj-section-title pj-center">
             Visit CODEX PROJECT – Final Year Project Center, Gandhipuram, Coimbatore
           </h2>
-          <p className="text-center text-muted mb-3">
+          <p className="pj-location-addr">
             📍 <strong>2nd Floor, Balaji Complex, 288, 2nd Street, Opp. Anbu Mess,
             Cross Cut Road, Gandhipuram, Coimbatore – 641012</strong>
           </p>
-          <iframe
-            src="https://maps.app.goo.gl/edkzjFnQUKcKDnzP6"
-            width="100%"
-            height="300"
-            style={{ border: 0, borderRadius: "10px" }}
-            loading="lazy"
-            title="CODEX PROJECT Final Year Project Center – Balaji Complex Gandhipuram Coimbatore"
-            aria-label="Google Maps showing CODEX PROJECT location at Balaji Complex Gandhipuram Coimbatore"
-          />
-        </section>
+          <div className="pj-map-wrap">
+            <iframe
+              src="https://maps.app.goo.gl/edkzjFnQUKcKDnzP6"
+              width="100%"
+              height="360"
+              style={{ border: 0 }}
+              loading="lazy"
+              title="CODEX PROJECT Final Year Project Center – Balaji Complex Gandhipuram Coimbatore"
+              aria-label="Google Maps showing CODEX PROJECT location at Balaji Complex Gandhipuram Coimbatore"
+            />
+          </div>
+        </div>
+      </section>
 
-        {/* ══ CTA ══ */}
-        <section
-          className="text-center p-5 rounded"
-          style={{ background: "#263238" }}
-          aria-labelledby="cta-heading"
-        >
-          <h2 id="cta-heading" className="text-white fw-bold mb-2">
+      {/* ══ CTA ══════════════════════════════════════════════════ */}
+      <section className="pj-cta pj-reveal" ref={addRef} aria-labelledby="cta-heading">
+        <div className="pj-cta-bg"></div>
+        <div className="pj-container">
+          <h2 id="cta-heading" className="pj-cta-title">
             Choose Your Final Year Project Today – CODEX PROJECT Coimbatore
           </h2>
-          <p className="text-white-50 mb-1">
+          <p className="pj-cta-sub">
             500+ project ideas across Mechanical, IoT, Embedded, AI, Web &amp; Mobile domains.
           </p>
-          <p className="text-white-50 small mb-1">
+          <p className="pj-cta-addr">
             📍 2nd Floor, Balaji Complex, Gandhipuram, Coimbatore – 641012
           </p>
-          <p className="text-white-50 small mb-4">
+          <p className="pj-cta-tags">
             IEEE 2024-25 · Real Working Models · Complete Documentation · Viva Support · Affordable
           </p>
-          <div className="d-flex gap-3 justify-content-center flex-wrap">
-            <button
-              className="btn btn-warning btn-lg fw-bold"
-              aria-label="Get project details from CODEX PROJECT Coimbatore"
-            >
+          <div className="pj-cta-actions">
+            <a href="tel:+918525999002" className="pj-cta-btn pj-cta-primary" aria-label="Get project details from CODEX PROJECT Coimbatore">
               📞 Get Project Details – Free Consultation
-            </button>
+            </a>
             <a
               href="https://g.page/r/CUj6SjsY-0qgEAE/review"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-outline-light btn-lg"
+              className="pj-cta-btn pj-cta-outline"
               aria-label="Review CODEX PROJECT on Google"
             >
               ⭐ Review on Google
             </a>
           </div>
-        </section>
+        </div>
+      </section>
 
-      </div>
     </div>
   );
 };

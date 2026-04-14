@@ -274,8 +274,8 @@ const Home = () => {
 
           <h1 id="hero-h1" className="cp-hero-h1">
             Best Final Year<br />
-            <span className="cp-grad-txt">Project Center</span><br />
-            in Coimbatore
+               <span className="cp-grad-txt">Project Center in Coimbatore</span>
+           
           </h1>
 
           <p className="cp-hero-sub">

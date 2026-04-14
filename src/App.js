@@ -12,11 +12,17 @@ import EmbeddedProjects from "./pages/EmbeddedProjects";
 import SoftwareProjects from "./pages/SoftwareProjects";
 import Projects from "./pages/Projects";
 import Blog from "./pages/Blog";
+import WhatAppIcon from "./component/WhatAppIcon";
+import ScrollToTop from "./ScrollToTop";
+ 
+
 
 function App() {
   return (
     <>
       <Navbar />
+          <WhatAppIcon />
+          <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

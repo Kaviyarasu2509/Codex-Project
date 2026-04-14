@@ -1,0 +1,339 @@
+/* ═══════════════════════════════════════════════════════════════
+   CODEX PROJECT — WhatAppIcon.css
+   Desktop: Floating WhatsApp button
+   Mobile: Premium bottom navigation bar
+═══════════════════════════════════════════════════════════════ */
+
+/* ════════════════════════════════════════════════════════════
+   DESKTOP — FLOATING WHATSAPP BUTTON
+════════════════════════════════════════════════════════════ */
+
+.wai-float {
+  position: fixed;
+  right: 22px;
+  bottom: 28px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  opacity: 0;
+  transform: scale(0.7) translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.wai-float-in {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* Pulsing ring */
+.wai-float-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2.5px solid rgba(37, 211, 102, 0.5);
+  animation: waiRingPulse 2.2s ease-in-out infinite;
+}
+
+/* Second ring */
+.wai-float::before {
+  content: '';
+  position: absolute;
+  inset: -14px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(37, 211, 102, 0.2);
+  animation: waiRingPulse 2.2s ease-in-out infinite 0.4s;
+}
+
+/* Main button */
+.wai-float-inner {
+  width: 62px;
+  height: 62px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 6px 20px rgba(37, 211, 102, 0.45),
+    0 2px 8px rgba(0,0,0,0.15);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+  animation: waiFloat 3s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+}
+
+.wai-float:hover .wai-float-inner {
+  transform: scale(1.12);
+  box-shadow:
+    0 10px 28px rgba(37, 211, 102, 0.55),
+    0 4px 12px rgba(0,0,0,0.2);
+}
+
+.wai-float-img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  filter: brightness(1.1);
+}
+
+/* Tooltip */
+.wai-float-tooltip {
+  position: absolute;
+  right: 76px;
+  background: #0D1B2A;
+  color: white;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 8px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(6px);
+  transition: all 0.22s ease;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+}
+.wai-float-tooltip::after {
+  content: '';
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 6px solid transparent;
+  border-right: none;
+  border-left-color: #0D1B2A;
+}
+.wai-float:hover .wai-float-tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ════════════════════════════════════════════════════════════
+   MOBILE — BOTTOM NAVIGATION BAR
+════════════════════════════════════════════════════════════ */
+
+.wai-mobile-bar {
+  display: none;
+}
+
+/* ════════════════════════════════════════════════════════════
+   KEYFRAMES
+════════════════════════════════════════════════════════════ */
+
+@keyframes waiFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-7px); }
+}
+
+@keyframes waiRingPulse {
+  0%   { opacity: 1;   transform: scale(1); }
+  70%  { opacity: 0;   transform: scale(1.45); }
+  100% { opacity: 0;   transform: scale(1.45); }
+}
+
+/* ════════════════════════════════════════════════════════════
+   RESPONSIVE — Mobile bottom bar
+════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+
+  /* Hide desktop float on mobile */
+  .wai-float { display: none; }
+
+  /* Show mobile bar */
+  .wai-mobile-bar {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+
+  /* Glass blur bar */
+  .wai-bar-list {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    list-style: none;
+    margin: 0;
+    padding: 0 8px 0;
+     background: linear-gradient(180deg, hsla(0, 0%, 100%, 0.77), #ffffff);
+    
+    -webkit-backdrop-filter: blur(26.200000762939453px);
+    backdrop-filter: blur(26.200000762939453px);
+    
+    border-radius: 20px 20px 0 0;
+    box-shadow:
+      0 -6px 32px rgba(13, 27, 42, 0.12),
+      0 -1px 8px rgba(0,0,0,0.06);
+    min-height: 60px;
+  }
+
+  .wai-bar-li {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Anchor/Link reset */
+  .wai-bar-li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-decoration: none;
+  }
+
+  /* ── Each bar item ── */
+  .wai-bar-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 10px 6px 8px;
+    border-radius: 12px;
+    transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+    cursor: pointer;
+    min-width: 52px;
+    position: relative;
+  }
+
+  .wai-bar-item:active {
+    transform: scale(0.9);
+  }
+
+  .wai-bar-active {
+    transform: translateY(-2px);
+  }
+
+  /* Icon wrapper */
+  .wai-bar-icon-wrap {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.04);
+    transition: all 0.22s ease;
+  }
+
+  .wai-bar-item:hover .wai-bar-icon-wrap,
+  .wai-bar-active .wai-bar-icon-wrap {
+    background: rgba(21, 101, 192, 0.1);
+  }
+
+  .wai-bar-img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    transition: transform 0.22s ease;
+  }
+
+  .wai-bar-item:active .wai-bar-img {
+    transform: scale(0.9);
+  }
+
+  /* Label */
+  .wai-bar-label {
+    font-family: 'Outfit', -apple-system, sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    color: #546E8A;
+    transition: color 0.2s;
+    letter-spacing: 0.2px;
+  }
+  .wai-bar-active .wai-bar-label {
+    color: #1565C0;
+  }
+
+  /* ── CENTER CALL BUTTON ── */
+  .wai-bar-center {
+    margin-top: -75px;
+    padding: 0;
+    gap: 0;
+  }
+
+  .wai-bar-icon-center {
+    position: relative;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #015a66, #059de4);
+    box-shadow:
+      0 6px 20px rgba(255, 107, 53, 0.5),
+      0 2px 8px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border: 2px solid rgb(255, 255, 255);
+    animation: waiCallPulse 2.5s ease-in-out infinite;
+  }
+
+  .wai-bar-center:hover .wai-bar-icon-center,
+  .wai-bar-center:active .wai-bar-icon-center {
+    transform: scale(1.12);
+    box-shadow:
+      0 10px 28px rgba(2, 126, 175, 0.849),
+      0 4px 12px rgba(0,0,0,0.2);
+  }
+
+  /* Pulsing ring on call */
+  .wai-center-ring {
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    border: 2px solid rgba(7, 241, 58, 0.651);
+    animation: waiRingPulse 2s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .wai-bar-icon-center .wai-bar-img {
+    width: 40px;
+    height: 40px;
+    filter: brightness(10);
+  }
+
+  /* Safe area for notched phones */
+  .wai-bar-safe {
+    height: env(safe-area-inset-bottom, 0px);
+    background: rgba(255,255,255,0.92);
+  }
+
+}
+
+/* Extra small phones */
+@media (max-width: 380px) {
+  .wai-bar-list { padding: 0 4px 0; }
+  .wai-bar-item { min-width: 44px; padding: 10px 4px 8px; }
+  .wai-bar-label { font-size: 9px; }
+  .wai-bar-img { width: 22px; height: 22px; }
+  .wai-bar-icon-center { width: 50px; height: 50px; }
+  .wai-bar-icon-center .wai-bar-img { width: 25px; height: 25px; }
+}
+
+/* ════════════════════════════════════════════════════════════
+   BODY PADDING (so content doesn't hide under mobile bar)
+════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  body {
+    padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   EXTRA KEYFRAMES
+════════════════════════════════════════════════════════════ */
+
+@keyframes waiCallPulse {
+  0%, 100% { box-shadow: 0 6px 20px rgb(2, 184, 240), 0 2px 8px rgba(24, 230, 5, 0.89); }
+  50%       { box-shadow: 0 8px 28px rgba(73, 1, 52, 0.65), 0 4px 12px rgba(0,0,0,0.2); }
+}

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./About.css";
 
 // ─── JSON-LD Structured Data ──────────────────────────────────────────────────
@@ -13,22 +13,14 @@ const aboutStructuredData = {
     "@type": "EducationalOrganization",
     "name": "CODEX PROJECT",
     "url": "https://www.codexproject.in",
-    "description":
-      "Top-rated final year project center in Coimbatore providing real-time project guidance in Software, AI, ML, IoT, Embedded Systems, and Mechanical Engineering.",
     "foundingLocation": "Coimbatore, Tamil Nadu, India",
-    "areaServed": [
-      "Coimbatore","Peelamedu","Gandhipuram","Saravanampatti",
-      "RS Puram","Singanallur","Ukkadam","Vadavalli"
-    ],
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Final Year Project Domains",
-      "itemListElement": [
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Software & AI Final Year Projects Coimbatore" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Embedded Systems Final Year Projects Coimbatore" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "IoT Final Year Projects Coimbatore" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mechanical Final Year Projects Coimbatore" } },
-      ],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "2nd Floor, Balaji Complex, 288, 2nd Street, Cross Cut Road",
+      "addressLocality": "Gandhipuram, Coimbatore",
+      "addressRegion": "Tamil Nadu",
+      "postalCode": "641012",
+      "addressCountry": "IN",
     },
     "aggregateRating": {
       "@type": "AggregateRating",
@@ -39,588 +31,475 @@ const aboutStructuredData = {
   },
 };
 
-const teamStructuredData = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "Expert Project Mentors at CODEX PROJECT Coimbatore",
-  "itemListElement": [
-    {
-      "@type": "ListItem", "position": 1,
-      "item": {
-        "@type": "Person",
-        "name": "Alex Chen",
-        "jobTitle": "Python & AI/ML Developer – Final Year Project Mentor Coimbatore",
-        "worksFor": { "@type": "Organization", "name": "CODEX PROJECT" },
-        "knowsAbout": ["Python", "Django", "TensorFlow", "FastAPI", "Machine Learning Projects"],
-      },
-    },
-    {
-      "@type": "ListItem", "position": 2,
-      "item": {
-        "@type": "Person",
-        "name": "Sarah Johnson",
-        "jobTitle": "PHP Full-Stack Developer – Project Guide Coimbatore",
-        "worksFor": { "@type": "Organization", "name": "CODEX PROJECT" },
-        "knowsAbout": ["PHP", "Laravel", "MySQL", "Vue.js", "Web Development Projects"],
-      },
-    },
-    {
-      "@type": "ListItem", "position": 3,
-      "item": {
-        "@type": "Person",
-        "name": "Mike Rodriguez",
-        "jobTitle": "React & Mobile Developer – Final Year Project Mentor",
-        "worksFor": { "@type": "Organization", "name": "CODEX PROJECT" },
-        "knowsAbout": ["React", "React Native", "TypeScript", "Node.js", "MERN Stack Projects"],
-      },
-    },
-  ],
-};
-
 // ─── Data ──────────────────────────────────────────────────────────────────────
-const projects = [
-  {
-    category: "Software Projects",
-    seoTitle: "Best Software Final Year Projects in Coimbatore",
-    technologies: ["PHP", "Python", "Java", ".NET", "Android", "React", "Node.js"],
-    icon: "💻",
-    description:
-      "Full-stack web and mobile final year projects using Python, Django, MERN Stack, Java, and .NET — best software project center in Coimbatore for BE, MCA, and IT students.",
-    gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-  },
-  {
-    category: "Embedded Systems",
-    seoTitle: "Embedded Systems Final Year Projects Coimbatore",
-    technologies: ["Arduino", "Raspberry Pi", "ARM Cortex", "ESP32"],
-    icon: "🔌",
-    description:
-      "Arduino, Raspberry Pi, and ARM Cortex microcontroller-based final year projects — top embedded systems project center in Coimbatore for ECE and EEE students.",
-    gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-  },
-  {
-    category: "IoT Projects",
-    seoTitle: "IoT Final Year Projects Coimbatore",
-    technologies: ["Sensors", "MQTT", "Cloud IoT", "LoRaWAN", "BLE"],
-    icon: "🌐",
-    description:
-      "Internet of Things final year projects with cloud integration — best IoT project center in Coimbatore for ECE, EEE, and CSE students.",
-    gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
-  },
-  {
-    category: "Mechanical Projects",
-    seoTitle: "Mechanical Final Year Projects Coimbatore",
-    technologies: ["CAD/CAM", "ANSYS", "SolidWorks", "Automation", "Robotics"],
-    icon: "⚙️",
-    description:
-      "CAD design, fabrication, robotics, and automation final year projects — top mechanical project center in Coimbatore for BE and ME Mechanical students.",
-    gradient: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
-  },
+const stats = [
+  { number: "500+",  label: "Projects Completed", icon: "🚀" },
+  { number: "1000+", label: "Students Guided",     icon: "🎓" },
+  { number: "15+",   label: "Technologies",        icon: "🛠️" },
+  { number: "4.9★",  label: "Google Rating",       icon: "⭐" },
 ];
 
-const teams = {
-  software: [
-    {
-      name: "Alex Chen",
-      role: "Python & AI/ML Developer",
-      specialization: "Backend & AI/ML Projects Coimbatore",
-      experience: "4+ years",
-      projects: "25+",
-      skills: ["Python", "Django", "TensorFlow", "FastAPI"],
-      avatar: "👨‍💻",
-      color: "#667eea",
-    },
-    {
-      name: "Sarah Johnson",
-      role: "PHP Full-Stack Developer",
-      specialization: "Web Development Projects Coimbatore",
-      experience: "3+ years",
-      projects: "18+",
-      skills: ["PHP", "Laravel", "MySQL", "Vue.js"],
-      avatar: "👩‍💻",
-      color: "#764ba2",
-    },
-    {
-      name: "Mike Rodriguez",
-      role: "React & MERN Stack Developer",
-      specialization: "Frontend & Mobile Projects Coimbatore",
-      experience: "3+ years",
-      projects: "22+",
-      skills: ["React", "React Native", "TypeScript", "Node.js"],
-      avatar: "🧑‍💻",
-      color: "#f093fb",
-    },
-  ],
-};
-
-const stats = [
-  { number: "500+", label: "Final Year Projects Completed", icon: "🚀", keyword: "projects completed coimbatore" },
-  { number: "1000+", label: "Happy Engineering Students", icon: "😊", keyword: "students guided coimbatore" },
-  { number: "15+", label: "Technologies & Domains", icon: "🛠️", keyword: "project domains coimbatore" },
-  { number: "4.9", label: "Google Rating", icon: "⭐", keyword: "best rated project center coimbatore" },
+const domains = [
+  {
+    icon: "💻",
+    title: "Software & AI Projects",
+    desc: "Python, Django, MERN Stack, Java, .NET, Android — full-stack web and mobile final year projects with real-time implementation and IEEE 2024-25 base papers for BE, MCA, and IT students.",
+    techs: ["Python", "Django", "React", "Node.js", "Java", ".NET", "Android"],
+    color: "#3B82F6",
+  },
+  {
+    icon: "🔌",
+    title: "Embedded Systems",
+    desc: "Arduino, Raspberry Pi, ARM Cortex, ESP32 microcontroller-based final year projects with complete hardware setup, simulation, and documentation for ECE and EEE students.",
+    techs: ["Arduino", "Raspberry Pi", "ARM Cortex", "ESP32", "8051", "PIC"],
+    color: "#EC4899",
+  },
+  {
+    icon: "🌐",
+    title: "IoT Projects",
+    desc: "Internet of Things final year projects with AWS IoT, Firebase, MQTT cloud integration — smart agriculture, home automation, health monitoring, and industrial IoT.",
+    techs: ["NodeMCU", "MQTT", "AWS IoT", "Firebase", "LoRaWAN", "BLE"],
+    color: "#06B6D4",
+  },
+  {
+    icon: "⚙️",
+    title: "Mechanical Projects",
+    desc: "CAD design, fabrication, robotics, ANSYS simulation, and automation final year projects — real working models with complete documentation for BE and ME Mechanical students.",
+    techs: ["SolidWorks", "ANSYS", "CAD/CAM", "Robotics", "AutoCAD"],
+    color: "#10B981",
+  },
 ];
 
 const features = [
   {
     icon: "🎯",
-    title: "IEEE & Industry-Relevant Projects",
-    description:
-      "IEEE 2024-25 certified projects aligned with current industry trends — best IEEE project center in Coimbatore.",
-    delay: "0s",
+    title: "IEEE 2024-25 Certified",
+    desc: "Every project is aligned with the latest IEEE base papers — updated annually for current industry relevance.",
   },
   {
-    icon: "👨‍🏫",
-    title: "Expert Project Mentors",
-    description:
-      "Guidance from experienced software, embedded, IoT, and mechanical engineers with real-world industry experience in Coimbatore.",
-    delay: "0.1s",
+    icon: "📋",
+    title: "Complete Documentation",
+    desc: "Project report, PPT, synopsis, IEEE paper format — 100% documentation support for all college submissions.",
   },
   {
-    icon: "⚡",
-    title: "End-to-End Project Support",
-    description:
-      "Complete final year project support — from topic selection to viva preparation, documentation, and IEEE publication in Coimbatore.",
-    delay: "0.2s",
+    icon: "🎤",
+    title: "Viva Preparation",
+    desc: "Mock viva sessions, review PPT coaching, and technical guidance for all college presentations and reviews.",
   },
   {
-    icon: "📚",
-    title: "Internship + Placement Support",
-    description:
-      "Internship certificate, live project experience, and placement guidance — best internship training center in Coimbatore.",
-    delay: "0.3s",
+    icon: "🏢",
+    title: "Internship Certificate",
+    desc: "Verified internship certificate with live project experience — valuable for placement and resume.",
+  },
+  {
+    icon: "💰",
+    title: "Affordable Pricing",
+    desc: "Most competitive project pricing in Coimbatore — hardware, code, and documentation with zero hidden charges.",
   },
 ];
 
+// ─── Animated Counter ─────────────────────────────────────────────────────────
+const useCountUp = (target, duration = 1800, start = false) => {
+  const [count, setCount] = useState("0");
+  useEffect(() => {
+    if (!start) return;
+    const numeric = parseInt(target.replace(/\D/g, ""));
+    const suffix  = target.replace(/[0-9]/g, "");
+    let startTime = null;
+    const animate = (ts) => {
+      if (!startTime) startTime = ts;
+      const progress = Math.min((ts - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(eased * numeric) + suffix);
+      if (progress < 1) requestAnimationFrame(animate);
+      else setCount(target);
+    };
+    requestAnimationFrame(animate);
+  }, [start, target, duration]);
+  return count;
+};
+
+const StatCard = ({ stat, animate }) => {
+  const isSimple = !stat.number.match(/\d{2,}/);
+  const count    = useCountUp(isSimple ? "0" : stat.number, 1800, animate);
+  return (
+    <div className="ab-stat-card">
+      <span className="ab-stat-icon">{stat.icon}</span>
+      <span className="ab-stat-num">{isSimple ? stat.number : count}</span>
+      <span className="ab-stat-label">{stat.label}</span>
+    </div>
+  );
+};
+
 // ─── Component ─────────────────────────────────────────────────────────────────
 const About = () => {
-  const sectionRefs = useRef([]);
+  const statsRef   = useRef(null);
+  const revealRefs = useRef([]);
+  const [statsVisible, setStatsVisible] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add("in-view");
-        });
-      },
-      { threshold: 0.1 }
+    const statObs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) setStatsVisible(true); },
+      { threshold: 0.25 }
     );
-    sectionRefs.current.forEach((ref) => { if (ref) observer.observe(ref); });
-    return () => observer.disconnect();
+    if (statsRef.current) statObs.observe(statsRef.current);
+
+    const revealObs = new IntersectionObserver(
+      (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("ab-in"); }),
+      { threshold: 0.08 }
+    );
+    revealRefs.current.forEach((el) => { if (el) revealObs.observe(el); });
+
+    return () => { statObs.disconnect(); revealObs.disconnect(); };
   }, []);
 
-  const addToRefs = (el) => {
-    if (el && !sectionRefs.current.includes(el)) sectionRefs.current.push(el);
+  const addRef = (el) => {
+    if (el && !revealRefs.current.includes(el)) revealRefs.current.push(el);
   };
 
   return (
-    <div className="about-container">
+    <div className="ab-page">
 
-      {/* ── JSON-LD ── */}
+      {/* JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutStructuredData) }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(teamStructuredData) }}
-      />
 
-      {/* ══════════════════════════════════════════════
-          HERO — H1 with primary keyword
-      ══════════════════════════════════════════════ */}
-      <section
-        className="about-hero"
-        ref={addToRefs}
-        aria-labelledby="about-hero-heading"
-      >
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-lg-10 text-center">
-              <div className="hero-content">
+      {/* ══ HERO ════════════════════════════════════════════════════ */}
+      <section className="ab-hero" aria-labelledby="about-h1">
+        <div className="ab-hero-bg">
+          <div className="ab-hero-grid" />
+          <div className="ab-orb ab-orb1" />
+          <div className="ab-orb ab-orb2" />
+          <div className="ab-orb ab-orb3" />
+        </div>
 
-                {/* H1 — one per page */}
-                <h1 id="about-hero-heading" className="about-title">
-                  About <span className="highlight">CODEX PROJECT</span> –{" "}
-                  Best Final Year Project Center in Coimbatore
-                </h1>
+        <div className="ab-container">
+          <div className="ab-hero-inner">
+            <div className="ab-hero-badge">
+              <span className="ab-badge-dot" />
+              Coimbatore's Most Trusted Project Center
+            </div>
 
-                <p className="about-subtitle">
-                  Your Premier Final Year Project Center for Engineering Students in Coimbatore
-                </p>
+            <h1 id="about-h1" className="ab-hero-h1">
+              About <span className="ab-grad">CODEX PROJECT</span>
+            </h1>
 
-                <p className="about-description">
-                  <strong>CODEX PROJECT</strong> is the most trusted{" "}
-                  <strong>final year project center in Coimbatore</strong>, bridging the gap
-                  between academic learning and real-world implementation. We guide{" "}
-                  <strong>BE, ME, BSc, MCA, and Diploma engineering students</strong> in creating
-                  innovative, <strong>IEEE-certified projects</strong> in{" "}
-                  <strong>Software, AI, Machine Learning, IoT, Embedded Systems</strong>, and{" "}
-                  <strong>Mechanical Engineering</strong> — with complete documentation, internship
-                  certificate, and viva support.
-                </p>
+            <p className="ab-hero-sub">
+              The <strong>best final year project center in Coimbatore</strong> — guiding{" "}
+              <strong>BE, ME, BSc, MCA, and Diploma</strong> engineering students through{" "}
+              <strong>IEEE-certified projects</strong> in Software, AI, IoT, Embedded Systems,
+              and Mechanical Engineering.
+            </p>
 
-                {/* Hidden SEO keyword paragraph — visible to crawlers, subtle for users */}
-                <p className="text-muted small mt-2">
-                  Serving students across Coimbatore including Peelamedu, Gandhipuram,
-                  Saravanampatti, RS Puram, Singanallur, Ukkadam, and Vadavalli.
-                </p>
-              </div>
+            <div className="ab-hero-pills">
+              {["IEEE 2024-25 Projects", "AI & ML", "IoT & Embedded", "Mechanical", "Internship Certificate", "Viva Support"].map((p) => (
+                <span key={p} className="ab-hero-pill">✔ {p}</span>
+              ))}
+            </div>
+
+            <div className="ab-hero-btns">
+              <a href="tel:+918525999002" className="ab-btn ab-btn-pri" aria-label="Call CODEX PROJECT">
+                📞 Free Consultation – Call Now
+              </a>
+              <a href="/contact" className="ab-btn ab-btn-out">
+                Contact Us →
+              </a>
             </div>
           </div>
         </div>
-        <div className="floating-shapes" aria-hidden="true">
-          <div className="shape shape-1"></div>
-          <div className="shape shape-2"></div>
-          <div className="shape shape-3"></div>
-        </div>
       </section>
 
-      {/* ══════════════════════════════════════════════
-          STATS — with schema-friendly itemscope
-      ══════════════════════════════════════════════ */}
+      {/* ══ STATS ════════════════════════════════════════════════════ */}
       <section
-        className="stats-section"
-        ref={addToRefs}
-        aria-labelledby="stats-heading"
+        className="ab-stats-sec ab-reveal"
+        ref={(el) => { statsRef.current = el; addRef(el); }}
+        aria-labelledby="ab-stats-h2"
         itemScope
         itemType="https://schema.org/EducationalOrganization"
       >
-        {/* Hidden SEO label */}
-        <h2 id="stats-heading" className="visually-hidden">
-          Codex Project Coimbatore – Numbers That Speak
-        </h2>
+        <h2 id="ab-stats-h2" className="ab-sr-only">CODEX PROJECT by the Numbers</h2>
         <meta itemProp="name" content="CODEX PROJECT" />
-        <meta itemProp="url" content="https://www.codexproject.in" />
-
-        <div className="container">
-          <div className="row">
-            {stats.map((stat, index) => (
-              <div key={index} className="col-6 col-md-3 text-center">
-                <div
-                  className="stat-card"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                  aria-label={`${stat.number} ${stat.label}`}
-                >
-                  <div className="stat-icon" aria-hidden="true">{stat.icon}</div>
-                  <h3 className="stat-number" itemProp="numberOfStudents">{stat.number}</h3>
-                  <p className="stat-label">{stat.label}</p>
-                  {/* Hidden keyword for crawler */}
-                  <meta itemProp="description" content={stat.keyword} />
-                </div>
-              </div>
+        <div className="ab-container">
+          <div className="ab-stats-grid">
+            {stats.map((s, i) => (
+              <StatCard key={i} stat={s} animate={statsVisible} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════
-          PROJECT DOMAINS
-      ══════════════════════════════════════════════ */}
-      <section
-        className="domains-section"
-        ref={addToRefs}
-        aria-labelledby="domains-heading"
-      >
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-lg-8 text-center">
-              <h2 id="domains-heading" className="section-title">
-                Final Year Project Domains – Codex Project Coimbatore
+      {/* ══ ABOUT STORY ══════════════════════════════════════════════ */}
+      <section className="ab-story-sec ab-reveal" ref={addRef} aria-labelledby="ab-story-h2">
+        <div className="ab-container">
+          <div className="ab-story-grid">
+
+            {/* Left — text */}
+            <div className="ab-story-left">
+              <span className="ab-eyebrow">Our Story</span>
+              <h2 id="ab-story-h2" className="ab-sec-title">
+                How CODEX PROJECT Became<br />Coimbatore's Best Project Center
               </h2>
-              <p className="section-subtitle">
-                Comprehensive IEEE 2024-25 project guidance across all major engineering
-                disciplines for students in Coimbatore
+              <p>
+                <strong>CODEX PROJECT</strong> was founded with one clear mission: to make every
+                engineering student in Coimbatore confident about their final year project. What
+                began as a small software project lab in <strong>Gandhipuram, Coimbatore</strong>{" "}
+                has grown into the city's most comprehensive{" "}
+                <strong>final year project center</strong>.
               </p>
-            </div>
-          </div>
+              <p>
+                Today, we guide students from <strong>BE, ME, MCA, BSc, and Diploma</strong>{" "}
+                programmes across all major engineering disciplines — from{" "}
+                <strong>Software, AI/ML, and MERN Stack projects</strong> to{" "}
+                <strong>Arduino, Raspberry Pi, IoT, and Mechanical fabrication projects</strong>.
+              </p>
+              <p>
+                Every project at CODEX PROJECT comes with the{" "}
+                <strong>IEEE 2024-25 base paper</strong>, complete source code, project report,
+                PPT, and dedicated viva preparation support. We bridge the gap between academics
+                and real-world implementation — giving students the confidence to present and
+                defend their work at any college review.
+              </p>
 
-          <div className="row">
-            {projects.map((project, index) => (
-              <div key={index} className="col-lg-6 col-xl-3 mb-4">
-                <article
-                  className="domain-card"
-                  style={{
-                    animationDelay: `${index * 0.2}s`,
-                    "--domain-gradient": project.gradient,
-                  }}
-                  aria-label={project.seoTitle}
-                  itemScope
-                  itemType="https://schema.org/Service"
-                >
-                  <div className="domain-icon" aria-hidden="true">{project.icon}</div>
-
-                  {/* H3 with SEO keyword */}
-                  <h3 className="domain-title" itemProp="name">
-                    {project.category}
-                  </h3>
-                  <meta itemProp="serviceType" content={project.seoTitle} />
-                  <meta itemProp="areaServed" content="Coimbatore" />
-                  <meta itemProp="provider" content="CODEX PROJECT" />
-
-                  <p className="domain-description" itemProp="description">
-                    {project.description}
-                  </p>
-
-                  <div className="technologies" aria-label="Technologies used">
-                    {project.technologies.map((tech, i) => (
-                      <span key={i} className="tech-tag">{tech}</span>
-                    ))}
+              <div className="ab-highlights">
+                {[
+                  "BE / ME / MCA / BSc / Diploma",
+                  "IEEE 2024-25 Certified Projects",
+                  "Real Working Models & Demos",
+                  "Most Affordable Pricing in CBE",
+                ].map((h) => (
+                  <div key={h} className="ab-hi">
+                    <span className="ab-hi-dot" />
+                    {h}
                   </div>
-                  <div className="domain-glow" aria-hidden="true"></div>
-                </article>
+                ))}
               </div>
-            ))}
+            </div>
+
+            {/* Right — Code window */}
+            <div className="ab-code-win">
+              <div className="ab-code-bar">
+                <span className="ab-cd" style={{ background: "#FF5F56" }} />
+                <span className="ab-cd" style={{ background: "#FFBD2E" }} />
+                <span className="ab-cd" style={{ background: "#27C93F" }} />
+                <span className="ab-code-file">codex_project.py</span>
+              </div>
+              <div className="ab-code-body">
+                <div><span className="ab-kw">class</span> <span className="ab-cls">CodexProject</span>:</div>
+                <div>{"  "}<span className="ab-kw">def</span> <span className="ab-fn">__init__</span>(self):</div>
+                <div>{"    "}self.name {"= "}<span className="ab-str">"CODEX PROJECT"</span></div>
+                <div>{"    "}self.location {"= "}<span className="ab-str">"Gandhipuram, CBE"</span></div>
+                <div>{"    "}self.domains = [<span className="ab-str">"AI"</span>, <span className="ab-str">"IoT"</span>,</div>
+                <div>{"      "}<span className="ab-str">"Embedded"</span>, <span className="ab-str">"Mechanical"</span>]</div>
+                <div>{"    "}self.rating {"= "}<span className="ab-num">4.9</span> <span className="ab-cm"># ⭐ Google</span></div>
+                <div>{"    "}self.students {"= "}<span className="ab-str">"1000+"</span></div>
+                <div>{"  "}<span className="ab-kw">def</span> <span className="ab-fn">get_project</span>(self):</div>
+                <div>{"    "}<span className="ab-kw">return</span> <span className="ab-str">"Best in Coimbatore 🚀"</span></div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════
-          SOFTWARE TEAM
-      ══════════════════════════════════════════════ */}
-      <section
-        className="team-section software-team"
-        ref={addToRefs}
-        aria-labelledby="team-heading"
-      >
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-lg-10 text-center">
-              <h2 id="team-heading" className="section-title">
-                Expert Project Mentors – Software & AI Team, Coimbatore
-              </h2>
-              <p className="section-subtitle">
-                Experienced developers guiding final year students in Python, AI, ML, MERN Stack,
-                Java, and .NET projects in Coimbatore
-              </p>
-            </div>
+      {/* ══ DOMAINS ══════════════════════════════════════════════════ */}
+      <section className="ab-domains-sec ab-reveal" ref={addRef} aria-labelledby="ab-domains-h2">
+        <div className="ab-container">
+          <div className="ab-sec-head">
+            <span className="ab-eyebrow">What We Offer</span>
+            <h2 id="ab-domains-h2" className="ab-sec-title ab-center">
+              Final Year Project Domains at CODEX PROJECT
+            </h2>
+            <p className="ab-sec-sub">
+              IEEE 2024-25 certified project guidance across all major engineering disciplines —
+              complete with documentation, source code, and viva support
+            </p>
           </div>
-
-          <div className="row justify-content-center">
-            {teams.software.map((member, index) => (
-              <div key={index} className="col-lg-4 col-md-6 mb-4">
-                <article
-                  className="team-member-card"
-                  style={{ animationDelay: `${index * 0.15}s` }}
-                  itemScope
-                  itemType="https://schema.org/Person"
-                  aria-label={`${member.name} – ${member.role} at CODEX PROJECT Coimbatore`}
-                >
-                  <div
-                    className="member-avatar"
-                    style={{ backgroundColor: member.color }}
-                    aria-hidden="true"
-                  >
-                    {member.avatar}
-                  </div>
-
-                  <div className="member-info">
-                    <h3 className="member-name" itemProp="name">{member.name}</h3>
-                    <p className="member-role" itemProp="jobTitle">{member.role}</p>
-                    <p className="member-specialization" itemProp="description">
-                      {member.specialization}
-                    </p>
-                    <meta itemProp="worksFor" content="CODEX PROJECT, Coimbatore" />
-                  </div>
-
-                  <div className="member-stats">
-                    <div className="stat">
-                      <span className="stat-value">{member.experience}</span>
-                      <span className="stat-label">Experience</span>
-                    </div>
-                    <div className="stat">
-                      <span className="stat-value">{member.projects}</span>
-                      <span className="stat-label">Projects</span>
-                    </div>
-                  </div>
-
-                  <div className="member-skills" aria-label="Skills">
-                    {member.skills.map((skill, i) => (
-                      <span key={i} className="skill-tag" itemProp="knowsAbout">{skill}</span>
-                    ))}
-                  </div>
-
-                  <div
-                    className="member-glow"
-                    style={{ backgroundColor: member.color }}
-                    aria-hidden="true"
-                  ></div>
-                </article>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════
-          WHY CHOOSE — Features
-      ══════════════════════════════════════════════ */}
-      <section
-        className="features-section"
-        ref={addToRefs}
-        aria-labelledby="features-heading"
-      >
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-lg-8 text-center">
-              <h2 id="features-heading" className="section-title">
-                Why Choose CODEX PROJECT – Best Project Center in Coimbatore?
-              </h2>
-              <p className="section-subtitle">
-                Here's why 1000+ engineering students across Coimbatore trust CODEX PROJECT
-                for their final year projects and internship training
-              </p>
-            </div>
-          </div>
-
-          <div className="row">
-            {features.map((feature, index) => (
-              <div key={index} className="col-md-6 col-lg-3 mb-4">
-                <div
-                  className="feature-card"
-                  style={{ animationDelay: feature.delay }}
-                  aria-label={feature.title}
-                >
-                  <div className="feature-icon" aria-hidden="true">{feature.icon}</div>
-                  <h4>{feature.title}</h4>
-                  <p>{feature.description}</p>
-                  <div className="feature-wave" aria-hidden="true"></div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* SEO keyword cluster — visible helpful content */}
-          <div className="row justify-content-center mt-4">
-            <div className="col-lg-10">
-              <div className="p-4 bg-light rounded text-center">
-                <p className="mb-2 text-muted small fw-semibold">
-                  Serving Engineering Students Across Coimbatore
-                </p>
-                <div className="d-flex flex-wrap justify-content-center gap-2">
-                  {[
-                    "Final Year Projects Coimbatore",
-                    "IEEE Projects 2024-25",
-                    "AI & ML Projects",
-                    "IoT Projects Coimbatore",
-                    "Embedded Projects ECE",
-                    "Mechanical Projects BE",
-                    "Python Projects",
-                    "MERN Stack Projects",
-                    "Internship Certificate",
-                    "Viva & Documentation Support",
-                    "Project Center Peelamedu",
-                    "Project Center Gandhipuram",
-                  ].map((tag) => (
-                    <span
-                      key={tag}
-                      className="badge bg-primary text-white px-3 py-2"
-                      style={{ fontSize: "0.78rem" }}
-                    >
-                      {tag}
-                    </span>
+          <div className="ab-domains-grid">
+            {domains.map((d, i) => (
+              <article
+                key={i}
+                className="ab-domain-card"
+                style={{ "--card-accent": d.color }}
+                itemScope
+                itemType="https://schema.org/Service"
+                aria-label={`${d.title} – CODEX PROJECT Coimbatore`}
+              >
+                <span className="ab-domain-icon">{d.icon}</span>
+                <h3 className="ab-domain-title" itemProp="name">{d.title}</h3>
+                <meta itemProp="areaServed" content="Coimbatore" />
+                <meta itemProp="provider" content="CODEX PROJECT" />
+                <p className="ab-domain-desc" itemProp="description">{d.desc}</p>
+                <div className="ab-tech-chips" aria-label="Technologies">
+                  {d.techs.map((t) => (
+                    <span key={t} className="ab-tech-chip">{t}</span>
                   ))}
                 </div>
-              </div>
-            </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════
-          SEO CONTENT BLOCK — pure text for crawlers
-      ══════════════════════════════════════════════ */}
-      <section
-        className="py-5"
-        aria-labelledby="seo-block-heading"
-        style={{ background: "#f8f9fa" }}
-      >
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-lg-9">
-              <h2 id="seo-block-heading" className="h4 fw-bold mb-3">
-                About CODEX PROJECT – Final Year Project Center Coimbatore
-              </h2>
-              <p className="text-muted">
-                <strong>CODEX PROJECT</strong> was established with one mission: to make
-                every engineering student in Coimbatore confident about their final year project.
-                We are a <strong>full-service final year project center in Coimbatore</strong>{" "}
-                covering <strong>Software projects</strong> (Python, Django, MERN, Java, .NET,
-                Android), <strong>AI & Machine Learning projects</strong>,{" "}
-                <strong>IoT projects</strong> (Arduino, NodeMCU, Raspberry Pi),{" "}
-                <strong>Embedded Systems projects</strong> (8051, ARM, PIC, ESP32), and{" "}
-                <strong>Mechanical Engineering projects</strong> (CAD, ANSYS, SolidWorks,
-                Fabrication, Robotics).
-              </p>
-              <p className="text-muted">
-                Every project at Codex Project comes with{" "}
-                <strong>IEEE 2024-25 base paper</strong>, complete source code, project report,
-                PPT presentation, and dedicated <strong>viva preparation support</strong>. We
-                also offer <strong>internship training with certificate</strong> for students
-                looking to enhance their placement opportunities. Our center is{" "}
-                <strong>easily accessible from all major engineering college zones</strong> in
-                Coimbatore — Peelamedu, Gandhipuram, Saravanampatti, RS Puram, Singanallur,
-                Ukkadam, and Vadavalli.
-              </p>
-              <p className="text-muted mb-0">
-                Join CODEX PROJECT — <strong>Coimbatore's best final year project center</strong>{" "}
-                — and complete your engineering project with confidence. Contact us today for a
-                free consultation and project topic guidance.
-              </p>
-            </div>
+      {/* ══ WHY CHOOSE ═══════════════════════════════════════════════ */}
+      <section className="ab-features-sec ab-reveal" ref={addRef} aria-labelledby="ab-feat-h2">
+        <div className="ab-container">
+          <div className="ab-sec-head">
+            <span className="ab-eyebrow">Why Choose Us</span>
+            <h2 id="ab-feat-h2" className="ab-sec-title ab-center">
+              Why 1000+ Students Choose CODEX PROJECT in Coimbatore
+            </h2>
+            <p className="ab-sec-sub">
+              From IEEE base papers to viva coaching — we provide everything a
+              Coimbatore engineering student needs to excel in their final year project
+            </p>
+          </div>
+          <div className="ab-features-grid">
+            {features.map((f, i) => (
+              <div
+                key={i}
+                className="ab-feat-card"
+                style={{ animationDelay: `${i * 0.1}s` }}
+              >
+                <span className="ab-feat-icon">{f.icon}</span>
+                <h3 className="ab-feat-title">{f.title}</h3>
+                <p className="ab-feat-desc">{f.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════
-          CTA
-      ══════════════════════════════════════════════ */}
-      <section
-        className="cta-section"
-        ref={addToRefs}
-        aria-labelledby="cta-heading"
-      >
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-lg-8 text-center">
-              <h2 id="cta-heading" className="cta-title">
-                Start Your Final Year Project Today at CODEX PROJECT, Coimbatore
-              </h2>
-              <p className="cta-description">
-                Join 1000+ successful engineering students who completed their final year projects
-                with CODEX PROJECT — the <strong>best project center in Coimbatore</strong> for
-                IEEE projects, internship training, and placement support.
-              </p>
-              <p className="text-white-50 small mb-3">
-                📍 Coimbatore, Tamil Nadu &nbsp;|&nbsp; 📞 Free Consultation Available
-              </p>
-              <div className="cta-buttons">
-                <button
-                  className="btn btn-primary"
-                  aria-label="Get started with your final year project at CODEX PROJECT Coimbatore"
-                >
-                  Get Started – Free Consultation
-                </button>
-                <button
-                  className="btn btn-outline"
-                  aria-label="View final year project domains at CODEX PROJECT"
-                >
-                  View Project Domains
-                </button>
-              </div>
-            </div>
+      {/* ══ SEO CONTENT BLOCK ════════════════════════════════════════ */}
+      <section className="ab-seo-block ab-reveal" ref={addRef} aria-labelledby="ab-seo-h2">
+        <div className="ab-container">
+          <div className="ab-seo-inner">
+            <h2 id="ab-seo-h2">
+              About CODEX PROJECT – Final Year Project Center Coimbatore
+            </h2>
+            <p>
+              <strong>CODEX PROJECT</strong> is the most trusted{" "}
+              <strong>final year project center in Coimbatore</strong>, located at{" "}
+              <strong>2nd Floor, Balaji Complex, Gandhipuram, Coimbatore – 641012</strong>.
+              We are a full-service project center covering{" "}
+              <strong>Software projects</strong> (Python, Django, MERN, Java, .NET, Android),{" "}
+              <strong>AI &amp; Machine Learning projects</strong>,{" "}
+              <strong>IoT projects</strong> (Arduino, NodeMCU, Raspberry Pi),{" "}
+              <strong>Embedded Systems projects</strong> (8051, ARM, PIC, ESP32), and{" "}
+              <strong>Mechanical Engineering projects</strong> (CAD, ANSYS, SolidWorks,
+              Fabrication, Robotics).
+            </p>
+            <p>
+              Every project at Codex Project comes with the{" "}
+              <strong>IEEE 2024-25 base paper</strong>, complete source code, project report,
+              PPT presentation, and dedicated <strong>viva preparation support</strong>. We also
+              offer <strong>internship training with verified certificate</strong> for students
+              looking to enhance their placement opportunities. Our center is easily accessible
+              from all major engineering college zones in Coimbatore — Peelamedu, Gandhipuram,
+              Saravanampatti, RS Puram, Singanallur, Ukkadam, and Vadavalli.
+            </p>
+            <p>
+              For <strong>Software and AI projects</strong>, call{" "}
+              <a href="tel:+918525999022">85259 99022</a>. For{" "}
+              <strong>Embedded and IoT projects</strong>, call{" "}
+              <a href="tel:+918525999032">85259 99032</a>. For general enquiry and{" "}
+              <strong>Mechanical projects</strong>, call{" "}
+              <a href="tel:+918525999002">85259 99002</a> or visit us at Gandhipuram,
+              Coimbatore.
+            </p>
           </div>
         </div>
-        <div className="cta-particles" aria-hidden="true">
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="particle"
-              style={{
-                left: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 5}s`,
-                animationDuration: `${3 + Math.random() * 4}s`,
-              }}
-            ></div>
-          ))}
+      </section>
+
+      {/* ══ GOOGLE MAP ═══════════════════════════════════════════════ */}
+      <section className="ab-map-sec ab-reveal" ref={addRef} aria-labelledby="ab-map-h2">
+        <div className="ab-container">
+          <div className="ab-sec-head">
+            <span className="ab-eyebrow">Find Us</span>
+            <h2 id="ab-map-h2" className="ab-sec-title ab-center">
+              Visit CODEX PROJECT – Gandhipuram, Coimbatore
+            </h2>
+            <p className="ab-sec-sub">
+              📍 2nd Floor, Balaji Complex, 288, 2nd Street, Opp. Anbu Mess,
+              Cross Cut Road, Gandhipuram, Coimbatore – 641012
+            </p>
+          </div>
+
+          <div className="ab-map-wrap">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.2650880412302!2d76.9686347!3d11.018726700000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa6d56e5e67bd6d39%3A0xa04afb183b4afa48!2sCODEX%20PROJECT%20%E2%80%93%20Final%20Year%20Project%20Center!5e0!3m2!1sen!2sin!4v1775889773579!5m2!1sen!2sin"
+              width="100%"
+              height="420"
+              style={{ border: 0, display: "block" }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="CODEX PROJECT – Final Year Project Center, Gandhipuram, Coimbatore"
+              aria-label="Google Maps showing CODEX PROJECT location in Gandhipuram Coimbatore"
+            />
+          </div>
+
+          <div className="ab-map-actions">
+            <a
+              href="https://maps.app.goo.gl/edkzjFnQUKcKDnzP6"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ab-map-btn"
+              aria-label="Get directions to CODEX PROJECT Coimbatore"
+            >
+              📍 Get Directions
+            </a>
+            <a
+              href="https://wa.me/918525999002?text=Hi%2C%20I%20need%20directions%20to%20your%20office"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ab-map-btn ab-map-btn-wa"
+              aria-label="WhatsApp for directions"
+            >
+              💬 WhatsApp for Directions
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ══ CTA ══════════════════════════════════════════════════════ */}
+      <section className="ab-cta-sec ab-reveal" ref={addRef} aria-labelledby="ab-cta-h2">
+        <div className="ab-cta-blob" aria-hidden="true" />
+        <div className="ab-container">
+          <div className="ab-cta-inner">
+            <h2 id="ab-cta-h2" className="ab-cta-title">
+              Start Your Final Year Project<br />
+              <span className="ab-grad">at CODEX PROJECT Today</span>
+            </h2>
+            <p className="ab-cta-sub">
+              Join <strong>1000+ engineering students</strong> who trusted CODEX PROJECT —
+              the <strong>best final year project center in Coimbatore</strong> — for IEEE
+              projects, internship training, and complete project support.
+            </p>
+            <p className="ab-cta-addr">
+              📍 2nd Floor, Balaji Complex, Gandhipuram, Coimbatore – 641012
+              &nbsp;|&nbsp; 📞 Free Consultation Available
+            </p>
+            <div className="ab-cta-btns">
+              <a
+                href="tel:+918525999002"
+                className="ab-btn-cta ab-btn-cta-p"
+                aria-label="Call CODEX PROJECT now"
+              >
+                📞 Call Now – 85259 99002
+              </a>
+              <a
+                href="https://wa.me/918525999002"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ab-btn-cta ab-btn-cta-o"
+                aria-label="WhatsApp CODEX PROJECT"
+              >
+                💬 WhatsApp Us
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
