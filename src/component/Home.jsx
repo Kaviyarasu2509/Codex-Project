@@ -62,7 +62,7 @@ const domains = [
     tags: ["Python", "TensorFlow", "NLP", "CNN"],
     color: "#8B5CF6",
     bg: "rgba(139,92,246,0.07)",
-    link: "/services/software-projects",
+    link: "/software-projects",
   },
   {
     icon: "🌐",
@@ -72,7 +72,7 @@ const domains = [
     tags: ["React", "Node.js", "Flutter", "MongoDB"],
     color: "#06B6D4",
     bg: "rgba(6,182,212,0.07)",
-    link: "/services/software-projects",
+    link: "/software-projects",
   },
   {
     icon: "📡",
@@ -82,7 +82,7 @@ const domains = [
     tags: ["Arduino", "ESP32", "Firebase", "MQTT"],
     color: "#F59E0B",
     bg: "rgba(245,158,11,0.07)",
-    link: "/services/iot-projects",
+    link: "/iot-projects",
   },
   {
     icon: "⚙️",
@@ -92,7 +92,7 @@ const domains = [
     tags: ["SolidWorks", "ANSYS", "CAD/CAM", "Robotics"],
     color: "#10B981",
     bg: "rgba(16,185,129,0.07)",
-    link: "/services/mechanical-projects",
+    link: "/mechanical-projects",
   },
   {
     icon: "💻",
@@ -102,7 +102,7 @@ const domains = [
     tags: ["Java", "Spring Boot", ".NET", "SQL"],
     color: "#3B82F6",
     bg: "rgba(59,130,246,0.07)",
-    link: "/services/software-projects",
+    link: "/software-projects",
   },
   {
     icon: "📄",
@@ -127,7 +127,7 @@ const whyData = [
 
 const reviews = [
   { text: "Best final year project center in Coimbatore! Real-time IEEE training and complete documentation support. Highly recommended!", name: "Arun K.",   branch: "BE CSE" },
-  { text: "Completed my IoT project with excellent practical guidance. Step-by-step mentoring. Best embedded center near Gandhipuram!",   name: "Priya S.",  branch: "BE ECE" },
+  { text: "Completed my IoT project with excellent practical guidance. Step-by-step mentoring. Best embedded center near Gandhipuram!",   name: "Sam S.",  branch: "BE ECE" },
   { text: "Amazing AI and Python project support with full ML implementation and viva prep. Best software project center in Coimbatore!", name: "Karthik R.", branch: "ME IT" },
   { text: "Mechanical fabrication project completed on time with perfect CAD support. Affordable and professional!",                        name: "Divya M.",  branch: "BE Mechanical" },
 ];
@@ -142,18 +142,18 @@ const faqs = [
 ];
 
 const kwLinks = [
-  ["AI Projects Coimbatore",              "/services/software-projects"],
-  ["Machine Learning Projects Coimbatore","/services/software-projects"],
-  ["IoT Projects Coimbatore",             "/services/iot-projects"],
-  ["Embedded Projects Coimbatore",        "/services/embedded-projects"],
-  ["Mechanical Projects Coimbatore",      "/services/mechanical-projects"],
+  ["AI Projects Coimbatore",              "/software-projects"],
+  ["Machine Learning Projects Coimbatore","/software-projects"],
+  ["IoT Projects Coimbatore",             "/iot-projects"],
+  ["Embedded Projects Coimbatore",        "/embedded-projects"],
+  ["Mechanical Projects Coimbatore",      "/mechanical-projects"],
   ["IEEE Projects Coimbatore",            "/projects"],
-  ["Internship Training Coimbatore",      "/internship"],
-  ["Python Projects Coimbatore",          "/services/software-projects"],
-  ["MERN Stack Projects Coimbatore",      "/services/software-projects"],
+  ["Internship Training Coimbatore",      "/blog"],
+  ["Python Projects Coimbatore",          "/software-projects"],
+  ["MERN Stack Projects Coimbatore",      "/software-projects"],
   ["Final Year Projects 2025",            "/projects"],
-  ["Flutter Projects Coimbatore",         "/services/software-projects"],
-  ["Arduino Projects Coimbatore",         "/services/iot-projects"],
+  ["Flutter Projects Coimbatore",         "/software-projects"],
+  ["Arduino Projects Coimbatore",         "/iot-projects"],
 ];
 
 const floatingChips = ["Python", "AI/ML", "Arduino", "React", "MERN", "IoT", "Flutter", "IEEE"];

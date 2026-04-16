@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
+import "./EmbeddedProjects.css";
 
 // ─── JSON-LD Structured Data ──────────────────────────────────────────────────
 const embeddedSchema = {
@@ -114,53 +115,70 @@ const breadcrumbSchema = {
 };
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
+// filterKey maps each service card to the chips that should show it
 const services = [
   {
     icon: "🔲",
     title: "8051 Microcontroller Projects",
     seo: "8051 Microcontroller Projects Coimbatore",
+    color: "#e3f2fd", accentColor: "#1565c0",
+    filterKeys: ["Embedded Projects Coimbatore", "8051 Projects Coimbatore", "Embedded Projects ECE Coimbatore", "IEEE Embedded Projects 2024-25", "Embedded Centre Gandhipuram", "Affordable Embedded Projects Coimbatore", "Keil Programming Projects"],
     desc: "Classic and advanced 8051-based embedded final year projects with Keil IDE, Proteus simulation, and real hardware implementation — best 8051 project centre in Coimbatore for ECE students.",
   },
   {
     icon: "💪",
     title: "ARM Cortex Projects",
     seo: "ARM Cortex Embedded Projects Coimbatore",
+    color: "#f3e5f5", accentColor: "#6a1b9a",
+    filterKeys: ["Embedded Projects Coimbatore", "ARM Projects Coimbatore", "Embedded Projects ECE Coimbatore", "IEEE Embedded Projects 2024-25", "Embedded Centre Gandhipuram", "Affordable Embedded Projects Coimbatore"],
     desc: "STM32, LPC2148, and ARM Cortex M3/M4 based embedded system final year projects — best ARM project centre in Coimbatore for BE ECE and EEE students.",
   },
   {
     icon: "⚡",
     title: "PIC & AVR Projects",
     seo: "PIC AVR Microcontroller Projects Coimbatore",
+    color: "#e8f5e9", accentColor: "#2e7d32",
+    filterKeys: ["Embedded Projects Coimbatore", "PIC Projects Coimbatore", "AVR Projects Coimbatore", "Embedded Projects ECE Coimbatore", "IEEE Embedded Projects 2024-25", "Embedded Centre Gandhipuram", "Affordable Embedded Projects Coimbatore"],
     desc: "PIC16F/18F and AVR ATmega microcontroller embedded projects with MPLAB and AVR Studio — affordable PIC and AVR project centre in Coimbatore.",
   },
   {
     icon: "🔌",
     title: "Arduino Embedded Projects",
     seo: "Arduino Embedded Projects Coimbatore",
+    color: "#fff3e0", accentColor: "#e65100",
+    filterKeys: ["Embedded Projects Coimbatore", "Arduino Projects Coimbatore", "Embedded Projects ECE Coimbatore", "IEEE Embedded Projects 2024-25", "Embedded Centre Gandhipuram", "Affordable Embedded Projects Coimbatore"],
     desc: "Arduino UNO, Mega, and Nano based sensor, automation, and control system embedded projects for BE and Diploma students in Coimbatore.",
   },
   {
     icon: "🍓",
     title: "Raspberry Pi Projects",
     seo: "Raspberry Pi Embedded Projects Coimbatore",
+    color: "#fce4ec", accentColor: "#880e4f",
+    filterKeys: ["Embedded Projects Coimbatore", "Raspberry Pi Projects Coimbatore", "Embedded Projects ECE Coimbatore", "IEEE Embedded Projects 2024-25", "Embedded Centre Gandhipuram", "Affordable Embedded Projects Coimbatore"],
     desc: "Raspberry Pi 4-based image processing, AI, and Linux embedded system final year projects — best Raspberry Pi project centre in Coimbatore.",
   },
   {
     icon: "🏗️",
     title: "FPGA & VLSI Projects",
     seo: "FPGA VLSI Projects Coimbatore",
+    color: "#ede7f6", accentColor: "#283593",
+    filterKeys: ["Embedded Projects Coimbatore", "FPGA Projects Coimbatore", "VLSI Projects Coimbatore", "Embedded Projects ECE Coimbatore", "IEEE Embedded Projects 2024-25", "Embedded Centre Gandhipuram", "Affordable Embedded Projects Coimbatore"],
     desc: "Xilinx, Altera FPGA, and VHDL/Verilog-based VLSI design final year projects — best FPGA project centre in Coimbatore for ECE students.",
   },
   {
     icon: "📡",
     title: "Wireless & RF Embedded Projects",
     seo: "Wireless RF Embedded Projects Coimbatore",
+    color: "#e0f7fa", accentColor: "#006064",
+    filterKeys: ["Embedded Projects Coimbatore", "Embedded Projects ECE Coimbatore", "IEEE Embedded Projects 2024-25", "Embedded Centre Gandhipuram", "Affordable Embedded Projects Coimbatore"],
     desc: "GSM, GPS, RF, Zigbee, Bluetooth, and LoRa-based wireless embedded communication final year projects for ECE and EIE students in Coimbatore.",
   },
   {
     icon: "🤖",
     title: "Robotics & Automation Projects",
     seo: "Robotics Embedded Automation Projects Coimbatore",
+    color: "#f9fbe7", accentColor: "#33691e",
+    filterKeys: ["Embedded Projects Coimbatore", "Embedded Projects ECE Coimbatore", "IEEE Embedded Projects 2024-25", "Embedded Centre Gandhipuram", "Affordable Embedded Projects Coimbatore"],
     desc: "Line follower, obstacle avoidance, robotic arm, and industrial automation embedded system projects — best robotics embedded centre in Coimbatore.",
   },
 ];
@@ -210,18 +228,33 @@ const projectIdeas = [
   { name: "Wireless Notice Board – GSM", tag: "ARM / GSM" },
 ];
 
+// idea tag → filter chip mapping
+const ideaTagToFilter = {
+  "8051 / ARM":    ["Embedded Projects Coimbatore", "8051 Projects Coimbatore", "ARM Projects Coimbatore"],
+  "8051":          ["Embedded Projects Coimbatore", "8051 Projects Coimbatore"],
+  "Arduino":       ["Embedded Projects Coimbatore", "Arduino Projects Coimbatore"],
+  "Raspberry Pi":  ["Embedded Projects Coimbatore", "Raspberry Pi Projects Coimbatore"],
+  "8051 / PIC":    ["Embedded Projects Coimbatore", "8051 Projects Coimbatore", "PIC Projects Coimbatore"],
+  "PIC":           ["Embedded Projects Coimbatore", "PIC Projects Coimbatore"],
+  "ARM / GSM":     ["Embedded Projects Coimbatore", "ARM Projects Coimbatore"],
+  "ARM / PIC":     ["Embedded Projects Coimbatore", "ARM Projects Coimbatore", "PIC Projects Coimbatore"],
+  "Arduino / ARM": ["Embedded Projects Coimbatore", "Arduino Projects Coimbatore", "ARM Projects Coimbatore"],
+  "STM32":         ["Embedded Projects Coimbatore"],
+  "FPGA":          ["Embedded Projects Coimbatore", "FPGA Projects Coimbatore", "VLSI Projects Coimbatore"],
+};
+
 const tagColors = {
-  "8051": "#e3f2fd",
-  "8051 / ARM": "#e8eaf6",
-  "8051 / PIC": "#e3f2fd",
-  Arduino: "#e8f5e9",
+  "8051":          "#e3f2fd",
+  "8051 / ARM":    "#e8eaf6",
+  "8051 / PIC":    "#e3f2fd",
+  Arduino:         "#e8f5e9",
   "Arduino / ARM": "#f9fbe7",
-  "Raspberry Pi": "#fce4ec",
-  "ARM / GSM": "#f3e5f5",
-  "ARM / PIC": "#fff3e0",
-  STM32: "#e0f7fa",
-  PIC: "#fff8e1",
-  FPGA: "#ede7f6",
+  "Raspberry Pi":  "#fce4ec",
+  "ARM / GSM":     "#f3e5f5",
+  "ARM / PIC":     "#fff3e0",
+  STM32:           "#e0f7fa",
+  PIC:             "#fff8e1",
+  FPGA:            "#ede7f6",
 };
 
 const whyChoose = [
@@ -261,128 +294,230 @@ const reviews = [
   {
     stars: "⭐⭐⭐⭐⭐",
     text: "Best embedded project centre in Coimbatore! My ARM Cortex motor control project was implemented with real hardware and full Keil + Proteus support. Complete IEEE documentation provided. Highly recommended for ECE students!",
-    name: "Arun K., BE ECE – Coimbatore",
+    name: "Arun K.",
+    branch: "BE ECE – Coimbatore",
   },
   {
     stars: "⭐⭐⭐⭐⭐",
     text: "I visited Codex Project at Balaji Complex, Gandhipuram for my 8051 smart traffic project. Excellent hardware working model, proper circuit diagram, and affordable cost. Best embedded centre near Gandhipuram!",
-    name: "Priya S., BE EEE",
+    name: "Priya S.",
+    branch: "BE EEE",
   },
   {
     stars: "⭐⭐⭐⭐⭐",
     text: "My FPGA-based VLSI project was completed at Codex Project Coimbatore with Xilinx Vivado and real board implementation. The team explained every concept clearly and helped me ace my viva. Truly the best!",
-    name: "Ravi M., BE ECE – Gandhipuram",
+    name: "Ravi M.",
+    branch: "BE ECE – Gandhipuram",
   },
+];
+
+const filterKeywords = [
+  "Embedded Projects Coimbatore",
+  "8051 Projects Coimbatore",
+  "ARM Projects Coimbatore",
+  "PIC Projects Coimbatore",
+  "AVR Projects Coimbatore",
+  "Arduino Projects Coimbatore",
+  "Raspberry Pi Projects Coimbatore",
+  "FPGA Projects Coimbatore",
+  "VLSI Projects Coimbatore",
+  "Embedded Projects ECE Coimbatore",
+  "IEEE Embedded Projects 2024-25",
+  "Proteus Simulation Projects",
+  "Keil Programming Projects",
+  "Embedded Centre Gandhipuram",
+  "Affordable Embedded Projects Coimbatore",
 ];
 
 // ─── Component ─────────────────────────────────────────────────────────────────
 const EmbeddedProjects = () => {
+  const [openFaq, setOpenFaq] = useState(null);
+  const [activeFilter, setActiveFilter] = useState(null);
+  const revealRefs = useRef([]);
+
+  // Filter logic: each service has an array of filterKeys it belongs to
+  const filteredServices = activeFilter
+    ? services.filter((s) => s.filterKeys.includes(activeFilter))
+    : services;
+
+  const filteredIdeas = activeFilter
+    ? projectIdeas.filter((p) => {
+        const keys = ideaTagToFilter[p.tag] || ["Embedded Projects Coimbatore"];
+        return keys.includes(activeFilter);
+      })
+    : projectIdeas;
+
+  // Reveal on scroll
+  useEffect(() => {
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("ep-visible"); }),
+      { threshold: 0.07 }
+    );
+    revealRefs.current.forEach((el) => { if (el) io.observe(el); });
+    return () => io.disconnect();
+  }, []);
+
+  const addRef = (el) => { if (el && !revealRefs.current.includes(el)) revealRefs.current.push(el); };
+
+  const scrollToServices = () => {
+    document.getElementById("services-heading")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
-    <div>
-      {/* ── JSON-LD ── */}
+    <div className="ep-page">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(embeddedSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
-      <div className="container py-5">
+      {/* ══ HERO ══════════════════════════════════════════════ */}
+      <section className="ep-hero" aria-labelledby="ep-h1">
+        <div className="ep-hero-bg">
+          <div className="ep-hero-grid"></div>
+          <div className="ep-glow ep-glow1"></div>
+          <div className="ep-glow ep-glow2"></div>
+        </div>
+        <div className="ep-container">
+          {/* Breadcrumb */}
+          <nav aria-label="breadcrumb" className="ep-breadcrumb" itemScope itemType="https://schema.org/BreadcrumbList">
+            <ol>
+              <li itemScope itemType="https://schema.org/ListItem">
+                <a href="/" itemProp="item"><span itemProp="name">Home</span></a>
+                <meta itemProp="position" content="1" />
+              </li>
+              <span className="ep-bc-sep">›</span>
+              <li itemScope itemType="https://schema.org/ListItem">
+                <a href="/services" itemProp="item"><span itemProp="name">Services</span></a>
+                <meta itemProp="position" content="2" />
+              </li>
+              <span className="ep-bc-sep">›</span>
+              <li aria-current="page" itemScope itemType="https://schema.org/ListItem">
+                <span itemProp="name">Embedded Projects Coimbatore</span>
+                <meta itemProp="position" content="3" />
+              </li>
+            </ol>
+          </nav>
 
-        {/* ══ BREADCRUMB ══ */}
-        <nav aria-label="breadcrumb" className="mb-3">
-          <ol className="breadcrumb" itemScope itemType="https://schema.org/BreadcrumbList">
-            <li className="breadcrumb-item" itemScope itemType="https://schema.org/ListItem">
-              <a href="/" itemProp="item"><span itemProp="name">Home</span></a>
-              <meta itemProp="position" content="1" />
-            </li>
-            <li className="breadcrumb-item" itemScope itemType="https://schema.org/ListItem">
-              <a href="/services" itemProp="item"><span itemProp="name">Services</span></a>
-              <meta itemProp="position" content="2" />
-            </li>
-            <li className="breadcrumb-item active" aria-current="page" itemScope itemType="https://schema.org/ListItem">
-              <span itemProp="name">Embedded Projects Coimbatore</span>
-              <meta itemProp="position" content="3" />
-            </li>
-          </ol>
-        </nav>
+          <h1 id="ep-h1" className="ep-hero-h1">
+            Best Embedded Project Centre<br />
+            in Coimbatore –{" "}
+            <span className="ep-accent">CODEX PROJECT</span>
+          </h1>
 
-        {/* ══ H1 ══ */}
-        <h1 className="text-center mb-3">
-          Best Embedded Project Centre in Coimbatore – CODEX PROJECT
-        </h1>
-        <p className="text-center lead mb-2">
-          Top-rated embedded systems project centre for BE ECE, EEE, EIE &amp; Diploma students – Gandhipuram, Coimbatore
-        </p>
-        <p className="text-center mb-1">
-          <strong>CODEX PROJECT</strong> is the <strong>best embedded project centre in Coimbatore</strong>,
-          providing real-time <strong>8051, ARM Cortex, PIC, AVR, Arduino, Raspberry Pi</strong>, and{" "}
-          <strong>FPGA embedded system final year projects</strong> with complete circuit design,
-          Keil/MPLAB programming, Proteus simulation, IEEE documentation, and viva preparation —
-          all at the most <strong>affordable pricing in Coimbatore</strong>.
-        </p>
-        <p className="text-center text-muted small mb-2">
-          📍 2nd Floor, Balaji Complex, 288, 2nd Street, Opp. Anbu Mess,
-          Cross Cut Road, Gandhipuram, Coimbatore – 641012
-        </p>
-        <p className="text-center text-muted small mb-5">
-          Serving BE ECE, EEE, EIE, Instrumentation &amp; Diploma students from all Coimbatore engineering colleges
-        </p>
+          <p className="ep-hero-sub">
+            Top-rated embedded systems project centre for BE ECE, EEE, EIE &amp; Diploma students – Gandhipuram, Coimbatore
+          </p>
+
+          <p className="ep-hero-desc">
+            <strong>CODEX PROJECT</strong> is the <strong>best embedded project centre in Coimbatore</strong>,
+            providing real-time <strong>8051, ARM Cortex, PIC, AVR, Arduino, Raspberry Pi</strong>, and{" "}
+            <strong>FPGA embedded system final year projects</strong> with complete circuit design,
+            Keil/MPLAB programming, Proteus simulation, IEEE documentation, and viva preparation —
+            all at the most <strong>affordable pricing in Coimbatore</strong>.
+          </p>
+
+          <p className="ep-hero-addr">📍 2nd Floor, Balaji Complex, 288, 2nd Street, Opp. Anbu Mess, Cross Cut Road, Gandhipuram, Coimbatore – 641012</p>
+          <p className="ep-hero-serve">Serving BE ECE, EEE, EIE, Instrumentation &amp; Diploma students from all Coimbatore engineering colleges</p>
+
+          <div className="ep-hero-actions">
+            <a href="tel:+918525999002" className="ep-btn ep-btn-primary">📞 Call: 85259 99002</a>
+            <button className="ep-btn ep-btn-outline" onClick={scrollToServices}>Explore Technologies ↓</button>
+          </div>
+        </div>
+      </section>
+
+      <div className="ep-container ep-main-content">
+
+        {/* ══ FILTER KEYWORD CLOUD ══ */}
+        <section className="ep-filter-section ep-reveal" ref={addRef} aria-label="Filter by technology">
+          <div className="ep-filter-header">
+            <h2 className="ep-filter-title">Browse by Technology</h2>
+            {activeFilter && (
+              <button className="ep-filter-clear" onClick={() => setActiveFilter(null)}>
+                ✕ Show All
+              </button>
+            )}
+          </div>
+          <div className="ep-filter-chips">
+            {filterKeywords.map((tag) => (
+              <button
+                key={tag}
+                onClick={() => { setActiveFilter(activeFilter === tag ? null : tag); scrollToServices(); }}
+                className={`ep-filter-chip ${activeFilter === tag ? "ep-chip-active" : ""}`}
+                aria-label={`Filter: ${tag}`}
+                aria-pressed={activeFilter === tag}
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
+          {activeFilter && (
+            <p className="ep-filter-result-note">
+              Showing results for: <strong>{activeFilter}</strong>
+              {" "}— {filteredServices.length} service{filteredServices.length !== 1 ? "s" : ""} found
+            </p>
+          )}
+        </section>
 
         {/* ══ SERVICES ══ */}
-        <section aria-labelledby="services-heading" className="mb-5">
-          <h2 id="services-heading" className="text-center mb-2">
+        <section aria-labelledby="services-heading" className="ep-section ep-reveal" ref={addRef}>
+          <h2 id="services-heading" className="ep-section-title">
             Embedded System Project Services – CODEX PROJECT Coimbatore
           </h2>
-          <p className="text-center text-muted mb-4">
+          <p className="ep-section-sub">
             Complete embedded project support across all microcontroller platforms —
             real hardware, simulation, coding, and IEEE documentation included
           </p>
-          <div className="row g-4">
-            {services.map((s, i) => (
-              <div key={i} className="col-md-6 col-lg-3">
-                <article
-                  className="card h-100 shadow-sm border-0 p-3"
-                  itemScope itemType="https://schema.org/Service"
-                  aria-label={s.seo}
-                >
-                  <div className="fs-2 mb-2" aria-hidden="true">{s.icon}</div>
-                  <h3 className="h6 fw-bold card-title" itemProp="name">{s.title}</h3>
-                  <meta itemProp="serviceType" content={s.seo} />
-                  <meta itemProp="areaServed" content="Coimbatore" />
-                  <p className="card-text text-muted small" itemProp="description">{s.desc}</p>
-                </article>
-              </div>
+          <div className="ep-services-grid">
+            {filteredServices.map((s, i) => (
+              <article
+                key={i}
+                className="ep-service-card"
+                style={{ "--tc": s.accentColor, "--tbg": s.color }}
+                itemScope itemType="https://schema.org/Service"
+                aria-label={s.seo}
+              >
+                <div className="ep-sc-top-bar"></div>
+                <div className="ep-sc-icon">{s.icon}</div>
+                <h3 className="ep-sc-title" itemProp="name">{s.title}</h3>
+                <meta itemProp="serviceType" content={s.seo} />
+                <meta itemProp="areaServed" content="Coimbatore" />
+                <p className="ep-sc-desc" itemProp="description">{s.desc}</p>
+              </article>
             ))}
           </div>
+          {filteredServices.length === 0 && (
+            <div style={{ textAlign: "center", padding: "40px", background: "var(--off-white)", borderRadius: "var(--radius)", border: "1px solid var(--border)" }}>
+              <p style={{ fontFamily: "var(--font-body)", color: "var(--text-muted)", fontSize: "15px" }}>
+                No exact match found.{" "}
+                <button onClick={() => setActiveFilter(null)} style={{ background: "none", border: "none", color: "var(--blue)", fontWeight: 600, cursor: "pointer", textDecoration: "underline", fontSize: "15px", fontFamily: "var(--font-body)" }}>
+                  Show all services
+                </button>
+              </p>
+            </div>
+          )}
         </section>
 
         {/* ══ PLATFORMS & TOOLS ══ */}
-        <section aria-labelledby="platforms-heading" className="mb-5">
-          <h2 id="platforms-heading" className="text-center mb-4">
+        <section aria-labelledby="platforms-heading" className="ep-section ep-reveal" ref={addRef}>
+          <h2 id="platforms-heading" className="ep-section-title">
             Microcontroller Platforms &amp; Tools – CODEX PROJECT Coimbatore
           </h2>
-          <div className="row g-4">
-            <div className="col-md-6">
-              <h3 className="h5 fw-bold mb-3">🔲 Microcontroller Platforms</h3>
-              <div className="d-flex flex-wrap gap-2">
+          <div className="ep-platforms-grid">
+            <div>
+              <h3 className="ep-platform-group-title">🔲 Microcontroller Platforms</h3>
+              <div className="ep-badge-wrap">
                 {microcontrollers.map((m, i) => (
-                  <span
-                    key={i}
-                    className="badge px-3 py-2"
-                    style={{ background: m.color, color: "#1a1a2e", fontSize: "0.82rem", border: "1px solid #ddd" }}
-                  >
+                  <span key={i} className="ep-badge" style={{ background: m.color }}>
                     {m.name}
                   </span>
                 ))}
               </div>
             </div>
-            <div className="col-md-6">
-              <h3 className="h5 fw-bold mb-3">🛠️ IDEs &amp; Design Tools</h3>
-              <div className="d-flex flex-wrap gap-2">
+            <div>
+              <h3 className="ep-platform-group-title">🛠️ IDEs &amp; Design Tools</h3>
+              <div className="ep-badge-wrap">
                 {tools.map((t, i) => (
-                  <span
-                    key={i}
-                    className="badge px-3 py-2"
-                    style={{ background: t.color, color: "#1a1a2e", fontSize: "0.82rem", border: "1px solid #ddd" }}
-                  >
+                  <span key={i} className="ep-badge" style={{ background: t.color }}>
                     {t.name}
                   </span>
                 ))}
@@ -392,80 +527,80 @@ const EmbeddedProjects = () => {
         </section>
 
         {/* ══ PROJECT IDEAS ══ */}
-        <section aria-labelledby="projects-heading" className="mb-5">
-          <h2 id="projects-heading" className="text-center mb-2">
+        <section aria-labelledby="projects-heading" className="ep-section ep-reveal" ref={addRef}>
+          <h2 id="projects-heading" className="ep-section-title">
             Embedded System Final Year Project Ideas – Coimbatore 2024-25
           </h2>
-          <p className="text-center text-muted mb-4">
+          <p className="ep-section-sub">
             Latest IEEE 2024-25 embedded system project topics with real hardware for
             ECE, EEE, EIE &amp; Diploma students in Coimbatore
           </p>
-          <div className="row g-3">
-            {projectIdeas.map((p, i) => (
-              <div key={i} className="col-sm-6 col-lg-3">
-                <div
-                  className="p-3 rounded border h-100"
-                  style={{ background: tagColors[p.tag] || "#f8f9fa" }}
-                  itemScope itemType="https://schema.org/CreativeWork"
-                >
-                  <p className="mb-1 fw-semibold small" itemProp="name">{p.name}</p>
-                  <span
-                    className="badge"
-                    style={{ background: "#1a237e", color: "white", fontSize: "0.68rem" }}
-                    itemProp="genre"
-                  >
-                    {p.tag}
-                  </span>
-                </div>
+          <div className="ep-ideas-grid">
+            {filteredIdeas.map((p, i) => (
+              <div
+                key={i}
+                className="ep-idea-card"
+                style={{ "--ibg": tagColors[p.tag] || "#f8f9fa" }}
+                itemScope itemType="https://schema.org/CreativeWork"
+              >
+                <p className="ep-idea-name" itemProp="name">{p.name}</p>
+                <span className="ep-idea-tag" itemProp="genre">{p.tag}</span>
               </div>
             ))}
           </div>
+          {filteredIdeas.length === 0 && (
+            <div style={{ textAlign: "center", padding: "30px", background: "var(--off-white)", borderRadius: "var(--radius)", border: "1px solid var(--border)" }}>
+              <p style={{ fontFamily: "var(--font-body)", color: "var(--text-muted)", fontSize: "14px" }}>
+                No project ideas match this filter.{" "}
+                <button onClick={() => setActiveFilter(null)} style={{ background: "none", border: "none", color: "var(--blue)", fontWeight: 600, cursor: "pointer", textDecoration: "underline", fontFamily: "var(--font-body)" }}>
+                  Show all ideas
+                </button>
+              </p>
+            </div>
+          )}
         </section>
 
         {/* ══ WHY CHOOSE ══ */}
-        <section aria-labelledby="why-heading" className="mb-5">
-          <h2 id="why-heading" className="text-center mb-2">
+        <section aria-labelledby="why-heading" className="ep-section ep-reveal" ref={addRef}>
+          <h2 id="why-heading" className="ep-section-title">
             Why CODEX PROJECT is the Best Embedded Project Centre in Coimbatore
           </h2>
-          <p className="text-center text-muted mb-4">
+          <p className="ep-section-sub">
             Trusted by 500+ ECE, EEE &amp; EIE students across Coimbatore for real hardware embedded projects
           </p>
-          <div className="row g-4">
+          <div className="ep-why-grid">
             {whyChoose.map((w, i) => (
-              <div key={i} className="col-md-6 col-lg-4">
-                <div className="d-flex gap-3 align-items-start p-3 bg-light rounded h-100">
-                  <span className="fs-3" aria-hidden="true">{w.icon}</span>
-                  <div>
-                    <h3 className="h6 fw-bold mb-1">{w.title}</h3>
-                    <p className="text-muted mb-0 small">{w.desc}</p>
-                  </div>
-                </div>
+              <div key={i} className="ep-why-card" style={{ "--wd": `${i * 0.06}s` }}>
+                <span className="ep-why-icon">{w.icon}</span>
+                <h3 className="ep-why-title">{w.title}</h3>
+                <p className="ep-why-desc">{w.desc}</p>
               </div>
             ))}
           </div>
         </section>
 
         {/* ══ STUDENT REVIEWS ══ */}
-        <section aria-labelledby="reviews-heading" className="mb-5">
-          <h2 id="reviews-heading" className="text-center mb-2">
+        <section aria-labelledby="reviews-heading" className="ep-section ep-reveal" ref={addRef}>
+          <h2 id="reviews-heading" className="ep-section-title">
             Student Reviews – Embedded Project Centre Coimbatore
           </h2>
-          <p className="text-center text-muted mb-4">
+          <p className="ep-section-sub">
             What ECE, EEE &amp; EIE students say about CODEX PROJECT's embedded project support
           </p>
-          <div className="row g-4">
+          <div className="ep-reviews-grid">
             {reviews.map((r, i) => (
-              <div key={i} className="col-md-4">
-                <div
-                  className="card border-0 shadow-sm h-100 p-3"
-                  itemScope itemType="https://schema.org/Review"
-                >
-                  <div itemProp="reviewRating" itemScope itemType="https://schema.org/Rating">
-                    <meta itemProp="ratingValue" content="5" />
-                    <p className="mb-1">{r.stars}</p>
+              <div key={i} className="ep-review-card" itemScope itemType="https://schema.org/Review">
+                <div className="ep-review-stars">
+                  {r.stars}
+                  <meta itemProp="reviewRating" content="5" />
+                </div>
+                <p className="ep-review-text" itemProp="reviewBody">"{r.text}"</p>
+                <div className="ep-review-author">
+                  <div className="ep-review-avatar">{r.name[0]}</div>
+                  <div>
+                    <strong itemProp="author">{r.name}</strong>
+                    <span className="ep-review-branch">{r.branch}</span>
                   </div>
-                  <p className="text-muted fst-italic small" itemProp="reviewBody">"{r.text}"</p>
-                  <p className="fw-bold mb-0 small" itemProp="author">– {r.name}</p>
                 </div>
               </div>
             ))}
@@ -473,24 +608,38 @@ const EmbeddedProjects = () => {
         </section>
 
         {/* ══ FAQ ══ */}
-        <section aria-labelledby="faq-heading" className="mb-5">
-          <h2 id="faq-heading" className="text-center mb-4">
+        <section aria-labelledby="faq-heading" className="ep-section ep-reveal" ref={addRef}>
+          <h2 id="faq-heading" className="ep-section-title">
             Frequently Asked Questions – Embedded Project Centre Coimbatore
           </h2>
-          {faqSchema.mainEntity.map((item, i) => (
-            <div key={i} className="mb-3 p-3 bg-light rounded">
-              <h3 className="h6 fw-bold mb-1">{item.name}</h3>
-              <p className="text-muted mb-0 small">{item.acceptedAnswer.text}</p>
-            </div>
-          ))}
+          <div className="ep-faq-list">
+            {faqSchema.mainEntity.map((item, i) => (
+              <div
+                key={i}
+                className={`ep-faq-item ${openFaq === i ? "ep-faq-open" : ""}`}
+                onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                style={{ "--fd": `${i * 0.06}s` }}
+              >
+                <div className="ep-faq-q">
+                  <h3 className="ep-faq-question">{item.name}</h3>
+                  <span className="ep-faq-icon" aria-hidden="true">
+                    {openFaq === i ? "−" : "+"}
+                  </span>
+                </div>
+                <div className="ep-faq-a">
+                  <p>{item.acceptedAnswer.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </section>
 
         {/* ══ SEO CONTENT BLOCK ══ */}
-        <section aria-labelledby="seo-heading" className="mb-5 p-4 border rounded">
-          <h2 id="seo-heading" className="h5 fw-bold mb-3">
+        <section aria-labelledby="seo-heading" className="ep-section ep-seo-block ep-reveal" ref={addRef}>
+          <h2 id="seo-heading" className="ep-seo-title">
             Embedded System Project Centre in Coimbatore – Complete Guide 2024-25
           </h2>
-          <p className="text-muted small">
+          <p>
             Searching for the <strong>best embedded project centre in Coimbatore</strong>? CODEX
             PROJECT, located at <strong>2nd Floor, Balaji Complex, Gandhipuram, Coimbatore</strong>,
             is your complete embedded systems final year project solution. We specialize in{" "}
@@ -499,7 +648,7 @@ const EmbeddedProjects = () => {
             <strong>Arduino projects</strong>, <strong>Raspberry Pi projects</strong>, and{" "}
             <strong>FPGA/VLSI design projects</strong> — all at affordable pricing in Coimbatore.
           </p>
-          <p className="text-muted small">
+          <p>
             Every embedded project at CODEX PROJECT includes real hardware circuit assembly,
             Proteus simulation, Keil or MPLAB programming, complete sensor integration, IEEE
             2024-25 format project report, circuit diagram, code documentation, and dedicated
@@ -509,7 +658,7 @@ const EmbeddedProjects = () => {
             from all engineering colleges across Coimbatore — including those near Peelamedu,
             Saravanampatti, RS Puram, Singanallur, and Ukkadam.
           </p>
-          <p className="text-muted small mb-0">
+          <p>
             Visit CODEX PROJECT at <strong>Balaji Complex, Cross Cut Road, Gandhipuram,
             Coimbatore</strong> today for a free consultation on your embedded system final year
             project topic and pricing. We are the <strong>most trusted and affordable embedded
@@ -518,93 +667,48 @@ const EmbeddedProjects = () => {
           </p>
         </section>
 
-        {/* ══ KEYWORD TAG CLOUD ══ */}
-        <section aria-label="Related embedded project searches Coimbatore" className="mb-5">
-          <div className="d-flex flex-wrap gap-2 justify-content-center">
-            {[
-              "Embedded Projects Coimbatore",
-              "8051 Projects Coimbatore",
-              "ARM Projects Coimbatore",
-              "PIC Projects Coimbatore",
-              "AVR Projects Coimbatore",
-              "Arduino Projects Coimbatore",
-              "Raspberry Pi Projects Coimbatore",
-              "FPGA Projects Coimbatore",
-              "VLSI Projects Coimbatore",
-              "Embedded Projects ECE Coimbatore",
-              "IEEE Embedded Projects 2024-25",
-              "Proteus Simulation Projects",
-              "Keil Programming Projects",
-              "Embedded Centre Gandhipuram",
-              "Affordable Embedded Projects Coimbatore",
-            ].map((tag) => (
-              <a
-                key={tag}
-                href={`/services/embedded-projects/${tag.toLowerCase().replace(/ /g, "-")}`}
-                className="badge px-3 py-2 text-decoration-none"
-                style={{ background: "#1a237e", color: "white", fontSize: "0.78rem" }}
-                aria-label={tag}
-              >
-                {tag}
-              </a>
-            ))}
-          </div>
-        </section>
-
         {/* ══ LOCATION ══ */}
-        <section aria-labelledby="location-heading" className="mb-5">
-          <h2 id="location-heading" className="text-center mb-3">
+        <section aria-labelledby="location-heading" className="ep-section ep-reveal" ref={addRef}>
+          <h2 id="location-heading" className="ep-section-title ep-center">
             Visit CODEX PROJECT – Embedded Project Centre, Gandhipuram, Coimbatore
           </h2>
-          <p className="text-center text-muted mb-3">
+          <p className="ep-location-addr">
             📍 <strong>2nd Floor, Balaji Complex, 288, 2nd Street, Opp. Anbu Mess,
             Cross Cut Road, Gandhipuram, Coimbatore – 641012</strong>
           </p>
-          <iframe
-            src="https://maps.app.goo.gl/edkzjFnQUKcKDnzP6"
-            width="100%"
-            height="350"
-            style={{ border: 0, borderRadius: "10px" }}
-            loading="lazy"
-            title="CODEX PROJECT Embedded Project Centre – 2nd Floor Balaji Complex Gandhipuram Coimbatore"
-            aria-label="Google Maps showing CODEX PROJECT embedded centre at Balaji Complex Gandhipuram Coimbatore"
-          />
+          <div className="ep-map-wrap">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.2650880412302!2d76.9686347!3d11.018726700000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa6d56e5e67bd6d39%3A0xa04afb183b4afa48!2sCODEX%20PROJECT%20%E2%80%93%20Final%20Year%20Project%20Center!5e0!3m2!1sen!2sin!4v1775786518347!5m2!1sen!2sin"
+              width="100%"
+              height="380"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="CODEX PROJECT Embedded Project Centre – 2nd Floor Balaji Complex Gandhipuram Coimbatore"
+              aria-label="Google Maps showing CODEX PROJECT embedded centre at Balaji Complex Gandhipuram Coimbatore"
+            />
+          </div>
         </section>
 
         {/* ══ CTA ══ */}
-        <section
-          className="text-center p-5 rounded"
-          style={{ background: "#1a237e" }}
-          aria-labelledby="cta-heading"
-        >
-          <h2 id="cta-heading" className="text-white fw-bold mb-2">
-            Start Your Embedded Final Year Project – CODEX PROJECT Coimbatore
-          </h2>
-          <p className="text-white-50 mb-1">
-            Join 500+ ECE, EEE &amp; EIE students who completed embedded projects with us.
-          </p>
-          <p className="text-white-50 small mb-1">
-            📍 2nd Floor, Balaji Complex, Gandhipuram, Coimbatore – 641012
-          </p>
-          <p className="text-white-50 small mb-4">
-            Real Hardware · Keil &amp; Proteus · IEEE Documentation · Viva Support · Affordable Pricing
-          </p>
-          <div className="d-flex gap-3 justify-content-center flex-wrap">
-            <button
-              className="btn btn-warning btn-lg fw-bold"
-              aria-label="Contact CODEX PROJECT embedded project centre Gandhipuram Coimbatore"
-            >
-              📞 Contact Now – Free Consultation
-            </button>
-            <a
-              href="https://g.page/r/CUj6SjsY-0qgEAE/review"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-outline-light btn-lg"
-              aria-label="Review CODEX PROJECT on Google"
-            >
-              ⭐ Review on Google
-            </a>
+        <section className="ep-cta ep-reveal" ref={addRef} aria-labelledby="cta-heading">
+          <div className="ep-cta-bg"></div>
+          <div className="ep-cta-inner">
+            <h2 id="cta-heading" className="ep-cta-title">
+              Start Your Embedded Final Year Project Today – CODEX PROJECT Coimbatore
+            </h2>
+            <p className="ep-cta-sub">Join 500+ ECE, EEE &amp; EIE students who completed embedded projects with us.</p>
+            <p className="ep-cta-addr">📍 2nd Floor, Balaji Complex, Gandhipuram, Coimbatore – 641012</p>
+            <p className="ep-cta-tags">Real Hardware · Keil &amp; Proteus · IEEE Documentation · Viva Support · Affordable Pricing</p>
+            <div className="ep-cta-actions">
+              <a href="tel:+918525999002" className="ep-cta-btn ep-cta-primary" aria-label="Contact CODEX PROJECT embedded project centre">
+                📞 Contact Now – Free Consultation
+              </a>
+              <a href="https://g.page/r/CUj6SjsY-0qgEAE/review" target="_blank" rel="noopener noreferrer" className="ep-cta-btn ep-cta-outline" aria-label="Review CODEX PROJECT on Google">
+                ⭐ Review on Google
+              </a>
+            </div>
           </div>
         </section>
 

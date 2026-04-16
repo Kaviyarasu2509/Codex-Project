@@ -7,7 +7,6 @@ const footerSchema = {
   "@type": "LocalBusiness",
   "name": "CODEX PROJECT – Final Year Project Center",
   "url": "https://www.codexproject.in",
-  "logo": "https://www.codexproject.in/logo.png",
   "email": "codexproject2026@gmail.com",
   "telephone": "+918525999002",
   "address": {
@@ -40,36 +39,36 @@ const footerLinks = [
   {
     title: "Software Projects",
     links: [
-      { label: "Python & AI Projects", href: "/services/software-projects" },
-      { label: "Machine Learning Projects", href: "/services/software-projects" },
-      { label: "MERN Stack Projects", href: "/services/software-projects" },
-      { label: "Java & .NET Projects", href: "/services/software-projects" },
-      { label: "Flutter & Android Apps", href: "/services/software-projects" },
+      { label: "Python & AI Projects", href: "/software-projects" },
+      { label: "Machine Learning Projects", href: "/software-projects" },
+      { label: "MERN Stack Projects", href: "/software-projects" },
+      { label: "Java & .NET Projects", href: "/software-projects" },
+      { label: "Flutter & Android Apps", href: "/software-projects" },
     ],
   },
   {
     title: "Hardware Projects",
     links: [
-      { label: "IoT Projects", href: "/services/iot-projects" },
-      { label: "Embedded Projects", href: "/services/embedded-projects" },
-      { label: "Arduino Projects", href: "/services/iot-projects" },
-      { label: "Raspberry Pi Projects", href: "/services/iot-projects" },
-      { label: "Mechanical Projects", href: "/services/mechanical-projects" },
+      { label: "IoT Projects", href: "/iot-projects" },
+      { label: "Embedded Projects", href: "/embedded-projects" },
+      { label: "Arduino Projects", href: "/iot-projects" },
+      { label: "Raspberry Pi Projects", href: "/iot-projects" },
+      { label: "Mechanical Projects", href: "/mechanical-projects" },
     ],
   },
 ];
 
 const techKeywords = [
-  { label: "AI Projects Coimbatore",         href: "/services/software-projects" },
-  { label: "IoT Projects Coimbatore",         href: "/services/iot-projects" },
-  { label: "Embedded Projects Coimbatore",    href: "/services/embedded-projects" },
-  { label: "Mechanical Projects Coimbatore",  href: "/services/mechanical-projects" },
+  { label: "AI Projects Coimbatore",         href: "/software-projects" },
+  { label: "IoT Projects Coimbatore",         href: "/iot-projects" },
+  { label: "Embedded Projects Coimbatore",    href: "/embedded-projects" },
+  { label: "Mechanical Projects Coimbatore",  href: "/mechanical-projects" },
   { label: "IEEE Projects 2024-25",           href: "/projects" },
-  { label: "Internship Coimbatore",           href: "/internship" },
-  { label: "Python Projects Coimbatore",      href: "/services/software-projects" },
-  { label: "MERN Stack Projects",             href: "/services/software-projects" },
-  { label: "Flutter Projects Coimbatore",     href: "/services/software-projects" },
-  { label: "Arduino Projects Coimbatore",     href: "/services/iot-projects" },
+  { label: "Internship Coimbatore",           href: "/blog" },
+  { label: "Python Projects Coimbatore",      href: "/software-projects" },
+  { label: "MERN Stack Projects",             href: "/software-projects" },
+  { label: "Flutter Projects Coimbatore",     href: "/software-projects" },
+  { label: "Arduino Projects Coimbatore",     href: "/iot-projects" },
   { label: "Final Year Projects 2025",        href: "/projects" },
   { label: "Project Center Gandhipuram",      href: "/contact" },
 ];
@@ -115,12 +114,13 @@ const Footer = () => {
             <div className="cpf-brand-col">
               {/* Logo */}
               <div className="cpf-logo-wrap">
-                <img
+                {/* <img
                   src="/logo.png"
                   alt="CODEX PROJECT – Best Final Year Project Center in Coimbatore"
                   className="cpf-logo"
                   loading="lazy"
-                />
+                /> */}
+                <h5>CODEX PROJECT – Best Final Year Project Center in Coimbatore</h5>
               </div>
 
               <p className="cpf-brand-desc">

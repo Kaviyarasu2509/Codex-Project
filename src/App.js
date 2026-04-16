@@ -13,6 +13,7 @@ import SoftwareProjects from "./pages/SoftwareProjects";
 import Projects from "./pages/Projects";
 import Blog from "./pages/Blog";
 import WhatAppIcon from "./component/WhatAppIcon";
+import ChatBot from "./component/ChatBot";
 import ScrollToTop from "./ScrollToTop";
  
 
@@ -23,6 +24,7 @@ function App() {
       <Navbar />
           <WhatAppIcon />
           <ScrollToTop />
+           <ChatBot /> 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
