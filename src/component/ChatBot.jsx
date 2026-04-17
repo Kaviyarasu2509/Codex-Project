@@ -72,7 +72,7 @@ function useTyping(text, speed = 18, active = false) {
       if (idx.current >= text.length) { clearInterval(interval); setDone(true); }
     }, speed);
     return () => clearInterval(interval);
-  }, [text, active]);
+  }, [text, active, speed]);
 
   return { displayed, done };
 }
@@ -81,7 +81,9 @@ function useTyping(text, speed = 18, active = false) {
 function BotMessage({ text, isNew, onDone, options, onOption }) {
   const { displayed, done } = useTyping(text, 12, isNew);
 
-  useEffect(() => { if (done && onDone) onDone(); }, [done]);
+ useEffect(() => { 
+  if (done && onDone) onDone(); 
+}, [done, onDone]);
 
   const formatted = displayed.split("\n").map((line, i) => {
     const bold = line.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
@@ -138,7 +140,7 @@ const ChatBot = () => {
   const [thinking, setThinking] = useState(false);
   const [showInitOptions, setShowInitOptions] = useState(false);
   const [inputVal, setInputVal] = useState("");
-  const [msgDoneIdx, setMsgDoneIdx] = useState(-1);
+ 
   const [notif, setNotif] = useState(true);
   const bottomRef = useRef(null);
   const inputRef = useRef(null);
@@ -149,7 +151,7 @@ const ChatBot = () => {
       setMessages([{ type: "bot", text: WELCOME_MSG, id: 0, isNew: true }]);
     }
     if (open) setTimeout(() => inputRef.current?.focus(), 300);
-  }, [open]);
+  },  [open, messages.length]);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -257,7 +259,7 @@ const ChatBot = () => {
                 onOption={handleOptionClick}
                 onDone={() => {
                   if (i === 0) setShowInitOptions(true);
-                  setMsgDoneIdx(i);
+                  
                 }}
               />
             );

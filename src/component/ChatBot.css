@@ -29,7 +29,7 @@
 /* ── Launcher ─────────────────────────────────────────────────── */
 .cb-launcher-wrap {
   position: fixed;
-  bottom: 28px;
+  bottom: 120px;
   right: 28px;
   z-index: 9999;
   display: flex;
@@ -70,7 +70,7 @@
   display: flex;
   align-items: center;
   gap: 9px;
-  background: linear-gradient(135deg, var(--cb-blue) 0%, var(--cb-navy) 100%);
+  background: linear-gradient(135deg, red 0%, var(--cb-navy) 100%);
   color: #fff;
   border: none;
   border-radius: 50px;
