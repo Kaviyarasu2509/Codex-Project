@@ -84,15 +84,15 @@
   white-space: nowrap;
 }
 .cb-launcher:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 14px 36px rgba(21,101,192,0.5); }
-.cb-launcher-open { padding: 14px; border-radius: 50%; }
-.cb-launch-icon { font-size: 18px; transition: transform 0.28s; }
+.cb-launcher-open { padding: 20px; border-radius: 50%; }
+.cb-launch-icon { font-size: 15px; transition: transform 0.28s; }
 .cb-launcher-open .cb-launch-icon { transform: rotate(0deg); }
 .cb-launch-label { letter-spacing: 0.2px; }
 
 /* ── Chat Window ─────────────────────────────────────────────── */
 .cb-window {
   position: fixed;
-  bottom: 96px;
+  bottom: 186px;
   right: 28px;
   z-index: 9998;
   width: var(--cb-w);
@@ -373,9 +373,12 @@
   :root { --cb-w: calc(100vw - 20px); }
   .cb-window {
     right: 10px;
-    bottom: 84px;
-    max-height: 72vh;
+    bottom: 140px;
+    max-height: 65vh;
   }
-  .cb-launcher-wrap { right: 14px; bottom: 18px; }
+
+  .cb-launcher-open { padding: 13px; border-radius: 50%; }
+.cb-launch-icon { font-size: 13px; transition: transform 0.28s; }
+  .cb-launcher-wrap { right: 10px; bottom: 80px; }
   .cb-options-grid { grid-template-columns: 1fr; }
 }
