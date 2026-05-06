@@ -26,12 +26,14 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* ── FIX: single scroll — contact-container must NOT be a scroll container ── */
 .contact-container {
   font-family: var(--fb);
   background: var(--cp-dark);
   color: var(--cp-txt);
-  overflow-x: hidden;
+  overflow-x: clip;          /* clip instead of hidden — doesn't create scroll context */
   line-height: 1.6;
+  /* no overflow-y, no height, no fixed size — let it grow naturally */
 }
 
 /* ── Bootstrap-like grid (scoped) ───────────────────────────── */

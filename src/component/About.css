@@ -36,7 +36,7 @@
   font-family: var(--fb);
   background: var(--ab-dark);
   color: var(--ab-txt);
-  overflow-x: hidden;
+  overflow-x: clip;          /* FIX: clip instead of hidden — no scroll context created */
   line-height: 1.6;
 }
 

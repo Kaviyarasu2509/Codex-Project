@@ -146,12 +146,11 @@ const ChatBot = () => {
   const inputRef = useRef(null);
 
   // Init welcome message on first open
-  useEffect(() => {
-    if (open && messages.length === 0) {
-      setMessages([{ type: "bot", text: WELCOME_MSG, id: 0, isNew: true }]);
-    }
-    if (open) setTimeout(() => inputRef.current?.focus(), 300);
-  },  [open, messages.length]);
+ useEffect(() => {
+  if (open && messages.length === 0) {
+    setMessages([{ type: "bot", text: WELCOME_MSG, id: 0, isNew: true }]);
+  }
+}, [open, messages.length]);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
