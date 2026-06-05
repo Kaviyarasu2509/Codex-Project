@@ -8,7 +8,7 @@ const aboutStructuredData = {
   "name": "About CODEX PROJECT – Best Final Year Project Center in Coimbatore",
   "url": "https://www.codexproject.in/about",
   "description":
-    "CODEX PROJECT is the best final year project center in Coimbatore offering IEEE projects, internship training, and placement support for BE, ME, BSc, MCA, and Diploma engineering students.",
+    "CODEX PROJECT is the best final year project center in Coimbatore offering IEEE 2025-26 projects, internship training, and placement support for BE, ME, BSc, MCA, and Diploma engineering students.",
   "mainEntity": {
     "@type": "EducationalOrganization",
     "name": "CODEX PROJECT",
@@ -43,7 +43,7 @@ const domains = [
   {
     icon: "💻",
     title: "Software & AI Projects",
-    desc: "Python, Django, MERN Stack, Java, .NET, Android — full-stack web and mobile final year projects with real-time implementation and IEEE 2024-25 base papers for BE, MCA, and IT students.",
+    desc: "Python, Django, MERN Stack, Java, .NET, Android — full-stack web and mobile final year projects with real-time implementation and IEEE 2025-26 base papers for BE, MCA, and IT students.",
     techs: ["Python", "Django", "React", "Node.js", "Java", ".NET", "Android"],
     color: "#3B82F6",
   },
@@ -57,14 +57,14 @@ const domains = [
   {
     icon: "🌐",
     title: "IoT Projects",
-    desc: "Internet of Things final year projects with AWS IoT, Firebase, MQTT cloud integration — smart agriculture, home automation, health monitoring, and industrial IoT.",
+    desc: "Internet of Things final year projects with AWS IoT, Firebase, MQTT cloud integration — smart agriculture, home automation, health monitoring, and industrial IoT for ECE and EIE students.",
     techs: ["NodeMCU", "MQTT", "AWS IoT", "Firebase", "LoRaWAN", "BLE"],
     color: "#06B6D4",
   },
   {
     icon: "⚙️",
     title: "Mechanical Projects",
-    desc: "CAD design, fabrication, robotics, ANSYS simulation, and automation final year projects — real working models with complete documentation for BE and ME Mechanical students.",
+    desc: "CAD design, fabrication, robotics, ANSYS simulation, and automation final year projects — real working models with complete documentation for BE and ME Mechanical students in Coimbatore.",
     techs: ["SolidWorks", "ANSYS", "CAD/CAM", "Robotics", "AutoCAD"],
     color: "#10B981",
   },
@@ -73,23 +73,23 @@ const domains = [
 const features = [
   {
     icon: "🎯",
-    title: "IEEE 2024-25 Certified",
-    desc: "Every project is aligned with the latest IEEE base papers — updated annually for current industry relevance.",
+    title: "IEEE 2025-26 Certified",
+    desc: "Every project is aligned with the latest IEEE 2025-26 base papers — updated annually for current industry relevance and college requirements.",
   },
   {
     icon: "📋",
     title: "Complete Documentation",
-    desc: "Project report, PPT, synopsis, IEEE paper format — 100% documentation support for all college submissions.",
+    desc: "Project report, PPT, synopsis, IEEE paper format — 100% documentation support for all college submissions and reviews.",
   },
   {
     icon: "🎤",
     title: "Viva Preparation",
-    desc: "Mock viva sessions, review PPT coaching, and technical guidance for all college presentations and reviews.",
+    desc: "Mock viva sessions, review PPT coaching, and technical guidance for all college presentations and final year reviews.",
   },
   {
     icon: "🏢",
     title: "Internship Certificate",
-    desc: "Verified internship certificate with live project experience — valuable for placement and resume.",
+    desc: "Verified internship certificate with live project experience — valuable for placement, resume, and career opportunities.",
   },
   {
     icon: "💰",
@@ -189,18 +189,31 @@ const About = () => {
             <p className="ab-hero-sub">
               The <strong>best final year project center in Coimbatore</strong> — guiding{" "}
               <strong>BE, ME, BSc, MCA, and Diploma</strong> engineering students through{" "}
-              <strong>IEEE-certified projects</strong> in Software, AI, IoT, Embedded Systems,
-              and Mechanical Engineering.
+              <strong>IEEE 2025-26 certified projects</strong> in Software, AI, IoT, Embedded
+              Systems, and Mechanical Engineering.
             </p>
 
             <div className="ab-hero-pills">
-              {["IEEE 2024-25 Projects", "AI & ML", "IoT & Embedded", "Mechanical", "Internship Certificate", "Viva Support"].map((p) => (
+              {[
+                "IEEE 2025-26 Projects",
+                "AI & ML",
+                "IoT & Embedded",
+                "Mechanical",
+                "Internship Certificate",
+                "Viva Support",
+                "Source Code Included",
+                "Ready-Made Projects",
+              ].map((p) => (
                 <span key={p} className="ab-hero-pill">✔ {p}</span>
               ))}
             </div>
 
             <div className="ab-hero-btns">
-              <a href="tel:+918525999002" className="ab-btn ab-btn-pri" aria-label="Call CODEX PROJECT">
+              <a
+                href="tel:+918525999002"
+                className="ab-btn ab-btn-pri"
+                aria-label="Call CODEX PROJECT Coimbatore – Free Consultation"
+              >
                 📞 Free Consultation – Call Now
               </a>
               <a href="/contact" className="ab-btn ab-btn-out">
@@ -253,21 +266,23 @@ const About = () => {
                 programmes across all major engineering disciplines — from{" "}
                 <strong>Software, AI/ML, and MERN Stack projects</strong> to{" "}
                 <strong>Arduino, Raspberry Pi, IoT, and Mechanical fabrication projects</strong>.
+                We also provide <strong>ready-made projects with source code</strong> for students
+                who need quick, reliable solutions.
               </p>
               <p>
                 Every project at CODEX PROJECT comes with the{" "}
-                <strong>IEEE 2024-25 base paper</strong>, complete source code, project report,
-                PPT, and dedicated viva preparation support. We bridge the gap between academics
-                and real-world implementation — giving students the confidence to present and
-                defend their work at any college review.
+                <strong>IEEE 2025-26 base paper</strong>, complete source code, project report,
+                PPT presentation, and dedicated <strong>viva preparation support</strong>. We bridge
+                the gap between academics and real-world implementation — giving students the
+                confidence to present and defend their work at any college review.
               </p>
 
               <div className="ab-highlights">
                 {[
-                  "BE / ME / MCA / BSc / Diploma",
-                  "IEEE 2024-25 Certified Projects",
-                  "Real Working Models & Demos",
-                  "Most Affordable Pricing in CBE",
+                  "BE / ME / MCA / BSc / Diploma — All Branches",
+                  "IEEE 2025-26 Certified Projects",
+                  "Real Working Models & Live Demos",
+                  "Most Affordable Pricing in Coimbatore",
                 ].map((h) => (
                   <div key={h} className="ab-hi">
                     <span className="ab-hi-dot" />
@@ -312,7 +327,7 @@ const About = () => {
               Final Year Project Domains at CODEX PROJECT
             </h2>
             <p className="ab-sec-sub">
-              IEEE 2024-25 certified project guidance across all major engineering disciplines —
+              IEEE 2025-26 certified project guidance across all major engineering disciplines —
               complete with documentation, source code, and viva support
             </p>
           </div>
@@ -351,17 +366,13 @@ const About = () => {
               Why 1000+ Students Choose CODEX PROJECT in Coimbatore
             </h2>
             <p className="ab-sec-sub">
-              From IEEE base papers to viva coaching — we provide everything a
+              From IEEE 2025-26 base papers to viva coaching — we provide everything a
               Coimbatore engineering student needs to excel in their final year project
             </p>
           </div>
           <div className="ab-features-grid">
             {features.map((f, i) => (
-              <div
-                key={i}
-                className="ab-feat-card"
-                style={{ animationDelay: `${i * 0.1}s` }}
-              >
+              <div key={i} className="ab-feat-card" style={{ animationDelay: `${i * 0.1}s` }}>
                 <span className="ab-feat-icon">{f.icon}</span>
                 <h3 className="ab-feat-title">{f.title}</h3>
                 <p className="ab-feat-desc">{f.desc}</p>
@@ -383,21 +394,24 @@ const About = () => {
               <strong>final year project center in Coimbatore</strong>, located at{" "}
               <strong>2nd Floor, Balaji Complex, Gandhipuram, Coimbatore – 641012</strong>.
               We are a full-service project center covering{" "}
-              <strong>Software projects</strong> (Python, Django, MERN, Java, .NET, Android),{" "}
+              <strong>Software projects</strong> (Python, Django, MERN, Java, .NET, PHP, Android),{" "}
               <strong>AI &amp; Machine Learning projects</strong>,{" "}
               <strong>IoT projects</strong> (Arduino, NodeMCU, Raspberry Pi),{" "}
               <strong>Embedded Systems projects</strong> (8051, ARM, PIC, ESP32), and{" "}
               <strong>Mechanical Engineering projects</strong> (CAD, ANSYS, SolidWorks,
-              Fabrication, Robotics).
+              Fabrication, Robotics). We also provide{" "}
+              <strong>ready-made final year projects with source code</strong> for all domains
+              in Coimbatore.
             </p>
             <p>
               Every project at Codex Project comes with the{" "}
-              <strong>IEEE 2024-25 base paper</strong>, complete source code, project report,
+              <strong>IEEE 2025-26 base paper</strong>, complete source code, project report,
               PPT presentation, and dedicated <strong>viva preparation support</strong>. We also
               offer <strong>internship training with verified certificate</strong> for students
               looking to enhance their placement opportunities. Our center is easily accessible
-              from all major engineering college zones in Coimbatore — Peelamedu, Gandhipuram,
-              Saravanampatti, RS Puram, Singanallur, Ukkadam, and Vadavalli.
+              from all major engineering college zones in Coimbatore —{" "}
+              <strong>Peelamedu, Gandhipuram, Saravanampatti, RS Puram, Singanallur, Ukkadam,
+              Saibaba Colony, and Vadavalli</strong>.
             </p>
             <p>
               For <strong>Software and AI projects</strong>, call{" "}
@@ -405,8 +419,8 @@ const About = () => {
               <strong>Embedded and IoT projects</strong>, call{" "}
               <a href="tel:+918525999032">85259 99032</a>. For general enquiry and{" "}
               <strong>Mechanical projects</strong>, call{" "}
-              <a href="tel:+918525999002">85259 99002</a> or visit us at Gandhipuram,
-              Coimbatore.
+              <a href="tel:+918525999002">85259 99002</a> or visit us at{" "}
+              <strong>Balaji Complex, Cross Cut Road, Gandhipuram, Coimbatore – 641012</strong>.
             </p>
           </div>
         </div>
@@ -455,7 +469,7 @@ const About = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="ab-map-btn ab-map-btn-wa"
-              aria-label="WhatsApp for directions"
+              aria-label="WhatsApp CODEX PROJECT for directions"
             >
               💬 WhatsApp for Directions
             </a>
@@ -475,7 +489,7 @@ const About = () => {
             <p className="ab-cta-sub">
               Join <strong>1000+ engineering students</strong> who trusted CODEX PROJECT —
               the <strong>best final year project center in Coimbatore</strong> — for IEEE
-              projects, internship training, and complete project support.
+              2025-26 projects, internship training, and complete project support.
             </p>
             <p className="ab-cta-addr">
               📍 2nd Floor, Balaji Complex, Gandhipuram, Coimbatore – 641012
