@@ -1,52 +1,49 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
+import logo from "../assets/images/logo.png";
 
 const serviceLinks = [
-  { to: "/software-projects",   icon: "fa-code",          label: "Software & AI Projects",  sub: "Python, MERN, Java, Flutter" },
-  { to: "/iot-projects",        icon: "fa-microchip",     label: "IoT Projects",             sub: "Arduino, NodeMCU, ESP32" },
+  { to: "/software-projects",   icon: "fa-code",            label: "Software & AI Projects",  sub: "Python, MERN, Java, Flutter" },
+  { to: "/iot-projects",        icon: "fa-microchip",       label: "IoT Projects",             sub: "Arduino, NodeMCU, ESP32" },
   { to: "/embedded-projects",   icon: "fa-diagram-project", label: "Embedded Projects",        sub: "8051, ARM, PIC, FPGA" },
-  { to: "/mechanical-projects", icon: "fa-gears",         label: "Mechanical Projects",      sub: "CAD, Fabrication, Robotics" },
+  { to: "/mechanical-projects", icon: "fa-gears",           label: "Mechanical Projects",      sub: "CAD, Fabrication, Robotics" },
 ];
 
 const navLinks = [
-  { to: "/",        icon: "fa-house",          label: "Home" },
-  { to: "/about",   icon: "fa-building",       label: "About" },
-  { to: "/projects",icon: "fa-folder-open",    label: "Projects" },
-  { to: "/blog",    icon: "fa-newspaper",      label: "Blog" },
-  { to: "/contact", icon: "fa-phone",          label: "Contact" },
+  { to: "/",         icon: "fa-house",       label: "Home" },
+  { to: "/about",    icon: "fa-building",    label: "About" },
+  { to: "/projects", icon: "fa-folder-open", label: "Projects" },
+  { to: "/blog",     icon: "fa-newspaper",   label: "Blog" },
+  { to: "/contact",  icon: "fa-phone",       label: "Contact" },
 ];
 
 const Navbar = () => {
   const location = useLocation();
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [serviceOpen, setServiceOpen] = useState(false);
+  const [mobileOpen,        setMobileOpen]        = useState(false);
+  const [serviceOpen,       setServiceOpen]       = useState(false);
   const [mobileServiceOpen, setMobileServiceOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled,          setScrolled]          = useState(false);
   const dropRef = useRef(null);
 
-  const isActive = (path) => location.pathname === path;
+  const isActive        = (path) => location.pathname === path;
   const isServiceActive = serviceLinks.some((s) => location.pathname === s.to);
 
-  // Scroll effect
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close dropdown on outside click
   useEffect(() => {
     const handler = (e) => {
-      if (dropRef.current && !dropRef.current.contains(e.target)) {
+      if (dropRef.current && !dropRef.current.contains(e.target))
         setServiceOpen(false);
-      }
     };
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setMobileOpen(false);
     setMobileServiceOpen(false);
@@ -55,24 +52,31 @@ const Navbar = () => {
 
   return (
     <>
-      {/* ══ STICKY WRAPPER — topbar + nav stick together as one unit ══ */}
+      {/* ══ STICKY HEADER WRAPPER ══════════════════════════════ */}
       <div className="nb-header-wrap">
 
-        {/* ══ TOP BAR ══════════════════════════════════════════════ */}
+        {/* ══ TOP BAR — White bg + Navy text ════════════════════ */}
         <div className="nb-topbar">
           <div className="nb-topbar-inner">
+
+            {/* Brand — logo + name */}
             <div className="nb-topbar-brand">
-              <i className="fa-solid fa-code-branch"></i>
-              CODEX PROJECT
+              <img src={logo} alt="CODEX PROJECT logo" className="nb-topbar-logo" />
+              <div className="nb-topbar-brand-text">
+                <span className="nb-brand-codex">CODEX</span> <span className="nb-brand-project">PROJECT</span>
+                
+              </div>
             </div>
+
+            {/* Right side — phones + location */}
             <div className="nb-topbar-right">
               <a href="tel:+918525999002" className="nb-topbar-item" aria-label="Call 85259 99002">
                 <i className="fa-solid fa-phone-volume"></i>
                 <span>85259 99002</span>
               </a>
               <span className="nb-topbar-div"></span>
-              <a href="tel:+918525999022" className="nb-topbar-item" aria-label="Software AI projects 85259 99022">
-                 <i className="fa-solid fa-phone-volume"></i>
+              <a href="tel:+918525999022" className="nb-topbar-item" aria-label="Software AI 85259 99022">
+                <i className="fa-solid fa-laptop-code"></i>
                 <span>85259 99022</span>
               </a>
               <span className="nb-topbar-div nb-hide-sm"></span>
@@ -81,16 +85,17 @@ const Navbar = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="nb-topbar-item nb-hide-sm"
-                aria-label="CODEX PROJECT location Gandhipuram Coimbatore"
+                aria-label="CODEX PROJECT Gandhipuram Coimbatore"
               >
                 <i className="fa-solid fa-location-dot"></i>
                 <span>Gandhipuram, Coimbatore</span>
               </a>
             </div>
+
           </div>
         </div>
 
-        {/* ══ MAIN NAVBAR ══════════════════════════════════════════ */}
+        {/* ══ MAIN NAVBAR — Navy bg + White links ═══════════════ */}
         <nav
           className={`nb-nav ${scrolled ? "nb-nav-scrolled" : ""}`}
           role="navigation"
@@ -98,18 +103,16 @@ const Navbar = () => {
         >
           <div className="nb-nav-inner">
 
-            {/* ── Logo ── */}
+            {/* ── Logo (mobile / small screens) ── */}
             <Link to="/" className="nb-logo" aria-label="CODEX PROJECT Home">
-              <div className="nb-logo-icon">
-                <i className="fa-solid fa-code"></i>
-              </div>
+              <img src={logo} alt="CODEX PROJECT" className="nb-logo-img" />
               <div className="nb-logo-text">
                 <span className="nb-logo-name">CODEX</span>
                 <span className="nb-logo-sub">PROJECT</span>
               </div>
             </Link>
 
-            {/* ── Desktop Nav ── */}
+            {/* ── Desktop Nav Links ── */}
             <ul className="nb-links">
 
               {navLinks.slice(0, 2).map((lk) => (
@@ -129,7 +132,9 @@ const Navbar = () => {
               {/* ── Services Dropdown ── */}
               <li className="nb-dropdown-wrap" ref={dropRef}>
                 <button
-                  className={`nb-link nb-link-btn ${isServiceActive ? "nb-link-active" : ""} ${serviceOpen ? "nb-link-open" : ""}`}
+                  className={`nb-link nb-link-btn
+                    ${isServiceActive ? "nb-link-active" : ""}
+                    ${serviceOpen     ? "nb-link-open"   : ""}`}
                   onClick={() => setServiceOpen(!serviceOpen)}
                   aria-haspopup="true"
                   aria-expanded={serviceOpen}
@@ -140,7 +145,6 @@ const Navbar = () => {
                   {isServiceActive && <span className="nb-link-bar"></span>}
                 </button>
 
-                {/* Dropdown panel */}
                 <div className={`nb-dropdown ${serviceOpen ? "nb-dropdown-open" : ""}`} role="menu">
                   <div className="nb-dropdown-header">
                     <i className="fa-solid fa-shapes"></i>
@@ -215,9 +219,9 @@ const Navbar = () => {
           </div>
         </nav>
 
-      </div>{/* ── end .nb-header-wrap ── */}
+      </div>
 
-      {/* ══ MOBILE MENU ══════════════════════════════════════════ */}
+      {/* ══ MOBILE MENU ════════════════════════════════════════ */}
       <div
         className={`nb-mobile ${mobileOpen ? "nb-mobile-open" : ""}`}
         role="dialog"
@@ -228,7 +232,11 @@ const Navbar = () => {
           {/* Mobile header */}
           <div className="nb-mobile-head">
             <div className="nb-mobile-brand">
-              <i className="fa-solid fa-code"></i> CODEX PROJECT
+              <img src={logo} alt="CODEX PROJECT" className="nb-mobile-logo" />
+              <div>
+                <span className="nb-mbrand-codex">CODEX</span>
+                <span className="nb-mbrand-project"> PROJECT</span>
+              </div>
             </div>
             <button className="nb-mobile-close" onClick={() => setMobileOpen(false)} aria-label="Close menu">
               <i className="fa-solid fa-xmark"></i>
@@ -249,10 +257,7 @@ const Navbar = () => {
           <ul className="nb-mobile-links">
             {navLinks.slice(0, 2).map((lk) => (
               <li key={lk.to}>
-                <Link
-                  to={lk.to}
-                  className={`nb-ml-item ${isActive(lk.to) ? "nb-ml-active" : ""}`}
-                >
+                <Link to={lk.to} className={`nb-ml-item ${isActive(lk.to) ? "nb-ml-active" : ""}`}>
                   <i className={`fa-solid ${lk.icon}`}></i>
                   {lk.label}
                   {isActive(lk.to) && <i className="fa-solid fa-circle-dot nb-ml-dot"></i>}
@@ -260,7 +265,7 @@ const Navbar = () => {
               </li>
             ))}
 
-            {/* Mobile services */}
+            {/* Mobile services accordion */}
             <li>
               <button
                 className={`nb-ml-item nb-ml-btn ${isServiceActive ? "nb-ml-active" : ""}`}
@@ -288,10 +293,7 @@ const Navbar = () => {
 
             {navLinks.slice(2).map((lk) => (
               <li key={lk.to}>
-                <Link
-                  to={lk.to}
-                  className={`nb-ml-item ${isActive(lk.to) ? "nb-ml-active" : ""}`}
-                >
+                <Link to={lk.to} className={`nb-ml-item ${isActive(lk.to) ? "nb-ml-active" : ""}`}>
                   <i className={`fa-solid ${lk.icon}`}></i>
                   {lk.label}
                   {isActive(lk.to) && <i className="fa-solid fa-circle-dot nb-ml-dot"></i>}
@@ -306,12 +308,7 @@ const Navbar = () => {
               <i className="fa-solid fa-paper-plane"></i>
               New Project Enquiry
             </Link>
-            <a
-              href="https://wa.me/918525999002"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="nb-mobile-wa-btn"
-            >
+            <a href="https://wa.me/918525999002" target="_blank" rel="noopener noreferrer" className="nb-mobile-wa-btn">
               <i className="fa-brands fa-whatsapp"></i>
               WhatsApp Us
             </a>

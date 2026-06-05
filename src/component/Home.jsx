@@ -6,7 +6,7 @@ const structuredData = {
   "@context": "https://schema.org",
   "@type": ["EducationalOrganization", "LocalBusiness"],
   "name": "CODEX PROJECT",
-  "description": "Best final year project center in Coimbatore offering IEEE projects, internship training, and placement support.",
+  "description": "Best final year project center in Coimbatore offering IEEE 2025-26 projects, internship training, and placement support for BE, ME, MCA, BSc, and Diploma students.",
   "url": "https://www.codexproject.in",
   "address": {
     "@type": "PostalAddress",
@@ -25,39 +25,64 @@ const faqStructuredData = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "Which is the best final year project center in Coimbatore?", "acceptedAnswer": { "@type": "Answer", "text": "CODEX PROJECT is the best final year project center in Coimbatore offering IEEE 2024-25 projects, internship training, and placement support for BE, ME, BSc, MCA, and Diploma students." } },
-    { "@type": "Question", "name": "Do you provide internship with project development in Coimbatore?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, CODEX PROJECT provides internship training with live project experience and verified certificate for engineering students in Coimbatore." } },
-    { "@type": "Question", "name": "What project domains are available at Codex Project Coimbatore?", "acceptedAnswer": { "@type": "Answer", "text": "Software (Python, AI, ML, MERN), IoT & Embedded (Arduino, Raspberry Pi), Mechanical & Automation, Mobile App Development, and IEEE certified projects." } },
-    { "@type": "Question", "name": "How much does a final year project cost at Codex Project?", "acceptedAnswer": { "@type": "Answer", "text": "CODEX PROJECT offers the most affordable final year project pricing in Coimbatore. Contact us for a free consultation and custom quote." } },
-    { "@type": "Question", "name": "Do you support viva and documentation for final year projects?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, 100% documentation support including IEEE paper format, project report, PPT, and viva preparation for all projects." } },
+    {
+      "@type": "Question",
+      "name": "Which is the best final year project center in Coimbatore?",
+      "acceptedAnswer": { "@type": "Answer", "text": "CODEX PROJECT is the best final year project center in Coimbatore offering IEEE 2025-26 projects, internship training, and placement support for BE, ME, BSc, MCA, and Diploma students at Balaji Complex, Gandhipuram." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you provide internship with project development in Coimbatore?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes, CODEX PROJECT provides internship training with live project experience and verified certificate for engineering students in Coimbatore." }
+    },
+    {
+      "@type": "Question",
+      "name": "What project domains are available at Codex Project Coimbatore?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Software (Python, AI, ML, MERN), IoT & Embedded (Arduino, Raspberry Pi), Mechanical & Automation, Mobile App Development, and IEEE 2025-26 certified projects." }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does a final year project cost at Codex Project?",
+      "acceptedAnswer": { "@type": "Answer", "text": "CODEX PROJECT offers the most affordable final year project pricing in Coimbatore with no hidden charges. Contact us for a free consultation and custom quote." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you support viva and documentation for final year projects?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes, 100% documentation support including IEEE paper format, project report, PPT, and viva preparation for all final year projects in Coimbatore." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you provide ready-made projects with source code in Coimbatore?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes, CODEX PROJECT provides ready-made final year projects with complete source code, documentation, and deployment support for all domains in Coimbatore." }
+    },
   ],
 };
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 const techStacks = [
-  { name: "Python",       icon: "🐍", color: "#3776AB" },
-  { name: "React",        icon: "⚛️", color: "#61DAFB" },
+  { name: "Python",       icon: "🐍", color: "#fca090" },
+  { name: "React",        icon: "⚛️",  color: "#61DAFB" },
   { name: "TensorFlow",   icon: "🧠", color: "#FF6F00" },
-  { name: "Arduino",      icon: "🔌", color: "#00979D" },
-  { name: "Node.js",      icon: "🟢", color: "#339933" },
+  { name: "Arduino",      icon: "🔌", color: "#9cf8fc" },
+  { name: "Node.js",      icon: "🟢", color: "#b6fdb6" },
   { name: "Java",         icon: "☕", color: "#ED8B00" },
-  { name: "Flutter",      icon: "🦋", color: "#02569B" },
-  { name: "Raspberry Pi", icon: "🍓", color: "#C51A4A" },
-  { name: "MongoDB",      icon: "🍃", color: "#47A248" },
+  { name: "Flutter",      icon: "🦋", color: "#ff93d6" },
+  { name: "Raspberry Pi", icon: "🤖", color: "#80ebf3" },
+  { name: "MongoDB",      icon: "🍃", color: "#99c79a" },
   { name: "Firebase",     icon: "🔥", color: "#FFCA28" },
-  { name: "AWS IoT",      icon: "☁️", color: "#FF9900" },
-  { name: "MATLAB",       icon: "📊", color: "#0076A8" },
+  { name: "AWS IoT",      icon: "☁️",  color: "#FF9900" },
+  { name: "MATLAB",       icon: "📊", color: "#f5bebe" },
   { name: "Android",      icon: "🤖", color: "#3DDC84" },
-  { name: "PHP",          icon: "🐘", color: "#777BB4" },
-  { name: ".NET",         icon: "🔷", color: "#512BD4" },
-  { name: "OpenCV",       icon: "👁️", color: "#5C3EE8" },
+  { name: "PHP",          icon: "🐘", color: "#bdfcbd" },
+  { name: ".NET",         icon: "🔷", color: "#2bd42b" },
+  { name: "OpenCV",       icon: "👁️", color: "#b5a6f8" },
 ];
 
 const domains = [
   {
     icon: "🤖",
     title: "AI & Machine Learning",
-    seo: "AI ML Projects Coimbatore",
+    seo: "AI ML Projects Coimbatore 2025-26",
     desc: "Deep Learning, NLP, Computer Vision, Data Science — Python, TensorFlow, PyTorch",
     tags: ["Python", "TensorFlow", "NLP", "CNN"],
     color: "#8B5CF6",
@@ -107,9 +132,9 @@ const domains = [
   {
     icon: "📄",
     title: "IEEE Certified Projects",
-    seo: "IEEE Projects Coimbatore 2024-25",
-    desc: "Latest IEEE 2024-25 base papers — all domains with publication support",
-    tags: ["IEEE 2025", "Base Paper", "All Domains"],
+    seo: "IEEE Projects Coimbatore 2025-26",
+    desc: "Latest IEEE 2025-26 base papers — all domains with publication support",
+    tags: ["IEEE 2025-26", "Base Paper", "All Domains"],
     color: "#EC4899",
     bg: "rgba(236,72,153,0.07)",
     link: "/projects",
@@ -117,52 +142,58 @@ const domains = [
 ];
 
 const whyData = [
-  { icon: "💰", title: "Most Affordable",      desc: "Lowest project cost in Coimbatore — hardware + code + docs, zero hidden charges." },
-  { icon: "🎓", title: "IEEE 2024-25 Projects", desc: "Latest IEEE base paper projects with real-world implementation across all domains." },
-  { icon: "📋", title: "100% Documentation",   desc: "Project report, PPT, synopsis, IEEE paper — everything for college submission." },
-  { icon: "🎤", title: "Viva Support",          desc: "Mock viva, review PPT, and technical coaching for all college presentations." },
-  { icon: "🏢", title: "Internship Certificate",desc: "Verified internship certificate with live project experience — best for placement." },
-  { icon: "🚀", title: "Placement Guidance",   desc: "Resume building, mock interviews, and job referrals for all students." },
+  { icon: "💰", title: "Most Affordable",       desc: "Lowest project cost in Coimbatore — hardware + code + docs, zero hidden charges." },
+  { icon: "🎓", title: "IEEE 2025-26 Projects",  desc: "Latest IEEE base paper projects with real-world implementation across all domains." },
+  { icon: "📋", title: "100% Documentation",    desc: "Project report, PPT, synopsis, IEEE paper — everything for college submission." },
+  { icon: "🎤", title: "Viva Support",           desc: "Mock viva, review PPT, and technical coaching for all college presentations." },
+  { icon: "🏢", title: "Internship Certificate", desc: "Verified internship certificate with live project experience — best for placement." },
+  { icon: "🚀", title: "Placement Guidance",    desc: "Resume building, mock interviews, and job referrals for all students." },
 ];
 
 const reviews = [
-  { text: "Best final year project center in Coimbatore! Real-time IEEE training and complete documentation support. Highly recommended!", name: "Arun K.",   branch: "BE CSE" },
-  { text: "Completed my IoT project with excellent practical guidance. Step-by-step mentoring. Best embedded center near Gandhipuram!",   name: "Sam S.",  branch: "BE ECE" },
-  { text: "Amazing AI and Python project support with full ML implementation and viva prep. Best software project center in Coimbatore!", name: "Karthik R.", branch: "ME IT" },
-  { text: "Mechanical fabrication project completed on time with perfect CAD support. Affordable and professional!",                        name: "Divya M.",  branch: "BE Mechanical" },
+  { text: "Best final year project center in Coimbatore! Real-time IEEE training and complete documentation support. Highly recommended!", name: "Arun K.",    branch: "BE CSE" },
+  { text: "Completed my IoT project with excellent practical guidance. Step-by-step mentoring. Best embedded center near Gandhipuram!",    name: "Sam S.",   branch: "BE ECE" },
+  { text: "Amazing AI and Python project support with full ML implementation and viva prep. Best software project center in Coimbatore!",  name: "Karthik R.", branch: "ME IT" },
+  { text: "Mechanical fabrication project completed on time with perfect CAD support. Affordable and professional!",                       name: "Divya M.",   branch: "BE Mechanical" },
 ];
 
 const faqs = [
-  { q: "Which is the best final year project center in Coimbatore?",      a: "CODEX PROJECT is the best final year project center in Coimbatore, offering IEEE 2024-25 projects, internship training, and placement support for BE, ME, BSc, MCA, and Diploma students at Balaji Complex, Gandhipuram." },
-  { q: "Do you provide internship for engineering students in Coimbatore?",a: "Yes! We offer summer and semester internships with live project experience, verified internship certificate, and placement support — top internship training center in Coimbatore." },
-  { q: "What project domains are available at Codex Project?",             a: "Software (Python, AI, ML, MERN, Django), IoT & Embedded (Arduino, Raspberry Pi, NodeMCU), Mechanical & Automation (CAD, Fabrication, Robotics), Mobile App, and IEEE certified projects." },
-  { q: "Do you provide documentation and viva support?",                   a: "Yes, 100% documentation — IEEE format project report, synopsis, PPT, and complete viva preparation guidance for all reviews and final year presentations." },
-  { q: "How much does a final year project cost?",                         a: "We offer the most affordable final year project pricing in Coimbatore — no hidden charges. Contact us at Balaji Complex, Gandhipuram for a free consultation and custom quote." },
-  { q: "Which areas in Coimbatore do you serve?",                         a: "We serve students from Peelamedu, Gandhipuram, Saravanampatti, RS Puram, Singanallur, Ukkadam, Vadavalli, and all Coimbatore engineering college zones." },
+  { q: "Which is the best final year project center in Coimbatore?",        a: "CODEX PROJECT is the best final year project center in Coimbatore, offering IEEE 2025-26 projects, internship training, and placement support for BE, ME, BSc, MCA, and Diploma students at Balaji Complex, Gandhipuram." },
+  { q: "Do you provide internship for engineering students in Coimbatore?",  a: "Yes! We offer summer and semester internships with live project experience, verified internship certificate, and placement support — top internship training center in Coimbatore." },
+  { q: "What project domains are available at Codex Project?",              a: "Software (Python, AI, ML, MERN, Django, PHP), IoT & Embedded (Arduino, Raspberry Pi, NodeMCU), Mechanical & Automation (CAD, Fabrication, Robotics), Mobile App (Flutter, Android), and IEEE 2025-26 certified projects." },
+  { q: "Do you provide documentation and viva support?",                    a: "Yes, 100% documentation — IEEE format project report, synopsis, PPT, and complete viva preparation guidance for all reviews and final year presentations." },
+  { q: "How much does a final year project cost?",                          a: "We offer the most affordable final year project pricing in Coimbatore — no hidden charges. Contact us at Balaji Complex, Gandhipuram for a free consultation and custom quote." },
+  { q: "Do you provide ready-made projects with source code in Coimbatore?", a: "Yes, CODEX PROJECT provides ready-made projects with complete source code, deployment, and college-ready documentation for all domains — software, IoT, embedded, and mechanical." },
+  { q: "Which areas in Coimbatore do you serve?",                          a: "We serve students from Peelamedu, Gandhipuram, Saravanampatti, RS Puram, Singanallur, Ukkadam, Saibaba Colony, Vadavalli, and all Coimbatore engineering college zones." },
 ];
 
 const kwLinks = [
-  ["AI Projects Coimbatore",              "/software-projects"],
-  ["Machine Learning Projects Coimbatore","/software-projects"],
-  ["IoT Projects Coimbatore",             "/iot-projects"],
-  ["Embedded Projects Coimbatore",        "/embedded-projects"],
-  ["Mechanical Projects Coimbatore",      "/mechanical-projects"],
-  ["IEEE Projects Coimbatore",            "/projects"],
-  ["Internship Training Coimbatore",      "/blog"],
-  ["Python Projects Coimbatore",          "/software-projects"],
-  ["MERN Stack Projects Coimbatore",      "/software-projects"],
-  ["Final Year Projects 2025",            "/projects"],
-  ["Flutter Projects Coimbatore",         "/software-projects"],
-  ["Arduino Projects Coimbatore",         "/iot-projects"],
+  ["AI Projects Coimbatore",                "/software-projects"],
+  ["Machine Learning Projects Coimbatore",  "/software-projects"],
+  ["IoT Projects Coimbatore",               "/iot-projects"],
+  ["Embedded Projects Coimbatore",          "/embedded-projects"],
+  ["Mechanical Projects Coimbatore",        "/mechanical-projects"],
+  ["IEEE Projects Coimbatore 2025-26",      "/projects"],
+  ["Internship Training Coimbatore",        "/blog"],
+  ["Python Projects Coimbatore",            "/software-projects"],
+  ["MERN Stack Projects Coimbatore",        "/software-projects"],
+  ["Final Year Projects 2025-26",           "/projects"],
+  ["Flutter Projects Coimbatore",           "/software-projects"],
+  ["Arduino Projects Coimbatore",           "/iot-projects"],
+  ["CSE Project Center Coimbatore",         "/software-projects"],
+  ["IT Project Center Coimbatore",          "/software-projects"],
+  ["Project Center Gandhipuram",            "/"],
+  ["Ready Made Project Coimbatore",         "/projects"],
+  ["Project with Certificate Coimbatore",   "/blog"],
+  ["Low Cost Project Center Coimbatore",    "/"],
 ];
 
 const floatingChips = ["Python", "AI/ML", "Arduino", "React", "MERN", "IoT", "Flutter", "IEEE"];
-
 const floatPositions = [
   { top: "14%", left: "4%"  },
   { top: "22%", right: "5%" },
   { top: "55%", left: "2%"  },
-  { top: "68%", right: "4%" },
+  { top: "58%", right: "4%" },
   { top: "38%", left: "1%"  },
   { top: "80%", left: "7%"  },
   { top: "32%", right: "2%" },
@@ -204,11 +235,10 @@ const StatCard = ({ stat, animate }) => {
 
 // ─── Main Component ───────────────────────────────────────────────────────────
 const Home = () => {
-  const statsRef   = useRef(null);
+  const statsRef            = useRef(null);
   const [statsVisible, setStatsVisible] = useState(false);
   const [openFaq,      setOpenFaq]      = useState(null);
 
-  // Intersection Observer — stats counter trigger
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) setStatsVisible(true); },
@@ -218,7 +248,6 @@ const Home = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Scroll reveal
   useEffect(() => {
     const els = document.querySelectorAll(".cp-reveal");
     const io  = new IntersectionObserver(
@@ -232,8 +261,8 @@ const Home = () => {
   const stats = [
     { num: "500+",  label: "Projects Delivered",  icon: "🚀" },
     { num: "1000+", label: "Happy Students",       icon: "🎓" },
-    { num: "4.9★",  label: "Google Rating",        icon: "⭐" },
-    { num: "6+",    label: "Project Domains",      icon: "🎯" },
+    { num: "5★",  label: "Google Rating",        icon: "⭐" },
+    { num: "15+",    label: "Project Domains",      icon: "🎯" },
   ];
 
   return (
@@ -244,7 +273,6 @@ const Home = () => {
 
       {/* ══ HERO ══════════════════════════════════════════════════════════════ */}
       <section className="cp-hero" aria-labelledby="hero-h1">
-        {/* Background layers */}
         <div className="cp-hero-bg">
           <div className="cp-grid-bg" />
           <div className="cp-orb cp-orb1" />
@@ -253,14 +281,9 @@ const Home = () => {
           <div className="cp-scanline" />
         </div>
 
-        {/* Floating chips */}
         <div className="cp-float-wrap" aria-hidden="true">
           {floatingChips.map((chip, i) => (
-            <span
-              key={chip}
-              className="cp-ftag"
-              style={{ ...floatPositions[i], animationDelay: `${i * 0.4}s` }}
-            >
+            <span key={chip} className="cp-ftag" style={{ ...floatPositions[i], animationDelay: `${i * 0.4}s` }}>
               {chip}
             </span>
           ))}
@@ -269,27 +292,22 @@ const Home = () => {
         <div className="cp-container cp-hero-inner">
           <div className="cp-hero-chip">
             <span className="cp-chip-dot" />
-            IEEE 2024-25 Projects Now Available
+            IEEE 2025-26 Projects Now Available
           </div>
 
           <h1 id="hero-h1" className="cp-hero-h1">
             Best Final Year<br />
-               <span className="cp-grad-txt">Project Center in Coimbatore</span>
-           
+            <span className="cp-grad-txt">Project Center in Coimbatore</span>
           </h1>
 
           <p className="cp-hero-sub">
             <strong>CODEX PROJECT</strong> — Coimbatore's most trusted center for{" "}
-            <strong>IEEE projects, AI/ML, IoT, Embedded, Mechanical</strong> &amp; Web
+            <strong>IEEE projects, Python, ML/DL, PHP, Java, .Net, Node.js, IoT, Embedded, Mechanical</strong>  &amp; Web
             development with internship training &amp; placement support.
           </p>
 
-          <p className="cp-hero-loc">
-            📍 2nd Floor, Balaji Complex, Gandhipuram, Coimbatore – 641012
-          </p>
-
           <div className="cp-trust-wrap">
-            {["IEEE Certified", "Affordable Pricing", "Internship Support", "Viva Prep", "100% Documentation", "Placement Guidance"].map((b) => (
+            {["IEEE Certified", "Affordable Pricing", "Internship Support", "Viva Prep", "100% Documentation", "Source Code Included", "Ready-Made Projects"].map((b) => (
               <span key={b} className="cp-trust-pill">✔ {b}</span>
             ))}
           </div>
@@ -312,7 +330,7 @@ const Home = () => {
       </section>
 
       {/* ══ TECH TICKER ═══════════════════════════════════════════════════════ */}
-      <section className="cp-ticker-bar" aria-label="Technologies we support">
+      <div className="cp-ticker-bar" aria-label="Technologies we support">
         <div className="cp-ticker-lbl">Technologies →</div>
         <div className="cp-ticker-scroll">
           <div className="cp-ticker-inner">
@@ -324,7 +342,7 @@ const Home = () => {
             ))}
           </div>
         </div>
-      </section>
+      </div>
 
       {/* ══ STATS ══════════════════════════════════════════════════════════════ */}
       <section className="cp-stats-sec cp-reveal" ref={statsRef} aria-labelledby="stats-h2">
@@ -343,7 +361,7 @@ const Home = () => {
         <div className="cp-container cp-about-grid">
           <div className="cp-about-txt">
             <span className="cp-eyebrow">About Us</span>
-            <h2 id="about-h2" className="cp-sec-title" style={{ textAlign: "left" }}>
+            <h2 id="about-h2" className="cp-sec-title">
               Top-Rated Final Year<br />Project Center in Coimbatore
             </h2>
             <p>
@@ -351,17 +369,23 @@ const Home = () => {
               <strong>final year project center</strong>, located at{" "}
               <strong>2nd Floor, Balaji Complex, Gandhipuram</strong>. We bridge the gap between
               academics and industry through real-time project development,{" "}
-              <strong>IEEE 2024-25 base paper implementation</strong>, and{" "}
+              <strong>IEEE 2025-26 base paper implementation</strong>, and{" "}
               <strong>internship-based training</strong>.
             </p>
             <p>
               Thousands of students from{" "}
-              <strong>Peelamedu, Gandhipuram, Saravanampatti, RS Puram, Singanallur, Ukkadam</strong>,
-              and across Coimbatore have successfully completed their final year projects with our
-              expert guidance.
+              <strong>Peelamedu, Gandhipuram, Saravanampatti, RS Puram, Singanallur, Ukkadam,
+              Saibaba Colony</strong>, and across Coimbatore have successfully completed their
+              final year projects with our expert guidance — with complete source code,
+              documentation, and viva support.
             </p>
             <div className="cp-highlights">
-              {["BE / ME / MCA / BSc / Diploma", "IEEE 2024-25 Certified Projects", "Real Working Models & Demos", "Most Affordable Pricing in CBE"].map((h) => (
+              {[
+                "BE / ME / MCA / BSc / Diploma — All Branches",
+                "IEEE 2025-26 Certified Projects",
+                "Real Working Models & Live Demos",
+                "Most Affordable Pricing in Coimbatore",
+              ].map((h) => (
                 <div key={h} className="cp-hi">
                   <span className="cp-hi-dot" />
                   {h}
@@ -385,7 +409,7 @@ const Home = () => {
               <div>{"    "}self.location {"= "}<span className="cp-str">"Gandhipuram, CBE"</span></div>
               <div>{"    "}self.domains = [<span className="cp-str">"AI"</span>, <span className="cp-str">"IoT"</span>,</div>
               <div>{"      "}<span className="cp-str">"Embedded"</span>, <span className="cp-str">"Mechanical"</span>]</div>
-              <div>{"    "}self.rating {"= "}<span className="cp-num">4.9</span> <span className="cp-cm"># ⭐ Google</span></div>
+              <div>{"    "}self.rating {"= "}<span className="cp-num">5</span> <span className="cp-cm"># ⭐ Google</span></div>
               <div>{"    "}self.students {"= "}<span className="cp-str">"1000+"</span></div>
               <div>{"  "}<span className="cp-kw">def</span> <span className="cp-fn">get_project</span>(self):</div>
               <div>{"    "}<span className="cp-kw">return</span> <span className="cp-str">"Best in Coimbatore 🚀"</span></div>
@@ -411,7 +435,7 @@ const Home = () => {
                 key={i}
                 href={d.link}
                 className="cp-d-card"
-                style={{ "--accent": d.color, "--accent-bg": d.bg, animationDelay: `${i * 0.1}s` }}
+                style={{ "--accent": d.color, "--accent-bg": d.bg }}
                 aria-label={d.seo}
                 itemScope
                 itemType="https://schema.org/Service"
@@ -447,11 +471,7 @@ const Home = () => {
           </div>
           <div className="cp-tech-grid">
             {techStacks.map((t, i) => (
-              <div
-                key={i}
-                className="cp-tc"
-                style={{ "--tc": t.color, animationDelay: `${i * 0.05}s` }}
-              >
+              <div key={i} className="cp-tc" style={{ "--tc": t.color }}>
                 <span className="cp-tc-icon">{t.icon}</span>
                 <span className="cp-tc-name">{t.name}</span>
                 <div className="cp-tc-glow" />
@@ -472,7 +492,7 @@ const Home = () => {
           </div>
           <div className="cp-why-grid">
             {whyData.map((w, i) => (
-              <div key={i} className="cp-w-card" style={{ animationDelay: `${i * 0.08}s` }}>
+              <div key={i} className="cp-w-card">
                 <span className="cp-w-icon">{w.icon}</span>
                 <h3 className="cp-w-title">{w.title}</h3>
                 <p className="cp-w-desc">{w.desc}</p>
@@ -483,13 +503,13 @@ const Home = () => {
       </section>
 
       {/* ══ SOFTWARE PROJECT CENTER ═══════════════════════════════════════════ */}
-      <section className="cp-detail-sec cp-reveal" aria-labelledby="software-h2" style={{ background: "var(--cp-dark)" }}>
+      <section className="cp-detail-sec cp-reveal" aria-labelledby="software-h2" style={{ background: "#f8f3e4" }}>
         <div className="cp-container">
           <div className="cp-detail-inner">
-            <div className="cp-detail-badge" style={{ "--badge-color": "#3776AB" }}>💻</div>
+            <div className="cp-detail-badge" style={{ "--badge-color": "#d69200" }}>💻</div>
             <div className="cp-detail-content">
               <span className="cp-eyebrow">Software Projects</span>
-              <h2 id="software-h2" className="cp-sec-title" style={{ textAlign: "left" }}>
+              <h2 id="software-h2" className="cp-sec-title">
                 Best Software Project Center in Coimbatore
               </h2>
               <p className="cp-detail-desc">
@@ -499,9 +519,9 @@ const Home = () => {
                 testing, and deployment support.
               </p>
               <p className="cp-detail-desc">
-                Our software projects follow the latest <strong>IEEE 2024–2025 base papers</strong> and are
+                Our software projects follow the latest <strong>IEEE 2025-26 base papers</strong> and are
                 customizable to your college requirements. We also support students who bring their own
-                project ideas with full implementation assistance.
+                project ideas with full implementation assistance and ready-made project options.
               </p>
               <ul className="cp-checklist">
                 {[
@@ -524,13 +544,13 @@ const Home = () => {
       </section>
 
       {/* ══ MECHANICAL PROJECT CENTER ══════════════════════════════════════════ */}
-      <section className="cp-detail-sec cp-reveal" aria-labelledby="mechanical-h2" style={{ background: "var(--cp-dark2)" }}>
+      <section className="cp-detail-sec cp-reveal" aria-labelledby="mechanical-h2" style={{ background: "#e2f0fd85" }}>
         <div className="cp-container">
           <div className="cp-detail-inner cp-detail-reverse">
             <div className="cp-detail-badge" style={{ "--badge-color": "#10B981" }}>⚙️</div>
             <div className="cp-detail-content">
               <span className="cp-eyebrow">Mechanical Projects</span>
-              <h2 id="mechanical-h2" className="cp-sec-title" style={{ textAlign: "left" }}>
+              <h2 id="mechanical-h2" className="cp-sec-title">
                 Mechanical Project Center in Coimbatore – Fabrication &amp; CAD Design
               </h2>
               <p className="cp-detail-desc">
@@ -559,13 +579,13 @@ const Home = () => {
       </section>
 
       {/* ══ IOT / EMBEDDED ════════════════════════════════════════════════════ */}
-      <section className="cp-detail-sec cp-reveal" aria-labelledby="iot-h2" style={{ background: "var(--cp-dark)" }}>
+      <section className="cp-detail-sec cp-reveal" aria-labelledby="iot-h2" style={{ background: "#f8f3e4" }}>
         <div className="cp-container">
           <div className="cp-detail-inner">
             <div className="cp-detail-badge" style={{ "--badge-color": "#06B6D4" }}>📡</div>
             <div className="cp-detail-content">
               <span className="cp-eyebrow">IoT &amp; Embedded</span>
-              <h2 id="iot-h2" className="cp-sec-title" style={{ textAlign: "left" }}>
+              <h2 id="iot-h2" className="cp-sec-title">
                 Embedded Systems &amp; IoT Project Center in Coimbatore
               </h2>
               <p className="cp-detail-desc">
@@ -595,13 +615,13 @@ const Home = () => {
       </section>
 
       {/* ══ INTERNSHIP ════════════════════════════════════════════════════════ */}
-      <section className="cp-detail-sec cp-reveal" aria-labelledby="internship-h2" style={{ background: "var(--cp-dark2)" }}>
+      <section className="cp-detail-sec cp-reveal" aria-labelledby="internship-h2" style={{ background: "#e2f0fd85" }}>
         <div className="cp-container">
           <div className="cp-detail-inner cp-detail-reverse">
             <div className="cp-detail-badge" style={{ "--badge-color": "#8B5CF6" }}>🏢</div>
             <div className="cp-detail-content">
               <span className="cp-eyebrow">Internship Training</span>
-              <h2 id="internship-h2" className="cp-sec-title" style={{ textAlign: "left" }}>
+              <h2 id="internship-h2" className="cp-sec-title">
                 Internship Training Center in Coimbatore with Project Support
               </h2>
               <p className="cp-detail-desc">
@@ -616,7 +636,7 @@ const Home = () => {
               </p>
               <ul className="cp-checklist">
                 {[
-                  "Summer internship for engineering students Coimbatore",
+                  "Summer internship for engineering students",
                   "Internship certificate with live project",
                   "Python & AI internship training",
                   "Web development internship Coimbatore",
@@ -647,7 +667,6 @@ const Home = () => {
               <div
                 key={i}
                 className="cp-rv-card"
-                style={{ animationDelay: `${i * 0.1}s` }}
                 itemScope
                 itemType="https://schema.org/Review"
               >
@@ -673,6 +692,7 @@ const Home = () => {
               rel="noopener noreferrer"
               className="cp-btn cp-btn-pri"
               aria-label="View all reviews on Google"
+              style={{ color: "var(--cp-navy)" }}
             >
               ⭐ View All Reviews on Google
             </a>
@@ -740,7 +760,7 @@ const Home = () => {
       </section>
 
       {/* ══ KEYWORD CLUSTER ════════════════════════════════════════════════════ */}
-      <section className="cp-kw-sec" aria-label="Explore our services">
+      <div className="cp-kw-sec" aria-label="Explore our services">
         <div className="cp-container">
           <div className="cp-kw-lbl">Explore Our Services</div>
           <div className="cp-kw-cloud">
@@ -751,7 +771,7 @@ const Home = () => {
             ))}
           </div>
         </div>
-      </section>
+      </div>
 
       {/* ══ CTA ════════════════════════════════════════════════════════════════ */}
       <section className="cp-cta-sec" aria-labelledby="cta-h2">
@@ -764,7 +784,7 @@ const Home = () => {
           <p className="cp-cta-sub">
             Join <strong>1000+ engineering students</strong> who trusted CODEX PROJECT —
             the <strong>best final year project center in Coimbatore</strong> — for IEEE
-            projects, internship training, and placement support.
+            2025-26 projects, internship training, and placement support.
           </p>
           <p className="cp-cta-addr">
             📍 2nd Floor, Balaji Complex, Gandhipuram, Coimbatore – 641012
@@ -784,7 +804,7 @@ const Home = () => {
               className="cp-btn-cta cp-btn-cta-o"
               aria-label="Review CODEX PROJECT on Google"
             >
-              ⭐ Review Us on Google
+              ⭐ Review Us on Google...
             </a>
           </div>
         </div>
