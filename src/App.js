@@ -10,6 +10,7 @@ import MechanicalProjects from "./pages/MechanicalProjects";
 import IoTProjects from "./pages/IoTProjects";
 import EmbeddedProjects from "./pages/EmbeddedProjects";
 import SoftwareProjects from "./pages/SoftwareProjects";
+import Fqa from "./pages/Faq"
 import Projects from "./pages/Projects";
 import Blog from "./pages/Blog";
 import WhatAppIcon from "./component/WhatAppIcon";
@@ -28,15 +29,15 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-       
         <Route path="/career" element={<Career />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/mechanical-projects" element={<MechanicalProjects />} />
         <Route path="/iot-projects" element={<IoTProjects />} />
         <Route path="/embedded-projects" element={<EmbeddedProjects />} />
         <Route path="/software-projects" element={<SoftwareProjects />} />
-<Route path="/projects" element={<Projects />} />
-<Route path="/blog" element={<Blog />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/fqa" element={<Fqa />} />
       </Routes>
       <Footer />
     </>

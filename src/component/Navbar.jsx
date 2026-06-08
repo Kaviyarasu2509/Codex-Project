@@ -10,9 +10,15 @@ const serviceLinks = [
   { to: "/mechanical-projects", icon: "fa-gears",           label: "Mechanical Projects",      sub: "CAD, Fabrication, Robotics" },
 ];
 
+// About dropdown links
+const aboutLinks = [
+  { to: "/about",     icon: "fa-building",  label: "About Us" },
+  { to: "/fqa",       icon: "fa-question-circle", label: "FQA" },
+];
+
 const navLinks = [
   { to: "/",         icon: "fa-house",       label: "Home" },
-  { to: "/about",    icon: "fa-building",    label: "About" },
+  // About removed from here - now it's a dropdown
   { to: "/projects", icon: "fa-folder-open", label: "Projects" },
   { to: "/blog",     icon: "fa-newspaper",   label: "Blog" },
   { to: "/contact",  icon: "fa-phone",       label: "Contact" },
@@ -22,12 +28,16 @@ const Navbar = () => {
   const location = useLocation();
   const [mobileOpen,        setMobileOpen]        = useState(false);
   const [serviceOpen,       setServiceOpen]       = useState(false);
+  const [aboutOpen,         setAboutOpen]         = useState(false);
   const [mobileServiceOpen, setMobileServiceOpen] = useState(false);
+  const [mobileAboutOpen,   setMobileAboutOpen]   = useState(false);
   const [scrolled,          setScrolled]          = useState(false);
-  const dropRef = useRef(null);
+  const serviceDropRef = useRef(null);
+  const aboutDropRef = useRef(null);
 
   const isActive        = (path) => location.pathname === path;
   const isServiceActive = serviceLinks.some((s) => location.pathname === s.to);
+  const isAboutActive   = aboutLinks.some((a) => location.pathname === a.to);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -35,19 +45,33 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Close service dropdown when clicking outside
   useEffect(() => {
     const handler = (e) => {
-      if (dropRef.current && !dropRef.current.contains(e.target))
+      if (serviceDropRef.current && !serviceDropRef.current.contains(e.target))
         setServiceOpen(false);
     };
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
+  // Close about dropdown when clicking outside
+  useEffect(() => {
+    const handler = (e) => {
+      if (aboutDropRef.current && !aboutDropRef.current.contains(e.target))
+        setAboutOpen(false);
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
+  // Close all menus on route change
   useEffect(() => {
     setMobileOpen(false);
     setMobileServiceOpen(false);
+    setMobileAboutOpen(false);
     setServiceOpen(false);
+    setAboutOpen(false);
   }, [location]);
 
   return (
@@ -115,22 +139,69 @@ const Navbar = () => {
             {/* ── Desktop Nav Links ── */}
             <ul className="nb-links">
 
-              {navLinks.slice(0, 2).map((lk) => (
-                <li key={lk.to}>
-                  <Link
-                    to={lk.to}
-                    className={`nb-link ${isActive(lk.to) ? "nb-link-active" : ""}`}
-                    aria-current={isActive(lk.to) ? "page" : undefined}
-                  >
-                    <i className={`fa-solid ${lk.icon} nb-link-icon`}></i>
-                    {lk.label}
-                    {isActive(lk.to) && <span className="nb-link-bar"></span>}
-                  </Link>
-                </li>
-              ))}
+              {/* Home link */}
+              <li>
+                <Link
+                  to="/"
+                  className={`nb-link ${isActive("/") ? "nb-link-active" : ""}`}
+                  aria-current={isActive("/") ? "page" : undefined}
+                >
+                  <i className="fa-solid fa-house nb-link-icon"></i>
+                  Home
+                  {isActive("/") && <span className="nb-link-bar"></span>}
+                </Link>
+              </li>
+
+              {/* ── About Dropdown ── */}
+              <li className="nb-dropdown-wrap" ref={aboutDropRef}>
+                <button
+                  className={`nb-link nb-link-btn
+                    ${isAboutActive ? "nb-link-active" : ""}
+                    ${aboutOpen     ? "nb-link-open"   : ""}`}
+                  onClick={() => setAboutOpen(!aboutOpen)}
+                  aria-haspopup="true"
+                  aria-expanded={aboutOpen}
+                >
+                  <i className="fa-solid fa-building nb-link-icon"></i>
+                  About
+                  <i className={`fa-solid fa-chevron-down nb-chevron ${aboutOpen ? "nb-chevron-open" : ""}`}></i>
+                  {isAboutActive && <span className="nb-link-bar"></span>}
+                </button>
+
+                <div className={`nb-dropdown nb-dropdown-about ${aboutOpen ? "nb-dropdown-open" : ""}`} role="menu">
+                  <div className="nb-dropdown-header">
+                    <i className="fa-solid fa-info-circle"></i>
+                    About CODEX PROJECT
+                  </div>
+                  <div className="nb-dropdown-grid nb-dropdown-about-grid">
+                    {aboutLinks.map((a) => (
+                      <Link
+                        key={a.to}
+                        to={a.to}
+                        className={`nb-dropdown-item ${location.pathname === a.to ? "nb-dropdown-active" : ""}`}
+                        role="menuitem"
+                        aria-label={a.label}
+                      >
+                        <div className="nb-di-icon">
+                          <i className={`fa-solid ${a.icon}`}></i>
+                        </div>
+                        <div className="nb-di-text">
+                          <span className="nb-di-label">{a.label}</span>
+                          <span className="nb-di-sub">
+                            {a.label === "About Us" ? "Learn about our journey" : "Frequently asked questions"}
+                          </span>
+                        </div>
+                        {location.pathname === a.to && (
+                          <i className="fa-solid fa-check nb-di-check"></i>
+                        )}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </li>
 
               {/* ── Services Dropdown ── */}
-              <li className="nb-dropdown-wrap" ref={dropRef}>
+              <li className="nb-dropdown-wrap" ref={serviceDropRef}>
                 <button
                   className={`nb-link nb-link-btn
                     ${isServiceActive ? "nb-link-active" : ""}
@@ -182,7 +253,8 @@ const Navbar = () => {
                 </div>
               </li>
 
-              {navLinks.slice(2).map((lk) => (
+              {/* Remaining nav links (Projects, Blog, Contact) */}
+              {navLinks.slice(1).map((lk) => (
                 <li key={lk.to}>
                   <Link
                     to={lk.to}
@@ -255,17 +327,42 @@ const Navbar = () => {
 
           {/* Nav links */}
           <ul className="nb-mobile-links">
-            {navLinks.slice(0, 2).map((lk) => (
-              <li key={lk.to}>
-                <Link to={lk.to} className={`nb-ml-item ${isActive(lk.to) ? "nb-ml-active" : ""}`}>
-                  <i className={`fa-solid ${lk.icon}`}></i>
-                  {lk.label}
-                  {isActive(lk.to) && <i className="fa-solid fa-circle-dot nb-ml-dot"></i>}
-                </Link>
-              </li>
-            ))}
+            {/* Home */}
+            <li>
+              <Link to="/" className={`nb-ml-item ${isActive("/") ? "nb-ml-active" : ""}`}>
+                <i className="fa-solid fa-house"></i>
+                Home
+                {isActive("/") && <i className="fa-solid fa-circle-dot nb-ml-dot"></i>}
+              </Link>
+            </li>
 
-            {/* Mobile services accordion */}
+            {/* Mobile About accordion */}
+            <li>
+              <button
+                className={`nb-ml-item nb-ml-btn ${isAboutActive ? "nb-ml-active" : ""}`}
+                onClick={() => setMobileAboutOpen(!mobileAboutOpen)}
+                aria-expanded={mobileAboutOpen}
+              >
+                <i className="fa-solid fa-building"></i>
+                About
+                <i className={`fa-solid fa-chevron-down nb-ml-chev ${mobileAboutOpen ? "nb-ml-chev-open" : ""}`}></i>
+              </button>
+              <ul className={`nb-ml-sub ${mobileAboutOpen ? "nb-ml-sub-open" : ""}`}>
+                {aboutLinks.map((a) => (
+                  <li key={a.to}>
+                    <Link
+                      to={a.to}
+                      className={`nb-ml-sub-item ${location.pathname === a.to ? "nb-ml-sub-active" : ""}`}
+                    >
+                      <i className={`fa-solid ${a.icon}`}></i>
+                      {a.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </li>
+
+            {/* Mobile Services accordion */}
             <li>
               <button
                 className={`nb-ml-item nb-ml-btn ${isServiceActive ? "nb-ml-active" : ""}`}
@@ -291,7 +388,8 @@ const Navbar = () => {
               </ul>
             </li>
 
-            {navLinks.slice(2).map((lk) => (
+            {/* Remaining mobile links (Projects, Blog, Contact) */}
+            {navLinks.slice(1).map((lk) => (
               <li key={lk.to}>
                 <Link to={lk.to} className={`nb-ml-item ${isActive(lk.to) ? "nb-ml-active" : ""}`}>
                   <i className={`fa-solid ${lk.icon}`}></i>
