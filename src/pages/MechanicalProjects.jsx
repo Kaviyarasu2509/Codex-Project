@@ -57,37 +57,37 @@ const services = [
   {
     icon: "🔧", title: "Fabrication Projects", seo: "Mechanical Fabrication Projects Coimbatore",
     color: "#e3f2fd", accentColor: "#1565c0",
-    filterKeys: ["Mechanical Projects Coimbatore", "Fabrication Projects Coimbatore", "IEEE Mechanical Projects 2024-25", "BE Mechanical Projects 2025", "Low Cost Mechanical Projects Coimbatore"],
+    filterKeys: ["Mechanical Projects Coimbatore", "Fabrication Projects Coimbatore", "IEEE Mechanical Projects 2025-26", "BE Mechanical Projects 2025", "Low Cost Mechanical Projects Coimbatore"],
     desc: "Real-time working model fabrication for BE and ME Mechanical students in Coimbatore — from design to prototype with expert supervision.",
   },
   {
     icon: "🤖", title: "Robotics & Automation", seo: "Robotics Projects Coimbatore",
     color: "#f3e5f5", accentColor: "#6a1b9a",
-    filterKeys: ["Mechanical Projects Coimbatore", "Robotics Projects Coimbatore", "Automation Projects Coimbatore", "IEEE Mechanical Projects 2024-25", "BE Mechanical Projects 2025"],
+    filterKeys: ["Mechanical Projects Coimbatore", "Robotics Projects Coimbatore", "Automation Projects Coimbatore", "IEEE Mechanical Projects 2025-26", "BE Mechanical Projects 2025"],
     desc: "Industrial robotics, pick-and-place robots, conveyor automation, and pneumatic systems — best robotics project center in Coimbatore.",
   },
   {
     icon: "🖥️", title: "CAD / CAM Design", seo: "CAD CAM Projects Coimbatore",
     color: "#e8f5e9", accentColor: "#2e7d32",
-    filterKeys: ["Mechanical Projects Coimbatore", "CAD CAM Projects Coimbatore", "IEEE Mechanical Projects 2024-25", "BE Mechanical Projects 2025", "ME Project Center Coimbatore"],
+    filterKeys: ["Mechanical Projects Coimbatore", "CAD CAM Projects Coimbatore", "IEEE Mechanical Projects 2025-26", "BE Mechanical Projects 2026", "ME Project Center Coimbatore"],
     desc: "SolidWorks, AutoCAD, CATIA, and ANSYS simulation projects — best CAD/CAM design project center in Coimbatore for Mechanical students.",
   },
   {
     icon: "⚙️", title: "Mechatronics Projects", seo: "Mechatronics Projects Coimbatore",
     color: "#fff3e0", accentColor: "#e65100",
-    filterKeys: ["Mechanical Projects Coimbatore", "Mechatronics Projects Coimbatore", "Automation Projects Coimbatore", "IEEE Mechanical Projects 2024-25"],
+    filterKeys: ["Mechanical Projects Coimbatore", "Mechatronics Projects Coimbatore", "Automation Projects Coimbatore", "IEEE Mechanical Projects 2025-26"],
     desc: "Integrated mechanical-electronic systems, PLC-based automation, and sensor-driven mechatronics projects for engineering students in Coimbatore.",
   },
   {
     icon: "🚗", title: "Automobile Engineering", seo: "Automobile Engineering Projects Coimbatore",
     color: "#fce4ec", accentColor: "#880e4f",
-    filterKeys: ["Mechanical Projects Coimbatore", "Automobile Projects Coimbatore", "IEEE Mechanical Projects 2024-25", "BE Mechanical Projects 2025"],
+    filterKeys: ["Mechanical Projects Coimbatore", "Automobile Projects Coimbatore", "IEEE Mechanical Projects 2025-26", "BE Mechanical Projects 2025"],
     desc: "EV conversion, fuel efficiency, emission control, and hybrid vehicle final year projects for Automobile Engineering students in Coimbatore.",
   },
   {
     icon: "☀️", title: "Renewable Energy Projects", seo: "Renewable Energy Mechanical Projects Coimbatore",
     color: "#f9fbe7", accentColor: "#33691e",
-    filterKeys: ["Mechanical Projects Coimbatore", "IEEE Mechanical Projects 2024-25", "BE Mechanical Projects 2025", "ME Project Center Coimbatore"],
+    filterKeys: ["Mechanical Projects Coimbatore", "IEEE Mechanical Projects 2025-26", "BE Mechanical Projects 2025", "ME Project Center Coimbatore"],
     desc: "Solar-powered vehicles, wind energy systems, and energy-harvesting mechanical projects for BE and ME students in Coimbatore.",
   },
 ];
@@ -154,7 +154,7 @@ const filterKeywords = [
   "ME Project Center Coimbatore",
   "Diploma Mechanical Projects",
   "Low Cost Mechanical Projects Coimbatore",
-  "IEEE Mechanical Projects 2024-25",
+  "IEEE Mechanical Projects 2025-26",
 ];
 
 // ─── Component ─────────────────────────────────────────────────────────────────
@@ -320,10 +320,10 @@ const MechanicalProjects = () => {
         {/* ══ PROJECT IDEAS ══ */}
         <section aria-labelledby="projects-heading" className="mp-section mp-reveal" ref={addRef}>
           <h2 id="projects-heading" className="mp-section-title">
-            Mechanical Final Year Project Ideas – Coimbatore 2024-25
+            Mechanical Final Year Project Ideas – Coimbatore 2025-26
           </h2>
           <p className="mp-section-sub">
-            Latest IEEE 2024-25 mechanical project topics for BE, ME, and Diploma students
+            Latest IEEE 2025-26 mechanical project topics for BE, ME, and Diploma students
             in Coimbatore — real working models with full documentation
           </p>
           <div className="mp-ideas-grid">
@@ -483,7 +483,7 @@ const MechanicalProjects = () => {
             </h2>
             <p className="mp-cta-sub">Join 500+ Mechanical Engineering students who completed their projects with us.</p>
             <p className="mp-cta-addr">📍 2nd Floor, Balaji Complex, Gandhipuram, Coimbatore – 641012</p>
-            <p className="mp-cta-tags">Fabrication · CAD/CAM · Robotics · Automation · IEEE 2024-25 · Affordable Pricing · Real Working Models</p>
+            <p className="mp-cta-tags">Fabrication · CAD/CAM · Robotics · Automation · IEEE 205-26 · Affordable Pricing · Real Working Models</p>
             <div className="mp-cta-actions">
               <a href="tel:+918525999002" className="mp-cta-btn mp-cta-primary" aria-label="Contact CODEX PROJECT mechanical project center Coimbatore">
                 📞 Contact Now – Free Consultation
