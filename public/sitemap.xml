@@ -5,128 +5,83 @@
 
   <url>
     <loc>https://www.codexproject.in/</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://www.codexproject.in/about</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.codexproject.in/contact</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.codexproject.in/faq</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://www.codexproject.in/career</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
 
-  <!-- ══ PROJECT PAGES — HIGH SEO PRIORITY ══════════════════════════════════ -->
+  <!-- ══ PRIMARY SEO ROUTES — canonical, match App.js exactly ══════════════ -->
 
   <url>
-    <loc>https://www.codexproject.in/final-year-project-titles-coimbatore</loc>
-    <lastmod>2026-06-11</lastmod>
+    <loc>https://www.codexproject.in/final-year-projects-coimbatore</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
 
   <url>
-    <loc>https://www.codexproject.in/software-projects-coimbatore</loc>
-    <lastmod>2026-06-11</lastmod>
+    <loc>https://www.codexproject.in/iot-project-center-coimbatore</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.codexproject.in/iot-projects-coimbatore-2026</loc>
-    <lastmod>2026-06-11</lastmod>
+    <loc>https://www.codexproject.in/embedded-project-center-coimbatore</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.codexproject.in/embedded-projects-coimbatore</loc>
-    <lastmod>2026-06-11</lastmod>
+    <loc>https://www.codexproject.in/mechanical-project-center-coimbatore</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.codexproject.in/mechanical-projects-coimbatore</loc>
-    <lastmod>2026-06-11</lastmod>
+    <loc>https://www.codexproject.in/software-project-center-coimbatore</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- ══ BLOG / TIPS ══════════════════════════════════════════════════════════ -->
+  <!-- ══ BLOG ══════════════════════════════════════════════════════════════ -->
 
   <url>
-    <loc>https://www.codexproject.in/tips-and-tricks</loc>
-    <lastmod>2026-06-11</lastmod>
+    <loc>https://www.codexproject.in/blog/project-center-coimbatore-guide</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-  </url>
-
-  <!-- ══ LEGACY URLs — kept for backward compatibility ═══════════════════════
-       Google already indexed these — keeping them avoids 404 ranking loss     -->
-
-  <url>
-    <loc>https://www.codexproject.in/projects</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-
-  <url>
-    <loc>https://www.codexproject.in/blog</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-
-  <url>
-    <loc>https://www.codexproject.in/software-projects</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
-  </url>
-
-  <url>
-    <loc>https://www.codexproject.in/iot-projects</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
-  </url>
-
-  <url>
-    <loc>https://www.codexproject.in/embedded-projects</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
-  </url>
-
-  <url>
-    <loc>https://www.codexproject.in/mechanical-projects</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
   </url>
 
 </urlset>
