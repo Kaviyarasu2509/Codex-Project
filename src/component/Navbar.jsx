@@ -3,40 +3,40 @@ import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
 import logo from "../assets/images/logo.png";
 
-// ── SEO-optimized service routes ──────────────────────────────────────────────
+// ── SEO-optimized service routes — App.jsx primary routes-உடன் match ─────────
 const serviceLinks = [
-  { to: "/software-projects-coimbatore",  icon: "fa-code",            label: "Software & AI Projects", sub: "Python, MERN, Java, Flutter" },
-  { to: "/iot-projects-coimbatore-2026",  icon: "fa-microchip",       label: "IoT Projects",            sub: "Arduino, NodeMCU, ESP32" },
-  { to: "/embedded-projects-coimbatore",  icon: "fa-diagram-project", label: "Embedded Projects",       sub: "8051, ARM, PIC, FPGA" },
-  { to: "/mechanical-projects-coimbatore",icon: "fa-gears",           label: "Mechanical Projects",     sub: "CAD, Fabrication, Robotics" },
+  { to: "/software-project-center-coimbatore",   icon: "fa-code",            label: "Software & AI Projects", sub: "Python, MERN, Java, Flutter" },
+  { to: "/iot-project-center-coimbatore",         icon: "fa-microchip",       label: "IoT Projects",           sub: "Arduino, NodeMCU, ESP32" },
+  { to: "/embedded-project-center-coimbatore",    icon: "fa-diagram-project", label: "Embedded Projects",      sub: "8051, ARM, PIC, FPGA" },
+  { to: "/mechanical-project-center-coimbatore",  icon: "fa-gears",           label: "Mechanical Projects",    sub: "CAD, Fabrication, Robotics" },
 ];
 
-// Old URLs — kept for isActive fallback (don't break indexed pages)
+// Legacy paths — isActive fallback (redirected-ஆனாலும் highlight சரியா வரும்)
 const legacyServicePaths = [
-  "/software-projects",
-  "/iot-projects",
-  "/embedded-projects",
-  "/mechanical-projects",
+  "/software-projects", "/software-projects-coimbatore",
+  "/iot-projects", "/iot-projects-coimbatore-2026", "/iot-projects-coimbatore",
+  "/embedded-projects", "/embedded-projects-coimbatore",
+  "/mechanical-projects", "/mechanical-projects-coimbatore",
 ];
 
-// ── About dropdown ─────────────────────────────────────────────────────────────
+// About dropdown
 const aboutLinks = [
-  { to: "/about", icon: "fa-building",        label: "About Us" },
-  { to: "/faq",   icon: "fa-question-circle", label: "FAQ" }, // fixed: was /fqa
+  { to: "/about", icon: "fa-building",        label: "About Us",  sub: "Learn about our journey" },
+  { to: "/faq",   icon: "fa-circle-question", label: "FAQ",       sub: "Frequently asked questions" },
 ];
 
-// ── Main nav links ─────────────────────────────────────────────────────────────
+// Main nav links — App.jsx primary routes-உடன் exact match
 const navLinks = [
-  { to: "/",                                     icon: "fa-house",       label: "Home" },
-  { to: "/final-year-project-titles-coimbatore", icon: "fa-folder-open", label: "Projects" },
-  { to: "/tips-and-tricks",                      icon: "fa-newspaper",   label: "Blog" },
-  { to: "/contact",                              icon: "fa-phone",       label: "Contact" },
+  { to: "/",                                    icon: "fa-house",       label: "Home" },
+  { to: "/final-year-projects-coimbatore",      icon: "fa-folder-open", label: "Projects" },
+  { to: "/blog/project-center-coimbatore-guide",icon: "fa-newspaper",   label: "Blog" },
+  { to: "/contact",                             icon: "fa-phone",       label: "Contact" },
 ];
 
-// Old nav paths for isActive fallback
+// Legacy nav paths for isActive fallback
 const legacyNavMap = {
-  "/final-year-project-titles-coimbatore": "/projects",
-  "/tips-and-tricks": "/blog",
+  "/final-year-projects-coimbatore":       ["/projects", "/final-year-project-titles-coimbatore"],
+  "/blog/project-center-coimbatore-guide": ["/blog", "/tips-and-tricks"],
 };
 
 const Navbar = () => {
@@ -50,10 +50,12 @@ const Navbar = () => {
   const serviceDropRef = useRef(null);
   const aboutDropRef   = useRef(null);
 
-  // Active checks — handle both new SEO paths and old legacy paths
-  const isActive = (path) =>
-    location.pathname === path ||
-    location.pathname === legacyNavMap[path];
+  // Active check — new + legacy paths handle பண்ணும்
+  const isActive = (path) => {
+    if (location.pathname === path) return true;
+    const legacy = legacyNavMap[path];
+    return legacy ? legacy.includes(location.pathname) : false;
+  };
 
   const isServiceActive =
     serviceLinks.some((s) => location.pathname === s.to) ||
@@ -67,7 +69,6 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close service dropdown when clicking outside
   useEffect(() => {
     const handler = (e) => {
       if (serviceDropRef.current && !serviceDropRef.current.contains(e.target))
@@ -77,7 +78,6 @@ const Navbar = () => {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
-  // Close about dropdown when clicking outside
   useEffect(() => {
     const handler = (e) => {
       if (aboutDropRef.current && !aboutDropRef.current.contains(e.target))
@@ -87,7 +87,6 @@ const Navbar = () => {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
-  // Close all menus on route change
   useEffect(() => {
     setMobileOpen(false);
     setMobileServiceOpen(false);
@@ -105,16 +104,14 @@ const Navbar = () => {
         <div className="nb-topbar">
           <div className="nb-topbar-inner">
 
-            {/* Brand */}
             <div className="nb-topbar-brand">
               <img src={logo} alt="CODEX PROJECT logo" className="nb-topbar-logo" />
               <div className="nb-topbar-brand-text">
-                <span className="nb-brand-codex">CODEX</span>{" "}
+                <span className="nb-brand-codex">CODEX</span>
                 <span className="nb-brand-project">PROJECT</span>
               </div>
             </div>
 
-            {/* Right — phones + location */}
             <div className="nb-topbar-right">
               <a href="tel:+918525999002" className="nb-topbar-item" aria-label="Call 85259 99002">
                 <i className="fa-solid fa-phone-volume"></i>
@@ -158,19 +155,19 @@ const Navbar = () => {
               </div>
             </Link>
 
-            {/* ── Desktop Nav Links ── */}
+            {/* ── Desktop Nav ── */}
             <ul className="nb-links">
 
               {/* Home */}
               <li>
                 <Link
                   to="/"
-                  className={`nb-link ${isActive("/") ? "nb-link-active" : ""}`}
-                  aria-current={isActive("/") ? "page" : undefined}
+                  className={`nb-link ${location.pathname === "/" ? "nb-link-active" : ""}`}
+                  aria-current={location.pathname === "/" ? "page" : undefined}
                 >
                   <i className="fa-solid fa-house nb-link-icon"></i>
                   Home
-                  {isActive("/") && <span className="nb-link-bar"></span>}
+                  {location.pathname === "/" && <span className="nb-link-bar"></span>}
                 </Link>
               </li>
 
@@ -191,32 +188,27 @@ const Navbar = () => {
                 </button>
 
                 <div
-                  className={`nb-dropdown nb-dropdown-about ${aboutOpen ? "nb-dropdown-open" : ""}`}
+                  className={`nb-dropdown nb-dropdown-sm ${aboutOpen ? "nb-dropdown-open" : ""}`}
                   role="menu"
                 >
                   <div className="nb-dropdown-header">
-                    <i className="fa-solid fa-info-circle"></i>
+                    <i className="fa-solid fa-circle-info"></i>
                     About CODEX PROJECT
                   </div>
-                  <div className="nb-dropdown-grid nb-dropdown-about-grid">
+                  <div className="nb-dropdown-grid">
                     {aboutLinks.map((a) => (
                       <Link
                         key={a.to}
                         to={a.to}
                         className={`nb-dropdown-item ${location.pathname === a.to ? "nb-dropdown-active" : ""}`}
                         role="menuitem"
-                        aria-label={a.label}
                       >
                         <div className="nb-di-icon">
                           <i className={`fa-solid ${a.icon}`}></i>
                         </div>
                         <div className="nb-di-text">
                           <span className="nb-di-label">{a.label}</span>
-                          <span className="nb-di-sub">
-                            {a.label === "About Us"
-                              ? "Learn about our journey"
-                              : "Frequently asked questions"}
-                          </span>
+                          <span className="nb-di-sub">{a.sub}</span>
                         </div>
                         {location.pathname === a.to && (
                           <i className="fa-solid fa-check nb-di-check"></i>
@@ -256,12 +248,7 @@ const Navbar = () => {
                       <Link
                         key={s.to}
                         to={s.to}
-                        className={`nb-dropdown-item ${
-                          location.pathname === s.to ||
-                          location.pathname === s.to.replace("-coimbatore", "").replace("-2026", "")
-                            ? "nb-dropdown-active"
-                            : ""
-                        }`}
+                        className={`nb-dropdown-item ${location.pathname === s.to ? "nb-dropdown-active" : ""}`}
                         role="menuitem"
                         aria-label={s.label}
                       >
@@ -272,14 +259,14 @@ const Navbar = () => {
                           <span className="nb-di-label">{s.label}</span>
                           <span className="nb-di-sub">{s.sub}</span>
                         </div>
-                        {(location.pathname === s.to) && (
+                        {location.pathname === s.to && (
                           <i className="fa-solid fa-check nb-di-check"></i>
                         )}
                       </Link>
                     ))}
                   </div>
                   <div className="nb-dropdown-footer">
-                    <Link to="/final-year-project-titles-coimbatore" className="nb-df-link">
+                    <Link to="/final-year-projects-coimbatore" className="nb-df-link">
                       <i className="fa-solid fa-grid-2"></i>
                       View All Project Ideas
                       <i className="fa-solid fa-arrow-right"></i>
@@ -317,9 +304,7 @@ const Navbar = () => {
                 aria-label={mobileOpen ? "Close menu" : "Open menu"}
                 aria-expanded={mobileOpen}
               >
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
               </button>
             </div>
 
@@ -336,7 +321,6 @@ const Navbar = () => {
       >
         <div className="nb-mobile-inner">
 
-          {/* Mobile header */}
           <div className="nb-mobile-head">
             <div className="nb-mobile-brand">
               <img src={logo} alt="CODEX PROJECT" className="nb-mobile-logo" />
@@ -345,16 +329,11 @@ const Navbar = () => {
                 <span className="nb-mbrand-project"> PROJECT</span>
               </div>
             </div>
-            <button
-              className="nb-mobile-close"
-              onClick={() => setMobileOpen(false)}
-              aria-label="Close menu"
-            >
+            <button className="nb-mobile-close" onClick={() => setMobileOpen(false)} aria-label="Close menu">
               <i className="fa-solid fa-xmark"></i>
             </button>
           </div>
 
-          {/* Contact strip */}
           <div className="nb-mobile-contact">
             <a href="tel:+918525999002" className="nb-mc-item">
               <i className="fa-solid fa-phone"></i> 85259 99002
@@ -364,22 +343,17 @@ const Navbar = () => {
             </a>
           </div>
 
-          {/* Nav links */}
           <ul className="nb-mobile-links">
 
-            {/* Home */}
             <li>
-              <Link
-                to="/"
-                className={`nb-ml-item ${isActive("/") ? "nb-ml-active" : ""}`}
-              >
+              <Link to="/" className={`nb-ml-item ${location.pathname === "/" ? "nb-ml-active" : ""}`}>
                 <i className="fa-solid fa-house"></i>
                 Home
-                {isActive("/") && <i className="fa-solid fa-circle-dot nb-ml-dot"></i>}
+                {location.pathname === "/" && <i className="fa-solid fa-circle-dot nb-ml-dot"></i>}
               </Link>
             </li>
 
-            {/* Mobile About accordion */}
+            {/* Mobile About */}
             <li>
               <button
                 className={`nb-ml-item nb-ml-btn ${isAboutActive ? "nb-ml-active" : ""}`}
@@ -405,7 +379,7 @@ const Navbar = () => {
               </ul>
             </li>
 
-            {/* Mobile Services accordion */}
+            {/* Mobile Services */}
             <li>
               <button
                 className={`nb-ml-item nb-ml-btn ${isServiceActive ? "nb-ml-active" : ""}`}
@@ -447,28 +421,17 @@ const Navbar = () => {
 
           </ul>
 
-          {/* Mobile CTA */}
           <div className="nb-mobile-cta">
-            <Link
-              to="/contact"
-              className="nb-mobile-cta-btn"
-              onClick={() => setMobileOpen(false)}
-            >
+            <Link to="/contact" className="nb-mobile-cta-btn" onClick={() => setMobileOpen(false)}>
               <i className="fa-solid fa-paper-plane"></i>
               New Project Enquiry
             </Link>
-            <a
-              href="https://wa.me/918525999002"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="nb-mobile-wa-btn"
-            >
+            <a href="https://wa.me/918525999002" target="_blank" rel="noopener noreferrer" className="nb-mobile-wa-btn">
               <i className="fa-brands fa-whatsapp"></i>
               WhatsApp Us
             </a>
           </div>
 
-          {/* Footer info */}
           <div className="nb-mobile-footer">
             <i className="fa-solid fa-location-dot"></i>
             Balaji Complex, Gandhipuram, Coimbatore – 641012
@@ -477,13 +440,8 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Overlay */}
       {mobileOpen && (
-        <div
-          className="nb-overlay"
-          onClick={() => setMobileOpen(false)}
-          aria-hidden="true"
-        />
+        <div className="nb-overlay" onClick={() => setMobileOpen(false)} aria-hidden="true" />
       )}
     </>
   );
