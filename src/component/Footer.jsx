@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Footer.css";
 
 // ─── JSON-LD Schema ───────────────────────────────────────────────────────────
@@ -37,15 +38,15 @@ const footerSchema = {
   ],
 };
 
-// ─── Footer Nav Links ─────────────────────────────────────────────────────────
+// ─── Footer Nav Links — canonical URLs, matches App.js primary routes ────────
 const footerLinks = [
   {
     title: "Quick Links",
     links: [
       { label: "Home",                        href: "/" },
       { label: "About Us",                    href: "/about" },
-      { label: "Project Titles 2026",         href: "/final-year-project-titles-coimbatore" },
-      { label: "Tips & Tricks",               href: "/tips-and-tricks" },
+      { label: "Project Titles 2026",         href: "/final-year-projects-coimbatore" },
+      { label: "Blog",                        href: "/blog/project-center-coimbatore-guide" },
       { label: "FAQ",                         href: "/faq" },
       { label: "Contact Us",                  href: "/contact" },
     ],
@@ -53,38 +54,38 @@ const footerLinks = [
   {
     title: "Software Projects",
     links: [
-      { label: "Python & AI Projects",        href: "/software-projects-coimbatore" },
-      { label: "Machine Learning Projects",   href: "/software-projects-coimbatore" },
-      { label: "MERN Stack Projects",         href: "/software-projects-coimbatore" },
-      { label: "Java & .NET Projects",        href: "/software-projects-coimbatore" },
-      { label: "Flutter & Android Apps",      href: "/software-projects-coimbatore" },
+      { label: "Python & AI Projects",        href: "/software-project-center-coimbatore" },
+      { label: "Machine Learning Projects",   href: "/software-project-center-coimbatore" },
+      { label: "MERN Stack Projects",         href: "/software-project-center-coimbatore" },
+      { label: "Java & .NET Projects",        href: "/software-project-center-coimbatore" },
+      { label: "Flutter & Android Apps",      href: "/software-project-center-coimbatore" },
     ],
   },
   {
     title: "Hardware Projects",
     links: [
-      { label: "IoT Projects Coimbatore",     href: "/iot-projects-coimbatore-2026" },
-      { label: "Embedded Projects",           href: "/embedded-projects-coimbatore" },
-      { label: "Arduino Projects",            href: "/iot-projects-coimbatore-2026" },
-      { label: "Raspberry Pi Projects",       href: "/iot-projects-coimbatore-2026" },
-      { label: "Mechanical Projects",         href: "/mechanical-projects-coimbatore" },
+      { label: "IoT Projects Coimbatore",     href: "/iot-project-center-coimbatore" },
+      { label: "Embedded Projects",           href: "/embedded-project-center-coimbatore" },
+      { label: "Arduino Projects",            href: "/iot-project-center-coimbatore" },
+      { label: "Raspberry Pi Projects",       href: "/iot-project-center-coimbatore" },
+      { label: "Mechanical Projects",         href: "/mechanical-project-center-coimbatore" },
     ],
   },
 ];
 
-// ─── SEO Keyword Tags ─────────────────────────────────────────────────────────
+// ─── SEO Keyword Tags — canonical URLs ────────────────────────────────────────
 const techKeywords = [
-  { label: "AI Projects Coimbatore",              href: "/software-projects-coimbatore" },
-  { label: "ML Projects Coimbatore 2026",         href: "/software-projects-coimbatore" },
-  { label: "IoT Projects Coimbatore 2026",        href: "/iot-projects-coimbatore-2026" },
-  { label: "Embedded Projects Coimbatore",        href: "/embedded-projects-coimbatore" },
-  { label: "Mechanical Projects Coimbatore",      href: "/mechanical-projects-coimbatore" },
-  { label: "IEEE Projects 2025-26",               href: "/final-year-project-titles-coimbatore" },
-  { label: "Python Projects Coimbatore",          href: "/software-projects-coimbatore" },
-  { label: "MERN Stack Projects",                 href: "/software-projects-coimbatore" },
-  { label: "Flutter Projects Coimbatore",         href: "/software-projects-coimbatore" },
-  { label: "Arduino Projects Coimbatore",         href: "/iot-projects-coimbatore-2026" },
-  { label: "Final Year Projects 2025-26",         href: "/final-year-project-titles-coimbatore" },
+  { label: "AI Projects Coimbatore",              href: "/software-project-center-coimbatore" },
+  { label: "ML Projects Coimbatore 2026",         href: "/software-project-center-coimbatore" },
+  { label: "IoT Projects Coimbatore 2026",        href: "/iot-project-center-coimbatore" },
+  { label: "Embedded Projects Coimbatore",        href: "/embedded-project-center-coimbatore" },
+  { label: "Mechanical Projects Coimbatore",      href: "/mechanical-project-center-coimbatore" },
+  { label: "IEEE Projects 2025-26",               href: "/final-year-projects-coimbatore" },
+  { label: "Python Projects Coimbatore",          href: "/software-project-center-coimbatore" },
+  { label: "MERN Stack Projects",                 href: "/software-project-center-coimbatore" },
+  { label: "Flutter Projects Coimbatore",         href: "/software-project-center-coimbatore" },
+  { label: "Arduino Projects Coimbatore",         href: "/iot-project-center-coimbatore" },
+  { label: "Final Year Projects 2025-26",         href: "/final-year-projects-coimbatore" },
   { label: "Free Internship Certificate",         href: "/about" },
   { label: "Project Center Gandhipuram",          href: "/contact" },
   { label: "Same Day Project Delivery",           href: "/contact" },
@@ -242,10 +243,10 @@ const Footer = () => {
                 <ul className="cpf-link-list">
                   {col.links.map((lk, li) => (
                     <li key={li}>
-                      <a href={lk.href} className="cpf-link" aria-label={lk.label}>
+                      <Link to={lk.href} className="cpf-link" aria-label={lk.label}>
                         <span className="cpf-link-arrow">›</span>
                         {lk.label}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -262,9 +263,9 @@ const Footer = () => {
           <p className="cpf-kw-label">Explore</p>
           <div className="cpf-kw-grid">
             {techKeywords.map((k) => (
-              <a key={k.label} href={k.href} className="cpf-kw-tag" aria-label={k.label}>
+              <Link key={k.label} to={k.href} className="cpf-kw-tag" aria-label={k.label}>
                 {k.label}
-              </a>
+              </Link>
             ))}
           </div>
         </div>
@@ -276,10 +277,10 @@ const Footer = () => {
           <p>
             <strong>CODEX PROJECT</strong> — Best final year project center in Coimbatore
             at 2nd Floor, Balaji Complex, Gandhipuram. IEEE 2025-26 projects in{" "}
-            <a href="/software-projects-coimbatore">Python, AI, Machine Learning</a>,{" "}
-            <a href="/iot-projects-coimbatore-2026">IoT, Arduino, Raspberry Pi</a>,{" "}
-            <a href="/embedded-projects-coimbatore">Embedded Systems</a>,{" "}
-            <a href="/mechanical-projects-coimbatore">Mechanical Engineering</a> with
+            <Link to="/software-project-center-coimbatore">Python, AI, Machine Learning</Link>,{" "}
+            <Link to="/iot-project-center-coimbatore">IoT, Arduino, Raspberry Pi</Link>,{" "}
+            <Link to="/embedded-project-center-coimbatore">Embedded Systems</Link>,{" "}
+            <Link to="/mechanical-project-center-coimbatore">Mechanical Engineering</Link> with
             free internship certificate, same day delivery, full documentation &amp;
             viva support. Serving students from Peelamedu, Gandhipuram, Saravanampatti,
             RS Puram, Singanallur &amp; all Coimbatore engineering colleges including
@@ -299,10 +300,6 @@ const Footer = () => {
             </p>
 
             <div className="cpf-bottom-links">
-              <a href="/privacy-policy" className="cpf-bottom-link">Privacy Policy</a>
-              <span className="cpf-bottom-sep">·</span>
-              <a href="/terms" className="cpf-bottom-link">Terms of Use</a>
-              <span className="cpf-bottom-sep">·</span>
               <a href="/sitemap.xml" className="cpf-bottom-link">Sitemap</a>
             </div>
 
