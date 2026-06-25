@@ -2,6 +2,8 @@
    CODEX PROJECT — About.css
    Brand: Navy #1A2A6C + Gold #F5A623 | White Theme
    Font: Space Grotesk (headings) + Inter (body)
+   Hero & CTA now match the light-cream treatment used across
+   SoftwareProjects.css / Blog.css / Contact.css (was dark navy).
 ═══════════════════════════════════════════════════════════════ */
 
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
@@ -108,7 +110,7 @@
 
 /* Gradient text */
 .ab-grad {
-  background: linear-gradient(135deg, var(--ab-navy) 0%, var(--ab-navy-light) 40%, var(--ab-gold) 100%);
+  background: linear-gradient(135deg, #001570 0%, #001570 40%, var(--ab-gold) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -118,6 +120,15 @@
 @keyframes abGradShift {
   0%   { background-position: 0% 50%; }
   100% { background-position: 200% 50%; }
+}
+/* On the light hero, the gradient must read on a cream bg —
+   reuse the same navy→gold sweep used on dark sections via a
+   dedicated modifier instead of overriding .ab-grad globally. */
+.ab-hero-h1 .ab-grad {
+  background: linear-gradient(135deg, #001570 0%, #001570 40%, var(--ab-gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* ── Buttons ────────────────────────────────────────────────── */
@@ -150,36 +161,36 @@
 .ab-btn-out {
   background: transparent;
   color: var(--ab-navy);
-  border: 2px solid var(--ab-navy);
+  border: 2px solid rgba(26,42,108,0.4);
 }
 .ab-btn-out:hover {
-  background: var(--ab-navy);
-  color: var(--ab-gold);
+  border-color: var(--ab-navy);
+  background: rgba(26,42,108,0.06);
   transform: translateY(-2px);
 }
 
 /* ═══════════════════════════════════════════════════════════
-   HERO — Navy dark (only dark section)
+   HERO — Light cream bg (matches sp-hero / blog-hero / contact-hero)
 ═══════════════════════════════════════════════════════════ */
 .ab-hero {
   position: relative;
-  min-height: 92vh;
+  min-height: auto;
   display: flex;
   align-items: center;
-  padding: 100px 24px 80px;
+  padding: 92px 24px 76px;
   overflow: hidden;
-  background: var(--ab-navy);
+  background: #fcfbce96;
 }
 
 .ab-hero-bg { position: absolute; inset: 0; z-index: 0; }
 
-/* Grid overlay */
+/* Grid overlay — gold tint */
 .ab-hero-grid {
   position: absolute; inset: 0;
   background-image:
     linear-gradient(rgba(245,166,35,0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(245,166,35,0.05) 1px, transparent 1px);
-  background-size: 46px 46px;
+  background-size: 48px 48px;
 }
 
 /* Orbs */
@@ -187,13 +198,13 @@
   position: absolute;
   border-radius: 50%;
   filter: blur(100px);
-  opacity: .15;
+  opacity: .14;
   animation: abOrbPulse 9s ease-in-out infinite alternate;
   pointer-events: none;
 }
 .ab-orb1 { width:700px;height:700px;background:radial-gradient(circle,#1565C0,transparent);top:-25%;right:-10%; }
-.ab-orb2 { width:500px;height:500px;background:radial-gradient(circle,var(--ab-gold),transparent);bottom:-15%;left:-8%;animation-delay:-4s;opacity:.08; }
-.ab-orb3 { width:300px;height:300px;background:radial-gradient(circle,#0891B2,transparent);top:40%;left:35%;animation-delay:-2s; }
+.ab-orb2 { width:500px;height:500px;background:radial-gradient(circle,var(--ab-gold),transparent);bottom:-15%;left:-8%;animation-delay:-4s;opacity:.10; }
+.ab-orb3 { width:300px;height:300px;background:radial-gradient(circle,#0891B2,transparent);top:40%;left:35%;animation-delay:-2s;opacity:.10; }
 @keyframes abOrbPulse { from{transform:scale(1);}to{transform:scale(1.18);} }
 
 .ab-hero-inner {
@@ -204,14 +215,14 @@
   text-align: center;
 }
 
-/* Badge */
+/* Badge — gold trust-pill style */
 .ab-hero-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(245,166,35,0.13);
-  border: 1px solid rgba(245,166,35,0.38);
-  color: var(--ab-gold);
+  background: rgba(248,228,137,0.85);
+  border: 1px solid rgba(245,166,35,0.4);
+  color: #003f9c;
   padding: 6px 18px;
   border-radius: 50px;
   font-size: 11px;
@@ -234,26 +245,26 @@
 /* H1 */
 .ab-hero-h1 {
   font-family: var(--ff-sans);
-  font-size: clamp(38px, 6.5vw, 76px);
+  font-size: clamp(32px, 6vw, 60px);
   font-weight: 700;
-  line-height: 1.06;
-  margin-bottom: 24px;
+  line-height: 1.08;
+  margin-bottom: 20px;
   letter-spacing: -1px;
-  color: #FFFFFF;
+  color: #001570;
   animation: abSlideUp .8s ease both .1s;
 }
-@keyframes abSlideUp { from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);} }
+@keyframes abSlideUp { from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);} }
 
 .ab-hero-sub {
   font-size: clamp(14px, 1.9vw, 17px);
-  color: rgba(255,255,255,0.68);
+  color: rgba(0,21,112,0.75);
   max-width: 660px;
-  margin: 0 auto 32px;
-  line-height: 1.78;
+  margin: 0 auto 30px;
+  line-height: 1.85;
   font-family: var(--fb);
   animation: abSlideUp .8s ease both .2s;
 }
-.ab-hero-sub strong { color: var(--ab-gold); font-weight: 600; }
+.ab-hero-sub strong { color: #001570; font-weight: 600; }
 
 /* Trust pills */
 .ab-hero-pills {
@@ -261,13 +272,13 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 8px;
-  margin-bottom: 38px;
+  margin-bottom: 34px;
   animation: abSlideUp .8s ease both .3s;
 }
 .ab-hero-pill {
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.14);
-  color: rgba(255,255,255,0.72);
+  background: rgba(241,234,128,0.9);
+  border: 1px solid rgba(25,11,221,0.3);
+  color: rgba(5,0,77,0.92);
   padding: 5px 14px;
   border-radius: 50px;
   font-size: 11px;
@@ -277,9 +288,9 @@
   cursor: default;
 }
 .ab-hero-pill:hover {
-  background: rgba(245,166,35,0.18);
-  border-color: var(--ab-gold);
-  color: var(--ab-gold);
+  background: var(--ab-gold);
+  border-color: var(--ab-gold-dark);
+  color: var(--ab-navy);
 }
 
 .ab-hero-btns {
@@ -568,12 +579,12 @@
 }
 
 /* ═══════════════════════════════════════════════════════════
-   CTA — Navy dark
+   CTA — Light cream bg (matches sp-cta / blog-cta / contact-cta)
 ═══════════════════════════════════════════════════════════ */
 .ab-cta-sec {
   position: relative;
-  padding: 100px 24px;
-  background: var(--ab-navy);
+  padding: 90px 24px;
+  background: #fcfbce96;
   overflow: hidden;
   text-align: center;
 }
@@ -582,7 +593,7 @@
   top: 50%; left: 50%;
   transform: translate(-50%,-50%);
   width: 820px; height: 300px;
-  background: radial-gradient(ellipse, rgba(245,166,35,0.12), transparent 70%);
+  background: radial-gradient(ellipse, rgba(245,166,35,0.14), transparent 70%);
   pointer-events: none;
 }
 /* Extra orb */
@@ -591,30 +602,30 @@
   position: absolute;
   top: -80px; right: -80px;
   width: 380px; height: 380px;
-  background: radial-gradient(circle, rgba(21,101,192,0.20), transparent 70%);
+  background: radial-gradient(circle, rgba(21,101,192,0.16), transparent 70%);
   border-radius: 50%;
   pointer-events: none;
 }
 .ab-cta-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
 .ab-cta-title {
   font-family: var(--ff-sans);
-  font-size: clamp(26px, 5vw, 48px);
+  font-size: clamp(24px, 4.5vw, 42px);
   font-weight: 700;
-  margin-bottom: 18px;
-  line-height: 1.15;
+  margin-bottom: 16px;
+  line-height: 1.2;
   letter-spacing: -0.5px;
-  color: #FFFFFF;
+  color: #001170;
 }
-.ab-cta-sub { font-size: 15px; color: rgba(255,255,255,0.64); max-width: 540px; margin: 0 auto 10px; line-height: 1.72; font-family: var(--fb); }
-.ab-cta-sub strong { color: var(--ab-gold); font-weight: 600; }
-.ab-cta-addr { font-size: 12px; color: rgba(255,255,255,0.45); margin-bottom: 36px; font-family: var(--fb); }
+.ab-cta-sub { font-size: 14.5px; color: rgba(4,13,133,0.8); max-width: 540px; margin: 0 auto 10px; line-height: 1.75; font-family: var(--fb); font-style: italic; }
+.ab-cta-sub strong { color: #001170; font-weight: 600; font-style: normal; }
+.ab-cta-addr { font-family: var(--ff-sans); font-size: 12px; color: #0891B2; margin-bottom: 30px; }
 
 .ab-cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 .ab-btn-cta {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 15px 34px;
+  padding: 14px 32px;
   border-radius: 50px;
   font-family: var(--ff-sans);
   font-size: 14px;
@@ -627,23 +638,23 @@
 .ab-btn-cta-p {
   background: var(--ab-gold);
   color: var(--ab-navy);
-  box-shadow: 0 8px 32px rgba(245,166,35,0.40);
+  box-shadow: 0 8px 28px rgba(245,166,35,0.40);
 }
 .ab-btn-cta-p:hover {
   background: var(--ab-gold-dark);
-  transform: translateY(-3px);
-  box-shadow: 0 14px 44px rgba(245,166,35,0.55);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(245,166,35,0.55);
   color: var(--ab-navy);
 }
 .ab-btn-cta-o {
   background: transparent;
-  color: #FFFFFF;
-  border: 2px solid rgba(255,255,255,0.28);
+  color: var(--ab-gold-dark);
+  border: 2px solid rgba(245,166,35,0.6);
 }
 .ab-btn-cta-o:hover {
-  border-color: var(--ab-gold);
-  color: var(--ab-gold);
-  transform: translateY(-3px);
+  background: var(--ab-gold);
+  color: var(--ab-navy);
+  transform: translateY(-2px);
 }
 
 /* ── Scrollbar ──────────────────────────────────────────────── */
@@ -667,13 +678,13 @@
 }
 
 @media (max-width: 768px) {
-  .ab-hero          { min-height: auto; padding: 80px 20px 60px; }
+  .ab-hero          { min-height: auto; padding: 68px 20px 52px; }
   .ab-stats-grid    { grid-template-columns: repeat(2, 1fr); }
   .ab-features-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 480px) {
-  .ab-hero-h1     { font-size: 34px; }
+  .ab-hero-h1     { font-size: 30px; }
   .ab-stats-grid  { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .ab-stat-num    { font-size: 28px; }
   .ab-hero-btns   { flex-direction: column; align-items: center; }

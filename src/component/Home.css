@@ -907,6 +907,11 @@
 }
 
 @media (max-width: 768px) {
+  .cp-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
   .cp-hero         { min-height: auto; padding: 80px 20px 60px; }
   .cp-float-wrap   { display: none; }
   .cp-stats-grid   { grid-template-columns: repeat(2, 1fr); }
