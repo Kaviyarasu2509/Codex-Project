@@ -401,11 +401,17 @@ const EmbeddedProjects = () => {
         <meta property="og:title" content={`Best Embedded Project Center in Coimbatore ${YEAR} | CODEX PROJECT`} />
         <meta property="og:description" content={`8051, ARM, PIC, Arduino, FPGA/VLSI embedded final year projects in Coimbatore. Free internship certificate. Call ${PHONE}.`} />
         <meta property="og:url" content={PAGE_URL} />
-      </Helmet>
 
-      <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(embeddedSchema)}} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(faqSchema)}} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(breadcrumbSchema)}} />
+        <script type="application/ld+json">
+          {JSON.stringify(embeddedSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(faqSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbSchema)}
+        </script>
+      </Helmet>
 
       {/* ══ HERO ════════════════════════════════════════════ */}
       <section className="ep-hero" aria-labelledby="ep-h1">
@@ -415,11 +421,11 @@ const EmbeddedProjects = () => {
           <div className="ep-orb ep-orb2"/>
         </div>
         <div className="ep-container">
-          <nav className="ep-bc" aria-label="breadcrumb" itemScope itemType="https://schema.org/BreadcrumbList">
+          <nav className="ep-bc" aria-label="breadcrumb">
             <ol>
-              <li itemScope itemType="https://schema.org/ListItem"><a href="/" itemProp="item"><span itemProp="name">Home</span></a><meta itemProp="position" content="1"/></li>
+              <li><a href="/">Home</a></li>
               <span>›</span>
-              <li aria-current="page" itemScope itemType="https://schema.org/ListItem"><span itemProp="name">Embedded Projects {YEAR}</span><meta itemProp="position" content="2"/></li>
+              <li aria-current="page">Embedded Projects {YEAR}</li>
             </ol>
           </nav>
 
@@ -490,14 +496,11 @@ const EmbeddedProjects = () => {
           <div className="ep-services-grid">
             {(filteredServices.length>0?filteredServices:services).map((s,i)=>(
               <article key={i} className="ep-svc-card"
-                style={{"--sc":s.accent,"--sbg":s.color}}
-                itemScope itemType="https://schema.org/Service">
+                style={{"--sc":s.accent,"--sbg":s.color}}>
                 <div className="ep-svc-bar"/>
                 <div className="ep-svc-icon">{s.icon}</div>
-                <h3 className="ep-svc-title" itemProp="name">{s.title}</h3>
-                <meta itemProp="serviceType" content={s.seo}/>
-                <meta itemProp="areaServed" content="Coimbatore"/>
-                <p className="ep-svc-desc" itemProp="description">{s.desc}</p>
+                <h3 className="ep-svc-title">{s.title}</h3>
+                <p className="ep-svc-desc">{s.desc}</p>
                 <a href={`${WA}?text=Hi!%20I%20need%20${encodeURIComponent(s.title)}%20embedded%20project%20${YEAR}`}
                    target="_blank" rel="noopener noreferrer" className="ep-svc-cta">
                   💬 WhatsApp for {s.title.split(" ")[0]} Project
@@ -543,10 +546,9 @@ const EmbeddedProjects = () => {
           <div className="ep-ideas-grid">
             {(filteredIdeas.length>0?filteredIdeas:projectIdeas).map((p,i)=>(
               <div key={i} className="ep-idea-card"
-                style={{"--ibg":tagColors[p.tag]||"#f0f4ff"}}
-                itemScope itemType="https://schema.org/CreativeWork">
-                <p className="ep-idea-name" itemProp="name">{p.name}</p>
-                <span className="ep-idea-tag" itemProp="genre">{p.tag}</span>
+                style={{"--ibg":tagColors[p.tag]||"#f0f4ff"}}>
+                <p className="ep-idea-name">{p.name}</p>
+                <span className="ep-idea-tag">{p.tag}</span>
               </div>
             ))}
           </div>
@@ -590,13 +592,13 @@ const EmbeddedProjects = () => {
           <p className="ep-sec-sub">What ECE, EEE & EIE students say about CODEX PROJECT's embedded final year project support</p>
           <div className="ep-reviews-grid">
             {REVIEWS.map((r,i)=>(
-              <div key={i} className="ep-rv-card" itemScope itemType="https://schema.org/Review">
-                <div className="ep-rv-stars">{"⭐".repeat(r.stars)}<meta itemProp="reviewRating" content={r.stars}/></div>
-                <p className="ep-rv-text" itemProp="reviewBody">"{r.text}"</p>
+              <div key={i} className="ep-rv-card">
+                <div className="ep-rv-stars">{"⭐".repeat(r.stars)}</div>
+                <p className="ep-rv-text">"{r.text}"</p>
                 <div className="ep-rv-author">
                   <div className="ep-rv-av">{r.name[0]}</div>
                   <div>
-                    <strong itemProp="author">{r.name}</strong>
+                    <strong>{r.name}</strong>
                     <span className="ep-rv-branch">{r.branch}</span>
                   </div>
                 </div>
@@ -613,14 +615,13 @@ const EmbeddedProjects = () => {
           <div className="ep-faq-list">
             {faqSchema.mainEntity.map((item,i)=>(
               <div key={i} className={`ep-faq-item ${openFaq===i?"ep-faq-open":""}`}
-                onClick={()=>setOpenFaq(openFaq===i?null:i)}
-                itemScope itemType="https://schema.org/Question">
+                onClick={()=>setOpenFaq(openFaq===i?null:i)}>
                 <div className="ep-faq-q">
-                  <h3 className="ep-faq-qtext" itemProp="name">{item.name}</h3>
+                  <h3 className="ep-faq-qtext">{item.name}</h3>
                   <span className="ep-faq-icon">{openFaq===i?"−":"+"}</span>
                 </div>
-                <div className="ep-faq-body" itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
-                  <p itemProp="text">{item.acceptedAnswer.text}</p>
+                <div className="ep-faq-body">
+                  <p>{item.acceptedAnswer.text}</p>
                 </div>
               </div>
             ))}

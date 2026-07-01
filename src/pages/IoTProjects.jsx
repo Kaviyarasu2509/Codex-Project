@@ -273,11 +273,17 @@ const IoTProjects = () => {
         <meta property="og:title" content={`Best IoT Project Center in Coimbatore ${YEAR} | CODEX PROJECT`} />
         <meta property="og:description" content={`Arduino, Raspberry Pi, NodeMCU, ESP32, Cloud IoT final year projects in Coimbatore. Free internship certificate. Call ${PHONE}.`} />
         <meta property="og:url" content={PAGE_URL} />
-      </Helmet>
 
-      <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(iotSchema)}} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(faqSchema)}} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(breadcrumbSchema)}} />
+        <script type="application/ld+json">
+          {JSON.stringify(iotSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(faqSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbSchema)}
+        </script>
+      </Helmet>
 
       {/* ══ HERO ════════════════════════════════════════════ */}
       <section className="iot-hero" aria-labelledby="iot-h1">
@@ -287,11 +293,11 @@ const IoTProjects = () => {
           <div className="iot-orb iot-orb2"/>
         </div>
         <div className="iot-container">
-          <nav className="iot-bc" aria-label="breadcrumb" itemScope itemType="https://schema.org/BreadcrumbList">
+          <nav className="iot-bc" aria-label="breadcrumb">
             <ol>
-              <li itemScope itemType="https://schema.org/ListItem"><a href="/" itemProp="item"><span itemProp="name">Home</span></a><meta itemProp="position" content="1"/></li>
+              <li><a href="/">Home</a></li>
               <span>›</span>
-              <li aria-current="page" itemScope itemType="https://schema.org/ListItem"><span itemProp="name">IoT Projects {YEAR}</span><meta itemProp="position" content="2"/></li>
+              <li aria-current="page">IoT Projects {YEAR}</li>
             </ol>
           </nav>
 
@@ -339,14 +345,11 @@ const IoTProjects = () => {
           <div className="iot-services-grid">
             {services.map((s,i)=>(
               <article key={i} className="iot-svc-card"
-                style={{"--sc":s.accent,"--sbg":s.color}}
-                itemScope itemType="https://schema.org/Service">
+                style={{"--sc":s.accent,"--sbg":s.color}}>
                 <div className="iot-svc-bar"/>
                 <span className="iot-svc-icon">{s.icon}</span>
-                <h3 className="iot-svc-title" itemProp="name">{s.title}</h3>
-                <meta itemProp="serviceType" content={s.seo}/>
-                <meta itemProp="areaServed" content="Coimbatore"/>
-                <p className="iot-svc-desc" itemProp="description">{s.desc}</p>
+                <h3 className="iot-svc-title">{s.title}</h3>
+                <p className="iot-svc-desc">{s.desc}</p>
                 <a href={`${WA}?text=Hi!%20I%20need%20${encodeURIComponent(s.title)}%20IoT%20project%20${YEAR}`}
                    target="_blank" rel="noopener noreferrer" className="iot-svc-cta">
                   💬 WhatsApp for {s.title.split(" ")[0]} Project
@@ -392,10 +395,9 @@ const IoTProjects = () => {
           <div className="iot-ideas-grid">
             {projectIdeas.map((p,i)=>(
               <div key={i} className="iot-idea-card"
-                style={{"--ibg":tagColors[p.tag]||"#f0f4ff"}}
-                itemScope itemType="https://schema.org/CreativeWork">
-                <p className="iot-idea-name" itemProp="name">{p.name}</p>
-                <span className="iot-idea-tag" itemProp="genre">{p.tag}</span>
+                style={{"--ibg":tagColors[p.tag]||"#f0f4ff"}}>
+                <p className="iot-idea-name">{p.name}</p>
+                <span className="iot-idea-tag">{p.tag}</span>
               </div>
             ))}
           </div>
@@ -439,13 +441,13 @@ const IoTProjects = () => {
           <p className="iot-sec-sub">What ECE, EEE & CSE students say about CODEX PROJECT's IoT final year project support</p>
           <div className="iot-reviews-grid">
             {REVIEWS.map((r,i)=>(
-              <div key={i} className="iot-rv-card" itemScope itemType="https://schema.org/Review">
-                <div className="iot-rv-stars">{"⭐".repeat(r.stars)}<meta itemProp="reviewRating" content={r.stars}/></div>
-                <p className="iot-rv-text" itemProp="reviewBody">"{r.text}"</p>
+              <div key={i} className="iot-rv-card">
+                <div className="iot-rv-stars">{"⭐".repeat(r.stars)}</div>
+                <p className="iot-rv-text">"{r.text}"</p>
                 <div className="iot-rv-author">
                   <div className="iot-rv-av">{r.name[0]}</div>
                   <div>
-                    <strong itemProp="author">{r.name}</strong>
+                    <strong>{r.name}</strong>
                     <span className="iot-rv-branch">{r.branch}</span>
                   </div>
                 </div>
@@ -462,14 +464,13 @@ const IoTProjects = () => {
           <div className="iot-faq-list">
             {faqSchema.mainEntity.map((item,i)=>(
               <div key={i} className={`iot-faq-item ${openFaq===i?"iot-faq-open":""}`}
-                onClick={()=>setOpenFaq(openFaq===i?null:i)}
-                itemScope itemType="https://schema.org/Question">
+                onClick={()=>setOpenFaq(openFaq===i?null:i)}>
                 <div className="iot-faq-q">
-                  <h3 className="iot-faq-qtext" itemProp="name">{item.name}</h3>
+                  <h3 className="iot-faq-qtext">{item.name}</h3>
                   <span className="iot-faq-icon">{openFaq===i?"−":"+"}</span>
                 </div>
-                <div className="iot-faq-body" itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
-                  <p itemProp="text">{item.acceptedAnswer.text}</p>
+                <div className="iot-faq-body">
+                  <p>{item.acceptedAnswer.text}</p>
                 </div>
               </div>
             ))}

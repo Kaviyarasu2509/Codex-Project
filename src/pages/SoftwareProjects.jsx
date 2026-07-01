@@ -219,11 +219,17 @@ const SoftwareProjects = () => {
         <meta property="og:title" content={`Best Software Project Center in Coimbatore ${YEAR} | CODEX PROJECT`} />
         <meta property="og:description" content={`Python, AI, MERN, Java, Flutter, Android final year projects in Coimbatore. Free internship certificate. Call ${PHONE}.`} />
         <meta property="og:url" content={PAGE_URL} />
-      </Helmet>
 
-      <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(softwareSchema)}} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(faqSchema)}} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(breadcrumbSchema)}} />
+        <script type="application/ld+json">
+          {JSON.stringify(softwareSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(faqSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbSchema)}
+        </script>
+      </Helmet>
 
       {/* ══ HERO ════════════════════════════════════════════ */}
       <section className="sp-hero" aria-labelledby="sp-h1">
@@ -233,11 +239,11 @@ const SoftwareProjects = () => {
           <div className="sp-orb sp-orb2"/>
         </div>
         <div className="sp-container">
-          <nav className="sp-bc" aria-label="breadcrumb" itemScope itemType="https://schema.org/BreadcrumbList">
+          <nav className="sp-bc" aria-label="breadcrumb">
             <ol>
-              <li itemScope itemType="https://schema.org/ListItem"><a href="/" itemProp="item"><span itemProp="name">Home</span></a><meta itemProp="position" content="1"/></li>
+              <li><a href="/">Home</a></li>
               <span>›</span>
-              <li aria-current="page" itemScope itemType="https://schema.org/ListItem"><span itemProp="name">Software Projects {YEAR}</span><meta itemProp="position" content="2"/></li>
+              <li aria-current="page">Software Projects {YEAR}</li>
             </ol>
           </nav>
 
@@ -311,14 +317,11 @@ const SoftwareProjects = () => {
           <div className="sp-tech-grid">
             {(filteredDomains.length>0 ? filteredDomains : techDomains).map((t, i) => (
               <article key={i} className="sp-tech-card"
-                style={{"--tc":t.accent,"--tbg":t.color}}
-                itemScope itemType="https://schema.org/Service">
+                style={{"--tc":t.accent,"--tbg":t.color}}>
                 <div className="sp-tc-bar"/>
                 <div className="sp-tc-icon">{t.icon}</div>
-                <h3 className="sp-tc-title" itemProp="name">{t.title}</h3>
-                <meta itemProp="serviceType" content={t.seo}/>
-                <meta itemProp="areaServed" content="Coimbatore"/>
-                <p className="sp-tc-desc" itemProp="description">{t.desc}</p>
+                <h3 className="sp-tc-title">{t.title}</h3>
+                <p className="sp-tc-desc">{t.desc}</p>
                 <div className="sp-tc-tags">
                   {t.tags.map((tag,j)=><span key={j} className="sp-tc-tag">{tag}</span>)}
                 </div>
@@ -342,10 +345,9 @@ const SoftwareProjects = () => {
           <div className="sp-ideas-grid">
             {projectIdeas.map((p,i)=>(
               <div key={i} className="sp-idea-card"
-                style={{"--ibg":tagColors[p.tag]||"#f8f9fa"}}
-                itemScope itemType="https://schema.org/CreativeWork">
-                <p className="sp-idea-name" itemProp="name">{p.name}</p>
-                <span className="sp-idea-tag" itemProp="genre">{p.tag}</span>
+                style={{"--ibg":tagColors[p.tag]||"#f8f9fa"}}>
+                <p className="sp-idea-name">{p.name}</p>
+                <span className="sp-idea-tag">{p.tag}</span>
               </div>
             ))}
           </div>
@@ -389,13 +391,13 @@ const SoftwareProjects = () => {
           <p className="sp-sec-sub">What CSE, IT & MCA students say about CODEX PROJECT's software final year project support</p>
           <div className="sp-reviews-grid">
             {REVIEWS.map((r,i)=>(
-              <div key={i} className="sp-review-card" itemScope itemType="https://schema.org/Review">
-                <div className="sp-rv-stars">{"⭐".repeat(r.stars)}<meta itemProp="reviewRating" content={r.stars}/></div>
-                <p className="sp-rv-text" itemProp="reviewBody">"{r.text}"</p>
+              <div key={i} className="sp-review-card">
+                <div className="sp-rv-stars">{"⭐".repeat(r.stars)}</div>
+                <p className="sp-rv-text">"{r.text}"</p>
                 <div className="sp-rv-author">
                   <div className="sp-rv-av">{r.name[0]}</div>
                   <div>
-                    <strong itemProp="author">{r.name}</strong>
+                    <strong>{r.name}</strong>
                     <span className="sp-rv-branch">{r.branch}</span>
                   </div>
                 </div>
@@ -413,14 +415,13 @@ const SoftwareProjects = () => {
             {faqSchema.mainEntity.map((item,i)=>(
               <div key={i}
                 className={`sp-faq-item ${openFaq===i?"sp-faq-open":""}`}
-                onClick={()=>setOpenFaq(openFaq===i?null:i)}
-                itemScope itemType="https://schema.org/Question">
+                onClick={()=>setOpenFaq(openFaq===i?null:i)}>
                 <div className="sp-faq-q">
-                  <h3 className="sp-faq-qtext" itemProp="name">{item.name}</h3>
+                  <h3 className="sp-faq-qtext">{item.name}</h3>
                   <span className="sp-faq-icon">{openFaq===i?"−":"+"}</span>
                 </div>
-                <div className="sp-faq-body" itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
-                  <p itemProp="text">{item.acceptedAnswer.text}</p>
+                <div className="sp-faq-body">
+                  <p>{item.acceptedAnswer.text}</p>
                 </div>
               </div>
             ))}
