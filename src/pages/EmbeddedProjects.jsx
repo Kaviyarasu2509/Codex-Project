@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Helmet } from "react-helmet-async";
 import "./EmbeddedProjects.css";
 
 // ═══════════════════════════════════════════════════════════
@@ -9,6 +10,7 @@ const PHONE     = "8525999032";   // Hardware / Embedded line
 const PHONE_GEN = "8525999002";
 const WA        = `https://wa.me/91${PHONE_GEN}`;
 const ADDR      = "2nd Floor, Balaji Complex, 288, 2nd Street, Cross Cut Road, Gandhipuram, Coimbatore – 641012";
+const PAGE_URL  = "https://www.codexproject.in/embedded-project-center-coimbatore";
 
 // ═══════════════════════════════════════════════════════════
 // JSON-LD SCHEMAS
@@ -19,6 +21,7 @@ const embeddedSchema = {
   "name": `Best Embedded Project Center in Coimbatore ${YEAR} – CODEX PROJECT`,
   "serviceType": "Embedded Systems Final Year Project Training and Development",
   "description": `CODEX PROJECT is the best embedded project center in Coimbatore ${YEAR}. We offer IEEE ${YEAR} 8051, ARM Cortex, PIC, AVR, Arduino, Raspberry Pi, STM32, and FPGA/VLSI embedded system final year projects for BE ECE, EEE, EIE, and Diploma students with real hardware, complete circuit design, Keil/MPLAB programming, Proteus simulation, documentation, internship certificate, and viva support.`,
+  "url": PAGE_URL,
   "provider": {
     "@type": "LocalBusiness",
     "@id": "https://www.codexproject.in/#organization",
@@ -33,7 +36,7 @@ const embeddedSchema = {
       "postalCode": "641012",
       "addressCountry": "IN",
     },
-    "geo": { "@type": "GeoCoordinates", "latitude": "11.0168", "longitude": "76.9558" },
+    "geo": { "@type": "GeoCoordinates", "latitude": 11.0187267, "longitude": 76.9686347 },
     "openingHours": "Mo-Sa 09:00-20:00",
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "bestRating": "5", "ratingCount": "320" },
   },
@@ -108,9 +111,8 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://www.codexproject.in/" },
-    { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.codexproject.in/services" },
-    { "@type": "ListItem", "position": 3, "name": `Embedded Projects Coimbatore ${YEAR}`, "item": "https://www.codexproject.in/services/embedded-projects" },
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codexproject.in/" },
+    { "@type": "ListItem", "position": 2, "name": `Embedded Projects Coimbatore ${YEAR}`, "item": PAGE_URL },
   ],
 };
 
@@ -305,6 +307,31 @@ const ideaTagToFilter = {
   "Automotive": ["Automotive","Embedded","ECE","IEEE"],
 };
 
+const KEYWORD_TAGS = [
+  [`Embedded Projects Coimbatore ${YEAR}`,"/embedded-project-center-coimbatore"],
+  [`8051 Projects Coimbatore ${YEAR}`,"/embedded-project-center-coimbatore"],
+  [`ARM Cortex Projects Coimbatore`,"/embedded-project-center-coimbatore"],
+  [`PIC AVR Projects Coimbatore`,"/embedded-project-center-coimbatore"],
+  [`Arduino Projects Coimbatore`,"/embedded-project-center-coimbatore"],
+  [`Raspberry Pi Projects Coimbatore`,"/embedded-project-center-coimbatore"],
+  [`FPGA VLSI Projects Coimbatore`,"/embedded-project-center-coimbatore"],
+  [`STM32 Projects Coimbatore`,"/embedded-project-center-coimbatore"],
+  [`Keil Proteus Projects Coimbatore`,"/embedded-project-center-coimbatore"],
+  [`Embedded Projects ECE Coimbatore`,"/embedded-project-center-coimbatore"],
+  [`IEEE Embedded Projects ${YEAR}`,"/embedded-project-center-coimbatore"],
+  [`Embedded Internship Certificate Coimbatore`,"/contact"],
+  [`Affordable Embedded Projects Coimbatore`,"/contact"],
+  [`Embedded Center Gandhipuram`,"/contact"],
+  [`Robotics Automation Projects Coimbatore`,"/embedded-project-center-coimbatore"],
+  [`Biomedical Embedded Projects Coimbatore`,"/embedded-project-center-coimbatore"],
+];
+
+const RELATED_SERVICES = [
+  { label: "IoT Projects",            href: "/iot-project-center-coimbatore",        icon: "📡" },
+  { label: "Mechanical Projects",     href: "/mechanical-project-center-coimbatore", icon: "⚙️" },
+  { label: "Software & AI Projects",  href: "/software-project-center-coimbatore",   icon: "💻" },
+];
+
 const WHY = [
   { icon:"💰", t:"Most Affordable Embedded Projects",    d:`Lowest embedded project cost in Coimbatore ${YEAR} — real hardware + circuit design + simulation + IEEE docs + internship cert, zero hidden charges.` },
   { icon:"🔧", t:"Real Hardware Working Models",         d:"Actual PCB, microcontroller circuit, and sensor-based working prototype — students demo live hardware during college reviews and viva."},
@@ -364,6 +391,18 @@ const EmbeddedProjects = () => {
 
   return (
     <div className="ep-page">
+      <Helmet>
+        <title>Best Embedded Project Center in Coimbatore {YEAR} | CODEX PROJECT</title>
+        <meta
+          name="description"
+          content={`CODEX PROJECT - Best embedded project center in Gandhipuram, Coimbatore. 8051, ARM, PIC, Arduino, FPGA/VLSI embedded final year projects ${YEAR}. Free internship certificate. Call ${PHONE}.`}
+        />
+        <link rel="canonical" href={PAGE_URL} />
+        <meta property="og:title" content={`Best Embedded Project Center in Coimbatore ${YEAR} | CODEX PROJECT`} />
+        <meta property="og:description" content={`8051, ARM, PIC, Arduino, FPGA/VLSI embedded final year projects in Coimbatore. Free internship certificate. Call ${PHONE}.`} />
+        <meta property="og:url" content={PAGE_URL} />
+      </Helmet>
+
       <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(embeddedSchema)}} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(faqSchema)}} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(breadcrumbSchema)}} />
@@ -380,9 +419,7 @@ const EmbeddedProjects = () => {
             <ol>
               <li itemScope itemType="https://schema.org/ListItem"><a href="/" itemProp="item"><span itemProp="name">Home</span></a><meta itemProp="position" content="1"/></li>
               <span>›</span>
-              <li itemScope itemType="https://schema.org/ListItem"><a href="/services" itemProp="item"><span itemProp="name">Services</span></a><meta itemProp="position" content="2"/></li>
-              <span>›</span>
-              <li aria-current="page" itemScope itemType="https://schema.org/ListItem"><span itemProp="name">Embedded Projects {YEAR}</span><meta itemProp="position" content="3"/></li>
+              <li aria-current="page" itemScope itemType="https://schema.org/ListItem"><span itemProp="name">Embedded Projects {YEAR}</span><meta itemProp="position" content="2"/></li>
             </ol>
           </nav>
 
@@ -390,7 +427,7 @@ const EmbeddedProjects = () => {
 
           <h1 id="ep-h1" className="ep-h1">
             Best Embedded Project Center<br/>
-            in Coimbatore – <span className="ep-grad">CODEX PROJECT {YEAR}</span>
+            in Coimbatore <span className="ep-grad">| CODEX PROJECT</span>
           </h1>
           <p className="ep-hero-sub">
             Top-rated 8051, ARM, PIC, Arduino, Raspberry Pi & FPGA embedded project center — Gandhipuram, Coimbatore
@@ -611,27 +648,30 @@ const EmbeddedProjects = () => {
           <div className="ep-kw-section">
             <h2 className="ep-kw-title">Popular Embedded Project Searches — Coimbatore {YEAR}</h2>
             <div className="ep-kw-grid">
-              {[
-                [`Embedded Projects Coimbatore ${YEAR}`,"/services/embedded-projects"],
-                [`8051 Projects Coimbatore ${YEAR}`,"/services/embedded-projects"],
-                [`ARM Cortex Projects Coimbatore`,"/services/embedded-projects"],
-                [`PIC AVR Projects Coimbatore`,"/services/embedded-projects"],
-                [`Arduino Projects Coimbatore`,"/services/embedded-projects"],
-                [`Raspberry Pi Projects Coimbatore`,"/services/embedded-projects"],
-                [`FPGA VLSI Projects Coimbatore`,"/services/embedded-projects"],
-                [`STM32 Projects Coimbatore`,"/services/embedded-projects"],
-                [`Keil Proteus Projects Coimbatore`,"/services/embedded-projects"],
-                [`Embedded Projects ECE Coimbatore`,"/services/embedded-projects"],
-                [`IEEE Embedded Projects ${YEAR}`,"/services/embedded-projects"],
-                [`Embedded Internship Certificate Coimbatore`,"/contact"],
-                [`Affordable Embedded Projects Coimbatore`,"/contact"],
-                [`Embedded Center Gandhipuram`,"/contact"],
-                [`Robotics Automation Projects Coimbatore`,"/services/embedded-projects"],
-                [`Biomedical Embedded Projects Coimbatore`,"/services/embedded-projects"],
-              ].map(([label,href])=>(
+              {KEYWORD_TAGS.map(([label,href])=>(
                 <a key={label} href={href} className="ep-kw-tag" aria-label={label}>{label}</a>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* ══ RELATED SERVICES ════════════════════════════ */}
+        <section className="ep-section ep-reveal" ref={addRef} aria-labelledby="ep-related-h2">
+          <h2 id="ep-related-h2" className="ep-sec-title" style={{fontSize:"1.4rem"}}>
+            Explore Other Project Domains at CODEX PROJECT
+          </h2>
+          <div className="ep-badge-wrap" style={{marginTop:"12px"}}>
+            {RELATED_SERVICES.map((r) => (
+              <a
+                key={r.href}
+                href={r.href}
+                className="ep-hw-chip"
+                style={{ "--hc": "#f0f4ff", textDecoration: "none", cursor: "pointer" }}
+                aria-label={r.label}
+              >
+                {r.icon} {r.label}
+              </a>
+            ))}
           </div>
         </section>
 

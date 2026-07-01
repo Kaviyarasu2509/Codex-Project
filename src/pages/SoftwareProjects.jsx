@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Helmet } from "react-helmet-async";
 import "./SoftwareProjects.css";
 
 // ═══════════════════════════════════════════════════════════
@@ -9,6 +10,7 @@ const PHONE    = "8525999022";
 const PHONE_GEN= "8525999002";
 const WA       = `https://wa.me/91${PHONE}`;
 const ADDR     = "2nd Floor, Balaji Complex, 288, 2nd Street, Cross Cut Road, Gandhipuram, Coimbatore – 641012";
+const PAGE_URL = "https://www.codexproject.in/software-project-center-coimbatore";
 
 // ═══════════════════════════════════════════════════════════
 // JSON-LD SCHEMAS
@@ -19,6 +21,7 @@ const softwareSchema = {
   "name": `Best Software Project Center in Coimbatore ${YEAR} – CODEX PROJECT`,
   "serviceType": "Software Final Year Project Training and Development",
   "description": `CODEX PROJECT is the best software project center in Coimbatore offering IEEE ${YEAR} final year projects in Python, AI, ML, Deep Learning, Django, MERN Stack, Java, .NET, PHP, React, Node.js, Android, and Flutter for BE CSE, IT, MCA, BSc, and Diploma students. Complete source code, IEEE documentation, live deployment, viva prep, and free internship certificate.`,
+  "url": PAGE_URL,
   "provider": {
     "@type": "LocalBusiness",
     "@id": "https://www.codexproject.in/#organization",
@@ -33,7 +36,7 @@ const softwareSchema = {
       "postalCode": "641012",
       "addressCountry": "IN",
     },
-    "geo": { "@type": "GeoCoordinates", "latitude": "11.0168", "longitude": "76.9558" },
+    "geo": { "@type": "GeoCoordinates", "latitude": 11.0187267, "longitude": 76.9686347 },
     "openingHours": "Mo-Sa 09:00-20:00",
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "bestRating": "5", "ratingCount": "320" },
     "priceRange": "₹₹",
@@ -64,9 +67,8 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://www.codexproject.in/" },
-    { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.codexproject.in/services" },
-    { "@type": "ListItem", "position": 3, "name": `Software Projects Coimbatore ${YEAR}`, "item": "https://www.codexproject.in/services/software-projects" },
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codexproject.in/" },
+    { "@type": "ListItem", "position": 2, "name": `Software Projects Coimbatore ${YEAR}`, "item": PAGE_URL },
   ],
 };
 
@@ -74,102 +76,18 @@ const breadcrumbSchema = {
 // DATA
 // ═══════════════════════════════════════════════════════════
 const techDomains = [
-  {
-    icon:"🐍", title:"Python Projects",
-    seo:`Python Final Year Projects Coimbatore ${YEAR}`,
-    color:"#e8f5e9", accent:"#2e7d32",
-    tags:["Django","Flask","FastAPI","Pandas","NumPy","Scikit-learn","Matplotlib"],
-    desc:`Real-time Python web, automation, data science, and AI final year projects — best Python project center in Coimbatore ${YEAR} for BE CSE, IT, and MCA students with IEEE documentation.`,
-    fk:"Python",
-  },
-  {
-    icon:"🤖", title:"AI & Machine Learning Projects",
-    seo:`AI Machine Learning Projects Coimbatore ${YEAR}`,
-    color:"#e3f2fd", accent:"#1565c0",
-    tags:["TensorFlow","PyTorch","Keras","Scikit-learn","OpenCV","YOLO v8","Hugging Face"],
-    desc:`IEEE ${YEAR} base paper AI and Machine Learning final year projects — best AI ML project center in Coimbatore for CSE and IT students. Deep Learning, NLP, Computer Vision.`,
-    fk:"AI",
-  },
-  {
-    icon:"🧠", title:"Deep Learning & NLP Projects",
-    seo:`Deep Learning NLP Projects Coimbatore ${YEAR}`,
-    color:"#f3e5f5", accent:"#6a1b9a",
-    tags:["CNN","RNN","LSTM","BERT","GPT API","Transformer","Diffusion"],
-    desc:`Brain tumor detection, sentiment analysis, text summarization, chatbot, and Generative AI final year projects — best Deep Learning project center in Coimbatore ${YEAR}.`,
-    fk:"Deep Learning",
-  },
-  {
-    icon:"🌐", title:"MERN Stack Projects",
-    seo:`MERN Stack Projects Coimbatore ${YEAR}`,
-    color:"#e0f7fa", accent:"#00695c",
-    tags:["MongoDB","Express.js","React.js","Node.js","REST API","JWT","Socket.io"],
-    desc:`Full-stack MERN web applications with live deployment, Razorpay payment, and Socket.io real-time — best MERN Stack project center in Coimbatore ${YEAR}.`,
-    fk:"MERN",
-  },
-  {
-    icon:"☕", title:"Java & Spring Boot Projects",
-    seo:`Java Projects Coimbatore ${YEAR}`,
-    color:"#fff3e0", accent:"#e65100",
-    tags:["Java","Spring Boot","Hibernate","MySQL","Maven","REST API","Microservices"],
-    desc:`Enterprise Java, Spring Boot microservices, and J2EE final year projects — best Java project center in Coimbatore ${YEAR} for BE IT and CSE students.`,
-    fk:"Java",
-  },
-  {
-    icon:"🔷", title:".NET & C# Projects",
-    seo:`Dotnet Projects Coimbatore ${YEAR}`,
-    color:"#e8eaf6", accent:"#283593",
-    tags:[".NET Core","ASP.NET","C#","Entity Framework","LINQ","Azure","Blazor"],
-    desc:`ASP.NET Core, MVC, Web API, Blazor, and C# application final year projects — best .NET project center in Coimbatore ${YEAR} for IT and CSE students.`,
-    fk:".NET",
-  },
-  {
-    icon:"🐘", title:"PHP & Laravel Projects",
-    seo:`PHP Laravel Projects Coimbatore ${YEAR}`,
-    color:"#fce4ec", accent:"#880e4f",
-    tags:["PHP","Laravel","CodeIgniter","MySQL","Bootstrap","jQuery","REST API"],
-    desc:`PHP web development, Laravel MVC, and CodeIgniter final year projects — best PHP project center in Coimbatore ${YEAR} for BE, BSc, and Diploma students.`,
-    fk:"PHP",
-  },
-  {
-    icon:"📱", title:"Android App Projects",
-    seo:`Android App Development Projects Coimbatore ${YEAR}`,
-    color:"#f9fbe7", accent:"#33691e",
-    tags:["Android Studio","Java","Kotlin","Firebase","REST API","SQLite","Google Maps"],
-    desc:`Android mobile app final year projects with Firebase, GPS, sensor integration, and Play Store deployment — best Android project center in Coimbatore ${YEAR}.`,
-    fk:"Android",
-  },
-  {
-    icon:"🦋", title:"Flutter & React Native",
-    seo:`Flutter React Native Projects Coimbatore ${YEAR}`,
-    color:"#e1f5fe", accent:"#006064",
-    tags:["Flutter","Dart","React Native","Firebase","Provider","GetX","Bloc"],
-    desc:`Cross-platform Flutter and React Native mobile app final year projects with Firebase backend and live deployment — best Flutter project center in Coimbatore ${YEAR}.`,
-    fk:"Flutter",
-  },
-  {
-    icon:"📊", title:"Data Science Projects",
-    seo:`Data Science Projects Coimbatore ${YEAR}`,
-    color:"#fff8e1", accent:"#f57f17",
-    tags:["Pandas","Matplotlib","Seaborn","Power BI","Tableau","SQL","EDA"],
-    desc:`Data analysis, visualization, predictive modeling, and BI dashboard final year projects — best Data Science project center in Coimbatore ${YEAR}.`,
-    fk:"Data Science",
-  },
-  {
-    icon:"☁️", title:"Cloud & DevOps Projects",
-    seo:`Cloud Computing Projects Coimbatore ${YEAR}`,
-    color:"#e8f5e9", accent:"#1b5e20",
-    tags:["AWS","Azure","Docker","Kubernetes","CI/CD","Terraform","Serverless"],
-    desc:`AWS, Azure, Docker, and Kubernetes cloud computing final year projects for BE CSE and IT students in Coimbatore ${YEAR} with live deployment.`,
-    fk:"Cloud",
-  },
-  {
-    icon:"🔒", title:"Cybersecurity & Blockchain",
-    seo:`Cybersecurity Blockchain Projects Coimbatore ${YEAR}`,
-    color:"#fbe9e7", accent:"#bf360c",
-    tags:["Network Security","Encryption","Solidity","Ethereum","Web3","IPFS","Ethical Hacking"],
-    desc:`Network security, encryption, Blockchain (Solidity, Ethereum), and Web3 final year projects for CSE students in Coimbatore ${YEAR}.`,
-    fk:"Blockchain",
-  },
+  { icon:"🐍", title:"Python Projects", seo:`Python Final Year Projects Coimbatore ${YEAR}`, color:"#e8f5e9", accent:"#2e7d32", tags:["Django","Flask","FastAPI","Pandas","NumPy","Scikit-learn","Matplotlib"], desc:`Real-time Python web, automation, data science, and AI final year projects — best Python project center in Coimbatore ${YEAR} for BE CSE, IT, and MCA students with IEEE documentation.`, fk:"Python" },
+  { icon:"🤖", title:"AI & Machine Learning Projects", seo:`AI Machine Learning Projects Coimbatore ${YEAR}`, color:"#e3f2fd", accent:"#1565c0", tags:["TensorFlow","PyTorch","Keras","Scikit-learn","OpenCV","YOLO v8","Hugging Face"], desc:`IEEE ${YEAR} base paper AI and Machine Learning final year projects — best AI ML project center in Coimbatore for CSE and IT students. Deep Learning, NLP, Computer Vision.`, fk:"AI" },
+  { icon:"🧠", title:"Deep Learning & NLP Projects", seo:`Deep Learning NLP Projects Coimbatore ${YEAR}`, color:"#f3e5f5", accent:"#6a1b9a", tags:["CNN","RNN","LSTM","BERT","GPT API","Transformer","Diffusion"], desc:`Brain tumor detection, sentiment analysis, text summarization, chatbot, and Generative AI final year projects — best Deep Learning project center in Coimbatore ${YEAR}.`, fk:"Deep Learning" },
+  { icon:"🌐", title:"MERN Stack Projects", seo:`MERN Stack Projects Coimbatore ${YEAR}`, color:"#e0f7fa", accent:"#00695c", tags:["MongoDB","Express.js","React.js","Node.js","REST API","JWT","Socket.io"], desc:`Full-stack MERN web applications with live deployment, Razorpay payment, and Socket.io real-time — best MERN Stack project center in Coimbatore ${YEAR}.`, fk:"MERN" },
+  { icon:"☕", title:"Java & Spring Boot Projects", seo:`Java Projects Coimbatore ${YEAR}`, color:"#fff3e0", accent:"#e65100", tags:["Java","Spring Boot","Hibernate","MySQL","Maven","REST API","Microservices"], desc:`Enterprise Java, Spring Boot microservices, and J2EE final year projects — best Java project center in Coimbatore ${YEAR} for BE IT and CSE students.`, fk:"Java" },
+  { icon:"🔷", title:".NET & C# Projects", seo:`Dotnet Projects Coimbatore ${YEAR}`, color:"#e8eaf6", accent:"#283593", tags:[".NET Core","ASP.NET","C#","Entity Framework","LINQ","Azure","Blazor"], desc:`ASP.NET Core, MVC, Web API, Blazor, and C# application final year projects — best .NET project center in Coimbatore ${YEAR} for IT and CSE students.`, fk:".NET" },
+  { icon:"🐘", title:"PHP & Laravel Projects", seo:`PHP Laravel Projects Coimbatore ${YEAR}`, color:"#fce4ec", accent:"#880e4f", tags:["PHP","Laravel","CodeIgniter","MySQL","Bootstrap","jQuery","REST API"], desc:`PHP web development, Laravel MVC, and CodeIgniter final year projects — best PHP project center in Coimbatore ${YEAR} for BE, BSc, and Diploma students.`, fk:"PHP" },
+  { icon:"📱", title:"Android App Projects", seo:`Android App Development Projects Coimbatore ${YEAR}`, color:"#f9fbe7", accent:"#33691e", tags:["Android Studio","Java","Kotlin","Firebase","REST API","SQLite","Google Maps"], desc:`Android mobile app final year projects with Firebase, GPS, sensor integration, and Play Store deployment — best Android project center in Coimbatore ${YEAR}.`, fk:"Android" },
+  { icon:"🦋", title:"Flutter & React Native", seo:`Flutter React Native Projects Coimbatore ${YEAR}`, color:"#e1f5fe", accent:"#006064", tags:["Flutter","Dart","React Native","Firebase","Provider","GetX","Bloc"], desc:`Cross-platform Flutter and React Native mobile app final year projects with Firebase backend and live deployment — best Flutter project center in Coimbatore ${YEAR}.`, fk:"Flutter" },
+  { icon:"📊", title:"Data Science Projects", seo:`Data Science Projects Coimbatore ${YEAR}`, color:"#fff8e1", accent:"#f57f17", tags:["Pandas","Matplotlib","Seaborn","Power BI","Tableau","SQL","EDA"], desc:`Data analysis, visualization, predictive modeling, and BI dashboard final year projects — best Data Science project center in Coimbatore ${YEAR}.`, fk:"Data Science" },
+  { icon:"☁️", title:"Cloud & DevOps Projects", seo:`Cloud Computing Projects Coimbatore ${YEAR}`, color:"#e8f5e9", accent:"#1b5e20", tags:["AWS","Azure","Docker","Kubernetes","CI/CD","Terraform","Serverless"], desc:`AWS, Azure, Docker, and Kubernetes cloud computing final year projects for BE CSE and IT students in Coimbatore ${YEAR} with live deployment.`, fk:"Cloud" },
+  { icon:"🔒", title:"Cybersecurity & Blockchain", seo:`Cybersecurity Blockchain Projects Coimbatore ${YEAR}`, color:"#fbe9e7", accent:"#bf360c", tags:["Network Security","Encryption","Solidity","Ethereum","Web3","IPFS","Ethical Hacking"], desc:`Network security, encryption, Blockchain (Solidity, Ethereum), and Web3 final year projects for CSE students in Coimbatore ${YEAR}.`, fk:"Blockchain" },
 ];
 
 const projectIdeas = [
@@ -254,6 +172,12 @@ const FILTER_KEYWORDS = [
   `Affordable Software Projects Coimbatore`,
 ];
 
+const RELATED_SERVICES = [
+  { label: "IoT Projects",        href: "/iot-project-center-coimbatore",        icon: "📡" },
+  { label: "Embedded Projects",   href: "/embedded-project-center-coimbatore",   icon: "🔧" },
+  { label: "Mechanical Projects", href: "/mechanical-project-center-coimbatore", icon: "⚙️" },
+];
+
 // ═══════════════════════════════════════════════════════════
 // COMPONENT
 // ═══════════════════════════════════════════════════════════
@@ -285,6 +209,18 @@ const SoftwareProjects = () => {
 
   return (
     <div className="sp-page">
+      <Helmet>
+        <title>Best Software Project Center in Coimbatore {YEAR} | CODEX PROJECT</title>
+        <meta
+          name="description"
+          content={`CODEX PROJECT - Best software project center in Gandhipuram, Coimbatore. Python, AI, MERN, Java, Flutter, Android final year projects ${YEAR}. Free internship certificate. Call ${PHONE}.`}
+        />
+        <link rel="canonical" href={PAGE_URL} />
+        <meta property="og:title" content={`Best Software Project Center in Coimbatore ${YEAR} | CODEX PROJECT`} />
+        <meta property="og:description" content={`Python, AI, MERN, Java, Flutter, Android final year projects in Coimbatore. Free internship certificate. Call ${PHONE}.`} />
+        <meta property="og:url" content={PAGE_URL} />
+      </Helmet>
+
       <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(softwareSchema)}} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(faqSchema)}} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(breadcrumbSchema)}} />
@@ -301,9 +237,7 @@ const SoftwareProjects = () => {
             <ol>
               <li itemScope itemType="https://schema.org/ListItem"><a href="/" itemProp="item"><span itemProp="name">Home</span></a><meta itemProp="position" content="1"/></li>
               <span>›</span>
-              <li itemScope itemType="https://schema.org/ListItem"><a href="/services" itemProp="item"><span itemProp="name">Services</span></a><meta itemProp="position" content="2"/></li>
-              <span>›</span>
-              <li aria-current="page" itemScope itemType="https://schema.org/ListItem"><span itemProp="name">Software Projects {YEAR}</span><meta itemProp="position" content="3"/></li>
+              <li aria-current="page" itemScope itemType="https://schema.org/ListItem"><span itemProp="name">Software Projects {YEAR}</span><meta itemProp="position" content="2"/></li>
             </ol>
           </nav>
 
@@ -311,7 +245,7 @@ const SoftwareProjects = () => {
 
           <h1 id="sp-h1" className="sp-h1">
             Best Software Project Center<br/>
-            in Coimbatore – <span className="sp-grad">CODEX PROJECT {YEAR}</span>
+            in Coimbatore <span className="sp-grad">| CODEX PROJECT</span>
           </h1>
 
           <p className="sp-hero-sub">
@@ -507,6 +441,26 @@ const SoftwareProjects = () => {
           <p>
             Visit CODEX PROJECT at <strong>Balaji Complex, Cross Cut Road, Gandhipuram, Coimbatore</strong> for a free consultation on your software final year project topic and pricing. We are the <strong>most trusted and affordable software project center in Coimbatore {YEAR}</strong> — 4.9★ Google rating, 1000+ successful projects delivered in Python, AI, MERN, Java, Flutter, and more.
           </p>
+        </section>
+
+        {/* ══ RELATED SERVICES ════════════════════════════ */}
+        <section className="sp-section sp-reveal" ref={addRef} aria-labelledby="sp-related-h2">
+          <h2 id="sp-related-h2" className="sp-sec-title" style={{fontSize:"1.4rem"}}>
+            Explore Other Project Domains at CODEX PROJECT
+          </h2>
+          <div className="sp-filter-chips" style={{marginTop:"12px"}}>
+            {RELATED_SERVICES.map((r) => (
+              <a
+                key={r.href}
+                href={r.href}
+                className="sp-filter-chip"
+                style={{ textDecoration: "none", cursor: "pointer" }}
+                aria-label={r.label}
+              >
+                {r.icon} {r.label}
+              </a>
+            ))}
+          </div>
         </section>
 
         {/* ══ LOCATION ═════════════════════════════════════ */}

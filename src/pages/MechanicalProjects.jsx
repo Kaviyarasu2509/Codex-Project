@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Helmet } from "react-helmet-async";
 import "./MechanicalProjects.css";
 
 // ═══════════════════════════════════════════════════════════
@@ -9,6 +10,7 @@ const PHONE     = "8525999032";
 const PHONE_GEN = "8525999002";
 const WA        = `https://wa.me/91${PHONE_GEN}`;
 const ADDR      = "2nd Floor, Balaji Complex, 288, 2nd Street, Cross Cut Road, Gandhipuram, Coimbatore – 641012";
+const PAGE_URL  = "https://www.codexproject.in/mechanical-project-center-coimbatore";
 
 // ═══════════════════════════════════════════════════════════
 // JSON-LD SCHEMAS
@@ -19,6 +21,7 @@ const mechanicalSchema = {
   "name": `Best Mechanical Project Center in Coimbatore ${YEAR} – CODEX PROJECT`,
   "serviceType": "Mechanical Engineering Final Year Project Training and Development",
   "description": `CODEX PROJECT is the best mechanical project center in Coimbatore ${YEAR}. We offer IEEE ${YEAR} fabrication, CAD/CAM, robotics, automation, mechatronics, automobile engineering, and renewable energy final year projects for BE Mechanical, ME, and Diploma students with real working models, complete documentation, internship certificate, and viva support.`,
+  "url": PAGE_URL,
   "provider": {
     "@type": "LocalBusiness",
     "@id": "https://www.codexproject.in/#organization",
@@ -33,7 +36,7 @@ const mechanicalSchema = {
       "postalCode": "641012",
       "addressCountry": "IN",
     },
-    "geo": { "@type": "GeoCoordinates", "latitude": "11.0168", "longitude": "76.9558" },
+    "geo": { "@type": "GeoCoordinates", "latitude": 11.0187267, "longitude": 76.9686347 },
     "openingHours": "Mo-Sa 09:00-20:00",
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "bestRating": "5", "ratingCount": "320" },
   },
@@ -61,46 +64,14 @@ const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {
-      "@type": "Question",
-      "name": `Best mechanical project center in Coimbatore ${YEAR}?`,
-      "acceptedAnswer": { "@type": "Answer", "text": `CODEX PROJECT is the best mechanical project center in Coimbatore ${YEAR}, located at 2nd Floor, Balaji Complex, Gandhipuram. We offer fabrication, CAD/CAM, robotics, automation, mechatronics, and automobile engineering final year projects for BE Mechanical, ME, and Diploma students with free internship certificate. Call ${PHONE}.` },
-    },
-    {
-      "@type": "Question",
-      "name": `What mechanical projects are available at CODEX PROJECT Coimbatore ${YEAR}?`,
-      "acceptedAnswer": { "@type": "Answer", "text": `CODEX PROJECT offers Hydraulic systems, Pneumatic robots, Solar vehicles, CNC machines, Conveyor automation, CAD/CAM (SolidWorks, ANSYS, CATIA), Mechatronics, Automobile engineering, Renewable energy, and 70+ more mechanical project titles for ${YEAR}. Call ${PHONE}.` },
-    },
-    {
-      "@type": "Question",
-      "name": "What CAD/CAM software does CODEX PROJECT use?",
-      "acceptedAnswer": { "@type": "Answer", "text": `CODEX PROJECT uses SolidWorks (3D modeling and stress analysis), ANSYS (structural, thermal, CFD simulation), CATIA (surface modeling), AutoCAD (2D technical drawings), MATLAB/Simulink (control systems), and 3D printing for mechanical design and simulation projects in Coimbatore ${YEAR}. Call ${PHONE}.` },
-    },
-    {
-      "@type": "Question",
-      "name": `Cost of mechanical final year projects at CODEX PROJECT Coimbatore ${YEAR}?`,
-      "acceptedAnswer": { "@type": "Answer", "text": `CODEX PROJECT offers the most affordable mechanical project pricing in Coimbatore ${YEAR} with zero hidden charges. All packages include real working model fabrication, IEEE documentation, PPT, circuit/drawing diagrams, viva preparation, and free internship certificate. EMI available. Call ${PHONE_GEN} for free quote.` },
-    },
-    {
-      "@type": "Question",
-      "name": "Does CODEX PROJECT support BE, ME, and Diploma mechanical students?",
-      "acceptedAnswer": { "@type": "Answer", "text": `Yes! CODEX PROJECT supports BE Mechanical, ME Mechanical, ME CAD/CAM, ME Manufacturing, Automobile Engineering, Production Engineering, and Diploma students from all Coimbatore colleges including PSG Tech, CIT, KPR, Karpagam, SNS, KGISL, and 20+ others. Call ${PHONE}.` },
-    },
-    {
-      "@type": "Question",
-      "name": "Does CODEX PROJECT provide ANSYS and SolidWorks simulation projects?",
-      "acceptedAnswer": { "@type": "Answer", "text": `Yes! CODEX PROJECT provides SolidWorks 3D modeling, ANSYS FEA/CFD simulation, CATIA surface modeling, and AutoCAD 2D design final year projects for BE and ME Mechanical students in Coimbatore ${YEAR}. Call ${PHONE}.` },
-    },
-    {
-      "@type": "Question",
-      "name": "Does CODEX PROJECT provide internship certificate with mechanical projects?",
-      "acceptedAnswer": { "@type": "Answer", "text": `Yes! Every mechanical project at CODEX PROJECT Coimbatore includes a FREE internship certificate along with IEEE ${YEAR} format project report, fabrication drawings, PPT, and viva preparation coaching. Call ${PHONE_GEN}.` },
-    },
-    {
-      "@type": "Question",
-      "name": `What is included in a mechanical project package at CODEX PROJECT ${YEAR}?`,
-      "acceptedAnswer": { "@type": "Answer", "text": `CODEX PROJECT mechanical project packages include: (1) Real working model fabrication with all materials, (2) CAD drawings and 3D model, (3) ANSYS/SolidWorks simulation files (if applicable), (4) IEEE ${YEAR} format project report, (5) PPT for reviews, (6) 50+ viva Q&A preparation, (7) FREE internship certificate, (8) Unlimited revisions. Call ${PHONE}.` },
-    },
+    { "@type": "Question", "name": `Best mechanical project center in Coimbatore ${YEAR}?`, "acceptedAnswer": { "@type": "Answer", "text": `CODEX PROJECT is the best mechanical project center in Coimbatore ${YEAR}, located at 2nd Floor, Balaji Complex, Gandhipuram. We offer fabrication, CAD/CAM, robotics, automation, mechatronics, and automobile engineering final year projects for BE Mechanical, ME, and Diploma students with free internship certificate. Call ${PHONE}.` } },
+    { "@type": "Question", "name": `What mechanical projects are available at CODEX PROJECT Coimbatore ${YEAR}?`, "acceptedAnswer": { "@type": "Answer", "text": `CODEX PROJECT offers Hydraulic systems, Pneumatic robots, Solar vehicles, CNC machines, Conveyor automation, CAD/CAM (SolidWorks, ANSYS, CATIA), Mechatronics, Automobile engineering, Renewable energy, and 70+ more mechanical project titles for ${YEAR}. Call ${PHONE}.` } },
+    { "@type": "Question", "name": "What CAD/CAM software does CODEX PROJECT use?", "acceptedAnswer": { "@type": "Answer", "text": `CODEX PROJECT uses SolidWorks (3D modeling and stress analysis), ANSYS (structural, thermal, CFD simulation), CATIA (surface modeling), AutoCAD (2D technical drawings), MATLAB/Simulink (control systems), and 3D printing for mechanical design and simulation projects in Coimbatore ${YEAR}. Call ${PHONE}.` } },
+    { "@type": "Question", "name": `Cost of mechanical final year projects at CODEX PROJECT Coimbatore ${YEAR}?`, "acceptedAnswer": { "@type": "Answer", "text": `CODEX PROJECT offers the most affordable mechanical project pricing in Coimbatore ${YEAR} with zero hidden charges. All packages include real working model fabrication, IEEE documentation, PPT, circuit/drawing diagrams, viva preparation, and free internship certificate. EMI available. Call ${PHONE_GEN} for free quote.` } },
+    { "@type": "Question", "name": "Does CODEX PROJECT support BE, ME, and Diploma mechanical students?", "acceptedAnswer": { "@type": "Answer", "text": `Yes! CODEX PROJECT supports BE Mechanical, ME Mechanical, ME CAD/CAM, ME Manufacturing, Automobile Engineering, Production Engineering, and Diploma students from all Coimbatore colleges including PSG Tech, CIT, KPR, Karpagam, SNS, KGISL, and 20+ others. Call ${PHONE}.` } },
+    { "@type": "Question", "name": "Does CODEX PROJECT provide ANSYS and SolidWorks simulation projects?", "acceptedAnswer": { "@type": "Answer", "text": `Yes! CODEX PROJECT provides SolidWorks 3D modeling, ANSYS FEA/CFD simulation, CATIA surface modeling, and AutoCAD 2D design final year projects for BE and ME Mechanical students in Coimbatore ${YEAR}. Call ${PHONE}.` } },
+    { "@type": "Question", "name": "Does CODEX PROJECT provide internship certificate with mechanical projects?", "acceptedAnswer": { "@type": "Answer", "text": `Yes! Every mechanical project at CODEX PROJECT Coimbatore includes a FREE internship certificate along with IEEE ${YEAR} format project report, fabrication drawings, PPT, and viva preparation coaching. Call ${PHONE_GEN}.` } },
+    { "@type": "Question", "name": `What is included in a mechanical project package at CODEX PROJECT ${YEAR}?`, "acceptedAnswer": { "@type": "Answer", "text": `CODEX PROJECT mechanical project packages include: (1) Real working model fabrication with all materials, (2) CAD drawings and 3D model, (3) ANSYS/SolidWorks simulation files (if applicable), (4) IEEE ${YEAR} format project report, (5) PPT for reviews, (6) 50+ viva Q&A preparation, (7) FREE internship certificate, (8) Unlimited revisions. Call ${PHONE}.` } },
   ],
 };
 
@@ -108,9 +79,8 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://www.codexproject.in/" },
-    { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.codexproject.in/services" },
-    { "@type": "ListItem", "position": 3, "name": `Mechanical Projects Coimbatore ${YEAR}`, "item": "https://www.codexproject.in/services/mechanical-projects" },
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codexproject.in/" },
+    { "@type": "ListItem", "position": 2, "name": `Mechanical Projects Coimbatore ${YEAR}`, "item": PAGE_URL },
   ],
 };
 
@@ -118,69 +88,15 @@ const breadcrumbSchema = {
 // DATA
 // ═══════════════════════════════════════════════════════════
 const services = [
-  {
-    icon:"🔧", title:"Fabrication Projects",
-    seo:`Mechanical Fabrication Projects Coimbatore ${YEAR}`,
-    color:"#e3f2fd", accent:"#1565c0",
-    fk:["Fabrication","Mechanical","IEEE","BE"],
-    desc:`Real-time working model fabrication for BE and ME Mechanical students in Coimbatore — hydraulic systems, pneumatic robots, CNC models, conveyor systems — from design to prototype with expert supervision and IEEE ${YEAR} documentation.`,
-  },
-  {
-    icon:"🤖", title:"Robotics & Automation",
-    seo:`Robotics Automation Projects Coimbatore ${YEAR}`,
-    color:"#f3e5f5", accent:"#6a1b9a",
-    fk:["Robotics","Automation","Mechanical","IEEE","BE"],
-    desc:`Industrial robotics, pick-and-place robots, conveyor automation, pneumatic systems, PLC-based automation, and agricultural robots — best robotics project center in Coimbatore ${YEAR} for Mechanical and Mechatronics students.`,
-  },
-  {
-    icon:"🖥️", title:"CAD / CAM Design Projects",
-    seo:`CAD CAM Design Projects Coimbatore ${YEAR}`,
-    color:"#e8f5e9", accent:"#2e7d32",
-    fk:["CAD","CAM","ANSYS","SolidWorks","CATIA","Mechanical","IEEE","ME"],
-    desc:`SolidWorks 3D modeling, ANSYS FEA/CFD simulation, CATIA surface modeling, AutoCAD 2D drafting, and MATLAB Simulink — best CAD/CAM design project center in Coimbatore ${YEAR} for BE and ME Mechanical students.`,
-  },
-  {
-    icon:"⚙️", title:"Mechatronics Projects",
-    seo:`Mechatronics Projects Coimbatore ${YEAR}`,
-    color:"#fff3e0", accent:"#e65100",
-    fk:["Mechatronics","Automation","Mechanical","IEEE","BE"],
-    desc:`Integrated mechanical-electronic systems, PLC-based automation, sensor-driven control, Arduino-embedded mechanical systems, and smart manufacturing mechatronics projects for engineering students in Coimbatore ${YEAR}.`,
-  },
-  {
-    icon:"🚗", title:"Automobile Engineering Projects",
-    seo:`Automobile Engineering Projects Coimbatore ${YEAR}`,
-    color:"#fce4ec", accent:"#880e4f",
-    fk:["Automobile","Automotive","Mechanical","IEEE","BE"],
-    desc:`EV conversion, fuel efficiency improvement, emission control, hybrid vehicle systems, electromagnetic braking, and gear shifting mechanism final year projects for Automobile Engineering students in Coimbatore ${YEAR}.`,
-  },
-  {
-    icon:"☀️", title:"Renewable Energy Projects",
-    seo:`Renewable Energy Mechanical Projects Coimbatore ${YEAR}`,
-    color:"#f9fbe7", accent:"#33691e",
-    fk:["Renewable","Energy","Solar","Mechanical","IEEE","BE","ME"],
-    desc:`Solar-powered vehicles, wind turbine blade design, energy harvesting systems, biomass energy, and hybrid renewable energy mechanical projects for BE and ME students in Coimbatore ${YEAR}.`,
-  },
-  {
-    icon:"🏭", title:"Manufacturing & Production",
-    seo:`Manufacturing Production Projects Coimbatore ${YEAR}`,
-    color:"#e0f7fa", accent:"#006064",
-    fk:["Manufacturing","Production","Mechanical","IEEE","ME"],
-    desc:`CNC machining optimization, lean manufacturing, quality control, jig and fixture design, and production engineering final year projects for BE and ME Manufacturing students in Coimbatore ${YEAR}.`,
-  },
-  {
-    icon:"🌊", title:"Fluid Mechanics & Thermal",
-    seo:`Fluid Mechanics Thermal Projects Coimbatore ${YEAR}`,
-    color:"#e8eaf6", accent:"#283593",
-    fk:["Fluid","Thermal","CFD","ANSYS","Mechanical","IEEE","ME"],
-    desc:`CFD analysis using ANSYS Fluent, heat exchanger design, cooling system optimization, and fluid power system final year projects for ME Thermal and BE Mechanical students in Coimbatore ${YEAR}.`,
-  },
-  {
-    icon:"🦾", title:"Biomechanics & Medical Devices",
-    seo:`Biomechanics Medical Device Projects Coimbatore ${YEAR}`,
-    color:"#fce4ec", accent:"#880e4f",
-    fk:["Biomechanics","Biomedical","Mechanical","IEEE","ME"],
-    desc:`Prosthetic limb design, exoskeleton systems, wheelchair improvement, orthotic devices, and 3D-printed biomedical mechanical projects for ME and BE Mechanical students in Coimbatore ${YEAR}.`,
-  },
+  { icon:"🔧", title:"Fabrication Projects", seo:`Mechanical Fabrication Projects Coimbatore ${YEAR}`, color:"#e3f2fd", accent:"#1565c0", fk:["Fabrication","Mechanical","IEEE","BE"], desc:`Real-time working model fabrication for BE and ME Mechanical students in Coimbatore — hydraulic systems, pneumatic robots, CNC models, conveyor systems — from design to prototype with expert supervision and IEEE ${YEAR} documentation.` },
+  { icon:"🤖", title:"Robotics & Automation", seo:`Robotics Automation Projects Coimbatore ${YEAR}`, color:"#f3e5f5", accent:"#6a1b9a", fk:["Robotics","Automation","Mechanical","IEEE","BE"], desc:`Industrial robotics, pick-and-place robots, conveyor automation, pneumatic systems, PLC-based automation, and agricultural robots — best robotics project center in Coimbatore ${YEAR} for Mechanical and Mechatronics students.` },
+  { icon:"🖥️", title:"CAD / CAM Design Projects", seo:`CAD CAM Design Projects Coimbatore ${YEAR}`, color:"#e8f5e9", accent:"#2e7d32", fk:["CAD","CAM","ANSYS","SolidWorks","CATIA","Mechanical","IEEE","ME"], desc:`SolidWorks 3D modeling, ANSYS FEA/CFD simulation, CATIA surface modeling, AutoCAD 2D drafting, and MATLAB Simulink — best CAD/CAM design project center in Coimbatore ${YEAR} for BE and ME Mechanical students.` },
+  { icon:"⚙️", title:"Mechatronics Projects", seo:`Mechatronics Projects Coimbatore ${YEAR}`, color:"#fff3e0", accent:"#e65100", fk:["Mechatronics","Automation","Mechanical","IEEE","BE"], desc:`Integrated mechanical-electronic systems, PLC-based automation, sensor-driven control, Arduino-embedded mechanical systems, and smart manufacturing mechatronics projects for engineering students in Coimbatore ${YEAR}.` },
+  { icon:"🚗", title:"Automobile Engineering Projects", seo:`Automobile Engineering Projects Coimbatore ${YEAR}`, color:"#fce4ec", accent:"#880e4f", fk:["Automobile","Automotive","Mechanical","IEEE","BE"], desc:`EV conversion, fuel efficiency improvement, emission control, hybrid vehicle systems, electromagnetic braking, and gear shifting mechanism final year projects for Automobile Engineering students in Coimbatore ${YEAR}.` },
+  { icon:"☀️", title:"Renewable Energy Projects", seo:`Renewable Energy Mechanical Projects Coimbatore ${YEAR}`, color:"#f9fbe7", accent:"#33691e", fk:["Renewable","Energy","Solar","Mechanical","IEEE","BE","ME"], desc:`Solar-powered vehicles, wind turbine blade design, energy harvesting systems, biomass energy, and hybrid renewable energy mechanical projects for BE and ME students in Coimbatore ${YEAR}.` },
+  { icon:"🏭", title:"Manufacturing & Production", seo:`Manufacturing Production Projects Coimbatore ${YEAR}`, color:"#e0f7fa", accent:"#006064", fk:["Manufacturing","Production","Mechanical","IEEE","ME"], desc:`CNC machining optimization, lean manufacturing, quality control, jig and fixture design, and production engineering final year projects for BE and ME Manufacturing students in Coimbatore ${YEAR}.` },
+  { icon:"🌊", title:"Fluid Mechanics & Thermal", seo:`Fluid Mechanics Thermal Projects Coimbatore ${YEAR}`, color:"#e8eaf6", accent:"#283593", fk:["Fluid","Thermal","CFD","ANSYS","Mechanical","IEEE","ME"], desc:`CFD analysis using ANSYS Fluent, heat exchanger design, cooling system optimization, and fluid power system final year projects for ME Thermal and BE Mechanical students in Coimbatore ${YEAR}.` },
+  { icon:"🦾", title:"Biomechanics & Medical Devices", seo:`Biomechanics Medical Device Projects Coimbatore ${YEAR}`, color:"#fce4ec", accent:"#880e4f", fk:["Biomechanics","Biomedical","Mechanical","IEEE","ME"], desc:`Prosthetic limb design, exoskeleton systems, wheelchair improvement, orthotic devices, and 3D-printed biomedical mechanical projects for ME and BE Mechanical students in Coimbatore ${YEAR}.` },
 ];
 
 const projectIdeas = [
@@ -296,6 +212,31 @@ const FAB_EQUIP = [
   { name:"3D Printer (FDM)",       color:"#f9fbe7" },
 ];
 
+const KEYWORD_TAGS = [
+  [`Mechanical Projects Coimbatore ${YEAR}`,"/mechanical-project-center-coimbatore"],
+  [`Fabrication Projects Coimbatore ${YEAR}`,"/mechanical-project-center-coimbatore"],
+  [`CAD CAM Projects Coimbatore`,"/mechanical-project-center-coimbatore"],
+  [`Robotics Projects Coimbatore`,"/mechanical-project-center-coimbatore"],
+  [`Automation Projects Coimbatore`,"/mechanical-project-center-coimbatore"],
+  [`ANSYS SolidWorks Projects Coimbatore`,"/mechanical-project-center-coimbatore"],
+  [`Automobile Projects Coimbatore`,"/mechanical-project-center-coimbatore"],
+  [`Mechatronics Projects Coimbatore`,"/mechanical-project-center-coimbatore"],
+  [`Renewable Energy Projects Coimbatore`,"/mechanical-project-center-coimbatore"],
+  [`BE Mechanical Projects ${YEAR}`,"/mechanical-project-center-coimbatore"],
+  [`ME Project Center Coimbatore`,"/mechanical-project-center-coimbatore"],
+  [`IEEE Mechanical Projects ${YEAR}`,"/mechanical-project-center-coimbatore"],
+  [`Mechanical Internship Certificate Coimbatore`,"/contact"],
+  [`Low Cost Mechanical Projects Coimbatore`,"/contact"],
+  [`Mechanical Project Center Gandhipuram`,"/contact"],
+  [`3D Printing Projects Coimbatore`,"/mechanical-project-center-coimbatore"],
+];
+
+const RELATED_SERVICES = [
+  { label: "IoT Projects",           href: "/iot-project-center-coimbatore",      icon: "📡" },
+  { label: "Embedded Projects",      href: "/embedded-project-center-coimbatore", icon: "🔧" },
+  { label: "Software & AI Projects", href: "/software-project-center-coimbatore", icon: "💻" },
+];
+
 // ═══════════════════════════════════════════════════════════
 // COMPONENT
 // ═══════════════════════════════════════════════════════════
@@ -329,6 +270,18 @@ const MechanicalProjects = () => {
 
   return (
     <div className="mp-page">
+      <Helmet>
+        <title>Best Mechanical Project Center in Coimbatore {YEAR} | CODEX PROJECT</title>
+        <meta
+          name="description"
+          content={`CODEX PROJECT - Best mechanical project center in Gandhipuram, Coimbatore. Fabrication, CAD/CAM, robotics, automobile final year projects ${YEAR}. Free internship certificate. Call ${PHONE}.`}
+        />
+        <link rel="canonical" href={PAGE_URL} />
+        <meta property="og:title" content={`Best Mechanical Project Center in Coimbatore ${YEAR} | CODEX PROJECT`} />
+        <meta property="og:description" content={`Fabrication, CAD/CAM, robotics, automobile final year projects in Coimbatore. Free internship certificate. Call ${PHONE}.`} />
+        <meta property="og:url" content={PAGE_URL} />
+      </Helmet>
+
       <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(mechanicalSchema)}} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(faqSchema)}} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(breadcrumbSchema)}} />
@@ -345,9 +298,7 @@ const MechanicalProjects = () => {
             <ol>
               <li itemScope itemType="https://schema.org/ListItem"><a href="/" itemProp="item"><span itemProp="name">Home</span></a><meta itemProp="position" content="1"/></li>
               <span>›</span>
-              <li itemScope itemType="https://schema.org/ListItem"><a href="/services" itemProp="item"><span itemProp="name">Services</span></a><meta itemProp="position" content="2"/></li>
-              <span>›</span>
-              <li aria-current="page" itemScope itemType="https://schema.org/ListItem"><span itemProp="name">Mechanical Projects {YEAR}</span><meta itemProp="position" content="3"/></li>
+              <li aria-current="page" itemScope itemType="https://schema.org/ListItem"><span itemProp="name">Mechanical Projects {YEAR}</span><meta itemProp="position" content="2"/></li>
             </ol>
           </nav>
 
@@ -355,7 +306,7 @@ const MechanicalProjects = () => {
 
           <h1 id="mp-h1" className="mp-h1">
             Best Mechanical Project Center<br/>
-            in Coimbatore – <span className="mp-grad">CODEX PROJECT {YEAR}</span>
+            in Coimbatore <span className="mp-grad">| CODEX PROJECT</span>
           </h1>
           <p className="mp-hero-sub">
             Top-rated Fabrication, CAD/CAM, Robotics, Automation & Automobile project center — Gandhipuram, Coimbatore
@@ -576,27 +527,30 @@ const MechanicalProjects = () => {
           <div className="mp-kw-section">
             <h2 className="mp-kw-title">Popular Mechanical Project Searches — Coimbatore {YEAR}</h2>
             <div className="mp-kw-grid">
-              {[
-                [`Mechanical Projects Coimbatore ${YEAR}`,"/services/mechanical-projects"],
-                [`Fabrication Projects Coimbatore ${YEAR}`,"/services/mechanical-projects"],
-                [`CAD CAM Projects Coimbatore`,"/services/mechanical-projects"],
-                [`Robotics Projects Coimbatore`,"/services/mechanical-projects"],
-                [`Automation Projects Coimbatore`,"/services/mechanical-projects"],
-                [`ANSYS SolidWorks Projects Coimbatore`,"/services/mechanical-projects"],
-                [`Automobile Projects Coimbatore`,"/services/mechanical-projects"],
-                [`Mechatronics Projects Coimbatore`,"/services/mechanical-projects"],
-                [`Renewable Energy Projects Coimbatore`,"/services/mechanical-projects"],
-                [`BE Mechanical Projects ${YEAR}`,"/services/mechanical-projects"],
-                [`ME Project Center Coimbatore`,"/services/mechanical-projects"],
-                [`IEEE Mechanical Projects ${YEAR}`,"/services/mechanical-projects"],
-                [`Mechanical Internship Certificate Coimbatore`,"/contact"],
-                [`Low Cost Mechanical Projects Coimbatore`,"/contact"],
-                [`Mechanical Project Center Gandhipuram`,"/contact"],
-                [`3D Printing Projects Coimbatore`,"/services/mechanical-projects"],
-              ].map(([label,href])=>(
+              {KEYWORD_TAGS.map(([label,href])=>(
                 <a key={label} href={href} className="mp-kw-tag" aria-label={label}>{label}</a>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* ══ RELATED SERVICES ════════════════════════════ */}
+        <section className="mp-section mp-reveal" ref={addRef} aria-labelledby="mp-related-h2">
+          <h2 id="mp-related-h2" className="mp-sec-title" style={{fontSize:"1.4rem"}}>
+            Explore Other Project Domains at CODEX PROJECT
+          </h2>
+          <div className="mp-badge-wrap" style={{marginTop:"12px"}}>
+            {RELATED_SERVICES.map((r) => (
+              <a
+                key={r.href}
+                href={r.href}
+                className="mp-hw-chip"
+                style={{ "--hc": "#f0f4ff", textDecoration: "none", cursor: "pointer" }}
+                aria-label={r.label}
+              >
+                {r.icon} {r.label}
+              </a>
+            ))}
           </div>
         </section>
 

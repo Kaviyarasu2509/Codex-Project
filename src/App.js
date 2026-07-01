@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import "./App.css";
 
 import Home             from "./component/Home";
@@ -8,6 +9,7 @@ import Career           from "./component/Career";
 import Contact          from "./component/Contact";
 import Footer           from "./component/Footer";
 import WhatAppIcon      from "./component/WhatAppIcon";
+import ChatBot          from "./component/ChatBot";
 import ScrollToTop      from "./ScrollToTop";
 
 import MechanicalProjects from "./pages/MechanicalProjects";
@@ -15,7 +17,7 @@ import IoTProjects        from "./pages/IoTProjects";
 import EmbeddedProjects   from "./pages/EmbeddedProjects";
 import SoftwareProjects   from "./pages/SoftwareProjects";
 import Projects           from "./pages/Projects";
-import Blog               from "./pages/Blog";
+import Blog                from "./pages/Blog";
 import Faq                from "./pages/Faq";
 
 // ─── SEO URL Map ──────────────────────────────────────────────────────────────
@@ -32,9 +34,10 @@ import Faq                from "./pages/Faq";
 
 function App() {
   return (
-    <>
+    <HelmetProvider>
       <Navbar />
       <WhatAppIcon />
+      <ChatBot />
       <ScrollToTop />
 
       <Routes>
@@ -123,7 +126,7 @@ function App() {
       </Routes>
 
       <Footer />
-    </>
+    </HelmetProvider>
   );
 }
 

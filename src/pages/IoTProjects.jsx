@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Helmet } from "react-helmet-async";
 import "./IoTProjects.css";
 
 // ═══════════════════════════════════════════════════════════
@@ -9,6 +10,7 @@ const PHONE     = "8525999032";   // Hardware / IoT line
 const PHONE_GEN = "8525999002";
 const WA        = `https://wa.me/91${PHONE_GEN}`;
 const ADDR      = "2nd Floor, Balaji Complex, 288, 2nd Street, Cross Cut Road, Gandhipuram, Coimbatore – 641012";
+const PAGE_URL  = "https://www.codexproject.in/iot-project-center-coimbatore";
 
 // ═══════════════════════════════════════════════════════════
 // JSON-LD SCHEMAS
@@ -19,6 +21,7 @@ const iotSchema = {
   "name": `Best IoT Project Center in Coimbatore ${YEAR} – CODEX PROJECT`,
   "serviceType": "IoT Final Year Project Training and Development",
   "description": `CODEX PROJECT is the best IoT project center in Coimbatore ${YEAR}. We offer IEEE ${YEAR} Arduino, Raspberry Pi, NodeMCU, ESP32, AWS IoT, Firebase, and cloud-based IoT final year projects for BE ECE, EEE, CSE, and Diploma students with real hardware, complete documentation, internship certificate, and viva support.`,
+  "url": PAGE_URL,
   "provider": {
     "@type": "LocalBusiness",
     "@id": "https://www.codexproject.in/#organization",
@@ -33,7 +36,7 @@ const iotSchema = {
       "postalCode": "641012",
       "addressCountry": "IN",
     },
-    "geo": { "@type": "GeoCoordinates", "latitude": "11.0168", "longitude": "76.9558" },
+    "geo": { "@type": "GeoCoordinates", "latitude": 11.0187267, "longitude": 76.9686347 },
     "openingHours": "Mo-Sa 09:00-20:00",
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "bestRating": "5", "ratingCount": "320" },
   },
@@ -108,9 +111,8 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://www.codexproject.in/" },
-    { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.codexproject.in/services" },
-    { "@type": "ListItem", "position": 3, "name": `IoT Projects Coimbatore ${YEAR}`, "item": "https://www.codexproject.in/services/iot-projects" },
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codexproject.in/" },
+    { "@type": "ListItem", "position": 2, "name": `IoT Project Center Coimbatore ${YEAR}`, "item": PAGE_URL },
   ],
 };
 
@@ -217,22 +219,28 @@ const COLLEGES = [
 ];
 
 const KEYWORD_TAGS = [
-  [`IoT Projects Coimbatore ${YEAR}`,            "/services/iot-projects"],
-  [`Arduino Projects Coimbatore ${YEAR}`,         "/services/iot-projects"],
-  [`Raspberry Pi Projects Coimbatore ${YEAR}`,    "/services/iot-projects"],
-  [`NodeMCU ESP32 Projects Coimbatore`,           "/services/iot-projects"],
-  [`Cloud IoT Firebase AWS Coimbatore`,           "/services/iot-projects"],
-  [`Home Automation Projects Coimbatore ${YEAR}`, "/services/iot-projects"],
-  [`Smart Agriculture IoT Coimbatore`,            "/services/iot-projects"],
-  [`Healthcare IoT Projects Coimbatore`,          "/services/iot-projects"],
-  [`Industrial IoT SCADA Coimbatore`,             "/services/iot-projects"],
-  [`AI Edge IoT Projects Coimbatore`,             "/services/iot-projects"],
-  [`IoT Projects ECE Coimbatore ${YEAR}`,         "/services/iot-projects"],
-  [`IEEE IoT Projects ${YEAR} Coimbatore`,        "/services/iot-projects"],
+  [`IoT Projects Coimbatore ${YEAR}`,            "/iot-project-center-coimbatore"],
+  [`Arduino Projects Coimbatore ${YEAR}`,         "/iot-project-center-coimbatore"],
+  [`Raspberry Pi Projects Coimbatore ${YEAR}`,    "/iot-project-center-coimbatore"],
+  [`NodeMCU ESP32 Projects Coimbatore`,           "/iot-project-center-coimbatore"],
+  [`Cloud IoT Firebase AWS Coimbatore`,           "/iot-project-center-coimbatore"],
+  [`Home Automation Projects Coimbatore ${YEAR}`, "/iot-project-center-coimbatore"],
+  [`Smart Agriculture IoT Coimbatore`,            "/iot-project-center-coimbatore"],
+  [`Healthcare IoT Projects Coimbatore`,          "/iot-project-center-coimbatore"],
+  [`Industrial IoT SCADA Coimbatore`,             "/iot-project-center-coimbatore"],
+  [`AI Edge IoT Projects Coimbatore`,             "/iot-project-center-coimbatore"],
+  [`IoT Projects ECE Coimbatore ${YEAR}`,         "/iot-project-center-coimbatore"],
+  [`IEEE IoT Projects ${YEAR} Coimbatore`,        "/iot-project-center-coimbatore"],
   [`IoT Project Center Gandhipuram`,              "/contact"],
   [`Affordable IoT Projects Coimbatore`,          "/contact"],
-  [`LoRa Wireless IoT Coimbatore`,                "/services/iot-projects"],
+  [`LoRa Wireless IoT Coimbatore`,                "/iot-project-center-coimbatore"],
   [`IoT Internship Certificate Coimbatore`,       "/contact"],
+];
+
+const RELATED_SERVICES = [
+  { label: "Embedded Systems Projects",  href: "/embedded-project-center-coimbatore",   icon: "🔧" },
+  { label: "Mechanical Projects",        href: "/mechanical-project-center-coimbatore", icon: "⚙️" },
+  { label: "Software & AI Projects",     href: "/software-project-center-coimbatore",   icon: "💻" },
 ];
 
 // ═══════════════════════════════════════════════════════════
@@ -255,6 +263,18 @@ const IoTProjects = () => {
 
   return (
     <div className="iot-page">
+      <Helmet>
+        <title>Best IoT Project Center in Coimbatore {YEAR} | CODEX PROJECT</title>
+        <meta
+          name="description"
+          content={`CODEX PROJECT - Best IoT project center in Gandhipuram, Coimbatore. Arduino, Raspberry Pi, NodeMCU, ESP32, Cloud IoT final year projects ${YEAR}. Free internship certificate, same day support. Call ${PHONE}.`}
+        />
+        <link rel="canonical" href={PAGE_URL} />
+        <meta property="og:title" content={`Best IoT Project Center in Coimbatore ${YEAR} | CODEX PROJECT`} />
+        <meta property="og:description" content={`Arduino, Raspberry Pi, NodeMCU, ESP32, Cloud IoT final year projects in Coimbatore. Free internship certificate. Call ${PHONE}.`} />
+        <meta property="og:url" content={PAGE_URL} />
+      </Helmet>
+
       <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(iotSchema)}} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(faqSchema)}} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(breadcrumbSchema)}} />
@@ -271,9 +291,7 @@ const IoTProjects = () => {
             <ol>
               <li itemScope itemType="https://schema.org/ListItem"><a href="/" itemProp="item"><span itemProp="name">Home</span></a><meta itemProp="position" content="1"/></li>
               <span>›</span>
-              <li itemScope itemType="https://schema.org/ListItem"><a href="/services" itemProp="item"><span itemProp="name">Services</span></a><meta itemProp="position" content="2"/></li>
-              <span>›</span>
-              <li aria-current="page" itemScope itemType="https://schema.org/ListItem"><span itemProp="name">IoT Projects {YEAR}</span><meta itemProp="position" content="3"/></li>
+              <li aria-current="page" itemScope itemType="https://schema.org/ListItem"><span itemProp="name">IoT Projects {YEAR}</span><meta itemProp="position" content="2"/></li>
             </ol>
           </nav>
 
@@ -281,7 +299,7 @@ const IoTProjects = () => {
 
           <h1 id="iot-h1" className="iot-h1">
             Best IoT Project Center<br/>
-            in Coimbatore – <span className="iot-grad">CODEX PROJECT {YEAR}</span>
+            in Coimbatore <span className="iot-grad">| CODEX PROJECT</span>
           </h1>
           <p className="iot-hero-sub">
             Top-rated Arduino, Raspberry Pi, NodeMCU, ESP32 & Cloud IoT final year project center — Gandhipuram, Coimbatore
@@ -486,6 +504,26 @@ const IoTProjects = () => {
           </div>
         </section>
 
+        {/* ══ RELATED SERVICES ════════════════════════════ */}
+        <section className="iot-section iot-reveal" ref={addRef} aria-labelledby="iot-related-h2">
+          <h2 id="iot-related-h2" className="iot-sec-title" style={{fontSize:"1.4rem"}}>
+            Explore Other Project Domains at CODEX PROJECT
+          </h2>
+          <div className="iot-platform-chips" style={{marginTop:"12px"}}>
+            {RELATED_SERVICES.map((r) => (
+              <a
+                key={r.href}
+                href={r.href}
+                className="iot-hw-chip"
+                style={{ "--hc": "#f0f4ff", textDecoration: "none", cursor: "pointer" }}
+                aria-label={r.label}
+              >
+                {r.icon} {r.label}
+              </a>
+            ))}
+          </div>
+        </section>
+
         {/* ══ LOCATION ═════════════════════════════════════ */}
         <section className="iot-section iot-reveal" ref={addRef} aria-labelledby="iot-loc-h2">
           <h2 id="iot-loc-h2" className="iot-sec-title">
@@ -526,4 +564,4 @@ const IoTProjects = () => {
   );
 };
 
-export default IoTProjects; 
+export default IoTProjects;
