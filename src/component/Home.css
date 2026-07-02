@@ -257,7 +257,7 @@
 .cp-hero-sub {
   font-size: clamp(14px, 1.9vw, 17px);
   color: #001570;
-  max-width: 620px;
+  max-width: 1020px;
   margin: 0 auto 10px;
   line-height: 1.78;
   animation: slideUp .8s ease both .2s;
