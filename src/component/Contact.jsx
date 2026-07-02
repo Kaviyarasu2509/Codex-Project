@@ -204,7 +204,7 @@ const Contact = () => {
         <div className="container">
           <div className="text-center mb-5">
             <span className="section-eyebrow">Contact Numbers</span>
-            <h2 id="methods-h2" className="section-title">
+            <h2 id="methods-h2" className="section-titles">
               Dedicated Lines for Every Domain – CODEX PROJECT Coimbatore
             </h2>
             <p className="section-subtitle">
@@ -423,7 +423,7 @@ const Contact = () => {
         <div className="container">
           <div className="text-center mb-4">
             <span className="section-eyebrow">Find Us</span>
-            <h2 id="map-h2" className="section-title">
+            <h2 id="map-h2" className="section-titles">
               CODEX PROJECT Location – Gandhipuram, Coimbatore
             </h2>
             <p className="section-subtitle">
@@ -463,7 +463,7 @@ const Contact = () => {
         <div className="container">
           <div className="text-center mb-5">
             <span className="section-eyebrow">FAQ</span>
-            <h2 id="cfaq-h2" className="section-title">
+            <h2 id="cfaq-h2" className="section-titles">
               Frequently Asked Questions – Contact &amp; Enquiry
             </h2>
           </div>
@@ -519,7 +519,7 @@ const Contact = () => {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-lg-8 text-center">
-              <h2 id="ccta-h2" className="cta-title">
+              <h2 id="ccta-h2" className="cta-titles">
                 Ready to Start Your Final Year Project?
               </h2>
               <p className="cta-description">

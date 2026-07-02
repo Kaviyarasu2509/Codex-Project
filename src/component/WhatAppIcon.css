@@ -11,12 +11,13 @@
 .wai-float {
   position: fixed;
   right: 22px;
-  bottom: 28px;
+  bottom: 98px;
   z-index: 999;
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
+  box-shadow: #0D1B2A;
   opacity: 0;
   transform: scale(0.7) translateY(20px);
   transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -27,24 +28,6 @@
   transform: scale(1) translateY(0);
 }
 
-/* Pulsing ring */
-.wai-float-ring {
-  position: absolute;
-  inset: -6px;
-  border-radius: 50%;
-  border: 2.5px solid rgba(37, 211, 102, 0.5);
-  animation: waiRingPulse 2.2s ease-in-out infinite;
-}
-
-/* Second ring */
-.wai-float::before {
-  content: '';
-  position: absolute;
-  inset: -14px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(37, 211, 102, 0.2);
-  animation: waiRingPulse 2.2s ease-in-out infinite 0.4s;
-}
 
 /* Main button */
 .wai-float-inner {
@@ -56,12 +39,12 @@
   align-items: center;
   justify-content: center;
   box-shadow:
-    0 6px 20px rgba(37, 211, 102, 0.45),
-    0 2px 8px rgba(0,0,0,0.15);
+    0 6px 20px rgba(20, 158, 1, 0.884),
+    0 2px 8px rgba(15, 119, 1, 0.966);
   transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
   animation: waiFloat 3s ease-in-out infinite;
   position: relative;
-  z-index: 1;
+  z-index: 999;
 }
 
 .wai-float:hover .wai-float-inner {

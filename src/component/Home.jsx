@@ -302,7 +302,7 @@ const Home = () => {
           ))}
         </div>
 
-        <div className="cp-container cp-hero-inner">
+        <div className="container cp-hero-inner">
           <div className="cp-hero-chip">
             <span className="cp-chip-dot" />
             IEEE 2025-26 Projects Now Available
@@ -373,7 +373,7 @@ const Home = () => {
       {/* ══ STATS ══════════════════════════════════════════════════════════════ */}
       <section className="cp-stats-sec cp-reveal" ref={statsRef} aria-labelledby="stats-h2">
         <h2 id="stats-h2" className="cp-sr-only">CODEX PROJECT Numbers</h2>
-        <div className="cp-container">
+        <div className="container">
           <div className="cp-stats-grid">
             {stats.map((s, i) => (
               <StatCard key={i} stat={s} animate={statsVisible} />
@@ -384,7 +384,7 @@ const Home = () => {
 
       {/* ══ ABOUT ══════════════════════════════════════════════════════════════ */}
       <section className="cp-about cp-reveal" aria-labelledby="about-h2">
-        <div className="cp-container cp-about-grid">
+        <div className="container cp-about-grid">
           <div className="cp-about-txt">
             <span className="cp-eyebrow">About Us</span>
             <h2 id="about-h2" className="cp-sec-title">
@@ -446,7 +446,7 @@ const Home = () => {
 
       {/* ══ DOMAINS ════════════════════════════════════════════════════════════ */}
       <section className="cp-domains cp-reveal" aria-labelledby="domains-h2">
-        <div className="cp-container">
+        <div className="container">
           <div className="cp-sec-head">
             <span className="cp-eyebrow">What We Offer</span>
             <h2 id="domains-h2" className="cp-sec-title">Final Year Project Domains – Coimbatore</h2>
@@ -484,7 +484,7 @@ const Home = () => {
 
       {/* ══ TECH STACK GRID ════════════════════════════════════════════════════ */}
       <section className="cp-tech-sec cp-reveal" aria-labelledby="tech-h2">
-        <div className="cp-container">
+        <div className="container">
           <div className="cp-sec-head">
             <span className="cp-eyebrow">Technologies</span>
             <h2 id="tech-h2" className="cp-sec-title">
@@ -509,7 +509,7 @@ const Home = () => {
 
       {/* ══ WHY CHOOSE ═════════════════════════════════════════════════════════ */}
       <section className="cp-why cp-reveal" aria-labelledby="why-h2">
-        <div className="cp-container">
+        <div className="container">
           <div className="cp-sec-head">
             <span className="cp-eyebrow">Why Us</span>
             <h2 id="why-h2" className="cp-sec-title">
@@ -530,7 +530,7 @@ const Home = () => {
 
       {/* ══ SOFTWARE PROJECT CENTER ═══════════════════════════════════════════ */}
       <section className="cp-detail-sec cp-reveal" aria-labelledby="software-h2" style={{ background: "#f8f3e4" }}>
-        <div className="cp-container">
+        <div className="container">
           <div className="cp-detail-inner">
             <div className="cp-detail-badge" style={{ "--badge-color": "#d69200" }}>💻</div>
             <div className="cp-detail-content">
@@ -571,7 +571,7 @@ const Home = () => {
 
       {/* ══ MECHANICAL PROJECT CENTER ══════════════════════════════════════════ */}
       <section className="cp-detail-sec cp-reveal" aria-labelledby="mechanical-h2" style={{ background: "#e2f0fd85" }}>
-        <div className="cp-container">
+        <div className="container">
           <div className="cp-detail-inner cp-detail-reverse">
             <div className="cp-detail-badge" style={{ "--badge-color": "#10B981" }}>⚙️</div>
             <div className="cp-detail-content">
@@ -606,7 +606,7 @@ const Home = () => {
 
       {/* ══ IOT / EMBEDDED ════════════════════════════════════════════════════ */}
       <section className="cp-detail-sec cp-reveal" aria-labelledby="iot-h2" style={{ background: "#f8f3e4" }}>
-        <div className="cp-container">
+        <div className="container">
           <div className="cp-detail-inner">
             <div className="cp-detail-badge" style={{ "--badge-color": "#06B6D4" }}>📡</div>
             <div className="cp-detail-content">
@@ -642,7 +642,7 @@ const Home = () => {
 
       {/* ══ INTERNSHIP ════════════════════════════════════════════════════════ */}
       <section className="cp-detail-sec cp-reveal" aria-labelledby="internship-h2" style={{ background: "#e2f0fd85" }}>
-        <div className="cp-container">
+        <div className="container">
           <div className="cp-detail-inner cp-detail-reverse">
             <div className="cp-detail-badge" style={{ "--badge-color": "#8B5CF6" }}>🏢</div>
             <div className="cp-detail-content">
@@ -681,7 +681,7 @@ const Home = () => {
 
       {/* ══ REVIEWS ════════════════════════════════════════════════════════════ */}
       <section className="cp-reviews cp-reveal" aria-labelledby="reviews-h2">
-        <div className="cp-container">
+        <div className="container">
           <div className="cp-sec-head">
             <span className="cp-eyebrow">Student Reviews</span>
             <h2 id="reviews-h2" className="cp-sec-title">
@@ -728,7 +728,7 @@ const Home = () => {
 
       {/* ══ FAQ ════════════════════════════════════════════════════════════════ */}
       <section className="cp-faq cp-reveal" aria-labelledby="faq-h2">
-        <div className="cp-container">
+        <div className="container">
           <div className="cp-sec-head">
             <span className="cp-eyebrow">FAQ</span>
             <h2 id="faq-h2" className="cp-sec-title">
@@ -757,7 +757,7 @@ const Home = () => {
 
       {/* ══ LOCATION ═══════════════════════════════════════════════════════════ */}
       <section className="cp-location cp-reveal" aria-labelledby="loc-h2">
-        <div className="cp-container">
+        <div className="container">
           <div className="cp-sec-head">
             <span className="cp-eyebrow">Location</span>
             <h2 id="loc-h2" className="cp-sec-title">
@@ -789,7 +789,7 @@ const Home = () => {
 
       {/* ══ KEYWORD CLUSTER ════════════════════════════════════════════════════ */}
       <div className="cp-kw-sec" aria-label="Explore our services">
-        <div className="cp-container">
+        <div className="container">
           <div className="cp-kw-lbl">Explore Our Services</div>
           <div className="cp-kw-cloud">
             {kwLinks.map(([label, href]) => (
@@ -804,7 +804,7 @@ const Home = () => {
       {/* ══ CTA ════════════════════════════════════════════════════════════════ */}
       <section className="cp-cta-sec" aria-labelledby="cta-h2">
         <div className="cp-cta-blob" />
-        <div className="cp-container cp-cta-inner">
+        <div className="container cp-cta-inner">
           <h2 id="cta-h2" className="cp-cta-title">
             Start Your Final Year Project<br />
             <span className="cp-grad-txt">Today</span>

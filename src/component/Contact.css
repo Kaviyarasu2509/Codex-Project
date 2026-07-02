@@ -110,13 +110,13 @@
   margin-bottom: 12px;
   font-family: var(--ff);
 }
-.section-title {
+.section-titles {
   font-family: var(--ff);
-  font-size: clamp(20px, 3vw, 30px);
+  font-size: clamp(20px, 3vw, 40px);
   font-weight: 700;
   line-height: 1.25;
   margin-bottom: 12px;
-  color: var(--cp-navy);
+  color: rgb(1, 45, 110) !important;
   position: relative;
   padding-bottom: 16px;
 }
@@ -887,7 +887,7 @@
 }
 .contact-cta .container { position: relative; z-index: 1; }
 
-.cta-title {
+.cta-titles {
   font-family: var(--ff);
   font-size: clamp(24px, 4vw, 42px);
   font-weight: 700;
