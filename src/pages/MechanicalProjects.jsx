@@ -280,11 +280,17 @@ const MechanicalProjects = () => {
         <meta property="og:title" content={`Best Mechanical Project Center in Coimbatore ${YEAR} | CODEX PROJECT`} />
         <meta property="og:description" content={`Fabrication, CAD/CAM, robotics, automobile final year projects in Coimbatore. Free internship certificate. Call ${PHONE}.`} />
         <meta property="og:url" content={PAGE_URL} />
-      </Helmet>
 
-      <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(mechanicalSchema)}} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(faqSchema)}} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(breadcrumbSchema)}} />
+        <script type="application/ld+json">
+          {JSON.stringify(mechanicalSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(faqSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbSchema)}
+        </script>
+      </Helmet>
 
       {/* ══ HERO ════════════════════════════════════════════ */}
       <section className="mp-hero" aria-labelledby="mp-h1">
@@ -294,11 +300,11 @@ const MechanicalProjects = () => {
           <div className="mp-orb mp-orb2"/>
         </div>
         <div className="mp-container">
-          <nav className="mp-bc" aria-label="breadcrumb" itemScope itemType="https://schema.org/BreadcrumbList">
+          <nav className="mp-bc" aria-label="breadcrumb">
             <ol>
-              <li itemScope itemType="https://schema.org/ListItem"><a href="/" itemProp="item"><span itemProp="name">Home</span></a><meta itemProp="position" content="1"/></li>
+              <li><a href="/">Home</a></li>
               <span>›</span>
-              <li aria-current="page" itemScope itemType="https://schema.org/ListItem"><span itemProp="name">Mechanical Projects {YEAR}</span><meta itemProp="position" content="2"/></li>
+              <li aria-current="page">Mechanical Projects {YEAR}</li>
             </ol>
           </nav>
 
@@ -369,14 +375,11 @@ const MechanicalProjects = () => {
           <div className="mp-services-grid">
             {(filteredServices.length>0?filteredServices:services).map((s,i)=>(
               <article key={i} className="mp-svc-card"
-                style={{"--sc":s.accent,"--sbg":s.color}}
-                itemScope itemType="https://schema.org/Service">
+                style={{"--sc":s.accent,"--sbg":s.color}}>
                 <div className="mp-svc-bar"/>
                 <div className="mp-svc-icon">{s.icon}</div>
-                <h3 className="mp-svc-title" itemProp="name">{s.title}</h3>
-                <meta itemProp="serviceType" content={s.seo}/>
-                <meta itemProp="areaServed" content="Coimbatore"/>
-                <p className="mp-svc-desc" itemProp="description">{s.desc}</p>
+                <h3 className="mp-svc-title">{s.title}</h3>
+                <p className="mp-svc-desc">{s.desc}</p>
                 <a href={`${WA}?text=Hi!%20I%20need%20${encodeURIComponent(s.title)}%20mechanical%20project%20${YEAR}`}
                    target="_blank" rel="noopener noreferrer" className="mp-svc-cta">
                   💬 WhatsApp for {s.title.split(" ")[0]} Project
@@ -422,10 +425,9 @@ const MechanicalProjects = () => {
           <div className="mp-ideas-grid">
             {(filteredIdeas.length>0?filteredIdeas:projectIdeas).map((p,i)=>(
               <div key={i} className="mp-idea-card"
-                style={{"--ibg":tagColors[p.tag]||"#f0f4ff"}}
-                itemScope itemType="https://schema.org/CreativeWork">
-                <p className="mp-idea-name" itemProp="name">{p.name}</p>
-                <span className="mp-idea-tag" itemProp="genre">{p.tag}</span>
+                style={{"--ibg":tagColors[p.tag]||"#f0f4ff"}}>
+                <p className="mp-idea-name">{p.name}</p>
+                <span className="mp-idea-tag">{p.tag}</span>
               </div>
             ))}
           </div>
@@ -469,13 +471,13 @@ const MechanicalProjects = () => {
           <p className="mp-sec-sub">What Mechanical, Automobile & ME students say about CODEX PROJECT's mechanical final year project support</p>
           <div className="mp-reviews-grid">
             {REVIEWS.map((r,i)=>(
-              <div key={i} className="mp-rv-card" itemScope itemType="https://schema.org/Review">
-                <div className="mp-rv-stars">{"⭐".repeat(r.stars)}<meta itemProp="reviewRating" content={r.stars}/></div>
-                <p className="mp-rv-text" itemProp="reviewBody">"{r.text}"</p>
+              <div key={i} className="mp-rv-card">
+                <div className="mp-rv-stars">{"⭐".repeat(r.stars)}</div>
+                <p className="mp-rv-text">"{r.text}"</p>
                 <div className="mp-rv-author">
                   <div className="mp-rv-av">{r.name[0]}</div>
                   <div>
-                    <strong itemProp="author">{r.name}</strong>
+                    <strong>{r.name}</strong>
                     <span className="mp-rv-branch">{r.branch}</span>
                   </div>
                 </div>
@@ -492,14 +494,13 @@ const MechanicalProjects = () => {
           <div className="mp-faq-list">
             {faqSchema.mainEntity.map((item,i)=>(
               <div key={i} className={`mp-faq-item ${openFaq===i?"mp-faq-open":""}`}
-                onClick={()=>setOpenFaq(openFaq===i?null:i)}
-                itemScope itemType="https://schema.org/Question">
+                onClick={()=>setOpenFaq(openFaq===i?null:i)}>
                 <div className="mp-faq-q">
-                  <h3 className="mp-faq-qtext" itemProp="name">{item.name}</h3>
+                  <h3 className="mp-faq-qtext">{item.name}</h3>
                   <span className="mp-faq-icon">{openFaq===i?"−":"+"}</span>
                 </div>
-                <div className="mp-faq-body" itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
-                  <p itemProp="text">{item.acceptedAnswer.text}</p>
+                <div className="mp-faq-body">
+                  <p>{item.acceptedAnswer.text}</p>
                 </div>
               </div>
             ))}
