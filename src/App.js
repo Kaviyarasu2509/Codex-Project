@@ -40,90 +40,94 @@ function App() {
       <ChatBot />
       <ScrollToTop />
 
-      <Routes>
+      {/* ══ MAIN LANDMARK — accessibility fix (PageSpeed: "Document does not
+           have a main landmark") — wraps all routed page content ══════════ */}
+      <main>
+        <Routes>
 
-        {/* ══ MAIN PAGES ══════════════════════════════════════════════════════ */}
-        <Route path="/"        element={<Home />} />
-        <Route path="/about"   element={<About />} />
-        <Route path="/career"  element={<Career />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/faq"     element={<Faq />} />
+          {/* ══ MAIN PAGES ══════════════════════════════════════════════════ */}
+          <Route path="/"        element={<Home />} />
+          <Route path="/about"   element={<About />} />
+          <Route path="/career"  element={<Career />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/faq"     element={<Faq />} />
 
-        {/* ══ PRIMARY SEO ROUTES ══════════════════════════════════════════════ */}
+          {/* ══ PRIMARY SEO ROUTES ══════════════════════════════════════════ */}
 
-        <Route
-          path="/iot-project-center-coimbatore"
-          element={<IoTProjects />}
-        />
-        <Route
-          path="/embedded-project-center-coimbatore"
-          element={<EmbeddedProjects />}
-        />
-        <Route
-          path="/mechanical-project-center-coimbatore"
-          element={<MechanicalProjects />}
-        />
-        <Route
-          path="/software-project-center-coimbatore"
-          element={<SoftwareProjects />}
-        />
-        <Route
-          path="/final-year-projects-coimbatore"
-          element={<Projects />}
-        />
-        <Route
-          path="/blog/project-center-coimbatore-guide"
-          element={<Blog />}
-        />
+          <Route
+            path="/iot-project-center-coimbatore"
+            element={<IoTProjects />}
+          />
+          <Route
+            path="/embedded-project-center-coimbatore"
+            element={<EmbeddedProjects />}
+          />
+          <Route
+            path="/mechanical-project-center-coimbatore"
+            element={<MechanicalProjects />}
+          />
+          <Route
+            path="/software-project-center-coimbatore"
+            element={<SoftwareProjects />}
+          />
+          <Route
+            path="/final-year-projects-coimbatore"
+            element={<Projects />}
+          />
+          <Route
+            path="/blog/project-center-coimbatore-guide"
+            element={<Blog />}
+          />
 
-        {/* ══ 301 REDIRECTS — Old → New (duplicate content ஆகாம இருக்க) ══════ */}
+          {/* ══ 301 REDIRECTS — Old → New (duplicate content ஆகாம இருக்க) ════ */}
 
-        {/* IoT */}
-        <Route path="/iot-projects"
-          element={<Navigate to="/iot-project-center-coimbatore" replace />} />
-        <Route path="/iot-projects-coimbatore-2026"
-          element={<Navigate to="/iot-project-center-coimbatore" replace />} />
-        <Route path="/iot-projects-coimbatore"
-          element={<Navigate to="/iot-project-center-coimbatore" replace />} />
+          {/* IoT */}
+          <Route path="/iot-projects"
+            element={<Navigate to="/iot-project-center-coimbatore" replace />} />
+          <Route path="/iot-projects-coimbatore-2026"
+            element={<Navigate to="/iot-project-center-coimbatore" replace />} />
+          <Route path="/iot-projects-coimbatore"
+            element={<Navigate to="/iot-project-center-coimbatore" replace />} />
 
-        {/* Embedded */}
-        <Route path="/embedded-projects"
-          element={<Navigate to="/embedded-project-center-coimbatore" replace />} />
-        <Route path="/embedded-projects-coimbatore"
-          element={<Navigate to="/embedded-project-center-coimbatore" replace />} />
+          {/* Embedded */}
+          <Route path="/embedded-projects"
+            element={<Navigate to="/embedded-project-center-coimbatore" replace />} />
+          <Route path="/embedded-projects-coimbatore"
+            element={<Navigate to="/embedded-project-center-coimbatore" replace />} />
 
-        {/* Mechanical */}
-        <Route path="/mechanical-projects"
-          element={<Navigate to="/mechanical-project-center-coimbatore" replace />} />
-        <Route path="/mechanical-projects-coimbatore"
-          element={<Navigate to="/mechanical-project-center-coimbatore" replace />} />
+          {/* Mechanical */}
+          <Route path="/mechanical-projects"
+            element={<Navigate to="/mechanical-project-center-coimbatore" replace />} />
+          <Route path="/mechanical-projects-coimbatore"
+            element={<Navigate to="/mechanical-project-center-coimbatore" replace />} />
 
-        {/* Software */}
-        <Route path="/software-projects"
-          element={<Navigate to="/software-project-center-coimbatore" replace />} />
-        <Route path="/software-projects-coimbatore"
-          element={<Navigate to="/software-project-center-coimbatore" replace />} />
+          {/* Software */}
+          <Route path="/software-projects"
+            element={<Navigate to="/software-project-center-coimbatore" replace />} />
+          <Route path="/software-projects-coimbatore"
+            element={<Navigate to="/software-project-center-coimbatore" replace />} />
 
-        {/* Projects */}
-        <Route path="/projects"
-          element={<Navigate to="/final-year-projects-coimbatore" replace />} />
-        <Route path="/final-year-project-titles-coimbatore"
-          element={<Navigate to="/final-year-projects-coimbatore" replace />} />
+          {/* Projects */}
+          <Route path="/projects"
+            element={<Navigate to="/final-year-projects-coimbatore" replace />} />
+          <Route path="/final-year-project-titles-coimbatore"
+            element={<Navigate to="/final-year-projects-coimbatore" replace />} />
 
-        {/* Blog */}
-        <Route path="/blog"
-          element={<Navigate to="/blog/project-center-coimbatore-guide" replace />} />
-        <Route path="/tips-and-tricks"
-          element={<Navigate to="/blog/project-center-coimbatore-guide" replace />} />
+          {/* Blog */}
+          <Route path="/blog"
+            element={<Navigate to="/blog/project-center-coimbatore-guide" replace />} />
+          <Route path="/tips-and-tricks"
+            element={<Navigate to="/blog/project-center-coimbatore-guide" replace />} />
 
-        {/* Typo */}
-        <Route path="/fqa"
-          element={<Navigate to="/faq" replace />} />
+          {/* Typo */}
+          <Route path="/fqa"
+            element={<Navigate to="/faq" replace />} />
 
-        {/* 404 */}
-        <Route path="*" element={<Navigate to="/" replace />} />
+          {/* 404 */}
+          <Route path="*" element={<Navigate to="/" replace />} />
 
-      </Routes>
+        </Routes>
+      </main>
 
       <Footer />
     </HelmetProvider>
