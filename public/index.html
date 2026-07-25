@@ -7,8 +7,35 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    <!-- ═══════════════════════════════════════════
+         🔥 PRECONNECT — establish early connections to third-party
+         origins so the actual requests below don't pay full DNS+TLS
+         handshake latency. Fixes PageSpeed "Network dependency tree"
+         chain latency (was 1,106ms).
+    ═══════════════════════════════════════════ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+
+    <!-- ═══════════════════════════════════════════
+         🔥 FONT AWESOME — loaded non-render-blocking.
+         media="print" makes the browser fetch it at low priority
+         without blocking first paint; onload flips it to "all" once
+         downloaded. <noscript> fallback keeps it working if JS is
+         disabled. Fixes PageSpeed "Render-blocking requests"
+         (was 910ms blocking here).
+    ═══════════════════════════════════════════ -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    </noscript>
 
     <!-- ═══════════════════════════════════════════
          🔥 TITLE — shortened (Semrush warned: too long)
@@ -404,5 +431,22 @@
     </noscript>
 
     <div id="root"></div>
+
+    <!-- ═══════════════════════════════════════════
+         🔥 BOOTSTRAP JS — moved to end of body + defer.
+         Scripts placed in <head> without defer/async block HTML
+         parsing until they finish downloading and executing. Moving
+         to the end of <body> with defer lets the page render first;
+         the script still runs before DOMContentLoaded, in order,
+         so any bootstrap.bundle usage (dropdowns/modals, if any)
+         still works exactly the same. Fixes PageSpeed
+         "Render-blocking requests" (was 1,200ms blocking here).
+    ═══════════════════════════════════════════ -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+      defer
+    ></script>
   </body>
 </html>
