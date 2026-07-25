@@ -38,6 +38,26 @@
     </noscript>
 
     <!-- ═══════════════════════════════════════════
+         🔥 GOOGLE FONTS (Space Grotesk + Inter) — loaded here directly
+         instead of via @import in Home.css. An @import inside a
+         stylesheet forces the browser to fully download that CSS file
+         before it even discovers the font request — a serialized chain
+         that was adding ~2,250ms to the critical path (see PageSpeed
+         "Network dependency tree"). Declaring the link here lets the
+         browser discover and fetch fonts in parallel with the CSS,
+         and the media="print" trick keeps it non-render-blocking too.
+    ═══════════════════════════════════════════ -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" />
+    </noscript>
+
+    <!-- ═══════════════════════════════════════════
          🔥 TITLE — shortened (Semrush warned: too long)
          Target: under 60 chars, exact keyword first
     ═══════════════════════════════════════════ -->
