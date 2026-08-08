@@ -310,9 +310,9 @@ const Home = () => {
 
           {/* ── H1 tag — SEO critical ── */}
           <h1 id="hero-h1" className="cp-hero-h1">
-            Best Final Year<br />
-            <span className="cp-grad-txt">Project Center in Coimbatore</span>
-          </h1>
+  Final Year Project Center<br />
+  <span className="cp-grad-txt">in Coimbatore</span>
+</h1>
 
           <p className="cp-hero-sub">
             <strong>CODEX PROJECT</strong> — Coimbatore's most trusted center for{" "}
