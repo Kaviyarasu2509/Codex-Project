@@ -217,7 +217,7 @@
   position: relative;
   z-index: 1;
   text-align: center;
-  max-width: 860px;
+  max-width: 1180px;
   margin: 0 auto;
 }
 
@@ -256,6 +256,7 @@
   color: #001570;
   animation: slideUp .8s ease both .1s;
 }
+.cp-hero-line-one { white-space: nowrap; }
 @keyframes slideUp { from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);} }
 
 .cp-hero-sub {
@@ -948,6 +949,7 @@
 
 @media (max-width: 480px) {
   .cp-hero-h1    { font-size: 40px; }
+  .cp-hero-line-one { white-space: normal; }
   .cp-stats-grid { gap: 12px; }
   .cp-stat-num   { font-size: 28px; }
   .cp-tech-grid  { grid-template-columns: repeat(3, 1fr); }

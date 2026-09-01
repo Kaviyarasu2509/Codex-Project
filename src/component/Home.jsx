@@ -310,7 +310,7 @@ const Home = () => {
 
           {/* ── H1 tag — SEO critical ── */}
           <h1 id="hero-h1" className="cp-hero-h1">
-  Final Year Project Center<br />
+  <span className="cp-hero-line-one">Final Year Project Center</span><br />
   <span className="cp-grad-txt">in Coimbatore</span>
 </h1>
 
