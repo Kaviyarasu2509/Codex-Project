@@ -4,7 +4,7 @@ import "./Projects.css";
 // ═══════════════════════════════════════════════════════════
 // CONSTANTS
 // ═══════════════════════════════════════════════════════════
-const YEAR   = "2025-26";
+const YEAR   = "2026-27";
 // eslint-disable-next-line no-unused-vars
 const YR     = "2026";
 const PHONE  = "8525999002";
@@ -620,7 +620,7 @@ export default function Projects() {
           <p className="pj-hero-addr">📍 {ADDR}</p>
 
           <div className="pj-trust-row">
-            {["IEEE 2025-26","Real Working Models","Free Internship Cert","Complete Documentation","Viva Preparation","Affordable Pricing"].map(t=>(
+            {["IEEE 2026-27","Real Working Models","Free Internship Cert","Complete Documentation","Viva Preparation","Affordable Pricing"].map(t=>(
               <span key={t} className="pj-trust-pill">✔ {t}</span>
             ))}
           </div>

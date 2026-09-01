@@ -10,7 +10,7 @@ const contactSchema = {
   "email": "codexproject2026@gmail.com",
   "telephone": "+918525999002",
   "description":
-    "Best final year project center in Coimbatore offering IEEE 2024-25 projects, internship training, and placement support. Contact us for Software, AI, IoT, Embedded, and Mechanical projects.",
+    "Best final year project center in Coimbatore offering current IEEE projects, internship training, and placement support. Contact us for Software, AI, IoT, Embedded, and Mechanical projects.",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "2nd Floor, Balaji Complex, 288, 2nd Street, Opp. Anbu Mess, Cross Cut Road",
@@ -172,7 +172,7 @@ const Contact = () => {
               </p>
               <p className="contact-description">
                 Looking for the <strong>best final year project center in Coimbatore</strong>?
-                Contact <strong>CODEX PROJECT</strong> at Gandhipuram for IEEE 2024-25 projects,
+                Contact <strong>CODEX PROJECT</strong> at Gandhipuram for current IEEE projects,
                 internship training, and placement support. Call, WhatsApp, or visit us —
                 free consultation for all engineering students.
               </p>
@@ -524,7 +524,7 @@ const Contact = () => {
               </h2>
               <p className="cta-description">
                 Call or WhatsApp <strong>CODEX PROJECT</strong> now — free consultation
-                available for all engineering students in Coimbatore. IEEE 2024-25 projects,
+                available for all engineering students in Coimbatore. Current IEEE projects,
                 internship certificate, documentation &amp; viva support.
               </p>
               <p className="ccta-address">

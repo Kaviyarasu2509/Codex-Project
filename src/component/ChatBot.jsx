@@ -31,15 +31,15 @@ const FAQ_KB = [
   // ── SOFTWARE — SPECIFIC TECHNOLOGIES ──────────────────────────────────────
   {
     patterns: ["python", "django", "flask", "fastapi", "numpy", "pandas", "scikit-learn", "scikit"],
-    answer: `🐍 <b>Python Projects</b><br/>We build real-time Python final year projects using:<br/>• Django, Flask, FastAPI (web apps)<br/>• Pandas, NumPy, Matplotlib (data science)<br/>• Scikit-learn, TensorFlow, PyTorch (AI/ML)<br/><br/>✅ Complete source code + IEEE ${`2025-26`} documentation + free internship certificate<br/><br/>📞 Software line: <a href="tel:+91${PHONE_SW}">${PHONE_SW}</a><br/>💬 <a href="${WA_LINK}" target="_blank">WhatsApp Us</a>`,
+    answer: `🐍 <b>Python Projects</b><br/>We build real-time Python final year projects using:<br/>• Django, Flask, FastAPI (web apps)<br/>• Pandas, NumPy, Matplotlib (data science)<br/>• Scikit-learn, TensorFlow, PyTorch (AI/ML)<br/><br/>✅ Complete source code + IEEE ${`2026-27`} documentation + free internship certificate<br/><br/>📞 Software line: <a href="tel:+91${PHONE_SW}">${PHONE_SW}</a><br/>💬 <a href="${WA_LINK}" target="_blank">WhatsApp Us</a>`,
   },
   {
     patterns: ["ai", "artificial intelligence", "machine learning", "ml"],
-    answer: `🤖 <b>AI & Machine Learning Projects</b><br/>IEEE 2025-26 base paper AI/ML final year projects using:<br/>• TensorFlow, PyTorch, Keras, Scikit-learn<br/>• OpenCV, YOLO v8, Hugging Face<br/>• Deep Learning, NLP, Computer Vision, Generative AI<br/><br/>Popular topics: Face Recognition, Fake News Detection, Brain Tumor Detection, Chatbots.<br/><br/>📞 Software line: <a href="tel:+91${PHONE_SW}">${PHONE_SW}</a><br/>💬 <a href="${WA_LINK}" target="_blank">WhatsApp Us</a>`,
+    answer: `🤖 <b>AI & Machine Learning Projects</b><br/>IEEE 2026-27 base paper AI/ML final year projects using:<br/>• TensorFlow, PyTorch, Keras, Scikit-learn<br/>• OpenCV, YOLO v8, Hugging Face<br/>• Deep Learning, NLP, Computer Vision, Generative AI<br/><br/>Popular topics: Face Recognition, Fake News Detection, Brain Tumor Detection, Chatbots.<br/><br/>📞 Software line: <a href="tel:+91${PHONE_SW}">${PHONE_SW}</a><br/>💬 <a href="${WA_LINK}" target="_blank">WhatsApp Us</a>`,
   },
   {
     patterns: ["deep learning", "nlp", "cnn", "rnn", "lstm", "bert", "gpt", "computer vision", "opencv", "yolo", "transformer"],
-    answer: `🧠 <b>Deep Learning & NLP Projects</b><br/>Advanced final year projects using:<br/>• CNN, RNN, LSTM architectures<br/>• BERT, GPT API, Transformer models<br/>• Sentiment Analysis, Text Summarization, Chatbots<br/>• Medical Image Segmentation, Object Detection<br/><br/>All with real dataset training + IEEE 2025-26 documentation.<br/><br/>📞 <a href="tel:+91${PHONE_SW}">${PHONE_SW}</a>`,
+    answer: `🧠 <b>Deep Learning & NLP Projects</b><br/>Advanced final year projects using:<br/>• CNN, RNN, LSTM architectures<br/>• BERT, GPT API, Transformer models<br/>• Sentiment Analysis, Text Summarization, Chatbots<br/>• Medical Image Segmentation, Object Detection<br/><br/>All with real dataset training + IEEE 2026-27 documentation.<br/><br/>📞 <a href="tel:+91${PHONE_SW}">${PHONE_SW}</a>`,
   },
   {
     patterns: ["mern", "react", "node", "express", "mongodb", "javascript"],
@@ -175,7 +175,7 @@ const FAQ_KB = [
   },
   {
     patterns: ["viva", "documentation", "doc", "report", "ppt", "ieee", "paper", "review"],
-    answer: `📋 <b>Documentation & Viva Support</b><br/><br/>Every project includes:<br/>• IEEE 2025-26 format project report<br/>• PPT for all reviews<br/>• Circuit diagram / UML / ER diagram<br/>• 50+ mock viva Q&A coaching<br/>• Synopsis & abstract<br/><br/>📞 <a href="tel:+91${PHONE}">${PHONE}</a>`,
+    answer: `📋 <b>Documentation & Viva Support</b><br/><br/>Every project includes:<br/>• IEEE 2026-27 format project report<br/>• PPT for all reviews<br/>• Circuit diagram / UML / ER diagram<br/>• 50+ mock viva Q&A coaching<br/>• Synopsis & abstract<br/><br/>📞 <a href="tel:+91${PHONE}">${PHONE}</a>`,
   },
   {
     patterns: ["college", "psg", "cit", "kpr", "karpagam", "sns", "kgisl", "srec", "student", "be", "me", "mca", "bsc", "diploma"],
@@ -355,7 +355,7 @@ Key facts:
 - Phone: ${PHONE} (general), ${PHONE_SW} (software/AI), ${PHONE_HW} (embedded/IoT)
 - WhatsApp: ${WA_LINK}
 - Services: Software (Python, AI, ML, MERN, Java, .NET, PHP, Flutter, Android), IoT (Arduino, Raspberry Pi, ESP32), Embedded (8051, ARM, PIC, FPGA), Mechanical (Fabrication, CAD/CAM, Robotics)
-- USP: Lowest price, free internship certificate, same day delivery, IEEE 2025-26 projects, viva support
+- USP: Lowest price, free internship certificate, same day delivery, IEEE 2026-27 projects, viva support
 - Students: BE, ME, MCA, BSc, Diploma from PSG Tech, CIT, KMEA, Sri Krishna, KPR, Karpagam, SNS, KGISL
 - Hours: Mon–Sat 9AM–8PM
 

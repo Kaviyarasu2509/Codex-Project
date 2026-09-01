@@ -1,23 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-81YVLH6052"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Analytics load after the page becomes interactive to protect first paint. -->
+    <script>
+      window.addEventListener("load", function () {
+        var schedule = window.requestIdleCallback || function (callback) { setTimeout(callback, 1500); };
+        schedule(function () {
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function () { window.dataLayer.push(arguments); };
+          window.gtag("js", new Date());
+          window.gtag("config", "G-81YVLH6052");
 
-  gtag('config', 'G-81YVLH6052');
-</script>
+          var googleTag = document.createElement("script");
+          googleTag.async = true;
+          googleTag.src = "https://www.googletagmanager.com/gtag/js?id=G-81YVLH6052";
+          document.head.appendChild(googleTag);
 
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "y9aqpq0fyh");
-</script>
+          window.clarity = window.clarity || function () {
+            (window.clarity.q = window.clarity.q || []).push(arguments);
+          };
+          var clarityTag = document.createElement("script");
+          clarityTag.async = true;
+          clarityTag.src = "https://www.clarity.ms/tag/y9aqpq0fyh";
+          document.head.appendChild(clarityTag);
+        });
+      }, { once: true });
+    </script>
     <!-- ═══════════════════════════════════════════
          BASIC
     ═══════════════════════════════════════════ -->
@@ -81,19 +89,11 @@
     <title>Final Year Project Center in Coimbatore | CODEX PROJECT</title>
 
     <!-- ═══════════════════════════════════════════
-         🔥 META DESCRIPTION — 2025-26 updated, CTA + phone
-    ═══════════════════════════════════════════ -->
-    <meta
-      name="description"
-      content="CODEX PROJECT – final year project center in Gandhipuram, Coimbatore. IEEE 2025-26 projects in AI, ML, IoT, Embedded, Mechanical & Web Development. Lowest price, free internship certificate, same day delivery. Call 85259 99002!"
-    />
-
-    <!-- ═══════════════════════════════════════════
-         🔥 KEYWORDS — 2025-26 updated + 2026 added + new routes
+         🔥 KEYWORDS — 2026-27 updated + 2026 added + new routes
     ═══════════════════════════════════════════ -->
     <meta
       name="keywords"
-      content="final year project center in coimbatore, project center in coimbatore, final year projects coimbatore 2025 2026, ieee projects coimbatore 2026, ieee 2025-26 projects coimbatore, mechanical project center in coimbatore, embedded project centre in coimbatore, iot project centre in coimbatore, software project center in coimbatore, ai project center coimbatore, machine learning projects coimbatore, deep learning projects coimbatore, python projects coimbatore, mern stack projects coimbatore, java projects coimbatore, dotnet projects coimbatore, android app development projects coimbatore, affordable project center in coimbatore, low cost project center in coimbatore, same day project delivery coimbatore, internship training center coimbatore, free internship certificate coimbatore, final year project center near peelamedu, project center near gandhipuram, project center near saravanampatti, project center near me coimbatore, diploma project center coimbatore, be project center coimbatore, me project center coimbatore, bsc mca project center coimbatore, final year project with internship coimbatore, project center coimbatore with placement support, project center with viva support coimbatore, ready made projects coimbatore, project with source code coimbatore, codex project coimbatore, psg college project center, cit coimbatore project center, srec project center coimbatore"
+      content="final year project center in coimbatore, project center in coimbatore, final year projects coimbatore 2026 2027, ieee projects coimbatore 2027, ieee 2026-27 projects coimbatore, mechanical project center in coimbatore, embedded project centre in coimbatore, iot project centre in coimbatore, software project center in coimbatore, ai project center coimbatore, machine learning projects coimbatore, deep learning projects coimbatore, python projects coimbatore, mern stack projects coimbatore, java projects coimbatore, dotnet projects coimbatore, android app development projects coimbatore, affordable project center in coimbatore, low cost project center in coimbatore, same day project delivery coimbatore, internship training center coimbatore, free internship certificate coimbatore, final year project center near peelamedu, project center near gandhipuram, project center near saravanampatti, project center near me coimbatore, diploma project center coimbatore, be project center coimbatore, me project center coimbatore, bsc mca project center coimbatore, final year project with internship coimbatore, project center coimbatore with placement support, project center with viva support coimbatore, ready made projects coimbatore, project with source code coimbatore, codex project coimbatore, psg college project center, cit coimbatore project center, srec project center coimbatore"
     />
 
     <!-- BRAND -->
@@ -108,40 +108,12 @@
     <link rel="icon" href="%PUBLIC_URL%/favicon.png" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo195.png" />
 
-    <!-- CANONICAL -->
-    <link rel="canonical" href="https://www.codexproject.in/" />
-
     <!-- MANIFEST -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
     <!-- ═══════════════════════════════════════════
          🔥 ROBOTS
     ═══════════════════════════════════════════ -->
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-    <meta name="googlebot" content="index, follow" />
-
-    <!-- ═══════════════════════════════════════════
-         🔥 OPEN GRAPH — 2025-26 updated + phone in description
-    ═══════════════════════════════════════════ -->
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="CODEX PROJECT" />
-    <meta property="og:title" content="Final Year Project Center in Coimbatore | CODEX PROJECT" />
-    <meta property="og:description" content="IEEE 2025-26 projects in AI, ML, IoT, Embedded, Mechanical & Web Development. Lowest price, free internship certificate, same day delivery. Gandhipuram, Coimbatore. Call 85259 99002!" />
-    <meta property="og:url" content="https://www.codexproject.in/" />
-    <meta property="og:image" content="https://www.codexproject.in/og-banner.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="CODEX PROJECT – Final Year Project Center in Coimbatore" />
-    <meta property="og:locale" content="en_IN" />
-
-    <!-- ═══════════════════════════════════════════
-         🔥 TWITTER CARD — 2025-26 updated
-    ═══════════════════════════════════════════ -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Final Year Project Center in Coimbatore | CODEX PROJECT" />
-    <meta name="twitter:description" content="IEEE 2025-26 projects in AI, ML, IoT, Embedded, Mechanical & Web Development. Lowest price, free internship certificate, viva support. Call 85259 99002!" />
-    <meta name="twitter:image" content="https://www.codexproject.in/og-banner.png" />
-    <meta name="twitter:image:alt" content="CODEX PROJECT – Final Year Project Center Coimbatore" />
 
     <!-- ═══════════════════════════════════════════
          🔥 LOCAL SEO — geo signals
@@ -153,7 +125,7 @@
 
     <!-- ═══════════════════════════════════════════
          🔥 SCHEMA 1 — EducationalOrganization + LocalBusiness
-         Full address, all 3 phones, 2025-26 updated
+         Full address, all 3 phones, 2026-27 updated
     ═══════════════════════════════════════════ -->
     <script type="application/ld+json">
     {
@@ -164,7 +136,7 @@
       "url": "https://www.codexproject.in",
       "logo": "https://www.codexproject.in/logo.png",
       "image": "https://www.codexproject.in/og-banner.png",
-      "description": "CODEX PROJECT is a professional final year project center in Gandhipuram, Coimbatore offering IEEE 2025-26 projects in AI, ML, IoT, Embedded Systems, Mechanical, and Web Development with free internship certificate, same day delivery, documentation, and viva support at the lowest price.",
+      "description": "CODEX PROJECT is a professional final year project center in Gandhipuram, Coimbatore offering IEEE 2026-27 projects in AI, ML, IoT, Embedded Systems, Mechanical, and Web Development with free internship certificate, same day delivery, documentation, and viva support at the lowest price.",
       "telephone": ["+918525999002", "+918525999022", "+918525999032"],
       "email": "codexproject2026@gmail.com",
       "priceRange": "₹",
@@ -231,14 +203,14 @@
     </script>
 
     <!-- ═══════════════════════════════════════════
-         🔥 SCHEMA 2 — Service Catalog (2025-26 updated)
+         🔥 SCHEMA 2 — Service Catalog (2026-27 updated)
     ═══════════════════════════════════════════ -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Service",
       "serviceType": "Final Year Project Training and Development",
-      "name": "Final Year Project Center Coimbatore 2025-26",
+      "name": "Final Year Project Center Coimbatore 2026-27",
       "provider": {
         "@type": "Organization",
         "name": "CODEX PROJECT",
@@ -249,10 +221,10 @@
         "@type": "City",
         "name": "Coimbatore"
       },
-      "description": "Comprehensive IEEE 2025-26 final year project support including project development, documentation, free internship certificate, same day delivery, and viva preparation for BE, ME, BSc, MCA and Diploma students in Coimbatore.",
+      "description": "Comprehensive IEEE 2026-27 final year project support including project development, documentation, free internship certificate, same day delivery, and viva preparation for BE, ME, BSc, MCA and Diploma students in Coimbatore.",
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
-        "name": "Final Year Project Domains 2025-26",
+        "name": "Final Year Project Domains 2026-27",
         "itemListElement": [
           {
             "@type": "Offer",
@@ -260,7 +232,7 @@
               "@type": "Service",
               "name": "AI & Machine Learning Projects Coimbatore 2026",
               "url": "https://www.codexproject.in/software-projects-coimbatore",
-              "description": "Python-based AI, ML, Deep Learning, NLP, and Computer Vision IEEE 2025-26 final year projects for CSE and IT students in Coimbatore."
+              "description": "Python-based AI, ML, Deep Learning, NLP, and Computer Vision IEEE 2026-27 final year projects for CSE and IT students in Coimbatore."
             }
           },
           {
@@ -296,7 +268,7 @@
               "@type": "Service",
               "name": "Software & Web Development Projects Coimbatore",
               "url": "https://www.codexproject.in/software-projects-coimbatore",
-              "description": "MERN Stack, Django, PHP, React, Node.js, Java, .NET full-stack IEEE 2025-26 final year web development projects in Coimbatore."
+              "description": "MERN Stack, Django, PHP, React, Node.js, Java, .NET full-stack IEEE 2026-27 final year web development projects in Coimbatore."
             }
           },
           {
@@ -314,7 +286,7 @@
     </script>
 
     <!-- ═══════════════════════════════════════════
-         🔥 SCHEMA 3 — FAQ (2025-26 updated, phone added)
+         🔥 SCHEMA 3 — FAQ (2026-27 updated, phone added)
          Shows directly in Google search results as rich snippet
     ═══════════════════════════════════════════ -->
     <script type="application/ld+json">
@@ -327,7 +299,7 @@
           "name": "Which is the best final year project center in Coimbatore?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "CODEX PROJECT is the best final year project center in Gandhipuram, Coimbatore, offering IEEE 2025-26 projects in AI, ML, IoT, Embedded Systems, Mechanical, and Web Development with free internship certificate and lowest pricing. Call 85259 99002."
+            "text": "CODEX PROJECT is the best final year project center in Gandhipuram, Coimbatore, offering IEEE 2026-27 projects in AI, ML, IoT, Embedded Systems, Mechanical, and Web Development with free internship certificate and lowest pricing. Call 85259 99002."
           }
         },
         {
@@ -364,10 +336,10 @@
         },
         {
           "@type": "Question",
-          "name": "What project domains are available at Codex Project in 2025-26?",
+          "name": "What project domains are available at Codex Project in 2026-27?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "IEEE 2025-26 projects in AI, Machine Learning, Deep Learning, Python, IoT (Arduino, Raspberry Pi), Embedded Systems, Mechanical (CAD, Fabrication, Robotics), MERN Stack, Java, .NET, Android, and ready-made projects with source code in Coimbatore. Call 85259 99002."
+            "text": "IEEE 2026-27 projects in AI, Machine Learning, Deep Learning, Python, IoT (Arduino, Raspberry Pi), Embedded Systems, Mechanical (CAD, Fabrication, Robotics), MERN Stack, Java, .NET, Android, and ready-made projects with source code in Coimbatore. Call 85259 99002."
           }
         },
         {
@@ -439,7 +411,7 @@
       "@type": "WebSite",
       "name": "CODEX PROJECT – Final Year Project Center in Coimbatore",
       "url": "https://www.codexproject.in",
-      "description": "final year project center in Gandhipuram, Coimbatore. IEEE 2025-26 projects, free internship certificate, same day delivery.",
+      "description": "final year project center in Gandhipuram, Coimbatore. IEEE 2026-27 projects, free internship certificate, same day delivery.",
       "potentialAction": {
         "@type": "SearchAction",
         "target": {
@@ -454,11 +426,11 @@
   </head>
 
   <body>
-    <!-- 🔥 NOSCRIPT — static SEO text for crawlers (2025-26 updated) -->
+    <!-- 🔥 NOSCRIPT — static SEO text for crawlers (2026-27 updated) -->
     <noscript>
       <p>
         CODEX PROJECT is the best final year project center in Gandhipuram, Coimbatore offering
-        IEEE 2025-26 projects in Artificial Intelligence, Machine Learning, IoT, Embedded Systems,
+        IEEE 2026-27 projects in Artificial Intelligence, Machine Learning, IoT, Embedded Systems,
         Mechanical Engineering, Web Development and Mobile App Development. We provide affordable
         final year projects with real-time training, free internship certificate, same day delivery,
         IEEE documentation, and complete viva support for BE, ME, BSc, MCA, and Diploma students

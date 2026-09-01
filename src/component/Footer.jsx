@@ -10,7 +10,7 @@ const footerSchema = {
   "url": "https://www.codexproject.in",
   "email": "codexproject2026@gmail.com",
   "telephone": ["+918525999002", "+918525999022", "+918525999032"],
-  "description": "Best final year project center in Gandhipuram, Coimbatore. IEEE 2025-26 projects in AI, ML, IoT, Embedded, Mechanical and Web Development with internship certificate and viva support.",
+  "description": "Best final year project center in Gandhipuram, Coimbatore. IEEE 2026-27 projects in AI, ML, IoT, Embedded, Mechanical and Web Development with internship certificate and viva support.",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "2nd Floor, Balaji Complex, 288, 2nd Street, Opp. Anbu Mess, Cross Cut Road",
@@ -80,12 +80,12 @@ const techKeywords = [
   { label: "IoT Projects Coimbatore 2026",        href: "/iot-project-center-coimbatore" },
   { label: "Embedded Projects Coimbatore",        href: "/embedded-project-center-coimbatore" },
   { label: "Mechanical Projects Coimbatore",      href: "/mechanical-project-center-coimbatore" },
-  { label: "IEEE Projects 2025-26",               href: "/final-year-projects-coimbatore" },
+  { label: "IEEE Projects 2026-27",               href: "/final-year-projects-coimbatore" },
   { label: "Python Projects Coimbatore",          href: "/software-project-center-coimbatore" },
   { label: "MERN Stack Projects",                 href: "/software-project-center-coimbatore" },
   { label: "Flutter Projects Coimbatore",         href: "/software-project-center-coimbatore" },
   { label: "Arduino Projects Coimbatore",         href: "/iot-project-center-coimbatore" },
-  { label: "Final Year Projects 2025-26",         href: "/final-year-projects-coimbatore" },
+  { label: "Final Year Projects 2026-27",         href: "/final-year-projects-coimbatore" },
   { label: "Free Internship Certificate",         href: "/about" },
   { label: "Project Center Gandhipuram",          href: "/contact" },
   { label: "Same Day Project Delivery",           href: "/contact" },
@@ -139,7 +139,7 @@ const Footer = () => {
 
               <p className="cpf-brand-desc">
                 <strong>CODEX PROJECT</strong> is the best final year project center
-                in Gandhipuram, Coimbatore offering IEEE 2025-26 projects, internship
+                in Gandhipuram, Coimbatore offering IEEE 2026-27 projects, internship
                 certificate, and viva support for BE, ME, BSc, MCA &amp; Diploma students.
                 Affordable pricing. Same day delivery. All domains covered.
               </p>
@@ -276,7 +276,7 @@ const Footer = () => {
         <div className="cpf-container">
           <p>
             <strong>CODEX PROJECT</strong> — Best final year project center in Coimbatore
-            at 2nd Floor, Balaji Complex, Gandhipuram. IEEE 2025-26 projects in{" "}
+            at 2nd Floor, Balaji Complex, Gandhipuram. IEEE 2026-27 projects in{" "}
             <Link to="/software-project-center-coimbatore">Python, AI, Machine Learning</Link>,{" "}
             <Link to="/iot-project-center-coimbatore">IoT, Arduino, Raspberry Pi</Link>,{" "}
             <Link to="/embedded-project-center-coimbatore">Embedded Systems</Link>,{" "}

@@ -5,7 +5,7 @@ import "./SoftwareProjects.css";
 // ═══════════════════════════════════════════════════════════
 // CONSTANTS
 // ═══════════════════════════════════════════════════════════
-const YEAR     = "2025-26";
+const YEAR     = "2026-27";
 const PHONE    = "8525999022";
 const PHONE_GEN= "8525999002";
 const WA       = `https://wa.me/91${PHONE}`;
@@ -210,7 +210,7 @@ const SoftwareProjects = () => {
   return (
     <div className="sp-page">
       <Helmet>
-        <title>Best Software Project Center in Coimbatore {YEAR} | CODEX PROJECT</title>
+        <title>{`Best Software Project Center in Coimbatore ${YEAR} | CODEX PROJECT`}</title>
         <meta
           name="description"
           content={`CODEX PROJECT - Best software project center in Gandhipuram, Coimbatore. Python, AI, MERN, Java, Flutter, Android final year projects ${YEAR}. Free internship certificate. Call ${PHONE}.`}
@@ -268,7 +268,7 @@ const SoftwareProjects = () => {
           </p>
 
           <div className="sp-trust-row">
-            {["IEEE 2025-26","Python & AI Projects","MERN Stack","Flutter & Android","Free Internship Cert","Complete Documentation","Viva Coaching","Live Deployment"].map(t=>(
+            {["IEEE 2026-27","Python & AI Projects","MERN Stack","Flutter & Android","Free Internship Cert","Complete Documentation","Viva Coaching","Live Deployment"].map(t=>(
               <span key={t} className="sp-trust-pill">✔ {t}</span>
             ))}
           </div>

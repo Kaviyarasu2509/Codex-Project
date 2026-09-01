@@ -5,7 +5,7 @@ import "./MechanicalProjects.css";
 // ═══════════════════════════════════════════════════════════
 // CONSTANTS
 // ═══════════════════════════════════════════════════════════
-const YEAR      = "2025-26";
+const YEAR      = "2026-27";
 const PHONE     = "8525999032";
 const PHONE_GEN = "8525999002";
 const WA        = `https://wa.me/91${PHONE_GEN}`;
@@ -271,7 +271,7 @@ const MechanicalProjects = () => {
   return (
     <div className="mp-page">
       <Helmet>
-        <title>Best Mechanical Project Center in Coimbatore {YEAR} | CODEX PROJECT</title>
+        <title>{`Best Mechanical Project Center in Coimbatore ${YEAR} | CODEX PROJECT`}</title>
         <meta
           name="description"
           content={`CODEX PROJECT - Best mechanical project center in Gandhipuram, Coimbatore. Fabrication, CAD/CAM, robotics, automobile final year projects ${YEAR}. Free internship certificate. Call ${PHONE}.`}
@@ -326,7 +326,7 @@ const MechanicalProjects = () => {
           </p>
 
           <div className="mp-trust-row">
-            {["IEEE 2025-26","Real Working Models","SolidWorks & ANSYS","CATIA & AutoCAD","Free Internship Cert","Complete Documentation","Viva Coaching","Affordable Pricing"].map(t=>(
+            {["IEEE 2026-27","Real Working Models","SolidWorks & ANSYS","CATIA & AutoCAD","Free Internship Cert","Complete Documentation","Viva Coaching","Affordable Pricing"].map(t=>(
               <span key={t} className="mp-trust-pill">✔ {t}</span>
             ))}
           </div>

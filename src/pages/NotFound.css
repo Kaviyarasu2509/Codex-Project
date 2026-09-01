@@ -1,0 +1,9 @@
+.not-found { min-height: 70vh; display: grid; place-items: center; padding: 140px 20px 80px; background: linear-gradient(135deg, #f8f3e4, #e8f1ff); text-align: center; }
+.not-found-card { width: min(620px, 100%); padding: 48px 28px; border-radius: 24px; background: #fff; box-shadow: 0 18px 60px rgba(30, 41, 59, .12); }
+.not-found-code { display: block; color: #392e4e; font-size: clamp(4rem, 14vw, 7rem); font-weight: 800; line-height: 1; }
+.not-found h1 { margin: 18px 0 12px; color: #152238; }
+.not-found p { margin: 0 auto 28px; color: #526175; }
+.not-found-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.not-found-actions a { padding: 12px 20px; border-radius: 999px; font-weight: 700; text-decoration: none; }
+.not-found-primary { background: #392e4e; color: #fff; }
+.not-found-secondary { border: 2px solid #392e4e; color: #392e4e; }

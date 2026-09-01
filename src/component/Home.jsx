@@ -6,7 +6,7 @@ const structuredData = {
   "@context": "https://schema.org",
   "@type": ["EducationalOrganization", "LocalBusiness"],
   "name": "CODEX PROJECT – Best Final Year Project Center in Coimbatore",
-  "description": "Best final year project center in Gandhipuram, Coimbatore offering IEEE 2025-26 projects, internship training, and placement support for BE, ME, MCA, BSc, and Diploma students.",
+  "description": "Best final year project center in Gandhipuram, Coimbatore offering IEEE 2026-27 projects, internship training, and placement support for BE, ME, MCA, BSc, and Diploma students.",
   "url": "https://www.codexproject.in",
   "telephone": ["+918525999002", "+918525999022", "+918525999032"],
   "email": "codexproject2026@gmail.com",
@@ -39,7 +39,7 @@ const faqStructuredData = {
     {
       "@type": "Question",
       "name": "Which is the best final year project center in Coimbatore?",
-      "acceptedAnswer": { "@type": "Answer", "text": "CODEX PROJECT is the best final year project center in Coimbatore offering IEEE 2025-26 projects, internship training, and placement support for BE, ME, BSc, MCA, and Diploma students at Balaji Complex, Gandhipuram. Call 85259 99002." }
+      "acceptedAnswer": { "@type": "Answer", "text": "CODEX PROJECT is the best final year project center in Coimbatore offering IEEE 2026-27 projects, internship training, and placement support for BE, ME, BSc, MCA, and Diploma students at Balaji Complex, Gandhipuram. Call 85259 99002." }
     },
     {
       "@type": "Question",
@@ -49,7 +49,7 @@ const faqStructuredData = {
     {
       "@type": "Question",
       "name": "What project domains are available at Codex Project Coimbatore?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Software (Python, AI, ML, MERN), IoT & Embedded (Arduino, Raspberry Pi), Mechanical & Automation, Mobile App Development, and IEEE 2025-26 certified projects." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Software (Python, AI, ML, MERN), IoT & Embedded (Arduino, Raspberry Pi), Mechanical & Automation, Mobile App Development, and IEEE 2026-27 certified projects." }
     },
     {
       "@type": "Question",
@@ -94,7 +94,7 @@ const domains = [
   {
     icon: "🤖",
     title: "AI & Machine Learning",
-    seo: "AI ML Projects Coimbatore 2025-26",
+    seo: "AI ML Projects Coimbatore 2026-27",
     desc: "Deep Learning, NLP, Computer Vision, Data Science — Python, TensorFlow, PyTorch",
     tags: ["Python", "TensorFlow", "NLP", "CNN"],
     color: "#8B5CF6",
@@ -144,9 +144,9 @@ const domains = [
   {
     icon: "📄",
     title: "IEEE Certified Projects",
-    seo: "IEEE Projects Coimbatore 2025-26",
-    desc: "Latest IEEE 2025-26 base papers — all domains with publication support",
-    tags: ["IEEE 2025-26", "Base Paper", "All Domains"],
+    seo: "IEEE Projects Coimbatore 2026-27",
+    desc: "Latest IEEE 2026-27 base papers — all domains with publication support",
+    tags: ["IEEE 2026-27", "Base Paper", "All Domains"],
     color: "#EC4899",
     bg: "rgba(236,72,153,0.07)",
     link: "/final-year-project-titles-coimbatore",
@@ -155,7 +155,7 @@ const domains = [
 
 const whyData = [
   { icon: "💰", title: "Most Affordable",       desc: "Lowest project cost in Coimbatore — hardware + code + docs, zero hidden charges." },
-  { icon: "🎓", title: "IEEE 2025-26 Projects",  desc: "Latest IEEE base paper projects with real-world implementation across all domains." },
+  { icon: "🎓", title: "IEEE 2026-27 Projects",  desc: "Latest IEEE base paper projects with real-world implementation across all domains." },
   { icon: "📋", title: "100% Documentation",    desc: "Project report, PPT, synopsis, IEEE paper — everything for college submission." },
   { icon: "🎤", title: "Viva Support",           desc: "Mock viva, review PPT, and technical coaching for all college presentations." },
   { icon: "🏢", title: "Internship Certificate", desc: "Verified internship certificate with live project experience — best for placement." },
@@ -170,9 +170,9 @@ const reviews = [
 ];
 
 const faqs = [
-  { q: "Which is the best final year project center in Coimbatore?",        a: "CODEX PROJECT is the best final year project center in Coimbatore, offering IEEE 2025-26 projects, internship training, and placement support for BE, ME, BSc, MCA, and Diploma students at Balaji Complex, Gandhipuram. Call 85259 99002." },
+  { q: "Which is the best final year project center in Coimbatore?",        a: "CODEX PROJECT is the best final year project center in Coimbatore, offering IEEE 2026-27 projects, internship training, and placement support for BE, ME, BSc, MCA, and Diploma students at Balaji Complex, Gandhipuram. Call 85259 99002." },
   { q: "Do you provide internship for engineering students in Coimbatore?",  a: "Yes! We offer summer and semester internships with live project experience, verified internship certificate, and placement support — top internship training center in Coimbatore." },
-  { q: "What project domains are available at Codex Project?",              a: "Software (Python, AI, ML, MERN, Django, PHP), IoT & Embedded (Arduino, Raspberry Pi, NodeMCU), Mechanical & Automation (CAD, Fabrication, Robotics), Mobile App (Flutter, Android), and IEEE 2025-26 certified projects." },
+  { q: "What project domains are available at Codex Project?",              a: "Software (Python, AI, ML, MERN, Django, PHP), IoT & Embedded (Arduino, Raspberry Pi, NodeMCU), Mechanical & Automation (CAD, Fabrication, Robotics), Mobile App (Flutter, Android), and IEEE 2026-27 certified projects." },
   { q: "Do you provide documentation and viva support?",                    a: "Yes, 100% documentation — IEEE format project report, synopsis, PPT, and complete viva preparation guidance for all reviews and final year presentations." },
   { q: "How much does a final year project cost?",                          a: "We offer the most affordable final year project pricing in Coimbatore — no hidden charges. Contact us at Balaji Complex, Gandhipuram or call 85259 99002 for a free consultation." },
   { q: "Do you provide ready-made projects with source code in Coimbatore?", a: "Yes, CODEX PROJECT provides ready-made projects with complete source code, deployment, and college-ready documentation for all domains — software, IoT, embedded, and mechanical." },
@@ -186,11 +186,11 @@ const kwLinks = [
   ["IoT Projects Coimbatore 2026",          "/iot-projects-coimbatore-2026"],
   ["Embedded Projects Coimbatore",          "/embedded-projects-coimbatore"],
   ["Mechanical Projects Coimbatore",        "/mechanical-projects-coimbatore"],
-  ["IEEE Projects Coimbatore 2025-26",      "/final-year-project-titles-coimbatore"],
+  ["IEEE Projects Coimbatore 2026-27",      "/final-year-project-titles-coimbatore"],
   ["Internship Training Coimbatore",        "/tips-and-tricks"],
   ["Python Projects Coimbatore",            "/software-projects-coimbatore"],
   ["MERN Stack Projects Coimbatore",        "/software-projects-coimbatore"],
-  ["Final Year Projects 2025-26",           "/final-year-project-titles-coimbatore"],
+  ["Final Year Projects 2026-27",           "/final-year-project-titles-coimbatore"],
   ["Flutter Projects Coimbatore",           "/software-projects-coimbatore"],
   ["Arduino Projects Coimbatore",           "/iot-projects-coimbatore-2026"],
   ["CSE Project Center Coimbatore",         "/software-projects-coimbatore"],
@@ -305,7 +305,7 @@ const Home = () => {
         <div className="container cp-hero-inner">
           <div className="cp-hero-chip">
             <span className="cp-chip-dot" />
-            IEEE 2025-26 Projects Now Available
+            IEEE 2026-27 Projects Now Available
           </div>
 
           {/* ── H1 tag — SEO critical ── */}
@@ -395,7 +395,7 @@ const Home = () => {
               <strong>final year project center</strong>, located at{" "}
               <strong>2nd Floor, Balaji Complex, Gandhipuram</strong>. We bridge the gap between
               academics and industry through real-time project development,{" "}
-              <strong>IEEE 2025-26 base paper implementation</strong>, and{" "}
+              <strong>IEEE 2026-27 base paper implementation</strong>, and{" "}
               <strong>internship-based training</strong>.
             </p>
             <p>
@@ -408,7 +408,7 @@ const Home = () => {
             <div className="cp-highlights">
               {[
                 "BE / ME / MCA / BSc / Diploma — All Branches",
-                "IEEE 2025-26 Certified Projects",
+                "IEEE 2026-27 Certified Projects",
                 "Real Working Models & Live Demos",
                 "Most Affordable Pricing in Coimbatore",
               ].map((h) => (
@@ -545,7 +545,7 @@ const Home = () => {
                 testing, and deployment support.
               </p>
               <p className="cp-detail-desc">
-                Our software projects follow the latest <strong>IEEE 2025-26 base papers</strong> and are
+                Our software projects follow the latest <strong>IEEE 2026-27 base papers</strong> and are
                 customizable to your college requirements. We also support students who bring their own
                 project ideas with full implementation assistance and ready-made project options.
               </p>
@@ -812,7 +812,7 @@ const Home = () => {
           <p className="cp-cta-sub">
             Join <strong>1000+ engineering students</strong> who trusted CODEX PROJECT —
             the <strong>best final year project center in Coimbatore</strong> — for IEEE
-            2025-26 projects, internship training, and placement support.
+            2026-27 projects, internship training, and placement support.
           </p>
           <p className="cp-cta-addr">
             📍 2nd Floor, Balaji Complex, Gandhipuram, Coimbatore – 641012

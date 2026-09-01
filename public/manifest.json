@@ -1,16 +1,16 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "CODEX PROJECT",
+  "name": "CODEX PROJECT – Final Year Project Center Coimbatore",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "favicon2.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "logo195.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "195x195"
     },
     {
       "src": "logo512.png",

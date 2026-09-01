@@ -4,8 +4,8 @@ import "./Blog.css";
 // ═══════════════════════════════════════════════════════════════
 // YEAR CONSTANTS — change here to update everywhere
 // ═══════════════════════════════════════════════════════════════
-const YEAR = "2025-26";
-const YEAR_SHORT = "2026";
+const YEAR = "2026-27";
+const YEAR_SHORT = "2027";
 const PHONE_GEN = "8525999002";
 const PHONE_SW = "8525999022";
 const PHONE_HW = "8525999032";
@@ -22,8 +22,8 @@ const orgSchema = {
   "name": "CODEX PROJECT",
   "alternateName": "Codex Project Center Coimbatore",
   "url": "https://www.codexproject.in",
-  "logo": { "@type": "ImageObject", "url": "https://www.codexproject.in/logo.png" },
-  "image": "https://www.codexproject.in/logo.png",
+  "logo": { "@type": "ImageObject", "url": "https://www.codexproject.in/logo512.png" },
+  "image": "https://www.codexproject.in/logo512.png",
   "description": `CODEX PROJECT is the best final year project center in Coimbatore. IEEE ${YEAR} projects in AI, ML, IoT, Embedded, Mechanical & Web Development for BE, ME, MCA, BSc and Diploma students.`,
   "telephone": `+91${PHONE_GEN}`,
   "email": EMAIL,
@@ -68,7 +68,7 @@ const blogPageSchema = {
     "@type": "Organization",
     "name": "CODEX PROJECT",
     "url": "https://www.codexproject.in",
-    "logo": { "@type": "ImageObject", "url": "https://www.codexproject.in/logo.png" },
+    "logo": { "@type": "ImageObject", "url": "https://www.codexproject.in/logo512.png" },
   },
   "inLanguage": "en-IN",
   "about": {
@@ -134,7 +134,7 @@ const faqSchema = {
 };
 
 // ═══════════════════════════════════════════════════════════════
-// BLOG DATA — 12 posts, rich content, 2025-26 updated, all Google signals
+// BLOG DATA — 12 posts, rich content, 2026-27 updated, all Google signals
 // ═══════════════════════════════════════════════════════════════
 const blogs = [
   {
@@ -422,7 +422,7 @@ const Blog = () => {
           },
           "publisher": {
             "@type": "Organization", "name": "CODEX PROJECT",
-            "logo": { "@type": "ImageObject", "url": "https://www.codexproject.in/logo.png" },
+            "logo": { "@type": "ImageObject", "url": "https://www.codexproject.in/logo512.png" },
           },
           "keywords": b.tags.join(", "),
           "articleBody": b.intro + " " + b.body,

@@ -1,24 +1,27 @@
+import { lazy, Suspense } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import "./App.css";
 
-import Home             from "./component/Home";
 import Navbar           from "./component/Navbar";
-import About            from "./component/About";
-import Career           from "./component/Career";
-import Contact          from "./component/Contact";
 import Footer           from "./component/Footer";
 import WhatAppIcon      from "./component/WhatAppIcon";
 import ChatBot          from "./component/ChatBot";
 import ScrollToTop      from "./ScrollToTop";
+import SeoManager       from "./component/SeoManager";
 
-import MechanicalProjects from "./pages/MechanicalProjects";
-import IoTProjects        from "./pages/IoTProjects";
-import EmbeddedProjects   from "./pages/EmbeddedProjects";
-import SoftwareProjects   from "./pages/SoftwareProjects";
-import Projects           from "./pages/Projects";
-import Blog                from "./pages/Blog";
-import Faq                from "./pages/Faq";
+const Home = lazy(() => import("./component/Home"));
+const About = lazy(() => import("./component/About"));
+const Career = lazy(() => import("./component/Career"));
+const Contact = lazy(() => import("./component/Contact"));
+const MechanicalProjects = lazy(() => import("./pages/MechanicalProjects"));
+const IoTProjects = lazy(() => import("./pages/IoTProjects"));
+const EmbeddedProjects = lazy(() => import("./pages/EmbeddedProjects"));
+const SoftwareProjects = lazy(() => import("./pages/SoftwareProjects"));
+const Projects = lazy(() => import("./pages/Projects"));
+const Blog = lazy(() => import("./pages/Blog"));
+const Faq = lazy(() => import("./pages/Faq"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 // ─── SEO URL Map ──────────────────────────────────────────────────────────────
 //  PRIMARY (Google index பண்ணும்)
@@ -35,11 +38,13 @@ import Faq                from "./pages/Faq";
 function App() {
   return (
     <HelmetProvider>
+      <SeoManager />
       <Navbar />
       <WhatAppIcon />
       <ChatBot />
       <ScrollToTop />
 
+      <Suspense fallback={<div className="route-loading" role="status">Loading…</div>}>
       <Routes>
 
         {/* ══ MAIN PAGES ══════════════════════════════════════════════════════ */}
@@ -75,6 +80,7 @@ function App() {
           path="/blog/project-center-coimbatore-guide"
           element={<Blog />}
         />
+        <Route path="/blog/:slug" element={<Blog />} />
 
         {/* ══ 301 REDIRECTS — Old → New (duplicate content ஆகாம இருக்க) ══════ */}
 
@@ -116,14 +122,25 @@ function App() {
         <Route path="/tips-and-tricks"
           element={<Navigate to="/blog/project-center-coimbatore-guide" replace />} />
 
+        {/* Service links use the matching canonical landing pages. */}
+        <Route path="/services/cse-projects" element={<Navigate to="/software-project-center-coimbatore" replace />} />
+        <Route path="/services/mca-projects" element={<Navigate to="/software-project-center-coimbatore" replace />} />
+        <Route path="/services/software-projects" element={<Navigate to="/software-project-center-coimbatore" replace />} />
+        <Route path="/services/ece-projects" element={<Navigate to="/embedded-project-center-coimbatore" replace />} />
+        <Route path="/services/iot-projects" element={<Navigate to="/iot-project-center-coimbatore" replace />} />
+        <Route path="/services/embedded-projects" element={<Navigate to="/embedded-project-center-coimbatore" replace />} />
+        <Route path="/services/mechanical-projects" element={<Navigate to="/mechanical-project-center-coimbatore" replace />} />
+        <Route path="/internship" element={<Navigate to="/about" replace />} />
+
         {/* Typo */}
         <Route path="/fqa"
           element={<Navigate to="/faq" replace />} />
 
         {/* 404 */}
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<NotFound />} />
 
       </Routes>
+      </Suspense>
 
       <Footer />
     </HelmetProvider>

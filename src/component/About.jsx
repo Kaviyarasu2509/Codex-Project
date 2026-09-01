@@ -8,7 +8,7 @@ const aboutStructuredData = {
   "name": "About CODEX PROJECT – Best Final Year Project Center in Coimbatore",
   "url": "https://www.codexproject.in/about",
   "description":
-    "CODEX PROJECT is the best final year project center in Coimbatore offering IEEE 2025-26 projects, internship training, and placement support for BE, ME, BSc, MCA, and Diploma engineering students.",
+    "CODEX PROJECT is the best final year project center in Coimbatore offering IEEE 2026-27 projects, internship training, and placement support for BE, ME, BSc, MCA, and Diploma engineering students.",
   "mainEntity": {
     "@type": "EducationalOrganization",
     "name": "CODEX PROJECT",
@@ -43,7 +43,7 @@ const domains = [
   {
     icon: "💻",
     title: "Software & AI Projects",
-    desc: "Python, Django, MERN Stack, Java, .NET, Android — full-stack web and mobile final year projects with real-time implementation and IEEE 2025-26 base papers for BE, MCA, and IT students.",
+    desc: "Python, Django, MERN Stack, Java, .NET, Android — full-stack web and mobile final year projects with real-time implementation and IEEE 2026-27 base papers for BE, MCA, and IT students.",
     techs: ["Python", "Django", "React", "Node.js", "Java", ".NET", "Android"],
     color: "#3B82F6",
   },
@@ -73,8 +73,8 @@ const domains = [
 const features = [
   {
     icon: "🎯",
-    title: "IEEE 2025-26 Certified",
-    desc: "Every project is aligned with the latest IEEE 2025-26 base papers — updated annually for current industry relevance and college requirements.",
+    title: "IEEE 2026-27 Certified",
+    desc: "Every project is aligned with the latest IEEE 2026-27 base papers — updated annually for current industry relevance and college requirements.",
   },
   {
     icon: "📋",
@@ -189,13 +189,13 @@ const About = () => {
             <p className="ab-hero-sub">
               The <strong>best final year project center in Coimbatore</strong> — guiding{" "}
               <strong>BE, ME, BSc, MCA, and Diploma</strong> engineering students through{" "}
-              <strong>IEEE 2025-26 certified projects</strong> in Software, AI, IoT, Embedded
+              <strong>IEEE 2026-27 certified projects</strong> in Software, AI, IoT, Embedded
               Systems, and Mechanical Engineering.
             </p>
 
             <div className="ab-hero-pills">
               {[
-                "IEEE 2025-26 Projects",
+                "IEEE 2026-27 Projects",
                 "AI & ML",
                 "IoT & Embedded",
                 "Mechanical",
@@ -271,7 +271,7 @@ const About = () => {
               </p>
               <p>
                 Every project at CODEX PROJECT comes with the{" "}
-                <strong>IEEE 2025-26 base paper</strong>, complete source code, project report,
+                <strong>IEEE 2026-27 base paper</strong>, complete source code, project report,
                 PPT presentation, and dedicated <strong>viva preparation support</strong>. We bridge
                 the gap between academics and real-world implementation — giving students the
                 confidence to present and defend their work at any college review.
@@ -280,7 +280,7 @@ const About = () => {
               <div className="ab-highlights">
                 {[
                   "BE / ME / MCA / BSc / Diploma — All Branches",
-                  "IEEE 2025-26 Certified Projects",
+                  "IEEE 2026-27 Certified Projects",
                   "Real Working Models & Live Demos",
                   "Most Affordable Pricing in Coimbatore",
                 ].map((h) => (
@@ -327,7 +327,7 @@ const About = () => {
               Final Year Project Domains at CODEX PROJECT
             </h2>
             <p className="ab-sec-sub">
-              IEEE 2025-26 certified project guidance across all major engineering disciplines —
+              IEEE 2026-27 certified project guidance across all major engineering disciplines —
               complete with documentation, source code, and viva support
             </p>
           </div>
@@ -366,7 +366,7 @@ const About = () => {
               Why 1000+ Students Choose CODEX PROJECT in Coimbatore
             </h2>
             <p className="ab-sec-sub">
-              From IEEE 2025-26 base papers to viva coaching — we provide everything a
+              From IEEE 2026-27 base papers to viva coaching — we provide everything a
               Coimbatore engineering student needs to excel in their final year project
             </p>
           </div>
@@ -405,7 +405,7 @@ const About = () => {
             </p>
             <p>
               Every project at Codex Project comes with the{" "}
-              <strong>IEEE 2025-26 base paper</strong>, complete source code, project report,
+              <strong>IEEE 2026-27 base paper</strong>, complete source code, project report,
               PPT presentation, and dedicated <strong>viva preparation support</strong>. We also
               offer <strong>internship training with verified certificate</strong> for students
               looking to enhance their placement opportunities. Our center is easily accessible
@@ -489,7 +489,7 @@ const About = () => {
             <p className="ab-cta-sub">
               Join <strong>1000+ engineering students</strong> who trusted CODEX PROJECT —
               the <strong>best final year project center in Coimbatore</strong> — for IEEE
-              2025-26 projects, internship training, and complete project support.
+              2026-27 projects, internship training, and complete project support.
             </p>
             <p className="ab-cta-addr">
               📍 2nd Floor, Balaji Complex, Gandhipuram, Coimbatore – 641012

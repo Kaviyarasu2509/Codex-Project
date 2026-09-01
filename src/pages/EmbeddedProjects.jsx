@@ -5,7 +5,7 @@ import "./EmbeddedProjects.css";
 // ═══════════════════════════════════════════════════════════
 // CONSTANTS
 // ═══════════════════════════════════════════════════════════
-const YEAR      = "2025-26";
+const YEAR      = "2026-27";
 const PHONE     = "8525999032";   // Hardware / Embedded line
 const PHONE_GEN = "8525999002";
 const WA        = `https://wa.me/91${PHONE_GEN}`;
@@ -392,7 +392,7 @@ const EmbeddedProjects = () => {
   return (
     <div className="ep-page">
       <Helmet>
-        <title>Best Embedded Project Center in Coimbatore {YEAR} | CODEX PROJECT</title>
+        <title>{`Best Embedded Project Center in Coimbatore ${YEAR} | CODEX PROJECT`}</title>
         <meta
           name="description"
           content={`CODEX PROJECT - Best embedded project center in Gandhipuram, Coimbatore. 8051, ARM, PIC, Arduino, FPGA/VLSI embedded final year projects ${YEAR}. Free internship certificate. Call ${PHONE}.`}
@@ -447,7 +447,7 @@ const EmbeddedProjects = () => {
           </p>
 
           <div className="ep-trust-row">
-            {["IEEE 2025-26","Real Hardware Models","Keil & Proteus","FPGA / VLSI","PCB Layout","Free Internship Cert","Complete Documentation","Viva Coaching"].map(t=>(
+            {["IEEE 2026-27","Real Hardware Models","Keil & Proteus","FPGA / VLSI","PCB Layout","Free Internship Cert","Complete Documentation","Viva Coaching"].map(t=>(
               <span key={t} className="ep-trust-pill">✔ {t}</span>
             ))}
           </div>

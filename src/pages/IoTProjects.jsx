@@ -5,7 +5,7 @@ import "./IoTProjects.css";
 // ═══════════════════════════════════════════════════════════
 // CONSTANTS
 // ═══════════════════════════════════════════════════════════
-const YEAR      = "2025-26";
+const YEAR      = "2026-27";
 const PHONE     = "8525999032";   // Hardware / IoT line
 const PHONE_GEN = "8525999002";
 const WA        = `https://wa.me/91${PHONE_GEN}`;
@@ -264,7 +264,7 @@ const IoTProjects = () => {
   return (
     <div className="iot-page">
       <Helmet>
-        <title>Best IoT Project Center in Coimbatore {YEAR} | CODEX PROJECT</title>
+        <title>{`Best IoT Project Center in Coimbatore ${YEAR} | CODEX PROJECT`}</title>
         <meta
           name="description"
           content={`CODEX PROJECT - Best IoT project center in Gandhipuram, Coimbatore. Arduino, Raspberry Pi, NodeMCU, ESP32, Cloud IoT final year projects ${YEAR}. Free internship certificate, same day support. Call ${PHONE}.`}
@@ -319,7 +319,7 @@ const IoTProjects = () => {
           </p>
 
           <div className="iot-trust-row">
-            {["IEEE 2025-26","Real Hardware Models","Cloud + Mobile App","Firebase / AWS IoT","Free Internship Cert","Complete Documentation","Viva Coaching","AI + Edge IoT"].map(t=>(
+            {["IEEE 2026-27","Real Hardware Models","Cloud + Mobile App","Firebase / AWS IoT","Free Internship Cert","Complete Documentation","Viva Coaching","AI + Edge IoT"].map(t=>(
               <span key={t} className="iot-trust-pill">✔ {t}</span>
             ))}
           </div>
