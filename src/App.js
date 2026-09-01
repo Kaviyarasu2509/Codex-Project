@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import "./App.css";
 
+import Home             from "./component/Home";
 import Navbar           from "./component/Navbar";
 import Footer           from "./component/Footer";
 import WhatAppIcon      from "./component/WhatAppIcon";
@@ -10,7 +11,6 @@ import ChatBot          from "./component/ChatBot";
 import ScrollToTop      from "./ScrollToTop";
 import SeoManager       from "./component/SeoManager";
 
-const Home = lazy(() => import("./component/Home"));
 const About = lazy(() => import("./component/About"));
 const Career = lazy(() => import("./component/Career"));
 const Contact = lazy(() => import("./component/Contact"));
@@ -44,7 +44,7 @@ function App() {
       <ChatBot />
       <ScrollToTop />
 
-      <Suspense fallback={<div className="route-loading" role="status">Loading…</div>}>
+      <Suspense fallback={null}>
       <Routes>
 
         {/* ══ MAIN PAGES ══════════════════════════════════════════════════════ */}
