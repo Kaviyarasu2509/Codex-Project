@@ -201,7 +201,7 @@
   animation: orbPulse 8s ease-in-out infinite alternate;
   pointer-events: none;
 }
-.cp-orb1 { width:700px;height:700px;background:radial-gradient(circle,#1565C0,transparent);top:-20%;right:-15%; }
+.cp-orb1 { width:700px;height:700px;background:radial-gradient(circle,#FEF3DC,transparent);top:-20%;right:-15%; }
 .cp-orb2 { width:500px;height:500px;background:radial-gradient(circle,var(--cp-gold),transparent);bottom:-15%;left:-10%;animation-delay:-4s;opacity:.09; }
 .cp-orb3 { width:280px;height:280px;background:radial-gradient(circle,#00B4D8,transparent);top:50%;left:40%;animation-delay:-2s; }
 @keyframes orbPulse { from{transform:scale(1);}to{transform:scale(1.14);} }

@@ -1,0 +1,25 @@
+/* Hide only decorative hero/CTA colour glow overlays across the site. */
+.cp-orb,
+.ab-orb,
+.ch-glow,
+.sp-orb,
+.ep-orb,
+.iot-orb,
+.mp-orb,
+.pj-orb,
+.bh-glow,
+.fq-glow,
+.cp-cta-blob,
+.ab-cta-blob,
+.sp-cta-blob,
+.ep-cta-blob,
+.iot-cta-blob,
+.mp-cta-blob,
+.pj-cta-blob,
+.bcta-bg,
+.ccta-bg,
+.fq-cta-bg,
+.cp-cta-sec::before,
+.ab-cta-sec::before {
+  display: none;
+}
