@@ -29,6 +29,7 @@ const aboutLinks = [
 const navLinks = [
   { to: "/",                                    icon: "fa-house",       label: "Home" },
   { to: "/final-year-projects-coimbatore",      icon: "fa-folder-open", label: "Projects" },
+  { to: "/gallery", icon: "fa-images", label: "Gallery" },
   { to: "/blog/project-center-coimbatore-guide",icon: "fa-newspaper",   label: "Blog" },
   { to: "/contact",                             icon: "fa-phone",       label: "Contact" },
 ];

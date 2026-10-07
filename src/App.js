@@ -21,6 +21,7 @@ const SoftwareProjects = lazy(() => import("./pages/SoftwareProjects"));
 const Projects = lazy(() => import("./pages/Projects"));
 const Blog = lazy(() => import("./pages/Blog"));
 const Faq = lazy(() => import("./pages/Faq"));
+const Gallery = lazy(() => import("./pages/Gallery"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 // ─── SEO URL Map ──────────────────────────────────────────────────────────────
@@ -52,6 +53,7 @@ function App() {
         <Route path="/about"   element={<About />} />
         <Route path="/career"  element={<Career />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/gallery" element={<Gallery />} />
         <Route path="/faq"     element={<Faq />} />
 
         {/* ══ PRIMARY SEO ROUTES ══════════════════════════════════════════════ */}

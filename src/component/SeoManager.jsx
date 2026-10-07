@@ -5,6 +5,7 @@ const SITE_URL = "https://www.codexproject.in";
 const SOCIAL_IMAGE = `${SITE_URL}/logo512.png`;
 
 const pages = {
+  "/gallery": ["Project Gallery | CODEX PROJECT Coimbatore", "Explore software, AI, machine learning, embedded, IoT and mechanical project photos from CODEX PROJECT in Gandhipuram, Coimbatore."],
   "/": ["Final Year Project Center in Coimbatore | CODEX PROJECT", "Final year project center in Gandhipuram, Coimbatore for AI, ML, IoT, Embedded, Mechanical and Software projects with documentation, internship certificate and viva support."],
   "/about": ["About CODEX PROJECT | Project Center in Coimbatore", "Learn about CODEX PROJECT, our project development team and final year project support for engineering, MCA, BSc and diploma students in Coimbatore."],
   "/career": ["Careers at CODEX PROJECT Coimbatore | Join Our Team", "Explore software, embedded, IoT, mechanical and AI career opportunities at CODEX PROJECT in Coimbatore and join our project development team."],

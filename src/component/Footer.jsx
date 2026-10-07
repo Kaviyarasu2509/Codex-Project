@@ -27,9 +27,9 @@ const footerSchema = {
   "openingHoursSpecification": [
     {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-      "opens": "09:00",
-      "closes": "20:00",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "00:00",
+      "closes": "23:59",
     },
   ],
   "sameAs": [
@@ -120,7 +120,7 @@ const Footer = () => {
               📧 codexproject2026@gmail.com
             </a>
             <div className="cpf-strip-divider"></div>
-            <span className="cpf-strip-label">🕘 Mon–Sat: 9AM – 8PM</span>
+            <span className="cpf-strip-label">🕘 Open 24 hours — Every day</span>
           </div>
         </div>
       </div>
