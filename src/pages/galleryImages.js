@@ -18,7 +18,7 @@ export const galleryCategories = [
   ] },
 ];
 
-// One project folder produces one card; loose photos remain individual cards.
+// Supports both project folders (one slideshow card) and loose category photos (individual cards).
 const photos = require.context("../assets/project_images", true, /\.(png|jpe?g|webp|avif)$/i);
 const projects = new Map();
 const readableTitle = (name) => name.replace(/[-_]+/g, " ").replace(/\b\w/g, (letter) => letter.toUpperCase());

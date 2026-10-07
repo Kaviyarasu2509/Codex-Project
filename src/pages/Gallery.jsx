@@ -83,6 +83,13 @@ export default function Gallery() {
   const [selected, setSelected] = useState(null);
   const dialog = useRef(null);
   const current = galleryCategories.find((item) => item.id === category);
+  const domainIcons = { software: "fa-laptop-code", hardware: "fa-microchip", mechanical: "fa-gears" };
+  const domainDescriptions = { software: "AI, apps & web development", hardware: "Embedded, IoT & automation", mechanical: "Fabrication, design & analysis" };
+  const chooseDomain = (id) => {
+    setCategory(id);
+    setSubcategory("all");
+    document.getElementById("cpg-projects").scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth", block: "start" });
+  };
   const images = galleryProjects.filter((item) =>
     (category === "all" || item.category === category) &&
     (subcategory === "all" || item.subcategory === subcategory)
@@ -102,13 +109,32 @@ export default function Gallery() {
 
   return (
     <main className="cp-gallery">
-      <div className="cpg-container">
-        <header className="cpg-header">
-          <p className="cpg-eyebrow">CODEX PROJECT / GALLERY</p>
-          <h1>Explore our project gallery</h1>
-          <p>Discover software applications, working hardware models and mechanical builds. Choose a domain to explore project photos.</p>
-        </header>
-        <section aria-label="Project gallery">
+      <header className="cpg-hero">
+        <div className="cpg-container cpg-hero-layout">
+          <div className="cpg-header">
+            <nav className="cpg-breadcrumb" aria-label="Breadcrumb"><Link to="/">Home</Link><span aria-hidden="true">/</span><span aria-current="page">Gallery</span></nav>
+            <p className="cpg-eyebrow"><span aria-hidden="true" /> CODEX PROJECT GALLERY</p>
+            <h1>Project ideas.<br /><span>See them in action.</span></h1>
+            <p>Explore software applications, working hardware models and mechanical builds. Find inspiration for your next project.</p>
+            <div className="cpg-hero-actions"><a className="cpg-action" href="#cpg-projects">Explore the gallery <i className="fa-solid fa-arrow-down" aria-hidden="true" /></a>
+              <Link className="cpg-text-link" to="/contact">Talk to our team <span aria-hidden="true">↗</span></Link></div>
+            <p className="cpg-hero-note"><i className="fa-solid fa-location-dot" aria-hidden="true" /> Gandhipuram, Coimbatore</p>
+          </div>
+          <div className="cpg-domain-panel">
+            <div className="cpg-panel-top"><span>EXPLORE BY DOMAIN</span><span>01 — 03</span></div>
+            {galleryCategories.map((domain) => <button type="button" key={domain.id} className="cpg-domain-row" onClick={() => chooseDomain(domain.id)} aria-label={`Browse ${domain.label} projects`}>
+              <span className="cpg-domain-icon"><i className={`fa-solid ${domainIcons[domain.id]}`} aria-hidden="true" /></span>
+              <span className="cpg-domain-copy"><strong>{domain.label}</strong><span>{domainDescriptions[domain.id]}</span></span>
+              <span className="cpg-domain-arrow" aria-hidden="true">↗</span>
+            </button>)}
+            <div className="cpg-panel-bottom"><i className="fa-regular fa-images" aria-hidden="true" /><span>Open a project to explore its photos</span></div>
+          </div>
+        </div>
+      </header>
+      <div className="cpg-container cpg-content">
+        <section id="cpg-projects" aria-label="Project gallery">
+          <div className="cpg-section-heading"><div><p className="cpg-section-kicker">THE PROJECT COLLECTION</p><h2>Find your next inspiration</h2></div><p>Browse a domain. Pick a project.<br />Explore every detail.</p></div>
+          <div className="cpg-filter-panel">
           <div className="cpg-filters" role="group" aria-label="Project domains">
             {[{ id: "all", label: "All Projects" }, ...galleryCategories].map((item) => (
               <button key={item.id} type="button" aria-pressed={category === item.id}
@@ -123,22 +149,23 @@ export default function Gallery() {
                 onClick={() => setSubcategory(item.id)}>{item.label}</button>
             ))}
           </div>}
+          </div>
           <p className="cpg-results" role="status">{images.length} {images.length === 1 ? "project" : "projects"}{current ? ` in ${current.label}` : " across all domains"}</p>
           {images.length ? <div className="cpg-grid">
             {images.map((image) => <button className="cpg-card" type="button" key={image.id}
               onClick={() => setSelected(image)} aria-label={`View ${image.title}`}>
               <div className="cpg-photo"><img src={image.photos[0].src} alt={image.title} loading="lazy" decoding="async" />
                 <span className="cpg-expand" aria-hidden="true">{image.photos.length} {image.photos.length === 1 ? "photo" : "photos"} ↗</span></div>
-              <div className="cpg-caption"><p>{image.categoryLabel} / {image.subcategoryLabel}</p><h2>{image.title}</h2></div>
+              <div className="cpg-caption"><p><span className="cpg-category-dot" aria-hidden="true" />{image.categoryLabel} / {image.subcategoryLabel}</p><h2>{image.title}</h2><span className="cpg-card-link" aria-hidden="true">Explore project <span>↗</span></span></div>
             </button>)}
           </div> : <div className="cpg-empty">
-            <i className="fa-regular fa-images" aria-hidden="true" />
+            <div className="cpg-empty-symbol"><i className="fa-regular fa-images" aria-hidden="true" /></div>
             <h2>Project photos coming soon</h2>
             <p>{current ? `${current.label} project photos will appear here as our gallery grows.` : "We are preparing photos of our software, hardware and mechanical projects."}</p>
             <Link to="/contact" className="cpg-action">Ask about a project →</Link>
           </div>}
         </section>
-        <aside className="cpg-enquiry"><div><h2>Have a project in mind?</h2><p>Talk to our team about project guidance and practical training.</p></div>
+        <aside className="cpg-enquiry"><div><p className="cpg-section-kicker">LET'S BUILD YOUR NEXT PROJECT</p><h2>Have an idea? Let's make it work.</h2><p>Get guidance, hands-on training and support from our team.</p></div>
           <a className="cpg-action" href="https://wa.me/918525999002?text=Hi%20CODEX%20PROJECT%2C%20I%20would%20like%20project%20guidance." target="_blank" rel="noopener noreferrer">Enquire on WhatsApp ↗</a>
         </aside>
       </div>
