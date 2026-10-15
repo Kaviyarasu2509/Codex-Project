@@ -2,35 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import "./Home.css";
 
 // ─── JSON-LD Structured Data ──────────────────────────────────────────────────
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": ["EducationalOrganization", "LocalBusiness"],
-  "name": "CODEX PROJECT – Best Final Year Project Center in Coimbatore",
-  "description": "Best final year project center in Gandhipuram, Coimbatore offering IEEE 2026-27 projects, internship training, and placement support for BE, ME, MCA, BSc, and Diploma students.",
-  "url": "https://www.codexproject.in",
-  "telephone": ["+918525999002", "+918525999022", "+918525999032"],
-  "email": "codexproject2026@gmail.com",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "2nd Floor, Balaji Complex, 288, 2nd Street, Cross Cut Road",
-    "addressLocality": "Gandhipuram, Coimbatore",
-    "addressRegion": "Tamil Nadu",
-    "postalCode": "641012",
-    "addressCountry": "IN",
-  },
-  "geo": { "@type": "GeoCoordinates", "latitude": 11.0187267, "longitude": 76.9686347 },
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-      "opens": "09:00",
-      "closes": "20:00",
-    },
-  ],
-  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "200" },
-  "priceRange": "₹",
-  "areaServed": "Coimbatore",
-};
 
 const faqStructuredData = {
   "@context": "https://schema.org",
@@ -99,7 +70,7 @@ const domains = [
     tags: ["Python", "TensorFlow", "NLP", "CNN"],
     color: "#8B5CF6",
     bg: "rgba(139,92,246,0.07)",
-    link: "/software-projects-coimbatore",
+    link: "/software-project-center-coimbatore",
   },
   {
     icon: "🌐",
@@ -109,7 +80,7 @@ const domains = [
     tags: ["React", "Node.js", "Flutter", "MongoDB"],
     color: "#06B6D4",
     bg: "rgba(6,182,212,0.07)",
-    link: "/software-projects-coimbatore",
+    link: "/software-project-center-coimbatore",
   },
   {
     icon: "📡",
@@ -119,7 +90,7 @@ const domains = [
     tags: ["Arduino", "ESP32", "Firebase", "MQTT"],
     color: "#F59E0B",
     bg: "rgba(245,158,11,0.07)",
-    link: "/iot-projects-coimbatore-2026",
+    link: "/iot-project-center-coimbatore",
   },
   {
     icon: "⚙️",
@@ -129,7 +100,7 @@ const domains = [
     tags: ["SolidWorks", "ANSYS", "CAD/CAM", "Robotics"],
     color: "#10B981",
     bg: "rgba(16,185,129,0.07)",
-    link: "/mechanical-projects-coimbatore",
+    link: "/mechanical-project-center-coimbatore",
   },
   {
     icon: "💻",
@@ -139,7 +110,7 @@ const domains = [
     tags: ["Java", "Spring Boot", ".NET", "SQL"],
     color: "#3B82F6",
     bg: "rgba(59,130,246,0.07)",
-    link: "/software-projects-coimbatore",
+    link: "/software-project-center-coimbatore",
   },
   {
     icon: "📄",
@@ -149,7 +120,7 @@ const domains = [
     tags: ["IEEE 2026-27", "Base Paper", "All Domains"],
     color: "#EC4899",
     bg: "rgba(236,72,153,0.07)",
-    link: "/final-year-project-titles-coimbatore",
+    link: "/final-year-projects-coimbatore",
   },
 ];
 
@@ -181,22 +152,22 @@ const faqs = [
 
 // ── SEO keyword links — updated to new routes ──────────────────────────────────
 const kwLinks = [
-  ["AI Projects Coimbatore",                "/software-projects-coimbatore"],
-  ["Machine Learning Projects Coimbatore",  "/software-projects-coimbatore"],
-  ["IoT Projects Coimbatore 2026",          "/iot-projects-coimbatore-2026"],
-  ["Embedded Projects Coimbatore",          "/embedded-projects-coimbatore"],
-  ["Mechanical Projects Coimbatore",        "/mechanical-projects-coimbatore"],
-  ["IEEE Projects Coimbatore 2026-27",      "/final-year-project-titles-coimbatore"],
+  ["AI Projects Coimbatore",                "/software-project-center-coimbatore"],
+  ["Machine Learning Projects Coimbatore",  "/software-project-center-coimbatore"],
+  ["IoT Projects Coimbatore 2026",          "/iot-project-center-coimbatore"],
+  ["Embedded Projects Coimbatore",          "/embedded-project-center-coimbatore"],
+  ["Mechanical Projects Coimbatore",        "/mechanical-project-center-coimbatore"],
+  ["IEEE Projects Coimbatore 2026-27",      "/final-year-projects-coimbatore"],
   ["Internship Training Coimbatore",        "/tips-and-tricks"],
-  ["Python Projects Coimbatore",            "/software-projects-coimbatore"],
-  ["MERN Stack Projects Coimbatore",        "/software-projects-coimbatore"],
-  ["Final Year Projects 2026-27",           "/final-year-project-titles-coimbatore"],
-  ["Flutter Projects Coimbatore",           "/software-projects-coimbatore"],
-  ["Arduino Projects Coimbatore",           "/iot-projects-coimbatore-2026"],
-  ["CSE Project Center Coimbatore",         "/software-projects-coimbatore"],
-  ["IT Project Center Coimbatore",          "/software-projects-coimbatore"],
+  ["Python Projects Coimbatore",            "/software-project-center-coimbatore"],
+  ["MERN Stack Projects Coimbatore",        "/software-project-center-coimbatore"],
+  ["Final Year Projects 2026-27",           "/final-year-projects-coimbatore"],
+  ["Flutter Projects Coimbatore",           "/software-project-center-coimbatore"],
+  ["Arduino Projects Coimbatore",           "/iot-project-center-coimbatore"],
+  ["CSE Project Center Coimbatore",         "/software-project-center-coimbatore"],
+  ["IT Project Center Coimbatore",          "/software-project-center-coimbatore"],
   ["Project Center Gandhipuram",            "/"],
-  ["Ready Made Project Coimbatore",         "/final-year-project-titles-coimbatore"],
+  ["Ready Made Project Coimbatore",         "/final-year-projects-coimbatore"],
   ["Project with Certificate Coimbatore",   "/tips-and-tricks"],
   ["Low Cost Project Center Coimbatore",    "/"],
 ];
@@ -281,7 +252,6 @@ const Home = () => {
   return (
     <div className="cp-home">
       {/* JSON-LD */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
 
       {/* ══ HERO ══════════════════════════════════════════════════════════════ */}

@@ -1,0 +1,123 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "build",
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/iot-projects",
+      "destination": "/iot-project-center-coimbatore",
+      "permanent": true
+    },
+    {
+      "source": "/iot-projects-coimbatore-2026",
+      "destination": "/iot-project-center-coimbatore",
+      "permanent": true
+    },
+    {
+      "source": "/iot-projects-coimbatore",
+      "destination": "/iot-project-center-coimbatore",
+      "permanent": true
+    },
+    {
+      "source": "/embedded-projects",
+      "destination": "/embedded-project-center-coimbatore",
+      "permanent": true
+    },
+    {
+      "source": "/embedded-projects-coimbatore",
+      "destination": "/embedded-project-center-coimbatore",
+      "permanent": true
+    },
+    {
+      "source": "/mechanical-projects",
+      "destination": "/mechanical-project-center-coimbatore",
+      "permanent": true
+    },
+    {
+      "source": "/mechanical-projects-coimbatore",
+      "destination": "/mechanical-project-center-coimbatore",
+      "permanent": true
+    },
+    {
+      "source": "/software-projects",
+      "destination": "/software-project-center-coimbatore",
+      "permanent": true
+    },
+    {
+      "source": "/software-projects-coimbatore",
+      "destination": "/software-project-center-coimbatore",
+      "permanent": true
+    },
+    {
+      "source": "/projects",
+      "destination": "/final-year-projects-coimbatore",
+      "permanent": true
+    },
+    {
+      "source": "/final-year-project-titles-coimbatore",
+      "destination": "/final-year-projects-coimbatore",
+      "permanent": true
+    },
+    {
+      "source": "/blog",
+      "destination": "/blog/project-center-coimbatore-guide",
+      "permanent": true
+    },
+    {
+      "source": "/tips-and-tricks",
+      "destination": "/blog/project-center-coimbatore-guide",
+      "permanent": true
+    },
+    {
+      "source": "/fqa",
+      "destination": "/faq",
+      "permanent": true
+    },
+    {
+      "source": "/internship",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/services/cse-projects",
+      "destination": "/software-project-center-coimbatore",
+      "permanent": true
+    },
+    {
+      "source": "/services/mca-projects",
+      "destination": "/software-project-center-coimbatore",
+      "permanent": true
+    },
+    {
+      "source": "/services/software-projects",
+      "destination": "/software-project-center-coimbatore",
+      "permanent": true
+    },
+    {
+      "source": "/services/ece-projects",
+      "destination": "/embedded-project-center-coimbatore",
+      "permanent": true
+    },
+    {
+      "source": "/services/embedded-projects",
+      "destination": "/embedded-project-center-coimbatore",
+      "permanent": true
+    },
+    {
+      "source": "/services/iot-projects",
+      "destination": "/iot-project-center-coimbatore",
+      "permanent": true
+    },
+    {
+      "source": "/services/mechanical-projects",
+      "destination": "/mechanical-project-center-coimbatore",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/blog/:slug",
+      "destination": "/blog/project-center-coimbatore-guide/index.html"
+    }
+  ]
+}

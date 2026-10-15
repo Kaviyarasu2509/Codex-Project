@@ -15,54 +15,12 @@ const ADDRESS = "2nd Floor, Balaji Complex, 288, 2nd Street, Cross Cut Road, Gan
 // ═══════════════════════════════════════════════════════════════
 // JSON-LD SCHEMAS — Maximum Google rich-result coverage
 // ═══════════════════════════════════════════════════════════════
-const orgSchema = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": "https://www.codexproject.in/#organization",
-  "name": "CODEX PROJECT",
-  "alternateName": "Codex Project Center Coimbatore",
-  "url": "https://www.codexproject.in",
-  "logo": { "@type": "ImageObject", "url": "https://www.codexproject.in/logo512.png" },
-  "image": "https://www.codexproject.in/logo512.png",
-  "description": `CODEX PROJECT is the best final year project center in Coimbatore. IEEE ${YEAR} projects in AI, ML, IoT, Embedded, Mechanical & Web Development for BE, ME, MCA, BSc and Diploma students.`,
-  "telephone": `+91${PHONE_GEN}`,
-  "email": EMAIL,
-  "priceRange": "₹₹",
-  "currenciesAccepted": "INR",
-  "paymentAccepted": "Cash, UPI, Bank Transfer",
-  "openingHours": "Mo-Sa 09:00-20:00",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "2nd Floor, Balaji Complex, 288, 2nd Street, Cross Cut Road",
-    "addressLocality": "Gandhipuram, Coimbatore",
-    "addressRegion": "Tamil Nadu",
-    "postalCode": "641012",
-    "addressCountry": "IN",
-  },
-  "geo": { "@type": "GeoCoordinates", "latitude": "11.0168", "longitude": "76.9558" },
-  "hasMap": "https://maps.google.com/?q=CODEX+PROJECT+Gandhipuram+Coimbatore",
-  "sameAs": [
-    "https://www.instagram.com/codexproject",
-    "https://www.facebook.com/codexproject",
-    "https://g.page/r/CUj6SjsY-0qgEAE",
-  ],
-  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "bestRating": "5", "worstRating": "1", "ratingCount": "320" },
-  "areaServed": [
-    { "@type": "City", "name": "Coimbatore" },
-    { "@type": "State", "name": "Tamil Nadu" },
-  ],
-  "serviceArea": {
-    "@type": "GeoCircle",
-    "geoMidpoint": { "@type": "GeoCoordinates", "latitude": "11.0168", "longitude": "76.9558" },
-    "geoRadius": "30000",
-  },
-};
 
 const blogPageSchema = {
   "@context": "https://schema.org",
   "@type": "Blog",
   "name": `CODEX PROJECT Blog – Best Final Year Project Center Coimbatore ${YEAR}`,
-  "url": "https://www.codexproject.in/blog",
+  "url": "https://www.codexproject.in/blog/project-center-coimbatore-guide",
   "description": `CODEX PROJECT blog – Coimbatore's most detailed resource for IEEE ${YEAR} final year project ideas, technology guides, and expert tips for Mechanical, IoT, Embedded, Software, AI/ML engineering students.`,
   "publisher": {
     "@type": "Organization",
@@ -82,7 +40,7 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codexproject.in/" },
-    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.codexproject.in/blog" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.codexproject.in/blog/project-center-coimbatore-guide" },
   ],
 };
 
@@ -353,18 +311,18 @@ const categories = ["All", "AI & ML", "CSE", "ECE", "IoT", "Embedded", "MCA/BSc"
 
 // Service pages for internal linking
 const serviceLinks = [
-  { label: `CSE Projects Coimbatore ${YEAR}`, href: "/services/cse-projects" },
-  { label: `ECE Projects Coimbatore ${YEAR}`, href: "/services/ece-projects" },
-  { label: `MCA Projects Coimbatore ${YEAR}`, href: "/services/mca-projects" },
-  { label: "Machine Learning Projects", href: "/services/software-projects" },
-  { label: "Python AI Projects Coimbatore", href: "/services/software-projects" },
-  { label: "IoT Projects Coimbatore", href: "/services/iot-projects" },
-  { label: "Arduino ESP32 Projects", href: "/services/iot-projects" },
-  { label: "Embedded Projects Coimbatore", href: "/services/embedded-projects" },
-  { label: "Mechanical Projects Coimbatore", href: "/services/mechanical-projects" },
-  { label: "MERN Stack Projects Coimbatore", href: "/services/software-projects" },
-  { label: "Flutter Projects Coimbatore", href: "/services/software-projects" },
-  { label: "Java Projects Coimbatore", href: "/services/software-projects" },
+  { label: `CSE Projects Coimbatore ${YEAR}`, href: "/software-project-center-coimbatore" },
+  { label: `ECE Projects Coimbatore ${YEAR}`, href: "/embedded-project-center-coimbatore" },
+  { label: `MCA Projects Coimbatore ${YEAR}`, href: "/software-project-center-coimbatore" },
+  { label: "Machine Learning Projects", href: "/software-project-center-coimbatore" },
+  { label: "Python AI Projects Coimbatore", href: "/software-project-center-coimbatore" },
+  { label: "IoT Projects Coimbatore", href: "/iot-project-center-coimbatore" },
+  { label: "Arduino ESP32 Projects", href: "/iot-project-center-coimbatore" },
+  { label: "Embedded Projects Coimbatore", href: "/embedded-project-center-coimbatore" },
+  { label: "Mechanical Projects Coimbatore", href: "/mechanical-project-center-coimbatore" },
+  { label: "MERN Stack Projects Coimbatore", href: "/software-project-center-coimbatore" },
+  { label: "Flutter Projects Coimbatore", href: "/software-project-center-coimbatore" },
+  { label: "Java Projects Coimbatore", href: "/software-project-center-coimbatore" },
   { label: "Low Cost Projects Coimbatore", href: "/contact" },
   { label: `IEEE Projects Coimbatore ${YEAR}`, href: "/projects" },
   { label: "Project Center Gandhipuram", href: "/contact" },
@@ -404,7 +362,6 @@ const Blog = () => {
     <div className="blog-page">
 
       {/* ── JSON-LD ── */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPageSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
