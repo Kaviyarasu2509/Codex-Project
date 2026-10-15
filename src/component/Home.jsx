@@ -402,7 +402,7 @@ const Home = () => {
               <div><span className="cp-kw">class</span> <span className="cp-cls">CodexProject</span>:</div>
               <div>{"  "}<span className="cp-kw">def</span> <span className="cp-fn">__init__</span>(self):</div>
               <div>{"    "}self.name {"= "}<span className="cp-str">"CODEX PROJECT"</span></div>
-              <div>{"    "}self.location {"= "}<span className="cp-str">"Gandhipuram, CBE"</span></div>
+              <div>{"    "}self.location {"= "}<span className="cp-str">"Gandhipuram, Coimbatore"</span></div>
               <div>{"    "}self.domains = [<span className="cp-str">"AI"</span>, <span className="cp-str">"IoT"</span>,</div>
               <div>{"      "}<span className="cp-str">"Embedded"</span>, <span className="cp-str">"Mechanical"</span>]</div>
               <div>{"    "}self.rating {"= "}<span className="cp-num">5</span> <span className="cp-cm"># ⭐ Google</span></div>
