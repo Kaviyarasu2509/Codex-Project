@@ -47,10 +47,6 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "prerender-browser": "npm:puppeteer@^24.43.1",
-    "react-snap": "^1.23.0"
-  },
   "reactSnap": {
     "include": [
       "/",
@@ -65,16 +61,10 @@
       "/mechanical-project-center-coimbatore",
       "/software-project-center-coimbatore",
       "/blog/project-center-coimbatore-guide"
-    ],
-    "crawl": false,
-    "skipThirdPartyRequests": false,
-    "concurrency": 1,
-    "fixWebpackChunksIssue": false,
-    "waitFor": 1200,
-    "preconnectThirdParty": false,
-    "puppeteerArgs": [
-      "--no-sandbox",
-      "--disable-setuid-sandbox"
     ]
+  },
+  "devDependencies": {
+    "@sparticuz/chromium": "^148.0.0",
+    "puppeteer-core": "^24.43.1"
   }
 }
